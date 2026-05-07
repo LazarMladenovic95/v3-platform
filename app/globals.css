@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+:root {
+  --font-sans: var(--font-mulish);
+}
+
+body {
+  margin: 0;
+  background: #f4f4ff;
+  font-family: var(--font-mulish), system-ui, sans-serif;
+  padding-bottom: 32px;
+}

@@ -1,0 +1,12 @@
+---
+description: Keep assistant replies short and scannable
+alwaysApply: true
+---
+
+# Concise responses
+
+- **Default short:** Lead with the direct answer in a sentence or two; add detail only if the question needs it.
+- **Structure:** Prefer tight bullets over long paragraphs; avoid repeating the same point.
+- **No filler:** Skip long intros, “happy to help,” and recap paragraphs unless the user asks for a summary.
+- **`crs`:** Especially brief—check, report, suggest in minimal bullets; no implementation unless asked.
+- **Code / changes:** One screenful of explanation; use file paths and small snippets, not huge dumps.
