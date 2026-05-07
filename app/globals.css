@@ -1,12 +1,36 @@
+@config "../tailwind.config.mjs";
 @import "tailwindcss";
 
 :root {
-  --font-sans: var(--font-mulish);
+  --background: 0 0% 100%;
+  --foreground: 0 0% 3.9%;
+  --border: 0 0% 89.8%;
+  --radius: 0.5rem;
 }
 
-body {
-  margin: 0;
-  background: #f4f4ff;
-  font-family: var(--font-mulish), system-ui, sans-serif;
-  padding-bottom: 32px;
+.dark {
+  --background: 0 0% 3.9%;
+  --foreground: 0 0% 98%;
+  --border: 0 0% 14.9%;
+}
+
+@layer base {
+  body {
+    margin: 0;
+    font-family: var(--font-mulish), system-ui, sans-serif;
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    padding-bottom: 32px;
+  }
+
+  * {
+    border-color: hsl(var(--border));
+  }
+
+  input,
+  select,
+  textarea {
+    font-family: inherit;
+    font-size: 16px;
+  }
 }
