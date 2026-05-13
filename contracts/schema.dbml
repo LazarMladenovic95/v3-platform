@@ -134,6 +134,12 @@ Enum users_analytics_role_enum {
   super_admin
 }
 
+Enum email_verification_status_enum {
+  unverified
+  pending
+  verified
+}
+
 Enum reviewer_gender_enum {
   male
   female
@@ -171,6 +177,10 @@ Table companies_analytics_v2 {
   id bigint [pk, not null, default: `nextval('companies_analytics_v2_id_seq'::regclass)`]
   bubble_id text [unique]
   company_name text
+  company_website text [note: 'Corporate / marketing site URL']
+  phone_number text [note: 'Main company line; prefer E.164 when validated']
+  billing_address_id text [note: 'FK → addresses.id; address row should reference this company via company_analytics_id']
+  vat_number text [note: 'EU VAT ID or local tax registration as applicable']
   hubspot_owner text [not null, default: `'philipp.r@expeerly.com'::text`, note: 'HubSpot owner; value is often the owner proxy email (philipp@expeerly.com | philipp.r@expeerly.com | lea@expeerly.com | theresa@expeerly.com)']
   brand_ids jsonb [default: `'[]'::jsonb`]
   client_status company_client_status_enum
@@ -392,7 +402,23 @@ Table retailer {
 Table users_analytics_v2 {
   id bigint [pk, not null, default: `nextval('users_analytics_v2_id_seq'::regclass)`]
   bubble_id text [unique]
-  full_name text
+  first_name text
+  last_name text
+  age integer [note: 'Self-reported age or snapshot; prefer DOB-derived age in product if policy requires']
+  email text
+  email_verification_status email_verification_status_enum [not null, default: 'unverified']
+  avatar_url text [note: 'Profile image URL (CDN or object storage)']
+  phone_number text [note: 'Prefer E.164 when validated; legacy imports may be free-form']
+  social_linkedin text [note: 'Profile URL or handle as stored']
+  social_instagram text
+  social_facebook text
+  social_tiktok text
+  reviewer_rating real [note: 'Aggregate reviewer score for profile / matching; sourcing TBD']
+  sample_image_bucket_urls text[] [note: 'Object storage or HTTPS links to sample stills for reviewer profile']
+  sample_video_bucket_urls text[] [note: 'Object storage or HTTPS links to sample reels / portfolio clips']
+  interest_unique_category_ids text[] [default: `'{}'::text[]`, note: 'interest_categories.unique_category_id values; no FK—app validates against catalog when needed']
+  spoken_language_codes text[] [default: `'{}'::text[]`, note: 'language_options.code when aligned to catalog (same convention as campaigns.reviewer_languages); no FK']
+  stripe_connect_account_id text [note: 'Stripe Connect account id (acct_…); address and KYC live on Stripe unless copied elsewhere']
   role users_analytics_role_enum
   hubspot_owner text [not null, default: `'theresa@expeerly.com'::text`, note: 'HubSpot owner; value is often the owner proxy email (philipp@expeerly.com | philipp.r@expeerly.com | lea@expeerly.com | theresa@expeerly.com); default for reviewer users is theresa']
   reviewer_status reviewer_profile_status_enum [note: 'Reviewer profile status from backoffice options']
@@ -754,6 +780,7 @@ Ref: campaigns.owner_user_analytics_id > users_analytics_v2.id
 Ref: addresses.user_analytics_id > users_analytics_v2.id
 Ref: addresses.country > countries.name
 Ref: addresses.company_analytics_id > companies_analytics_v2.id
+Ref: companies_analytics_v2.billing_address_id > addresses.id
 Ref: campaign_applications.campaign_id > campaigns.id
 Ref: campaign_applications.user_analytics_id > users_analytics_v2.id
 Ref: campaign_applications.shipping_address_id > addresses.id
