@@ -14,13 +14,13 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
           // layout + shape (locked)
           "flex w-full rounded-lg px-4 py-3 min-h-[120px] resize-none items-start",
           // typography (explicit, no globals)
-          "text-[16px] md:text-[14px] leading-[18px] font-normal font-[inherit] placeholder:text-grey-500",
+          "text-body-regular font-normal font-[inherit] placeholder:text-foreground-subtle",
           // base visuals
-          "bg-white border border-grey-300 text-grey-500",
+          "bg-surface border border-border-input text-foreground-muted",
           // focus (active)
-          "focus:outline-none focus:border-grey-700 focus:border-[1.5px] focus:text-grey-700",
+          "focus:outline-none focus:border-border-focus focus:border-[1.5px] focus:text-foreground-body",
           // disabled
-          "disabled:bg-grey-100 disabled:text-grey-500 disabled:cursor-not-allowed",
+          "disabled:bg-disabled disabled:text-foreground-muted disabled:cursor-not-allowed",
           className,
         )}
         {...props}

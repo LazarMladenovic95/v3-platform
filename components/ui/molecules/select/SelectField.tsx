@@ -63,39 +63,39 @@ export function SelectField({
           className={cn(
             // layout
             "flex h-11 w-full items-center justify-between rounded-lg px-4",
-            "text-[16px] md:text-[14px] leading-[18px]",
+            "text-body-regular",
             // remove native focus ring (we style focus via border)
             "outline-none focus:outline-none focus-visible:outline-none",
             // background
-            "bg-white",
+            "bg-surface",
             // default (closed, empty)
             !disabled &&
               state === "default" &&
               !hasValue &&
               !open &&
-              "border border-grey-300 text-grey-500",
+              "border border-border-input text-foreground-muted",
             // filled (closed)
             !disabled &&
               state === "default" &&
               hasValue &&
               !open &&
-              "border border-grey-700 text-grey-700",
+              "border border-foreground-body text-foreground-body",
             // active (open / focused)
             !disabled &&
               open &&
               state !== "highlighted" &&
-              "border-[1.5px] border-grey-700 text-grey-700",
+              "border-[1.5px] border-foreground-body text-foreground-body",
             // highlighted
             !disabled &&
               state === "highlighted" &&
-              "border-[1.5px] border-blue-500 text-grey-700",
+              "border-[1.5px] border-border-focus text-foreground-body",
             // disabled
             disabled &&
-              "bg-grey-100 border border-grey-300 text-grey-500 cursor-not-allowed",
+              "bg-disabled border border-border-input text-foreground-muted cursor-not-allowed",
           )}
         >
           <Select.Value
-            placeholder={<span className="text-grey-500">{placeholder}</span>}
+            placeholder={<span className="text-foreground-muted">{placeholder}</span>}
           />
 
           {/* Chevron */}
@@ -107,19 +107,19 @@ export function SelectField({
               "transition-transform",
               open && "rotate-180",
               // color mapping
-              disabled && "text-grey-300",
-              !disabled && state === "highlighted" && "text-blue-500",
-              !disabled && state !== "highlighted" && open && "text-grey-700",
+              disabled && "text-foreground-subtle",
+              !disabled && state === "highlighted" && "text-foreground-accent",
+              !disabled && state !== "highlighted" && open && "text-foreground-body",
               !disabled &&
                 state !== "highlighted" &&
                 !open &&
                 hasValue &&
-                "text-grey-700",
+                "text-foreground-body",
               !disabled &&
                 state !== "highlighted" &&
                 !open &&
                 !hasValue &&
-                "text-grey-500",
+                "text-foreground-muted",
             )}
           >
             <ChevronDown size={16} />
@@ -127,7 +127,7 @@ export function SelectField({
         </Select.Trigger>
 
         <Select.Content
-          className="z-50 w-[var(--radix-select-trigger-width)] rounded-lg border-[1.5px] border-grey-700 bg-white shadow-lg"
+          className="z-50 w-[var(--radix-select-trigger-width)] rounded-lg border-[1.5px] border-foreground-body bg-surface shadow-lg"
           position="popper"
           sideOffset={2} // ← 2px gap per Figma
         >

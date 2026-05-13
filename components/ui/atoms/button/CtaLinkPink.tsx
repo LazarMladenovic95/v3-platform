@@ -14,10 +14,10 @@ export const CtaLinkPink = React.forwardRef<
       ref={ref}
       className={cn(
         "h-auto",
-        "text-[16px] leading-[18px] font-[700] underline",
-        "text-pink-500 bg-transparent",
-        "hover:text-pink-600 active:text-pink-700",
-        "disabled:text-grey-100 disabled:no-underline disabled:cursor-not-allowed disabled:opacity-60",
+        "text-body-regular-bold underline",
+        "text-foreground-accent bg-transparent",
+        "hover:opacity-90 active:opacity-80",
+        "disabled:text-foreground-subtle disabled:no-underline disabled:cursor-not-allowed disabled:opacity-60",
         className,
       )}
       {...props}

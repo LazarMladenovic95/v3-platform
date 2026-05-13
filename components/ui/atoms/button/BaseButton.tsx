@@ -35,7 +35,7 @@ export const BaseButton = React.forwardRef<HTMLButtonElement, BaseButtonProps>(
           id={hintId}
           className={cn(
             "w-0 min-w-full",
-            state === "error" ? "text-red-util-100" : undefined,
+            state === "error" ? "text-destructive" : undefined,
           )}
         >
           {hint}

@@ -16,7 +16,7 @@ export const SecondaryWhiteSmall = React.forwardRef<
         // 40px height, padding 11px 12px
         "h-[40px] px-3 py-[11px] gap-2",
         // explicit typography
-        "text-[14px] leading-[16px] font-[700]",
+        "text-body-small-bold",
         // base: white border + text, transparent background
         "bg-transparent border border-white text-white",
         // hover

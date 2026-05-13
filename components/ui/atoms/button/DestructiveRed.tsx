@@ -25,10 +25,10 @@ export const DestructiveRed = React.forwardRef<
       className={cn(
         sizeClasses[size],
         // Explicit typography (per Figma)
-        "text-[16px] leading-[18px] font-[700]",
+        "text-body-regular-bold",
         // Destructive red (per tokens)
-        "bg-red-util-100 text-white",
-        "hover:bg-red-util-60 active:bg-red-util-60 disabled:bg-grey-100 disabled:cursor-not-allowed disabled:opacity-60 disabled:pointer-events-none",
+        "bg-destructive text-destructive-foreground",
+        "hover:opacity-90 active:opacity-80 disabled:bg-disabled disabled:cursor-not-allowed disabled:opacity-60 disabled:pointer-events-none",
         className,
       )}
       {...props}

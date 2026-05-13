@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 
 const labelVariants = cva(
   // typography (explicit, no globals)
-  "text-[12px] leading-[14px] font-normal text-grey-700 " +
+  "text-body-extra-small font-normal text-foreground-body " +
     // states
     "peer-disabled:cursor-not-allowed peer-disabled:opacity-70",
 );

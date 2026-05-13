@@ -16,10 +16,10 @@ export const PrimaryPinkExtraSmall = React.forwardRef<
         // 32px height, padding 8px 12px, gap 4
         "h-[32px] px-3 py-2 gap-1",
         // Explicit typography (per Figma)
-        "text-[14px] leading-[16px] font-[700]",
+        "text-body-small-bold",
         // Primary pink
-        "bg-pink-500 text-white",
-        "hover:bg-pink-600 active:bg-pink-700 disabled:bg-grey-100 disabled:cursor-not-allowed disabled:opacity-60 disabled:pointer-events-none",
+        "bg-primary text-primary-foreground",
+        "hover:bg-primary-hover active:bg-primary-active disabled:bg-disabled disabled:cursor-not-allowed disabled:opacity-60 disabled:pointer-events-none",
         className,
       )}
       {...props}

@@ -48,11 +48,11 @@ export const InputField = React.forwardRef<HTMLInputElement, InputFieldProps>(
             className={cn(
               isFilled &&
                 state === "default" &&
-                "border-grey-700 text-grey-700",
+                "border-foreground-body text-foreground-body",
               state === "highlighted" &&
-                "border-[1.5px] border-blue-500 focus:border-[1.5px] focus:border-blue-500",
+                "border-[1.5px] border-border-focus focus:border-[1.5px] focus:border-border-focus",
               state === "error" &&
-                "border-[1.5px] border-red-util-100 focus:border-[1.5px] focus:border-red-util-100",
+                "border-[1.5px] border-border-error focus:border-[1.5px] focus:border-border-error",
               className,
             )}
             {...props}
@@ -63,7 +63,7 @@ export const InputField = React.forwardRef<HTMLInputElement, InputFieldProps>(
           <HintText
             id={hintId}
             className={cn(
-              state === "error" ? "text-red-util-100" : "text-grey-300",
+              state === "error" ? "text-destructive" : "text-foreground-subtle",
               hintClassName,
             )}
           >

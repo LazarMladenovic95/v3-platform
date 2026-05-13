@@ -25,10 +25,10 @@ export const SecondaryPink = React.forwardRef<
       className={cn(
         sizeClasses[size],
         // Explicit typography
-        "text-[16px] leading-[18px] font-[700]",
+        "text-body-regular-bold",
         // Secondary pink style
-        "border border-pink-500 text-pink-500 bg-transparent",
-        "hover:border-pink-600 hover:text-pink-600 active:border-pink-700 active:text-pink-700 disabled:border-grey-100 disabled:text-grey-100 disabled:cursor-not-allowed disabled:opacity-60 disabled:pointer-events-none",
+        "border border-secondary text-secondary bg-transparent",
+        "hover:bg-surface-hover active:opacity-90 disabled:border-border disabled:text-foreground-subtle disabled:cursor-not-allowed disabled:opacity-60 disabled:pointer-events-none",
         className,
       )}
       {...props}

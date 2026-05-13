@@ -6,6 +6,130 @@
   --foreground: 0 0% 3.9%;
   --border: 0 0% 89.8%;
   --radius: 0.5rem;
+
+  /* Semantic color tokens (see design system table) */
+  --color-primary: #fa0f9c;
+  --color-primary-foreground: #ffffff;
+  --color-primary-hover: #de1777;
+  --color-primary-active: #c6186b;
+  --color-secondary: #4b49eb;
+  --color-secondary-foreground: #ffffff;
+  --color-accent: #1bb8de;
+  --color-accent-foreground: #ffffff;
+
+  --color-background: #efedf4;
+  --color-surface: #ffffff;
+  --color-surface-hover: #f7f7f7;
+  --color-disabled: #ebebea;
+  --color-tooltip: #2c1277;
+  --color-tooltip-foreground: #ffffff;
+
+  --color-foreground-title: #2c1277;
+  --color-foreground-body: #2e2e2f;
+  --color-foreground-muted: #8b59ab;
+  --color-foreground-subtle: #b5abd3;
+  --color-foreground-accent: #4b49eb;
+  --color-foreground-on-dark: #ffffff;
+
+  --color-border: #ebebea;
+  --color-border-input: #d1d1d4;
+  --color-border-focus: #4b49eb;
+  --color-border-error: #fb3314;
+
+  --color-destructive: #fe0b2e;
+  --color-destructive-subtle: #ffeef1;
+  --color-destructive-foreground: #ffffff;
+
+  --color-warning: #ffc122;
+  --color-warning-foreground: #2e2e2f;
+
+  --color-success: #2e8b33;
+  --color-success-subtle: #e6f4e7;
+  --color-success-foreground: #ffffff;
+
+  --color-info: #1bbbde;
+  --color-info-subtle: #d6fcff;
+  --color-info-foreground: #ffffff;
+
+  /* Typography - raw tokens (Desktop / Mobile) */
+  --display-desktop-size: 80px;
+  --display-desktop-line-height: 88px;
+  --display-mobile-size: 40px;
+  --display-mobile-line-height: 48px;
+
+  --heading-1-desktop-size: 54px;
+  --heading-1-desktop-line-height: 64px;
+  --heading-1-mobile-size: 32px;
+  --heading-1-mobile-line-height: 40px;
+
+  --heading-2-desktop-size: 40px;
+  --heading-2-desktop-line-height: 48px;
+  --heading-2-mobile-size: 24px;
+  --heading-2-mobile-line-height: 32px;
+
+  --heading-3-desktop-size: 36px;
+  --heading-3-desktop-line-height: 44px;
+  --heading-3-mobile-size: 20px;
+  --heading-3-mobile-line-height: 28px;
+
+  --title-1-desktop-size: 28px;
+  --title-1-desktop-line-height: 36px;
+  --title-1-mobile-size: 18px;
+  --title-1-mobile-line-height: 24px;
+
+  --title-2-desktop-size: 24px;
+  --title-2-desktop-line-height: 32px;
+  --title-2-mobile-size: 16px;
+  --title-2-mobile-line-height: 22px;
+
+  --title-3-size: 20px;
+  --title-3-line-height: 28px;
+
+  --title-4-size: 16px;
+  --title-4-line-height: 24px;
+
+  --body-large-size: 18px;
+  --body-large-line-height: 26px;
+
+  --body-regular-size: 16px;
+  --body-regular-line-height: 22px;
+
+  --body-small-size: 14px;
+  --body-small-line-height: 18px;
+
+  --body-extra-small-size: 12px;
+  --body-extra-small-line-height: 16px;
+
+  /* Composite: mobile-first; desktop values from 768px */
+  --display-size: var(--display-mobile-size);
+  --display-line-height: var(--display-mobile-line-height);
+  --heading-1-size: var(--heading-1-mobile-size);
+  --heading-1-line-height: var(--heading-1-mobile-line-height);
+  --heading-2-size: var(--heading-2-mobile-size);
+  --heading-2-line-height: var(--heading-2-mobile-line-height);
+  --heading-3-size: var(--heading-3-mobile-size);
+  --heading-3-line-height: var(--heading-3-mobile-line-height);
+  --title-1-size: var(--title-1-mobile-size);
+  --title-1-line-height: var(--title-1-mobile-line-height);
+  --title-2-size: var(--title-2-mobile-size);
+  --title-2-line-height: var(--title-2-mobile-line-height);
+}
+
+@media (min-width: 768px) {
+  :root {
+    --display-size: var(--display-desktop-size);
+    --display-line-height: var(--display-desktop-line-height);
+    --heading-1-size: var(--heading-1-desktop-size);
+    --heading-1-line-height: var(--heading-1-desktop-line-height);
+    --heading-2-size: var(--heading-2-desktop-size);
+    --heading-2-line-height: var(--heading-2-desktop-line-height);
+    --heading-3-size: var(--heading-3-desktop-size);
+    --heading-3-line-height: var(--heading-3-desktop-line-height);
+    --title-1-size: var(--title-1-desktop-size);
+    --title-1-line-height: var(--title-1-desktop-line-height);
+    --title-2-size: var(--title-2-desktop-size);
+    --title-2-line-height: var(--title-2-desktop-line-height);
+  }
 }
 
 .dark {
@@ -18,13 +142,13 @@
   body {
     margin: 0;
     font-family: var(--font-mulish), system-ui, sans-serif;
-    background-color: hsl(var(--background));
-    color: hsl(var(--foreground));
+    background-color: var(--color-background);
+    color: var(--color-foreground-body);
     padding-bottom: 32px;
   }
 
   * {
-    border-color: hsl(var(--border));
+    border-color: var(--color-border);
   }
 
   input,

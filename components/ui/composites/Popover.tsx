@@ -17,10 +17,10 @@ const PopoverContent = React.forwardRef<
 >(({ className, align = "center", sideOffset = 4, variant = "default", ...props }, ref) => {
   const variantClass =
     variant === "success"
-      ? "border-green-util-100 bg-green-util-60 text-grey-700"
+      ? "border-success bg-success-subtle text-foreground-body"
       : variant === "error"
-        ? "border-red-util-100 bg-red-util-60 text-grey-700"
-        : "border-grey-300 bg-white text-grey-700";
+        ? "border-destructive bg-destructive-subtle text-foreground-body"
+        : "border-border-input bg-surface text-foreground-body";
 
   return (
     <PopoverPrimitive.Portal>

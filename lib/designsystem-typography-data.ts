@@ -1,0 +1,57 @@
+export const displayTokens = [
+  {
+    label: "display",
+    className: "text-display",
+    mobile: "40px / 48px / 800",
+    desktop: "80px / 88px / 800",
+  },
+];
+
+export const headingTokens = [
+  {
+    label: "heading-1",
+    className: "text-heading-1",
+    mobile: "32px / 40px / 800",
+    desktop: "54px / 64px / 800",
+  },
+  {
+    label: "heading-2",
+    className: "text-heading-2",
+    mobile: "24px / 32px / 800",
+    desktop: "40px / 48px / 800",
+  },
+  {
+    label: "heading-3",
+    className: "text-heading-3",
+    mobile: "20px / 28px / 800",
+    desktop: "36px / 44px / 800",
+  },
+];
+
+export const titleTokens = [
+  {
+    label: "title-1",
+    className: "text-title-1",
+    mobile: "18px / 24px / 700",
+    desktop: "28px / 36px / 700",
+  },
+  {
+    label: "title-2",
+    className: "text-title-2",
+    mobile: "16px / 22px / 700",
+    desktop: "24px / 32px / 700",
+  },
+  { label: "title-3", className: "text-title-3", values: "20px / 28px / 700" },
+  { label: "title-4", className: "text-title-4", values: "16px / 24px / 700" },
+];
+
+export const bodyTokens = [
+  { label: "body-large", className: "text-body-large", values: "18px / 26px / 400" },
+  { label: "body-large-bold", className: "text-body-large-bold", values: "18px / 26px / 700" },
+  { label: "body-regular", className: "text-body-regular", values: "16px / 22px / 400" },
+  { label: "body-regular-bold", className: "text-body-regular-bold", values: "16px / 22px / 700" },
+  { label: "body-small", className: "text-body-small", values: "14px / 18px / 400" },
+  { label: "body-small-bold", className: "text-body-small-bold", values: "14px / 18px / 700" },
+  { label: "body-extra-small", className: "text-body-extra-small", values: "12px / 16px / 400" },
+  { label: "body-extra-small-bold", className: "text-body-extra-small-bold", values: "12px / 16px / 700" },
+];

@@ -23,11 +23,11 @@ export const SelectItem = React.forwardRef<
         // layout
         "flex h-11 w-full items-center px-4",
         // typography
-        "text-[16px] md:text-[14px] leading-[18px] text-grey-700",
+        "text-body-regular text-foreground-body",
         // interaction
         "cursor-pointer select-none",
         "focus:outline-none",
-        "hover:bg-grey-100/50",
+        "hover:bg-surface-hover/50",
         "data-[disabled]:pointer-events-none data-[disabled]:opacity-60",
         className,
       )}

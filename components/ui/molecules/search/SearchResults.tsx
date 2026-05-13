@@ -22,7 +22,7 @@ export const SearchResults = React.forwardRef<
         // positioning is handled by parent (SearchField / controller)
         "w-full rounded-lg",
         // visuals
-        "border-[1.5px] border-grey-700 bg-white",
+        "border-[1.5px] border-foreground-body bg-surface",
         // spacing + scroll
         "overflow-y-auto",
         className,

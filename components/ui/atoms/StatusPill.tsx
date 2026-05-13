@@ -5,15 +5,15 @@ type StatusPillProps = {
 };
 
 const variantStyles: Record<StatusPillProps["variant"], string> = {
-  published: "bg-blue-500",
-  restricted: "bg-pink-600",
-  draft: "bg-blue-500",
+  published: "bg-success",
+  restricted: "bg-primary",
+  draft: "bg-info",
 };
 
 export function StatusPill({ label, variant }: StatusPillProps) {
   return (
     <span
-      className={`text-label text-white rounded-lg px-3 py-1 inline-flex items-center justify-center gap-1 h-8 ${variantStyles[variant]}`}
+      className={`text-body-extra-small text-foreground-on-dark rounded-lg px-3 py-1 inline-flex items-center justify-center gap-1 h-8 ${variantStyles[variant]}`}
     >
       {label}
     </span>

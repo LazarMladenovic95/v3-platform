@@ -64,17 +64,17 @@ export const MapListSearchField = React.forwardRef<
             "pointer-events-auto",
             // height override (48px)
             "h-12",
-            // typography override (bold)
-            "font-[700]",
+            // typography
+            "text-body-regular-bold",
             // background must always be white
-            "bg-white",
+            "bg-surface",
             // default / filled
             !isOpen &&
               (hasValue
-                ? "border border-grey-700 text-grey-700"
-                : "border border-grey-300 text-grey-500"),
+                ? "border border-foreground-body text-foreground-body"
+                : "border border-border-input text-foreground-muted"),
             // active / results open
-            isOpen && "border-[1.5px] border-grey-700 text-grey-700",
+            isOpen && "border-[1.5px] border-foreground-body text-foreground-body",
             className,
           )}
           {...props}
@@ -86,7 +86,7 @@ export const MapListSearchField = React.forwardRef<
             className={cn(
               "pointer-events-auto",
               "absolute left-0 right-0 top-full z-50 mt-[2px]",
-              "rounded-lg border-[1.5px] border-grey-700 bg-white",
+              "rounded-lg border-[1.5px] border-foreground-body bg-surface",
             )}
           >
             <ul className="py-3">
@@ -98,8 +98,8 @@ export const MapListSearchField = React.forwardRef<
                   className={cn(
                     "flex h-12 items-center px-4",
                     "cursor-pointer outline-none",
-                    "text-[16px] md:text-[14px] leading-[18px] font-[700] text-grey-700",
-                    "hover:bg-grey-100/50 focus:bg-grey-100/50",
+                    "text-body-regular-bold text-foreground-body",
+                    "hover:bg-surface-hover/50 focus:bg-surface-hover/50",
                   )}
                   onClick={() => onSelectResult?.(item)}
                   onKeyDown={(e) => {

@@ -35,9 +35,9 @@ export const SearchField = React.forwardRef<HTMLInputElement, SearchFieldProps>(
             className={cn(
               "peer pr-10", // space for icon
               state === "highlighted" &&
-                "border-[1.5px] border-blue-500 focus:border-blue-500",
+                "border-[1.5px] border-border-focus focus:border-border-focus",
               state === "error" &&
-                "border-[1.5px] border-red-util-100 focus:border-red-util-100",
+                "border-[1.5px] border-border-error focus:border-border-error",
               className,
             )}
             {...props}
@@ -48,15 +48,15 @@ export const SearchField = React.forwardRef<HTMLInputElement, SearchFieldProps>(
               "pointer-events-none absolute right-4 top-1/2 -translate-y-1/2",
               "h-4 w-4 flex items-center justify-center", // ✅ true optical centering
               // default
-              "text-grey-500",
+              "text-foreground-muted",
               // focused/active
               !disabled &&
                 state !== "highlighted" &&
-                "peer-focus:text-grey-700",
+                "peer-focus:text-foreground-body",
               // highlighted
-              !disabled && state === "highlighted" && "text-blue-500",
+              !disabled && state === "highlighted" && "text-foreground-accent",
               // disabled
-              disabled && "text-grey-300",
+              disabled && "text-foreground-subtle",
             )}
           >
             <Search size={16} />
@@ -67,7 +67,7 @@ export const SearchField = React.forwardRef<HTMLInputElement, SearchFieldProps>(
           <p
             id={hintId}
             role="alert"
-            className="text-red-util-100 text-[12px] leading-[14px]"
+            className="text-destructive text-body-extra-small"
           >
             {hint}
           </p>

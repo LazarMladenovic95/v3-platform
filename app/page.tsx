@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { PrimaryPink } from "@/components/ui";
+import { primaryPinkClassName } from "@/components/ui/atoms/button/primaryPinkClasses";
+import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
   robots: {
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-background">
       <main className="mx-auto flex min-h-screen w-full max-w-[1440px] flex-col items-center justify-center px-6 py-8 text-center md:px-16 lg:px-20">
         <Image
           src="/expeerly-logo.svg"
@@ -22,9 +23,15 @@ export default function Home() {
           priority
           className="h-[48px] w-[180px]"
         />
-        <h1 className="mt-6 text-heading-1 text-navy-500">This is the new expeerly version</h1>
-        <Link href="/designsystem" className="mt-6">
-          <PrimaryPink>Go to Design System</PrimaryPink>
+        <h1 className="mt-6 text-heading-1 text-foreground-title">This is the new expeerly version</h1>
+        <Link
+          href="/designsystem"
+          className={cn(
+            primaryPinkClassName("regular"),
+            "mt-6 no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+          )}
+        >
+          Go to Design System
         </Link>
       </main>
     </div>

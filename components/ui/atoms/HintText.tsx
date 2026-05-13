@@ -9,7 +9,7 @@ export const HintText = React.forwardRef<HTMLSpanElement, HintTextProps>(
     <span
       ref={ref}
       className={cn(
-        "text-[12px] leading-[14px] font-normal text-grey-700",
+        "text-body-extra-small font-normal text-foreground-body",
         className,
       )}
       {...props}

@@ -43,10 +43,10 @@ export function IndeterminateBar({ className, complete }: Props) {
           }
         `}</style>
         <div
-          className={`w-full h-2 bg-grey-100 rounded-full overflow-hidden ${className ?? ""}`}
+          className={`w-full h-2 bg-surface-hover rounded-full overflow-hidden ${className ?? ""}`}
         >
           <div
-            className="h-full w-[40%] bg-blue-500 rounded-full"
+            className="h-full w-[40%] bg-foreground-accent rounded-full"
             style={{
               animation: "indeterminate-slide 1.5s ease-in-out infinite",
             }}
@@ -59,13 +59,13 @@ export function IndeterminateBar({ className, complete }: Props) {
   // Determinate mode with percentage
   return (
     <div className={`w-full flex flex-col gap-2 ${className ?? ""}`}>
-      <div className="w-full h-2 bg-grey-100 rounded-full overflow-hidden">
+      <div className="w-full h-2 bg-surface-hover rounded-full overflow-hidden">
         <div
-          className="h-full bg-blue-500 rounded-full transition-all duration-500 ease-out"
+          className="h-full bg-foreground-accent rounded-full transition-all duration-500 ease-out"
           style={{ width: `${progress}%` }}
         />
       </div>
-      <span className="text-body-small text-white text-center">
+      <span className="text-body-extra-small text-white text-center">
         {Math.round(progress)}%
       </span>
     </div>

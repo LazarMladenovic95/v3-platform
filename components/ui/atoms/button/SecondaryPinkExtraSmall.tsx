@@ -22,13 +22,13 @@ export const SecondaryPinkExtraSmall = React.forwardRef<
         // 32px height, padding 8px 12px
         "h-[32px] px-3 py-2 gap-1",
         // explicit typography
-        "text-[14px] leading-[16px] font-[700]",
+        "text-body-small-bold",
         // base
         "bg-transparent border",
         tone === "default" && [
-          "border-pink-500 text-pink-500",
-          "hover:border-pink-600 hover:text-pink-600",
-          "active:border-pink-700 active:text-pink-700",
+          "border-secondary text-secondary",
+          "hover:border-secondary hover:text-secondary",
+          "active:opacity-90",
         ],
         tone === "inverted" && [
           // for dark backgrounds only
@@ -37,7 +37,7 @@ export const SecondaryPinkExtraSmall = React.forwardRef<
           "active:border-white/60 active:text-white/60",
         ],
         // disabled (shared)
-        "disabled:border-grey-100 disabled:text-grey-100 disabled:cursor-not-allowed disabled:opacity-60 disabled:pointer-events-none",
+        "disabled:border-border disabled:text-foreground-subtle disabled:cursor-not-allowed disabled:opacity-60 disabled:pointer-events-none",
         className,
       )}
       {...props}

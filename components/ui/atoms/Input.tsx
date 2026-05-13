@@ -14,13 +14,13 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
         className={cn(
           // layout + shape (locked)
           "flex w-full h-11 rounded-lg px-4",
-          "text-[16px] md:text-[14px] leading-[18px] font-normal placeholder:text-grey-500",
+          "text-body-regular font-normal placeholder:text-foreground-subtle",
           // base visuals
-          "bg-white border border-grey-300 text-grey-500",
+          "bg-surface border border-border-input text-foreground-muted",
           // focus (active)
-          "focus:outline-none focus:border-grey-700 focus:border-[1.5px] focus:text-grey-700",
+          "focus:outline-none focus:border-border-focus focus:border-[1.5px] focus:text-foreground-body",
           // disabled
-          "disabled:bg-grey-100 disabled:text-grey-500 disabled:cursor-not-allowed",
+          "disabled:bg-disabled disabled:text-foreground-muted disabled:cursor-not-allowed",
           className,
         )}
         {...props}
