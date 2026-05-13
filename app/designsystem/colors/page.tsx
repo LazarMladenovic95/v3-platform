@@ -1,6 +1,3 @@
-//this is a different change
-
-
 import type { Metadata } from "next";
 import { DesignSystemColorTokensSection } from "@/components/designsystem/DesignSystemColorTokensSection";
 

@@ -28,7 +28,7 @@ export const SecondaryPink = React.forwardRef<
         "text-body-regular-bold",
         // Secondary pink style
         "border border-secondary text-secondary bg-transparent",
-        "hover:bg-surface-hover active:opacity-90 disabled:border-border disabled:text-foreground-subtle disabled:cursor-not-allowed disabled:opacity-60 disabled:pointer-events-none",
+        "hover:bg-surface-hover active:opacity-90 disabled:border-border disabled:text-foreground-muted disabled:cursor-not-allowed disabled:opacity-60 disabled:pointer-events-none",
         className,
       )}
       {...props}

@@ -8,19 +8,30 @@ import { cn } from "@/lib/utils";
 
 const labelVariants = cva(
   // typography (explicit, no globals)
-  "text-body-extra-small font-normal text-foreground-body " +
-    // states
-    "peer-disabled:cursor-not-allowed peer-disabled:opacity-70",
+  "text-body-small font-bold",
+  {
+    variants: {
+      disabled: {
+        true: "text-foreground-disabled cursor-not-allowed",
+        false: "text-foreground-body",
+      },
+    },
+    defaultVariants: {
+      disabled: false,
+    },
+  },
 );
+
+type LabelProps = React.ComponentPropsWithoutRef<typeof LabelPrimitive.Root> &
+  VariantProps<typeof labelVariants>;
 
 const Label = React.forwardRef<
   React.ElementRef<typeof LabelPrimitive.Root>,
-  React.ComponentPropsWithoutRef<typeof LabelPrimitive.Root> &
-    VariantProps<typeof labelVariants>
->(({ className, ...props }, ref) => (
+  LabelProps
+>(({ className, disabled, ...props }, ref) => (
   <LabelPrimitive.Root
     ref={ref}
-    className={cn(labelVariants(), className)}
+    className={cn(labelVariants({ disabled }), className)}
     {...props}
   />
 ));

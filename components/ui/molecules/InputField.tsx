@@ -10,7 +10,7 @@ import { HintText } from "../atoms/HintText";
 export interface InputFieldProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label: string;
   hint?: string;
-  hintClassName?: string; // override hint spacing, e.g. "-mt-1" to tighten the gap-2 default to 4px
+  hintClassName?: string; // override hint spacing, e.g. "mt-1" to tighten the default 8px gap above the hint
   state?: "default" | "highlighted" | "error";
 }
 
@@ -25,6 +25,7 @@ export const InputField = React.forwardRef<HTMLInputElement, InputFieldProps>(
       id,
       value,
       defaultValue,
+      disabled,
       ...props
     },
     ref,
@@ -34,13 +35,14 @@ export const InputField = React.forwardRef<HTMLInputElement, InputFieldProps>(
     const isFilled = Boolean(value || defaultValue);
 
     return (
-      <div className="flex flex-col gap-2">
-        <Label htmlFor={inputId}>{label}</Label>
+      <div className="flex flex-col">
+        <Label htmlFor={inputId} className="mb-1" disabled={disabled}>{label}</Label>
 
         <div>
           <Input
             ref={ref}
             id={inputId}
+            disabled={disabled}
             {...(value !== undefined && { value })}
             {...(defaultValue !== undefined && { defaultValue })}
             aria-invalid={state === "error"}
@@ -48,11 +50,11 @@ export const InputField = React.forwardRef<HTMLInputElement, InputFieldProps>(
             className={cn(
               isFilled &&
                 state === "default" &&
-                "border-foreground-body text-foreground-body",
+                "text-foreground-body",
               state === "highlighted" &&
                 "border-[1.5px] border-border-focus focus:border-[1.5px] focus:border-border-focus",
               state === "error" &&
-                "border-[1.5px] border-border-error focus:border-[1.5px] focus:border-border-error",
+                "bg-destructive-subtle border-[1.5px] border-border-error focus:border-[1.5px] focus:border-border-error",
               className,
             )}
             {...props}
@@ -62,10 +64,7 @@ export const InputField = React.forwardRef<HTMLInputElement, InputFieldProps>(
         {hint && (
           <HintText
             id={hintId}
-            className={cn(
-              state === "error" ? "text-destructive" : "text-foreground-subtle",
-              hintClassName,
-            )}
+            className={cn("mt-2", hintClassName)}
           >
             {hint}
           </HintText>

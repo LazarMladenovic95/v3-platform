@@ -32,17 +32,17 @@ export const titleTokens = [
   {
     label: "title-1",
     className: "text-title-1",
-    mobile: "18px / 24px / 700",
-    desktop: "28px / 36px / 700",
+    mobile: "18px / 24px / 800",
+    desktop: "28px / 36px / 800",
   },
   {
     label: "title-2",
     className: "text-title-2",
-    mobile: "16px / 22px / 700",
-    desktop: "24px / 32px / 700",
+    mobile: "16px / 22px / 800",
+    desktop: "24px / 32px / 800",
   },
-  { label: "title-3", className: "text-title-3", values: "20px / 28px / 700" },
-  { label: "title-4", className: "text-title-4", values: "16px / 24px / 700" },
+  { label: "title-3", className: "text-title-3", values: "20px / 28px / 800" },
+  { label: "title-4", className: "text-title-4", values: "16px / 24px / 800" },
 ];
 
 export const bodyTokens = [

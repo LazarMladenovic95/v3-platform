@@ -26,6 +26,7 @@ export const TextareaField = React.forwardRef<
       id,
       value,
       defaultValue,
+      disabled,
       ...props
     },
     ref,
@@ -35,12 +36,13 @@ export const TextareaField = React.forwardRef<
     const isFilled = Boolean(value || defaultValue);
 
     return (
-      <div className="flex flex-col gap-2">
-        <Label htmlFor={textareaId}>{label}</Label>
+      <div className="flex flex-col">
+        <Label htmlFor={textareaId} className="mb-1" disabled={disabled}>{label}</Label>
 
         <Textarea
           ref={ref}
           id={textareaId}
+          disabled={disabled}
           {...(value !== undefined && { value })}
           {...(defaultValue !== undefined && { defaultValue })}
           aria-invalid={state === "error"}
@@ -48,18 +50,18 @@ export const TextareaField = React.forwardRef<
           className={cn(
             isFilled &&
               state === "default" &&
-              "border-foreground-body text-foreground-body",
+              "text-foreground-body",
             state === "highlighted" &&
               "border-[1.5px] border-border-focus focus:border-[1.5px] focus:border-border-focus",
             state === "error" &&
-              "border-[1.5px] border-border-error focus:border-[1.5px] focus:border-border-error",
+              "bg-destructive-subtle border-[1.5px] border-border-error focus:border-[1.5px] focus:border-border-error",
             className,
           )}
           {...props}
         />
 
         {state === "error" && hint && (
-          <HintText id={hintId} className="text-destructive">
+          <HintText id={hintId} className="mt-2">
             {hint}
           </HintText>
         )}

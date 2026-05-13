@@ -1,14 +1,14 @@
-// SearchField molecule that combines a Label and Input atom with a search icon for venue search inputs.
+// SearchField molecule that combines an Input atom with a search icon for venue search inputs.
 "use client";
 
 import * as React from "react";
 import { Search } from "lucide-react";
 import { cn } from "../../../../lib/utils";
 import { Input } from "../../atoms/Input";
-import { Label } from "../../atoms/Label";
 
 export interface SearchFieldProps extends React.InputHTMLAttributes<HTMLInputElement> {
-  label: string;
+  /** Accessible name for the search input. Not rendered visually; passed as aria-label. */
+  label?: string;
   state?: "default" | "highlighted" | "error";
   hint?: string;
 }
@@ -22,14 +22,13 @@ export const SearchField = React.forwardRef<HTMLInputElement, SearchFieldProps>(
     const hintId = hint ? `${inputId}-hint` : undefined;
 
     return (
-      <div className="flex flex-col gap-2">
-        <Label htmlFor={inputId}>{label}</Label>
-
+      <div className="flex flex-col">
         <div className="relative">
           <Input
             ref={ref}
             id={inputId}
             disabled={disabled}
+            aria-label={label}
             aria-invalid={state === "error"}
             aria-describedby={state === "error" ? hintId : undefined}
             className={cn(
@@ -37,7 +36,7 @@ export const SearchField = React.forwardRef<HTMLInputElement, SearchFieldProps>(
               state === "highlighted" &&
                 "border-[1.5px] border-border-focus focus:border-border-focus",
               state === "error" &&
-                "border-[1.5px] border-border-error focus:border-border-error",
+                "bg-destructive-subtle border-[1.5px] border-border-error focus:border-border-error",
               className,
             )}
             {...props}
@@ -45,18 +44,21 @@ export const SearchField = React.forwardRef<HTMLInputElement, SearchFieldProps>(
 
           <span
             className={cn(
-              "pointer-events-none absolute right-4 top-1/2 -translate-y-1/2",
+              "pointer-events-none absolute right-3 top-1/2 -translate-y-1/2",
               "h-4 w-4 flex items-center justify-center", // ✅ true optical centering
               // default
               "text-foreground-muted",
               // focused/active
               !disabled &&
                 state !== "highlighted" &&
+                state !== "error" &&
                 "peer-focus:text-foreground-body",
               // highlighted
               !disabled && state === "highlighted" && "text-foreground-accent",
+              // error
+              !disabled && state === "error" && "text-destructive",
               // disabled
-              disabled && "text-foreground-subtle",
+              disabled && "text-foreground-disabled",
             )}
           >
             <Search size={16} />
@@ -67,7 +69,7 @@ export const SearchField = React.forwardRef<HTMLInputElement, SearchFieldProps>(
           <p
             id={hintId}
             role="alert"
-            className="text-destructive text-body-extra-small"
+            className="mt-2 text-foreground-muted text-body-small"
           >
             {hint}
           </p>

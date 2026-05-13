@@ -72,7 +72,7 @@ const config = {
           title: "var(--color-foreground-title)",
           body: "var(--color-foreground-body)",
           muted: "var(--color-foreground-muted)",
-          subtle: "var(--color-foreground-subtle)",
+          disabled: "var(--color-foreground-disabled)",
           accent: "var(--color-foreground-accent)",
           "on-dark": "var(--color-foreground-on-dark)",
         },
@@ -124,19 +124,19 @@ const config = {
         ],
         "title-1": [
           "var(--title-1-size)",
-          { lineHeight: "var(--title-1-line-height)", fontWeight: "700" },
+          { lineHeight: "var(--title-1-line-height)", fontWeight: "800" },
         ],
         "title-2": [
           "var(--title-2-size)",
-          { lineHeight: "var(--title-2-line-height)", fontWeight: "700" },
+          { lineHeight: "var(--title-2-line-height)", fontWeight: "800" },
         ],
         "title-3": [
           "var(--title-3-size)",
-          { lineHeight: "var(--title-3-line-height)", fontWeight: "700" },
+          { lineHeight: "var(--title-3-line-height)", fontWeight: "800" },
         ],
         "title-4": [
           "var(--title-4-size)",
-          { lineHeight: "var(--title-4-line-height)", fontWeight: "700" },
+          { lineHeight: "var(--title-4-line-height)", fontWeight: "800" },
         ],
         "body-large": [
           "var(--body-large-size)",

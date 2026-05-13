@@ -43,8 +43,8 @@ export function SelectField({
   const hasValue = internalValue !== undefined;
 
   return (
-    <div className="flex flex-col gap-2">
-      <Label htmlFor={id}>{label}</Label>
+    <div className="flex flex-col">
+      <Label htmlFor={id} className="mb-1" disabled={disabled}>{label}</Label>
 
       <Select.Root
         value={value}
@@ -62,8 +62,8 @@ export function SelectField({
           aria-labelledby={`${id}-label`}
           className={cn(
             // layout
-            "flex h-11 w-full items-center justify-between rounded-lg px-4",
-            "text-body-regular",
+            "flex h-11 w-full items-center justify-between rounded-lg px-3",
+            "text-body-small",
             // remove native focus ring (we style focus via border)
             "outline-none focus:outline-none focus-visible:outline-none",
             // background
@@ -74,12 +74,12 @@ export function SelectField({
               !hasValue &&
               !open &&
               "border border-border-input text-foreground-muted",
-            // filled (closed)
+            // filled (closed) — same outline as default, darker text only
             !disabled &&
               state === "default" &&
               hasValue &&
               !open &&
-              "border border-foreground-body text-foreground-body",
+              "border border-border-input text-foreground-body",
             // active (open / focused)
             !disabled &&
               open &&
@@ -91,7 +91,7 @@ export function SelectField({
               "border-[1.5px] border-border-focus text-foreground-body",
             // disabled
             disabled &&
-              "bg-disabled border border-border-input text-foreground-muted cursor-not-allowed",
+              "bg-disabled border border-border-input text-foreground-disabled cursor-not-allowed",
           )}
         >
           <Select.Value
@@ -107,7 +107,7 @@ export function SelectField({
               "transition-transform",
               open && "rotate-180",
               // color mapping
-              disabled && "text-foreground-subtle",
+              disabled && "text-foreground-disabled",
               !disabled && state === "highlighted" && "text-foreground-accent",
               !disabled && state !== "highlighted" && open && "text-foreground-body",
               !disabled &&

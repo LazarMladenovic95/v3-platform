@@ -37,7 +37,7 @@ export const SecondaryPinkExtraSmall = React.forwardRef<
           "active:border-white/60 active:text-white/60",
         ],
         // disabled (shared)
-        "disabled:border-border disabled:text-foreground-subtle disabled:cursor-not-allowed disabled:opacity-60 disabled:pointer-events-none",
+        "disabled:border-border disabled:text-foreground-muted disabled:cursor-not-allowed disabled:opacity-60 disabled:pointer-events-none",
         className,
       )}
       {...props}

@@ -17,7 +17,7 @@ export const CtaLinkPink = React.forwardRef<
         "text-body-regular-bold underline",
         "text-foreground-accent bg-transparent",
         "hover:opacity-90 active:opacity-80",
-        "disabled:text-foreground-subtle disabled:no-underline disabled:cursor-not-allowed disabled:opacity-60",
+        "disabled:text-foreground-muted disabled:no-underline disabled:cursor-not-allowed disabled:opacity-60",
         className,
       )}
       {...props}
