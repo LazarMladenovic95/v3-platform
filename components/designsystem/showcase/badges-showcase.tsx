@@ -1,9 +1,27 @@
-import { AlertCircle, Check, Info } from "lucide-react";
+import { AlertCircle, Check, Info, TriangleAlert } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarGroup, AvatarImage, Badge, Tag } from "@/components/ui";
 
 export function BadgesShowcase() {
   return (
     <div className="grid gap-6 md:grid-cols-2">
+      <div className="rounded-lg border border-border bg-surface p-4 md:col-span-2">
+        <h2 className="text-title-2 text-foreground-title">Usage guidance</h2>
+        <div className="mt-4 grid gap-4 md:grid-cols-2">
+          <div>
+            <h3 className="text-body-small-bold text-foreground-title">Use badges for</h3>
+            <p className="mt-1 text-body-small text-foreground-muted">
+              Status, category, tier, or metadata that is not directly editable in place.
+            </p>
+          </div>
+          <div>
+            <h3 className="text-body-small-bold text-foreground-title">Use tags for</h3>
+            <p className="mt-1 text-body-small text-foreground-muted">
+              Removable labels, applied filters, and user-managed metadata that needs a clear remove action.
+            </p>
+          </div>
+        </div>
+      </div>
+
       <div className="rounded-lg border border-border bg-surface p-4">
         <h2 className="text-title-2 text-foreground-title">Avatar</h2>
         <p className="mt-1 text-body-small text-foreground-muted">
@@ -41,13 +59,17 @@ export function BadgesShowcase() {
         </p>
         <div className="mt-3 flex flex-wrap gap-2">
           <Badge label="Default" variant="default" />
+          <Badge label="Subtle" variant="subtle" />
           <Badge label="Success" variant="success" />
+          <Badge label="Warning" variant="warning" />
           <Badge label="Destructive" variant="destructive" />
           <Badge label="Info / Draft" variant="info" />
         </div>
         <div className="mt-2 flex flex-wrap gap-2">
           <Badge label="Default" variant="default" iconLeft={<Check className="h-3.5 w-3.5" />} />
+          <Badge label="Subtle" variant="subtle" iconLeft={<Check className="h-3.5 w-3.5" />} />
           <Badge label="Success" variant="success" iconLeft={<Check className="h-3.5 w-3.5" />} />
+          <Badge label="Warning" variant="warning" iconLeft={<TriangleAlert className="h-3.5 w-3.5" />} />
           <Badge label="Destructive" variant="destructive" iconLeft={<AlertCircle className="h-3.5 w-3.5" />} />
           <Badge label="Info / Draft" variant="info" iconLeft={<Info className="h-3.5 w-3.5" />} />
         </div>

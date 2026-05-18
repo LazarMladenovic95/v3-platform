@@ -21,11 +21,11 @@ export const SelectItem = React.forwardRef<
       {...props}
       className={cn(
         "flex w-full items-center gap-2 rounded-md px-3 py-2",
-        "text-body-small text-foreground-body",
+        "text-body-small text-foreground-title-subtle",
         "cursor-pointer select-none",
         "outline-none focus:outline-none",
-        "data-[highlighted]:bg-surface-hover data-[highlighted]:text-foreground-body",
-        "data-[state=checked]:bg-surface-active data-[state=checked]:font-bold",
+        "data-[highlighted]:bg-surface-hover data-[highlighted]:text-secondary",
+        "data-[state=checked]:bg-surface-active data-[state=checked]:font-bold data-[state=checked]:text-foreground-title",
         "data-[disabled]:pointer-events-none data-[disabled]:opacity-60",
         className,
       )}

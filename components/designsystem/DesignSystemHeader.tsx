@@ -9,6 +9,8 @@ const navItems = [
   { href: "/designsystem", label: "Overview" },
   { href: "/designsystem/typography", label: "Typography" },
   { href: "/designsystem/colors", label: "Color" },
+  { href: "/designsystem/styles", label: "Styles" },
+  { href: "/designsystem/accessibility", label: "Accessibility" },
   { href: "/designsystem/components", label: "Components" },
 ] as const;
 

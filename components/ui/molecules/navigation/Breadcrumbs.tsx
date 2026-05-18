@@ -32,7 +32,7 @@ export function Breadcrumbs({
                 <Link
                   href={item.href}
                   className={cn(
-                    "rounded-sm text-foreground-muted transition-colors hover:text-primary-hover",
+                    "rounded-sm text-foreground-muted transition-colors hover:text-secondary",
                     "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2 focus-visible:ring-offset-surface",
                   )}
                 >

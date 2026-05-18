@@ -3,7 +3,7 @@
 // DialogWindow composite — centered modal surface for confirmations and focused tasks.
 import * as React from "react";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
-import { AlertCircle, X } from "lucide-react";
+import { AlertCircle, CheckCircle, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { IconButton } from "../atoms/button/IconButton";
 
@@ -13,7 +13,7 @@ const DialogWindowTrigger = DialogPrimitive.Trigger;
 
 const DialogWindowClose = DialogPrimitive.Close;
 
-export type DialogWindowVariant = "neutral" | "destructive";
+export type DialogWindowVariant = "neutral" | "destructive" | "success";
 
 export interface DialogWindowContentProps
   extends React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content> {
@@ -28,6 +28,7 @@ const DialogWindowContent = React.forwardRef<
   DialogWindowContentProps
 >(({ title, description, footer, variant = "neutral", className, children, ...props }, ref) => {
   const isDestructive = variant === "destructive";
+  const isSuccess = variant === "success";
 
   return (
     <DialogPrimitive.Portal>
@@ -45,6 +46,13 @@ const DialogWindowContent = React.forwardRef<
           {isDestructive && (
             <AlertCircle
               className="mt-1 h-5 w-5 shrink-0 text-foreground-title"
+              strokeWidth={2}
+              aria-hidden
+            />
+          )}
+          {isSuccess && (
+            <CheckCircle
+              className="mt-1 h-5 w-5 shrink-0 text-success"
               strokeWidth={2}
               aria-hidden
             />

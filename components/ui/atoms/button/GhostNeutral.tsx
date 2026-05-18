@@ -17,7 +17,7 @@ export const GhostNeutral = React.forwardRef<
       ref={ref}
       className={cn(
         buttonSizeClasses[size],
-        "bg-transparent text-foreground-muted",
+        "bg-transparent text-foreground-title-subtle",
         "hover:bg-primary/10 hover:text-primary-hover",
         "active:text-primary-active",
         "disabled:text-foreground-muted disabled:cursor-not-allowed disabled:opacity-60 disabled:pointer-events-none",

@@ -13,7 +13,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
         disabled={disabled}
         className={cn(
           // layout + shape (locked)
-          "flex w-full h-10 rounded-lg px-3",
+          "flex w-full h-[38px] rounded-lg px-3",
           "text-body-small font-normal placeholder:text-foreground-muted",
           // base visuals
           "bg-surface border border-border-input text-foreground-muted",

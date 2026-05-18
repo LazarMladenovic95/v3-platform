@@ -59,7 +59,7 @@ export const DateField = React.forwardRef<HTMLInputElement, DateFieldProps>(
     const calendarValue = isValidDateString(selectedValue) ? selectedValue : undefined;
 
     const fieldClass = cn(
-      "inline-flex h-10 w-fit max-w-full shrink-0 items-center rounded-lg px-3",
+      "inline-flex h-[38px] w-fit max-w-full shrink-0 items-center rounded-lg px-3",
       "gap-2",
       "text-body-small font-normal",
       "bg-surface border border-border-input",

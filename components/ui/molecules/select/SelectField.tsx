@@ -15,6 +15,7 @@ export interface SelectFieldProps {
   onValueChange?: (value: string) => void;
   state?: "default" | "highlighted";
   disabled?: boolean;
+  hideLabel?: boolean;
   children: React.ReactNode;
 }
 
@@ -26,6 +27,7 @@ export function SelectField({
   onValueChange,
   state = "default",
   disabled = false,
+  hideLabel = false,
   children,
 }: SelectFieldProps) {
   const id = React.useId();
@@ -40,7 +42,14 @@ export function SelectField({
 
   return (
     <div className="flex flex-col">
-      <Label htmlFor={id} className="mb-1" disabled={disabled}>{label}</Label>
+      <Label
+        id={`${id}-label`}
+        htmlFor={id}
+        className={cn("mb-1", hideLabel && "sr-only")}
+        disabled={disabled}
+      >
+        {label}
+      </Label>
 
       <Select.Root
         value={value}
@@ -60,7 +69,7 @@ export function SelectField({
           aria-labelledby={`${id}-label`}
           className={cn(
             // layout
-            "flex h-10 w-full items-center justify-between rounded-lg px-3",
+            "flex h-[38px] w-full items-center justify-between rounded-lg px-3",
             "text-body-small",
             // remove native focus ring (we style focus via border)
             "outline-none focus:outline-none focus-visible:outline-none",

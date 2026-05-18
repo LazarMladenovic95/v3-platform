@@ -1,5 +1,12 @@
-import { Archive, BarChart3, Download, FileText } from "lucide-react";
-import { Breadcrumbs, TabbedNavigation, VerticalNavigation } from "@/components/ui";
+import { Archive, BarChart3, Download, FileText, FolderOpen } from "lucide-react";
+import {
+  Breadcrumbs,
+  GhostNeutral,
+  TabbedNavigation,
+  TabbedNavigationMenuItem,
+  VerticalNavigation,
+  VerticalNavigationMenuItem,
+} from "@/components/ui";
 
 const tabs = [
   { href: "/designsystem/components/navigation#overview", label: "Overview" },
@@ -39,6 +46,11 @@ const verticalItems = [
   },
 ] as const;
 
+const menuItemClassName =
+  "h-9 w-full justify-start text-body-small font-normal text-foreground-title-subtle hover:bg-surface-hover hover:text-secondary active:bg-surface-active active:text-secondary";
+const selectedMenuItemClassName =
+  "h-9 w-full justify-start bg-surface-active text-body-small font-bold text-foreground-title hover:bg-surface-active hover:text-foreground-title active:bg-surface-active active:text-foreground-title";
+
 export function NavigationShowcase() {
   return (
     <div className="grid gap-6">
@@ -50,6 +62,29 @@ export function NavigationShowcase() {
         </p>
         <div className="mt-4">
           <TabbedNavigation aria-label="Example sections" items={tabs} />
+        </div>
+      </div>
+
+      <div className="rounded-lg border border-border bg-surface p-5">
+        <h2 className="text-title-2 text-foreground-title">Tabbed navigation menu item</h2>
+        <p className="mt-1 max-w-2xl text-body-small text-foreground-muted">
+          Use a down caret when tapping a tab opens a menu of related views or filters.
+        </p>
+        <div className="mt-4 flex gap-1 overflow-x-auto">
+          <TabbedNavigation aria-label="Example tab menu base" items={tabs.slice(0, 2)} />
+          <TabbedNavigationMenuItem label="More">
+            <div className="flex flex-col gap-0.5" role="menu">
+              <GhostNeutral type="button" size="small" className={menuItemClassName} role="menuitem">
+                Product reviews
+              </GhostNeutral>
+              <GhostNeutral type="button" size="small" className={selectedMenuItemClassName} role="menuitem">
+                Review requests
+              </GhostNeutral>
+              <GhostNeutral type="button" size="small" className={menuItemClassName} role="menuitem">
+                Archived reviews
+              </GhostNeutral>
+            </div>
+          </TabbedNavigationMenuItem>
         </div>
       </div>
 
@@ -71,6 +106,31 @@ export function NavigationShowcase() {
         </p>
         <div className="mt-4 max-w-xs">
           <VerticalNavigation aria-label="Example sidebar sections" items={verticalItems} />
+        </div>
+      </div>
+
+      <div className="rounded-lg border border-border bg-surface p-5">
+        <h2 className="text-title-2 text-foreground-title">Vertical navigation menu item</h2>
+        <p className="mt-1 max-w-2xl text-body-small text-foreground-muted">
+          Use a right caret when tapping the navigation item opens a menu instead of navigating immediately.
+        </p>
+        <div className="mt-4 max-w-xs">
+          <VerticalNavigationMenuItem
+            label="Collections"
+            icon={<FolderOpen className="h-4 w-4" />}
+          >
+            <div className="flex flex-col gap-0.5" role="menu">
+              <GhostNeutral type="button" size="small" className={menuItemClassName} role="menuitem">
+                New arrivals
+              </GhostNeutral>
+              <GhostNeutral type="button" size="small" className={selectedMenuItemClassName} role="menuitem">
+                Best sellers
+              </GhostNeutral>
+              <GhostNeutral type="button" size="small" className={menuItemClassName} role="menuitem">
+                Reviews queue
+              </GhostNeutral>
+            </div>
+          </VerticalNavigationMenuItem>
         </div>
       </div>
 

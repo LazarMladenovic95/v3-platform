@@ -1,6 +1,6 @@
 import { ArrowRight, Info, Pencil, Plus, X } from "lucide-react";
 import type { ComponentType, ReactNode } from "react";
-import { DestructiveRed, GhostNeutral, GhostPrimary, IconButton, OutlineDestructive, OutlinePrimary, PrimaryPink } from "@/components/ui";
+import { DestructiveRed, Ghost, IconButton, OutlineDestructive, OutlineNeutral, OutlinePrimary, PrimaryPink } from "@/components/ui";
 import type { IconButtonVariant } from "@/components/ui/atoms/button/IconButton";
 
 export type SizedButton = ComponentType<{
@@ -15,8 +15,8 @@ export type SizedButton = ComponentType<{
 export const SIZED_VARIANTS: { label: string; Component: SizedButton }[] = [
   { label: "Primary", Component: PrimaryPink as unknown as SizedButton },
   { label: "Outline", Component: OutlinePrimary as unknown as SizedButton },
-  { label: "Ghost", Component: GhostPrimary as unknown as SizedButton },
-  { label: "Ghost neutral", Component: GhostNeutral as unknown as SizedButton },
+  { label: "Outline neutral", Component: OutlineNeutral as unknown as SizedButton },
+  { label: "Ghost", Component: Ghost as unknown as SizedButton },
   { label: "Destructive", Component: DestructiveRed as unknown as SizedButton },
   { label: "Destructive outline", Component: OutlineDestructive as unknown as SizedButton },
 ];
@@ -50,8 +50,8 @@ export const ICON_VARIANTS: {
     iconSmall: <Pencil className="h-4 w-4" />,
   },
   {
-    variant: "ghost-neutral",
-    label: "Ghost neutral",
+    variant: "outline-neutral",
+    label: "Outline neutral",
     aria: "More options",
     iconLarge: <Info className="h-5 w-5" />,
     iconSmall: <Info className="h-4 w-4" />,

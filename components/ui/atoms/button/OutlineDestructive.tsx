@@ -18,7 +18,7 @@ export const OutlineDestructive = React.forwardRef<
       className={cn(
         buttonSizeClasses[size],
         "border border-destructive text-destructive bg-transparent",
-        "hover:border-destructive-active hover:text-destructive-active",
+        "hover:border-destructive-hover hover:text-destructive-hover",
         "active:border-destructive-active active:text-destructive-active",
         "disabled:border-border disabled:text-foreground-muted disabled:cursor-not-allowed disabled:opacity-60 disabled:pointer-events-none",
         className,

@@ -32,7 +32,7 @@ export function VerticalNavigation({
             "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2 focus-visible:ring-offset-surface",
             item.active
               ? "bg-surface-active font-bold text-foreground-title"
-              : "text-foreground-title-subtle hover:bg-surface-hover hover:text-primary-hover",
+              : "text-foreground-title-subtle hover:bg-surface-hover hover:text-secondary",
             item.disabled &&
               "pointer-events-none bg-transparent text-foreground-disabled opacity-60 before:hidden",
           );

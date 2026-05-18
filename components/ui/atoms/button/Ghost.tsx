@@ -1,16 +1,16 @@
-// Ghost button atom (primary tone) — large / medium / small. Transparent background, no border.
+// Ghost button atom — large / medium / small. Transparent background, no border.
 import * as React from "react";
 import { cn } from "@/lib/utils";
 import { BaseButton, type BaseButtonProps } from "./BaseButton";
 import { buttonSizeClasses, type ButtonSize } from "./buttonClasses";
 
-export interface GhostPrimaryProps extends BaseButtonProps {
+export interface GhostProps extends BaseButtonProps {
   size?: ButtonSize;
 }
 
-export const GhostPrimary = React.forwardRef<
+export const Ghost = React.forwardRef<
   HTMLButtonElement,
-  GhostPrimaryProps
+  GhostProps
 >(({ size = "large", className, ...props }, ref) => {
   return (
     <BaseButton
@@ -28,4 +28,4 @@ export const GhostPrimary = React.forwardRef<
   );
 });
 
-GhostPrimary.displayName = "GhostPrimary";
+Ghost.displayName = "Ghost";

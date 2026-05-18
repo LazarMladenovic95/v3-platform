@@ -22,10 +22,10 @@ export const SearchResultItem = React.forwardRef<
         // layout
         "flex h-10 w-full items-center px-4",
         // typography
-        "text-body-regular text-foreground-body",
+        "text-body-regular text-foreground-title-subtle",
         // interaction
         "select-none",
-        !disabled && "cursor-pointer hover:bg-surface-hover/50",
+        !disabled && "cursor-pointer hover:bg-surface-hover/50 hover:text-secondary",
         disabled && "pointer-events-none opacity-60",
         className,
       )}

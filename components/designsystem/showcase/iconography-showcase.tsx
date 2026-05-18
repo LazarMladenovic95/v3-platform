@@ -7,9 +7,13 @@ import {
   Check,
   ChevronDown,
   CreditCard,
+  Facebook,
   Gift,
+  Github,
   Heart,
   Info,
+  Instagram,
+  Linkedin,
   MessageSquare,
   Minus,
   Package,
@@ -28,8 +32,11 @@ import {
   Tags,
   ThumbsUp,
   Truck,
+  Twitch,
+  Twitter,
   User,
   X,
+  Youtube,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { tableBodyRowClass } from "./button-matrix";
@@ -149,6 +156,16 @@ const retailReviewGlyphs: { name: string; icon: LucideIcon }[] = [
   { name: "BadgeCheck", icon: BadgeCheck },
 ];
 
+const socialMediaGlyphs: { name: string; icon: LucideIcon }[] = [
+  { name: "Instagram", icon: Instagram },
+  { name: "Youtube", icon: Youtube },
+  { name: "Facebook", icon: Facebook },
+  { name: "Linkedin", icon: Linkedin },
+  { name: "Twitter", icon: Twitter },
+  { name: "Twitch", icon: Twitch },
+  { name: "Github", icon: Github },
+];
+
 const headerCell =
   "px-3 py-2.5 text-left text-body-small font-bold text-foreground-title-subtle";
 const bodyCell = "px-3 py-3 align-middle text-body-small text-foreground-body";
@@ -233,6 +250,25 @@ export function IconographyShowcase() {
         </p>
         <ul className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
           {retailReviewGlyphs.map(({ name, icon: Glyph }) => (
+            <li
+              key={name}
+              className="flex flex-col items-center gap-2 rounded-lg border border-border bg-surface-muted px-3 py-4 text-center"
+            >
+              <DsLucide icon={Glyph} sizePx={16} />
+              <span className="text-body-extra-small text-foreground-muted">{name}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section className="rounded-lg border border-border bg-surface p-5">
+        <h2 className="text-title-2 text-foreground-title">Common social media icons</h2>
+        <p className="mt-1 text-body-small text-foreground-muted">
+          Lucide includes a limited set of social glyphs. Use these for neutral UI previews; production social
+          links should still follow each platform&apos;s current brand asset guidance.
+        </p>
+        <ul className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+          {socialMediaGlyphs.map(({ name, icon: Glyph }) => (
             <li
               key={name}
               className="flex flex-col items-center gap-2 rounded-lg border border-border bg-surface-muted px-3 py-4 text-center"

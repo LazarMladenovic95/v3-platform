@@ -1,73 +1,35 @@
 "use client";
 
 import {
-  DestructiveRed,
-  DialogWindow,
-  DialogWindowClose,
-  DialogWindowContent,
-  DialogWindowTrigger,
-  GhostNeutral,
   InPageAlert,
-  InfoBox,
   OutlinePrimary,
-  PrimaryPink,
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui";
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/composites/Popover";
 import { ToastPlayground } from "./toast-playground";
 
 export function FeedbackShowcase() {
   return (
     <div className="grid gap-6 md:grid-cols-2">
       <div className="rounded-lg border border-border bg-surface p-4 md:col-span-2">
-        <h2 className="text-title-2 text-foreground-title">Dialog windows</h2>
-        <p className="mt-1 text-body-small text-foreground-muted">
-          Centered modal windows for neutral confirmations and destructive decisions.
-        </p>
-        <div className="mt-3 flex flex-wrap gap-2">
-          <DialogWindow>
-            <DialogWindowTrigger asChild>
-              <OutlinePrimary size="small">Neutral dialog</OutlinePrimary>
-            </DialogWindowTrigger>
-            <DialogWindowContent
-              title="Confirm changes"
-              description="Review the details before applying this update."
-              footer={
-                <>
-                  <DialogWindowClose asChild>
-                    <GhostNeutral size="medium">Cancel</GhostNeutral>
-                  </DialogWindowClose>
-                  <DialogWindowClose asChild>
-                    <PrimaryPink size="medium">Confirm</PrimaryPink>
-                  </DialogWindowClose>
-                </>
-              }
-            />
-          </DialogWindow>
-
-          <DialogWindow>
-            <DialogWindowTrigger asChild>
-              <OutlinePrimary size="small">Destructive dialog</OutlinePrimary>
-            </DialogWindowTrigger>
-            <DialogWindowContent
-              variant="destructive"
-              title="Delete this item?"
-              description="This action cannot be undone. The item and related history will be permanently removed."
-              footer={
-                <>
-                  <DialogWindowClose asChild>
-                    <GhostNeutral size="medium">Cancel</GhostNeutral>
-                  </DialogWindowClose>
-                  <DialogWindowClose asChild>
-                    <DestructiveRed size="medium">Delete</DestructiveRed>
-                  </DialogWindowClose>
-                </>
-              }
-            />
-          </DialogWindow>
+        <h2 className="text-title-2 text-foreground-title">Usage guidance</h2>
+        <div className="mt-4 grid gap-4 md:grid-cols-2">
+          <div>
+            <h3 className="text-body-small-bold text-foreground-title">Use alerts for</h3>
+            <p className="mt-1 text-body-small text-foreground-muted">
+              Persistent page-level messages, validation summaries, blocked states, and context that should
+              remain visible until resolved.
+            </p>
+          </div>
+          <div>
+            <h3 className="text-body-small-bold text-foreground-title">Use toasts for</h3>
+            <p className="mt-1 text-body-small text-foreground-muted">
+              Short confirmation messages after an action. Do not use toasts for critical errors or content
+              people must read before continuing.
+            </p>
+          </div>
         </div>
       </div>
 
@@ -134,72 +96,6 @@ export function FeedbackShowcase() {
         </TooltipProvider>
       </div>
 
-      <div className="rounded-lg border border-border bg-surface p-4 md:col-span-2">
-        <h2 className="text-title-2 text-foreground-title">Suggest we remove these</h2>
-        <p className="mt-1 text-body-small text-foreground-muted">
-          Older feedback patterns under review while alerts, dialogs, and toasts become the primary set.
-        </p>
-        <div className="mt-4 grid gap-6 md:grid-cols-2">
-          <div className="rounded-lg border border-border bg-surface p-4">
-            <h3 className="text-title-2 text-foreground-title">Popover</h3>
-            <p className="mt-1 text-body-small text-foreground-muted">
-              Contextual overlays; default, success, and error surface tokens.
-            </p>
-            <div className="mt-3 flex flex-wrap gap-2">
-              <Popover>
-                <PopoverTrigger asChild>
-                  <OutlinePrimary size="small">Default</OutlinePrimary>
-                </PopoverTrigger>
-                <PopoverContent align="start">
-                  <p className="text-body-small-bold">Default Popover</p>
-                  <p className="mt-1 text-body-small text-foreground-muted">
-                    Example contextual content for the design system.
-                  </p>
-                </PopoverContent>
-              </Popover>
-              <Popover>
-                <PopoverTrigger asChild>
-                  <OutlinePrimary size="small">Success</OutlinePrimary>
-                </PopoverTrigger>
-                <PopoverContent align="start" variant="success">
-                  <p className="text-body-small-bold">Success Popover</p>
-                  <p className="mt-1 text-body-small text-foreground-body">
-                    Utility success styling with green tokens.
-                  </p>
-                </PopoverContent>
-              </Popover>
-              <Popover>
-                <PopoverTrigger asChild>
-                  <OutlinePrimary size="small">Error</OutlinePrimary>
-                </PopoverTrigger>
-                <PopoverContent align="start" variant="error">
-                  <p className="text-body-small-bold">Error Popover</p>
-                  <p className="mt-1 text-body-small text-foreground-body">
-                    Utility error styling with red tokens.
-                  </p>
-                </PopoverContent>
-              </Popover>
-            </div>
-          </div>
-
-          <div className="rounded-lg border border-border bg-surface p-4">
-            <h3 className="text-title-2 text-foreground-title">InfoBox</h3>
-            <p className="mt-1 text-body-small text-foreground-muted">
-              Bordered composite for guidelines, summaries, and structured supporting copy.
-            </p>
-            <div className="mt-3">
-              <InfoBox
-                header="Review Guidelines"
-                points={[
-                  "Keep feedback specific and constructive.",
-                  "Use clear language and actionable advice.",
-                  "Highlight both strengths and improvements.",
-                ]}
-              />
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   );
 }

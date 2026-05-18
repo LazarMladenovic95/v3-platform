@@ -12,9 +12,9 @@
      tokens that render as white alias this one. */
   --color-foreground-on-dark: #ffffff;
 
-  --color-primary: #fa0f9c;
+  --color-primary: #e10e8c;
   --color-primary-foreground: var(--color-foreground-on-dark);
-  --color-primary-hover: #de1777;
+  --color-primary-hover: #fa0f9c;
   --color-primary-active: #c6186b;
   --color-secondary: #4b49eb;
 
@@ -37,10 +37,10 @@
   --color-border: #dfdfff;
   --color-border-input: #d1d1d4;
   --color-border-focus: #4b49eb;
-  --color-border-error: #fb3314;
+  --color-border-error: #f0294d;
 
-  --color-destructive: #f0294d;
-  --color-destructive-hover: #d5223f;
+  --color-destructive: #d5223f;
+  --color-destructive-hover: #f0294d;
   --color-destructive-active: #ba1c36;
   --color-destructive-subtle: #ffeef1;
   --color-destructive-foreground: var(--color-foreground-on-dark);
@@ -53,7 +53,7 @@
   --color-success-subtle: #e6f4e7;
   --color-success-foreground: var(--color-foreground-on-dark);
 
-  --color-info: #1bbbde;
+  --color-info: #127a90;
   --color-info-subtle: #d6fcff;
   --color-info-foreground: var(--color-foreground-on-dark);
 

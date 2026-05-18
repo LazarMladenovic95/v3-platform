@@ -24,7 +24,7 @@ export const Checkbox = React.forwardRef<
     )}
     {...props}
   >
-    <CheckboxPrimitive.Indicator className="inline-flex items-center justify-center">
+    <CheckboxPrimitive.Indicator className="inline-flex items-center justify-center animate-in fade-in-0 zoom-in-75 duration-150">
       {props.checked === "indeterminate" ? (
         <Minus className="h-3 w-3" strokeWidth={2.5} />
       ) : (

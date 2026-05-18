@@ -69,7 +69,7 @@ export const DateRangeField = React.forwardRef<HTMLInputElement, DateRangeFieldP
     const triggerText = formatRangeValue(selectedValue) || placeholder || label;
 
     const triggerClass = cn(
-      "inline-flex h-10 w-fit max-w-full shrink-0 items-center rounded-lg px-3",
+      "inline-flex h-[38px] w-fit max-w-full shrink-0 items-center rounded-lg px-3",
       "gap-3",
       "text-body-small font-normal",
       "bg-surface border border-border-input",

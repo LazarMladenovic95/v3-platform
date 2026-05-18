@@ -14,7 +14,7 @@ export default function DesignSystemTypographyPage() {
   return (
     <>
       <h1 className="text-title-2 text-foreground-title">Typography</h1>
-      <p className="mt-2 max-w-2xl text-body-regular text-foreground-muted">
+      <p className="mt-2 max-w-2xl text-body-regular text-foreground-title-subtle">
         Type scale uses CSS variables in <code className="text-body-extra-small">globals.css</code> and Tailwind
         utilities in <code className="text-body-extra-small">tailwind.config.mjs</code>. Below{" "}
         <span className="text-foreground-body">&lt;768px</span> and <span className="text-foreground-body">≥768px</span>{" "}

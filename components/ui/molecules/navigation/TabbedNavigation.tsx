@@ -30,7 +30,7 @@ export function TabbedNavigation({
             "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2 focus-visible:ring-offset-surface",
             item.active
               ? "font-bold text-foreground-title"
-              : "border-transparent text-foreground-title-subtle hover:text-primary-hover",
+              : "border-transparent text-foreground-title-subtle hover:text-secondary",
             item.disabled &&
               "pointer-events-none text-foreground-disabled opacity-60",
           );

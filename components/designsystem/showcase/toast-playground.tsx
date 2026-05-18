@@ -15,11 +15,6 @@ export function ToastPlayground() {
           onClick={() =>
             void toast({
               description: "Your changes were saved successfully.",
-              action: (
-                <ToastAction altText="Undo save">
-                  Undo
-                </ToastAction>
-              ),
             })
           }
         >
@@ -32,11 +27,6 @@ export function ToastPlayground() {
             void toast({
               variant: "success",
               description: "Your update is now live.",
-              action: (
-                <ToastAction altText="Undo publish">
-                  Undo
-                </ToastAction>
-              ),
             })
           }
         >
@@ -49,15 +39,26 @@ export function ToastPlayground() {
             void toast({
               variant: "destructive",
               description: "Try again or contact support if the issue persists.",
+            })
+          }
+        >
+          Destructive toast
+        </OutlinePrimary>
+        <OutlinePrimary
+          type="button"
+          size="small"
+          onClick={() =>
+            void toast({
+              description: "Item archived.",
               action: (
-                <ToastAction altText="Undo error">
+                <ToastAction altText="Undo archive">
                   Undo
                 </ToastAction>
               ),
             })
           }
         >
-          Destructive toast
+          Toast with action
         </OutlinePrimary>
       </div>
     </>

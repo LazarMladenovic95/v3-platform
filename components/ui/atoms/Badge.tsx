@@ -2,7 +2,7 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
 
-export type BadgeVariant = "default" | "success" | "destructive" | "info";
+export type BadgeVariant = "default" | "subtle" | "success" | "warning" | "destructive" | "info";
 
 export interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
   label: string;
@@ -12,7 +12,9 @@ export interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
 
 const variantStyles: Record<BadgeVariant, string> = {
   default: "bg-surface-hover text-foreground-title-subtle",
+  subtle: "border border-border bg-transparent text-foreground-title-subtle",
   success: "bg-success-subtle text-success",
+  warning: "bg-warning-subtle text-warning-foreground",
   destructive: "bg-destructive-subtle text-destructive",
   info: "bg-info-subtle text-info",
 };

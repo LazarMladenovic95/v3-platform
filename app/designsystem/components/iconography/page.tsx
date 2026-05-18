@@ -9,7 +9,7 @@ export default function DesignSystemIconographyPage() {
   return (
     <>
       <h1 className="text-title-2 text-foreground-title">Iconography</h1>
-      <p className="mt-2 max-w-2xl text-body-regular text-foreground-muted">
+      <p className="mt-2 max-w-2xl text-body-regular text-foreground-title-subtle">
         Lucide outline icons sized to match atoms and molecules. Prefer round stroke caps and joins so icons
         align with our rounded surfaces and controls.
       </p>

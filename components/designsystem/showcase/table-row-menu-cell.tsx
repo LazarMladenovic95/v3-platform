@@ -10,7 +10,7 @@ export function TableRowMenuCell() {
     <Popover>
       <PopoverTrigger asChild>
         <IconButton
-          variant="ghost-neutral"
+          variant="ghost"
           size="small"
           icon={
             <MoreHorizontal

@@ -16,8 +16,8 @@ export function DesignSystemColorTokensSection() {
         <table className="w-full min-w-[720px] border-collapse text-left text-body-regular text-foreground-body">
           <thead>
             <tr className="border-b border-border bg-surface-muted">
-              <th className="px-3 py-2.5 text-body-extra-small font-bold text-foreground-muted">New token</th>
-              <th className="px-3 py-2.5 text-body-extra-small font-bold text-foreground-muted">Old name</th>
+              <th className="px-3 py-2.5 text-body-extra-small font-bold text-foreground-muted">CSS variable</th>
+              <th className="px-3 py-2.5 text-body-extra-small font-bold text-foreground-muted">Legacy reference</th>
               <th className="px-3 py-2.5 text-body-extra-small font-bold text-foreground-muted">Value</th>
               <th className="px-3 py-2.5 text-body-extra-small font-bold text-foreground-muted">Used for</th>
             </tr>
@@ -38,7 +38,7 @@ export function DesignSystemColorTokensSection() {
                     <td className="px-3 py-2 align-middle font-mono text-body-small text-foreground-body">
                       {row.token}
                     </td>
-                    <td className="px-3 py-2 align-middle text-foreground-muted">{row.oldName}</td>
+                    <td className="px-3 py-2 align-middle text-foreground-muted">{row.legacyName}</td>
                     <td className="px-3 py-2 align-middle">
                       <div className="flex items-center gap-2">
                         <span

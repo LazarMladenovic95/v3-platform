@@ -7,6 +7,7 @@ import { type ButtonSize } from "./buttonClasses";
 export type IconButtonVariant =
   | "primary"
   | "outline"
+  | "outline-neutral"
   | "ghost"
   | "ghost-neutral"
   | "destructive"
@@ -23,8 +24,8 @@ export interface IconButtonProps extends Omit<BaseButtonProps, "iconLeft" | "ico
 }
 
 const iconButtonSizeClasses: Record<ButtonSize, string> = {
-  large: "h-[44px] w-[44px]",
-  medium: "h-10 w-10",
+  large: "h-[42px] w-[42px]",
+  medium: "h-[38px] w-[38px]",
   small: "h-[32px] w-[32px]",
 };
 
@@ -37,6 +38,8 @@ const iconButtonVariantClasses: Record<IconButtonVariant, string> = {
     "bg-primary text-primary-foreground hover:bg-primary-hover active:bg-primary-active disabled:bg-disabled disabled:cursor-not-allowed disabled:opacity-60 disabled:pointer-events-none",
   outline:
     "border border-primary text-primary bg-transparent hover:border-primary-hover hover:text-primary-hover active:border-primary-active active:text-primary-active disabled:border-border disabled:text-foreground-muted disabled:cursor-not-allowed disabled:opacity-60 disabled:pointer-events-none",
+  "outline-neutral":
+    "border border-border bg-surface text-foreground-title-subtle hover:border-border-focus hover:text-secondary active:border-border-focus active:text-secondary disabled:border-border disabled:text-foreground-muted disabled:cursor-not-allowed disabled:opacity-60 disabled:pointer-events-none",
   ghost:
     "bg-transparent text-primary hover:bg-primary/10 hover:text-primary-hover active:text-primary-active disabled:text-foreground-muted disabled:cursor-not-allowed disabled:opacity-60 disabled:pointer-events-none",
   "ghost-neutral":
@@ -44,7 +47,7 @@ const iconButtonVariantClasses: Record<IconButtonVariant, string> = {
   destructive:
     "bg-destructive text-destructive-foreground hover:bg-destructive-hover active:bg-destructive-active disabled:bg-disabled disabled:cursor-not-allowed disabled:opacity-60 disabled:pointer-events-none",
   "outline-destructive":
-    "border border-destructive text-destructive bg-transparent hover:border-destructive-active hover:text-destructive-active active:border-destructive-active active:text-destructive-active disabled:border-border disabled:text-foreground-muted disabled:cursor-not-allowed disabled:opacity-60 disabled:pointer-events-none",
+    "border border-destructive text-destructive bg-transparent hover:border-destructive-hover hover:text-destructive-hover active:border-destructive-active active:text-destructive-active disabled:border-border disabled:text-foreground-muted disabled:cursor-not-allowed disabled:opacity-60 disabled:pointer-events-none",
   "outline-white":
     "bg-transparent border border-foreground-on-dark text-foreground-on-dark hover:border-foreground-on-dark/80 hover:text-foreground-on-dark/80 active:border-foreground-on-dark/60 active:text-foreground-on-dark/60 disabled:border-foreground-on-dark/40 disabled:text-foreground-on-dark/40 disabled:cursor-not-allowed disabled:pointer-events-none",
 };

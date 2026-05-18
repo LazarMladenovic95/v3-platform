@@ -99,8 +99,8 @@ export const MapListSearchField = React.forwardRef<
                   className={cn(
                     "flex h-12 items-center px-4",
                     "cursor-pointer outline-none",
-                    "text-body-regular-bold text-foreground-body",
-                    "hover:bg-surface-hover/50 focus:bg-surface-hover/50",
+                    "text-body-regular-bold text-foreground-title-subtle",
+                    "hover:bg-surface-hover/50 hover:text-secondary focus:bg-surface-hover/50 focus:text-secondary",
                   )}
                   onClick={() => onSelectResult?.(item)}
                   onKeyDown={(e) => {

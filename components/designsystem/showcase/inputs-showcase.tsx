@@ -2,12 +2,14 @@ import {
   CheckboxField,
   DateField,
   DateRangeField,
+  FileUploadField,
   InputField,
   RadioGroupField,
   SearchField,
   SelectField,
   SelectItem,
   TextareaField,
+  ToggleField,
 } from "@/components/ui";
 
 import { InputsFormSpacingDemo } from "./inputs-form-spacing-demo";
@@ -204,6 +206,61 @@ export function InputsShowcase() {
         </div>
 
         <div>
+          <h2 className="text-title-2 text-foreground-title">Upload field</h2>
+          <p className="mt-1 text-body-small text-foreground-muted">
+            Upload fields support click-to-select, drag and drop, and clearing selected files.
+          </p>
+          <div className="mt-3 grid gap-3 md:grid-cols-2">
+            <div className="rounded-lg border border-border bg-surface p-3">
+              <p className="text-body-extra-small text-foreground-muted">single file</p>
+              <div className="mt-2">
+                <FileUploadField
+                  label="Upload image"
+                  accept="image/*"
+                  maxSizeBytes={2_000_000}
+                  hint="Use this for one image, logo, or document."
+                />
+              </div>
+            </div>
+            <div className="rounded-lg border border-border bg-surface p-3">
+              <p className="text-body-extra-small text-foreground-muted">multiple files</p>
+              <div className="mt-2">
+                <FileUploadField
+                  label="Upload documents"
+                  accept="image/*,.pdf,.doc,.docx"
+                  multiple
+                  maxSizeBytes={10_000_000}
+                  hint="Use this when several images or documents can be added."
+                />
+              </div>
+            </div>
+            <div className="rounded-lg border border-border bg-surface p-3">
+              <p className="text-body-extra-small text-foreground-muted">error</p>
+              <div className="mt-2">
+                <FileUploadField
+                  label="Upload product photo"
+                  accept="image/*"
+                  state="error"
+                  error="Upload a JPG or PNG under 2 MB."
+                />
+              </div>
+            </div>
+            <div className="rounded-lg border border-border bg-surface p-3">
+              <p className="text-body-extra-small text-foreground-muted">uploading</p>
+              <div className="mt-2">
+                <FileUploadField
+                  label="Upload campaign brief"
+                  accept=".pdf,.doc,.docx"
+                  state="loading"
+                  progress={64}
+                  hint="Shows upload progress while files are processing."
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
           <h2 className="text-title-2 text-foreground-title">Textarea field</h2>
           <div className="mt-3 grid gap-3 md:grid-cols-2 xl:grid-cols-3">
             <div className="rounded-lg border border-border bg-surface p-3">
@@ -285,6 +342,46 @@ export function InputsShowcase() {
               <p className="text-body-extra-small text-foreground-muted">disabled · checked</p>
               <div className="mt-2">
                 <CheckboxField label="Remember me" defaultChecked disabled />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h2 className="text-title-2 text-foreground-title">Toggle</h2>
+          <div className="mt-3 grid gap-3 md:grid-cols-2 xl:grid-cols-3">
+            <div className="rounded-lg border border-border bg-surface p-3">
+              <p className="text-body-extra-small text-foreground-muted">off</p>
+              <div className="mt-2">
+                <ToggleField label="Email notifications" />
+              </div>
+            </div>
+            <div className="rounded-lg border border-border bg-surface p-3">
+              <p className="text-body-extra-small text-foreground-muted">on</p>
+              <div className="mt-2">
+                <ToggleField label="Email notifications" defaultChecked />
+              </div>
+            </div>
+            <div className="rounded-lg border border-border bg-surface p-3">
+              <p className="text-body-extra-small text-foreground-muted">with hint</p>
+              <div className="mt-2">
+                <ToggleField
+                  label="Auto-tag verified products"
+                  hint="Apply verified metadata after product matching."
+                  defaultChecked
+                />
+              </div>
+            </div>
+            <div className="rounded-lg border border-border bg-surface p-3">
+              <p className="text-body-extra-small text-foreground-muted">disabled</p>
+              <div className="mt-2">
+                <ToggleField label="Email notifications" disabled />
+              </div>
+            </div>
+            <div className="rounded-lg border border-border bg-surface p-3">
+              <p className="text-body-extra-small text-foreground-muted">disabled · on</p>
+              <div className="mt-2">
+                <ToggleField label="Email notifications" defaultChecked disabled />
               </div>
             </div>
           </div>
