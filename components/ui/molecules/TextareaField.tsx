@@ -31,7 +31,8 @@ export const TextareaField = React.forwardRef<
     },
     ref,
   ) => {
-    const textareaId = id ?? React.useId();
+    const generatedId = React.useId();
+    const textareaId = id ?? generatedId;
     const hintId = hint ? `${textareaId}-hint` : undefined;
     const isFilled = Boolean(value || defaultValue);
 
@@ -61,7 +62,7 @@ export const TextareaField = React.forwardRef<
         />
 
         {state === "error" && hint && (
-          <HintText id={hintId} className="mt-2">
+          <HintText id={hintId} className="mt-2 text-destructive">
             {hint}
           </HintText>
         )}

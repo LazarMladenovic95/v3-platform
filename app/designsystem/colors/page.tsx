@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 export default function DesignSystemColorsPage() {
   return (
     <>
-      <h1 className="text-heading-3 text-foreground-title">Color</h1>
+      <h1 className="text-title-2 text-foreground-title">Color</h1>
       <div className="mt-8">
         <DesignSystemColorTokensSection />
       </div>

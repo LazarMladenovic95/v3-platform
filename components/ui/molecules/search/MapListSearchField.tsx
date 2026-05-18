@@ -94,6 +94,7 @@ export const MapListSearchField = React.forwardRef<
                 <li
                   key={item}
                   role="option"
+                  aria-selected="false"
                   tabIndex={0}
                   className={cn(
                     "flex h-12 items-center px-4",

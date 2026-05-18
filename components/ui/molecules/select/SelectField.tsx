@@ -35,12 +35,8 @@ export function SelectField({
   const [internalValue, setInternalValue] = React.useState<string | undefined>(
     value ?? defaultValue,
   );
-
-  React.useEffect(() => {
-    if (value !== undefined) setInternalValue(value);
-  }, [value]);
-
-  const hasValue = internalValue !== undefined;
+  const selectedValue = value ?? internalValue;
+  const hasValue = selectedValue !== undefined;
 
   return (
     <div className="flex flex-col">
@@ -50,7 +46,9 @@ export function SelectField({
         value={value}
         defaultValue={defaultValue}
         onValueChange={(v) => {
-          setInternalValue(v);
+          if (value === undefined) {
+            setInternalValue(v);
+          }
           onValueChange?.(v);
         }}
         disabled={disabled}
@@ -62,10 +60,11 @@ export function SelectField({
           aria-labelledby={`${id}-label`}
           className={cn(
             // layout
-            "flex h-11 w-full items-center justify-between rounded-lg px-3",
+            "flex h-10 w-full items-center justify-between rounded-lg px-3",
             "text-body-small",
             // remove native focus ring (we style focus via border)
             "outline-none focus:outline-none focus-visible:outline-none",
+            "[-webkit-tap-highlight-color:transparent]",
             // background
             "bg-surface",
             // default (closed, empty)
@@ -80,11 +79,11 @@ export function SelectField({
               hasValue &&
               !open &&
               "border border-border-input text-foreground-body",
-            // active (open / focused)
+            // open — match input focus (no near-black border)
             !disabled &&
               open &&
               state !== "highlighted" &&
-              "border-[1.5px] border-foreground-body text-foreground-body",
+              "border-[1.5px] border-border-focus text-foreground-body",
             // highlighted
             !disabled &&
               state === "highlighted" &&
@@ -95,7 +94,11 @@ export function SelectField({
           )}
         >
           <Select.Value
-            placeholder={<span className="text-foreground-muted">{placeholder}</span>}
+            placeholder={
+              <span className={disabled ? "text-foreground-disabled" : "text-foreground-muted"}>
+                {placeholder}
+              </span>
+            }
           />
 
           {/* Chevron */}
@@ -109,7 +112,7 @@ export function SelectField({
               // color mapping
               disabled && "text-foreground-disabled",
               !disabled && state === "highlighted" && "text-foreground-accent",
-              !disabled && state !== "highlighted" && open && "text-foreground-body",
+              !disabled && state !== "highlighted" && open && "text-foreground-accent",
               !disabled &&
                 state !== "highlighted" &&
                 !open &&
@@ -127,11 +130,11 @@ export function SelectField({
         </Select.Trigger>
 
         <Select.Content
-          className="z-50 w-[var(--radix-select-trigger-width)] rounded-lg border-[1.5px] border-foreground-body bg-surface shadow-lg"
+          className="z-50 w-[var(--radix-select-trigger-width)] rounded-lg border border-border bg-surface py-1 text-body-small shadow-md"
           position="popper"
           sideOffset={2} // ← 2px gap per Figma
         >
-          <Select.Viewport className="py-3 max-h-[40dvh] overflow-y-auto">
+          <Select.Viewport className="flex max-h-[40dvh] flex-col gap-0.5 overflow-y-auto px-2 py-0">
             {children}
           </Select.Viewport>
         </Select.Content>

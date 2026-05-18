@@ -20,14 +20,12 @@ export const SelectItem = React.forwardRef<
       ref={ref}
       {...props}
       className={cn(
-        // layout
-        "flex h-11 w-full items-center px-4",
-        // typography
-        "text-body-regular text-foreground-body",
-        // interaction
+        "flex w-full items-center gap-2 rounded-md px-3 py-2",
+        "text-body-small text-foreground-body",
         "cursor-pointer select-none",
-        "focus:outline-none",
-        "hover:bg-surface-hover/50",
+        "outline-none focus:outline-none",
+        "data-[highlighted]:bg-surface-hover data-[highlighted]:text-foreground-body",
+        "data-[state=checked]:bg-surface-active data-[state=checked]:font-bold",
         "data-[disabled]:pointer-events-none data-[disabled]:opacity-60",
         className,
       )}

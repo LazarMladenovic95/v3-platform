@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { primaryPinkClassName } from "@/components/ui/atoms/button/primaryPinkClasses";
+import { primaryPinkClassName } from "@/components/ui/atoms/button/buttonClasses";
 import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
@@ -27,7 +27,7 @@ export default function Home() {
         <Link
           href="/designsystem"
           className={cn(
-            primaryPinkClassName("regular"),
+            primaryPinkClassName("medium"),
             "mt-6 no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2 focus-visible:ring-offset-background",
           )}
         >

@@ -8,48 +8,58 @@
   --radius: 0.5rem;
 
   /* Semantic color tokens (see design system table) */
+  /* Single source of truth for white-on-color text. All *-foreground
+     tokens that render as white alias this one. */
+  --color-foreground-on-dark: #ffffff;
+
   --color-primary: #fa0f9c;
-  --color-primary-foreground: #ffffff;
+  --color-primary-foreground: var(--color-foreground-on-dark);
   --color-primary-hover: #de1777;
   --color-primary-active: #c6186b;
   --color-secondary: #4b49eb;
-  --color-secondary-foreground: #ffffff;
-  --color-accent: #1bb8de;
-  --color-accent-foreground: #ffffff;
 
-  --color-background: #efedf4;
+  --color-background: #fafaff;
   --color-surface: #ffffff;
-  --color-surface-hover: #f7f7f7;
+  --color-surface-hover: #f3f3ff;
+  --color-surface-active: #e8e8ff;
+  --color-surface-muted: #f7f7f7;
   --color-disabled: #ebebea;
   --color-tooltip: #2c1277;
-  --color-tooltip-foreground: #ffffff;
+  --color-tooltip-foreground: var(--color-foreground-on-dark);
 
   --color-foreground-title: #2c1277;
+  --color-foreground-title-subtle: #6b59a0;
   --color-foreground-body: #080218;
-  --color-foreground-muted: #8d8b94;
+  --color-foreground-muted: #706f74;
   --color-foreground-disabled: #d1d1d4;
   --color-foreground-accent: #4b49eb;
-  --color-foreground-on-dark: #ffffff;
 
-  --color-border: #ebebea;
+  --color-border: #dfdfff;
   --color-border-input: #d1d1d4;
   --color-border-focus: #4b49eb;
   --color-border-error: #fb3314;
 
-  --color-destructive: #fe0b2e;
+  --color-destructive: #f0294d;
+  --color-destructive-hover: #d5223f;
+  --color-destructive-active: #ba1c36;
   --color-destructive-subtle: #ffeef1;
-  --color-destructive-foreground: #ffffff;
+  --color-destructive-foreground: var(--color-foreground-on-dark);
 
   --color-warning: #ffc122;
+  --color-warning-subtle: #fff8e6;
   --color-warning-foreground: #2e2e2f;
 
   --color-success: #2e8b33;
   --color-success-subtle: #e6f4e7;
-  --color-success-foreground: #ffffff;
+  --color-success-foreground: var(--color-foreground-on-dark);
 
   --color-info: #1bbbde;
   --color-info-subtle: #d6fcff;
-  --color-info-foreground: #ffffff;
+  --color-info-foreground: var(--color-foreground-on-dark);
+
+  --shadow-sm: 0 2px 10px rgb(8 2 24 / 0.06);
+  --shadow-md: 0 6px 20px rgb(8 2 24 / 0.08);
+  --shadow-lg: 0 12px 32px rgb(8 2 24 / 0.1);
 
   /* Typography - raw tokens (Desktop / Mobile) */
   --display-desktop-size: 80px;
@@ -142,6 +152,8 @@
   body {
     margin: 0;
     font-family: var(--font-mulish), system-ui, sans-serif;
+    font-size: var(--body-small-size);
+    line-height: var(--body-small-line-height);
     background-color: var(--color-background);
     color: var(--color-foreground-body);
     padding-bottom: 32px;
@@ -155,6 +167,7 @@
   select,
   textarea {
     font-family: inherit;
-    font-size: 16px;
+    font-size: var(--body-small-size);
+    line-height: var(--body-small-line-height);
   }
 }

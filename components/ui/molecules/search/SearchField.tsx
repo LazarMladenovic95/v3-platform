@@ -18,7 +18,8 @@ export const SearchField = React.forwardRef<HTMLInputElement, SearchFieldProps>(
     { label, state = "default", hint, disabled, className, id, ...props },
     ref,
   ) => {
-    const inputId = id ?? React.useId();
+    const generatedId = React.useId();
+    const inputId = id ?? generatedId;
     const hintId = hint ? `${inputId}-hint` : undefined;
 
     return (
@@ -69,7 +70,7 @@ export const SearchField = React.forwardRef<HTMLInputElement, SearchFieldProps>(
           <p
             id={hintId}
             role="alert"
-            className="mt-2 text-foreground-muted text-body-small"
+            className="mt-2 text-body-small text-destructive"
           >
             {hint}
           </p>

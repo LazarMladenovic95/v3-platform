@@ -30,7 +30,8 @@ export const InputField = React.forwardRef<HTMLInputElement, InputFieldProps>(
     },
     ref,
   ) => {
-    const inputId = id ?? React.useId();
+    const generatedId = React.useId();
+    const inputId = id ?? generatedId;
     const hintId = hint ? `${inputId}-hint` : undefined;
     const isFilled = Boolean(value || defaultValue);
 
@@ -64,7 +65,7 @@ export const InputField = React.forwardRef<HTMLInputElement, InputFieldProps>(
         {hint && (
           <HintText
             id={hintId}
-            className={cn("mt-2", hintClassName)}
+            className={cn("mt-2", state === "error" && "text-destructive", hintClassName)}
           >
             {hint}
           </HintText>

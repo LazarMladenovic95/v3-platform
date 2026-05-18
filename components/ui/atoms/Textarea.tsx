@@ -2,7 +2,7 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
 
-export interface TextareaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {}
+export type TextareaProps = React.TextareaHTMLAttributes<HTMLTextAreaElement>;
 
 const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
   ({ className, disabled, ...props }, ref) => {
@@ -20,7 +20,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
           // focus (active)
           "focus:outline-none focus:border-border-focus focus:border-[1.5px] focus:text-foreground-body",
           // disabled
-          "disabled:bg-disabled disabled:text-foreground-disabled disabled:cursor-not-allowed",
+          "disabled:bg-disabled disabled:text-foreground-disabled disabled:placeholder:text-foreground-disabled disabled:cursor-not-allowed",
           className,
         )}
         {...props}

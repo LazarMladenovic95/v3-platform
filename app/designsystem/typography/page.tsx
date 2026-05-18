@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 export default function DesignSystemTypographyPage() {
   return (
     <>
-      <h1 className="text-heading-3 text-foreground-title">Typography</h1>
+      <h1 className="text-title-2 text-foreground-title">Typography</h1>
       <p className="mt-2 max-w-2xl text-body-regular text-foreground-muted">
         Type scale uses CSS variables in <code className="text-body-extra-small">globals.css</code> and Tailwind
         utilities in <code className="text-body-extra-small">tailwind.config.mjs</code>. Below{" "}
@@ -22,11 +22,11 @@ export default function DesignSystemTypographyPage() {
       </p>
 
       <section className="mt-8 rounded-lg border border-border bg-surface p-5">
-        <h2 className="text-title-1 text-foreground-title">Display</h2>
+        <h2 className="text-title-2 text-foreground-title">Display</h2>
         <div className="mt-4 overflow-x-auto">
           <table className="w-full min-w-[640px] border-collapse text-left text-body-regular text-foreground-body">
             <thead>
-              <tr className="border-b border-border bg-surface-hover">
+              <tr className="border-b border-border bg-surface-muted">
                 <th className="px-3 py-2.5 text-body-extra-small font-bold text-foreground-muted">Token</th>
                 <th className="px-3 py-2.5 text-body-extra-small font-bold text-foreground-muted">&lt;768px</th>
                 <th className="px-3 py-2.5 text-body-extra-small font-bold text-foreground-muted">≥768px</th>
@@ -50,11 +50,11 @@ export default function DesignSystemTypographyPage() {
       </section>
 
       <section className="mt-6 rounded-lg border border-border bg-surface p-5">
-        <h2 className="text-title-1 text-foreground-title">Headings</h2>
+        <h2 className="text-title-2 text-foreground-title">Headings</h2>
         <div className="mt-4 overflow-x-auto">
           <table className="w-full min-w-[640px] border-collapse text-left text-body-regular text-foreground-body">
             <thead>
-              <tr className="border-b border-border bg-surface-hover">
+              <tr className="border-b border-border bg-surface-muted">
                 <th className="px-3 py-2.5 text-body-extra-small font-bold text-foreground-muted">Token</th>
                 <th className="px-3 py-2.5 text-body-extra-small font-bold text-foreground-muted">&lt;768px</th>
                 <th className="px-3 py-2.5 text-body-extra-small font-bold text-foreground-muted">≥768px</th>
@@ -78,11 +78,11 @@ export default function DesignSystemTypographyPage() {
       </section>
 
       <section className="mt-6 rounded-lg border border-border bg-surface p-5">
-        <h2 className="text-title-1 text-foreground-title">Titles</h2>
+        <h2 className="text-title-2 text-foreground-title">Titles</h2>
         <div className="mt-4 overflow-x-auto">
           <table className="w-full min-w-[640px] border-collapse text-left text-body-regular text-foreground-body">
             <thead>
-              <tr className="border-b border-border bg-surface-hover">
+              <tr className="border-b border-border bg-surface-muted">
                 <th className="px-3 py-2.5 text-body-extra-small font-bold text-foreground-muted">Token</th>
                 <th className="px-3 py-2.5 text-body-extra-small font-bold text-foreground-muted">&lt;768px</th>
                 <th className="px-3 py-2.5 text-body-extra-small font-bold text-foreground-muted">≥768px</th>
@@ -110,11 +110,11 @@ export default function DesignSystemTypographyPage() {
       </section>
 
       <section className="mt-6 rounded-lg border border-border bg-surface p-5">
-        <h2 className="text-title-1 text-foreground-title">Body</h2>
+        <h2 className="text-title-2 text-foreground-title">Body</h2>
         <div className="mt-4 overflow-x-auto">
           <table className="w-full min-w-[560px] border-collapse text-left text-body-regular text-foreground-body">
             <thead>
-              <tr className="border-b border-border bg-surface-hover">
+              <tr className="border-b border-border bg-surface-muted">
                 <th className="px-3 py-2.5 text-body-extra-small font-bold text-foreground-muted">Token</th>
                 <th className="px-3 py-2.5 text-body-extra-small font-bold text-foreground-muted">Size / line / weight</th>
                 <th className="px-3 py-2.5 text-body-extra-small font-bold text-foreground-muted">Sample</th>

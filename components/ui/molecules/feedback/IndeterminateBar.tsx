@@ -12,14 +12,12 @@ type Props = {
 
 export function IndeterminateBar({ className, complete }: Props) {
   const [progress, setProgress] = useState(0);
+  const displayedProgress = complete ? 100 : progress;
 
   // Fake progress timer — increments while waiting, slows near the top
   useEffect(() => {
     if (complete === undefined) return; // indeterminate mode
-    if (complete) {
-      setProgress(100);
-      return;
-    }
+    if (complete) return;
 
     const timer = setInterval(() => {
       setProgress((prev) => {
@@ -62,11 +60,11 @@ export function IndeterminateBar({ className, complete }: Props) {
       <div className="w-full h-2 bg-surface-hover rounded-full overflow-hidden">
         <div
           className="h-full bg-foreground-accent rounded-full transition-all duration-500 ease-out"
-          style={{ width: `${progress}%` }}
+          style={{ width: `${displayedProgress}%` }}
         />
       </div>
       <span className="text-body-extra-small text-white text-center">
-        {Math.round(progress)}%
+        {Math.round(displayedProgress)}%
       </span>
     </div>
   );

@@ -50,18 +50,13 @@ const config = {
           hover: "var(--color-primary-hover)",
           active: "var(--color-primary-active)",
         },
-        secondary: {
-          DEFAULT: "var(--color-secondary)",
-          foreground: "var(--color-secondary-foreground)",
-        },
-        accent: {
-          DEFAULT: "var(--color-accent)",
-          foreground: "var(--color-accent-foreground)",
-        },
+        secondary: "var(--color-secondary)",
         background: "var(--color-background)",
         surface: {
           DEFAULT: "var(--color-surface)",
           hover: "var(--color-surface-hover)",
+          active: "var(--color-surface-active)",
+          muted: "var(--color-surface-muted)",
         },
         disabled: "var(--color-disabled)",
         tooltip: {
@@ -70,6 +65,7 @@ const config = {
         },
         foreground: {
           title: "var(--color-foreground-title)",
+          "title-subtle": "var(--color-foreground-title-subtle)",
           body: "var(--color-foreground-body)",
           muted: "var(--color-foreground-muted)",
           disabled: "var(--color-foreground-disabled)",
@@ -84,11 +80,14 @@ const config = {
         },
         destructive: {
           DEFAULT: "var(--color-destructive)",
+          hover: "var(--color-destructive-hover)",
+          active: "var(--color-destructive-active)",
           subtle: "var(--color-destructive-subtle)",
           foreground: "var(--color-destructive-foreground)",
         },
         warning: {
           DEFAULT: "var(--color-warning)",
+          subtle: "var(--color-warning-subtle)",
           foreground: "var(--color-warning-foreground)",
         },
         success: {
@@ -104,6 +103,11 @@ const config = {
       },
       ringColor: {
         focus: "var(--color-border-focus)",
+      },
+      boxShadow: {
+        sm: "var(--shadow-sm)",
+        md: "var(--shadow-md)",
+        lg: "var(--shadow-lg)",
       },
       fontSize: {
         display: [

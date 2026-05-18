@@ -16,10 +16,11 @@ export const SearchResultItem = React.forwardRef<
     <div
       ref={ref}
       role="option"
+      aria-selected="false"
       aria-disabled={disabled}
       className={cn(
         // layout
-        "flex h-11 w-full items-center px-4",
+        "flex h-10 w-full items-center px-4",
         // typography
         "text-body-regular text-foreground-body",
         // interaction
