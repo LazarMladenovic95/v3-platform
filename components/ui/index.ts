@@ -53,7 +53,7 @@ export { SearchResults } from "./molecules/search/SearchResults";
 export { MapListSearchField } from "./molecules/search/MapListSearchField";
 export { Breadcrumbs } from "./molecules/navigation/Breadcrumbs";
 export { MenuButton } from "./molecules/MenuButton";
-export { RightMenuItem } from "./molecules/RightMenuItem";
+export { RightMenuItem, type RightMenuSubmenuItem } from "./molecules/RightMenuItem";
 export { TabbedNavigation } from "./molecules/navigation/TabbedNavigation";
 export { VerticalNavigation } from "./molecules/navigation/VerticalNavigation";
 export { IndeterminateBar } from "./molecules/feedback/IndeterminateBar";
