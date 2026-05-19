@@ -15,6 +15,7 @@ export interface SelectFieldProps {
   onValueChange?: (value: string) => void;
   state?: "default" | "highlighted";
   disabled?: boolean;
+  hideLabel?: boolean;
   children: React.ReactNode;
 }
 
@@ -26,6 +27,7 @@ export function SelectField({
   onValueChange,
   state = "default",
   disabled = false,
+  hideLabel = false,
   children,
 }: SelectFieldProps) {
   const id = React.useId();
@@ -35,22 +37,27 @@ export function SelectField({
   const [internalValue, setInternalValue] = React.useState<string | undefined>(
     value ?? defaultValue,
   );
-
-  React.useEffect(() => {
-    if (value !== undefined) setInternalValue(value);
-  }, [value]);
-
-  const hasValue = internalValue !== undefined;
+  const selectedValue = value ?? internalValue;
+  const hasValue = selectedValue !== undefined;
 
   return (
-    <div className="flex flex-col gap-2">
-      <Label htmlFor={id}>{label}</Label>
+    <div className="flex flex-col">
+      <Label
+        id={`${id}-label`}
+        htmlFor={id}
+        className={cn("mb-1", hideLabel && "sr-only")}
+        disabled={disabled}
+      >
+        {label}
+      </Label>
 
       <Select.Root
         value={value}
         defaultValue={defaultValue}
         onValueChange={(v) => {
-          setInternalValue(v);
+          if (value === undefined) {
+            setInternalValue(v);
+          }
           onValueChange?.(v);
         }}
         disabled={disabled}
@@ -62,40 +69,45 @@ export function SelectField({
           aria-labelledby={`${id}-label`}
           className={cn(
             // layout
-            "flex h-11 w-full items-center justify-between rounded-lg px-4",
-            "text-[16px] md:text-[14px] leading-[18px]",
+            "flex h-[38px] w-full items-center justify-between rounded-lg px-3",
+            "text-body-small",
             // remove native focus ring (we style focus via border)
             "outline-none focus:outline-none focus-visible:outline-none",
+            "[-webkit-tap-highlight-color:transparent]",
             // background
-            "bg-white",
+            "bg-surface",
             // default (closed, empty)
             !disabled &&
               state === "default" &&
               !hasValue &&
               !open &&
-              "border border-grey-300 text-grey-500",
-            // filled (closed)
+              "border border-border-input text-foreground-muted",
+            // filled (closed) — same outline as default, darker text only
             !disabled &&
               state === "default" &&
               hasValue &&
               !open &&
-              "border border-grey-700 text-grey-700",
-            // active (open / focused)
+              "border border-border-input text-foreground-body",
+            // open — match input focus (no near-black border)
             !disabled &&
               open &&
               state !== "highlighted" &&
-              "border-[1.5px] border-grey-700 text-grey-700",
+              "border-[1.5px] border-border-focus text-foreground-body",
             // highlighted
             !disabled &&
               state === "highlighted" &&
-              "border-[1.5px] border-blue-500 text-grey-700",
+              "border-[1.5px] border-border-focus text-foreground-body",
             // disabled
             disabled &&
-              "bg-grey-100 border border-grey-300 text-grey-500 cursor-not-allowed",
+              "bg-disabled border border-border-input text-foreground-disabled cursor-not-allowed",
           )}
         >
           <Select.Value
-            placeholder={<span className="text-grey-500">{placeholder}</span>}
+            placeholder={
+              <span className={disabled ? "text-foreground-disabled" : "text-foreground-muted"}>
+                {placeholder}
+              </span>
+            }
           />
 
           {/* Chevron */}
@@ -107,19 +119,19 @@ export function SelectField({
               "transition-transform",
               open && "rotate-180",
               // color mapping
-              disabled && "text-grey-300",
-              !disabled && state === "highlighted" && "text-blue-500",
-              !disabled && state !== "highlighted" && open && "text-grey-700",
+              disabled && "text-foreground-disabled",
+              !disabled && state === "highlighted" && "text-foreground-accent",
+              !disabled && state !== "highlighted" && open && "text-foreground-accent",
               !disabled &&
                 state !== "highlighted" &&
                 !open &&
                 hasValue &&
-                "text-grey-700",
+                "text-foreground-body",
               !disabled &&
                 state !== "highlighted" &&
                 !open &&
                 !hasValue &&
-                "text-grey-500",
+                "text-foreground-muted",
             )}
           >
             <ChevronDown size={16} />
@@ -127,11 +139,11 @@ export function SelectField({
         </Select.Trigger>
 
         <Select.Content
-          className="z-50 w-[var(--radix-select-trigger-width)] rounded-lg border-[1.5px] border-grey-700 bg-white shadow-lg"
+          className="z-50 w-[var(--radix-select-trigger-width)] rounded-lg border border-border bg-surface py-1 text-body-small shadow-md"
           position="popper"
           sideOffset={2} // ← 2px gap per Figma
         >
-          <Select.Viewport className="py-3 max-h-[40dvh] overflow-y-auto">
+          <Select.Viewport className="flex max-h-[40dvh] flex-col gap-0.5 overflow-y-auto px-2 py-0">
             {children}
           </Select.Viewport>
         </Select.Content>

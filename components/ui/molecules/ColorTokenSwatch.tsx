@@ -28,10 +28,10 @@ export function ColorTokenSwatch({ name, bgClass }: ColorTokenSwatchProps) {
   }, []);
 
   return (
-    <div className="rounded-lg border border-grey-200 p-3">
+    <div className="rounded-lg border border-border bg-surface p-3">
       <div ref={swatchRef} className={`h-12 rounded-md ${bgClass}`} />
-      <p className="mt-2 text-body-bold text-grey-700">{name}</p>
-      <p className="text-body text-grey-500">{hex}</p>
+      <p className="mt-2 text-body-regular-bold text-foreground-body">{name}</p>
+      <p className="text-body-regular text-foreground-muted">{hex}</p>
     </div>
   );
 }

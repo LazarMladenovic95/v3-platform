@@ -17,10 +17,10 @@ const PopoverContent = React.forwardRef<
 >(({ className, align = "center", sideOffset = 4, variant = "default", ...props }, ref) => {
   const variantClass =
     variant === "success"
-      ? "border-green-util-100 bg-green-util-60 text-grey-700"
+      ? "border-success bg-success-subtle text-foreground-body"
       : variant === "error"
-        ? "border-red-util-100 bg-red-util-60 text-grey-700"
-        : "border-grey-300 bg-white text-grey-700";
+        ? "border-destructive bg-destructive-subtle text-foreground-body"
+        : "border-border bg-surface text-foreground-body";
 
   return (
     <PopoverPrimitive.Portal>
@@ -29,7 +29,7 @@ const PopoverContent = React.forwardRef<
         align={align}
         sideOffset={sideOffset}
         className={cn(
-          "z-50 w-72 rounded-md border p-4 shadow-md outline-none data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
+          "z-50 w-72 rounded-md border p-4 text-body-small shadow-md outline-none data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
           variantClass,
           className,
         )}

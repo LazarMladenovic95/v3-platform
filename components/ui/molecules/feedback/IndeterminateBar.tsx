@@ -12,14 +12,12 @@ type Props = {
 
 export function IndeterminateBar({ className, complete }: Props) {
   const [progress, setProgress] = useState(0);
+  const displayedProgress = complete ? 100 : progress;
 
   // Fake progress timer — increments while waiting, slows near the top
   useEffect(() => {
     if (complete === undefined) return; // indeterminate mode
-    if (complete) {
-      setProgress(100);
-      return;
-    }
+    if (complete) return;
 
     const timer = setInterval(() => {
       setProgress((prev) => {
@@ -43,10 +41,10 @@ export function IndeterminateBar({ className, complete }: Props) {
           }
         `}</style>
         <div
-          className={`w-full h-2 bg-grey-100 rounded-full overflow-hidden ${className ?? ""}`}
+          className={`w-full h-2 bg-surface-hover rounded-full overflow-hidden ${className ?? ""}`}
         >
           <div
-            className="h-full w-[40%] bg-blue-500 rounded-full"
+            className="h-full w-[40%] bg-foreground-accent rounded-full"
             style={{
               animation: "indeterminate-slide 1.5s ease-in-out infinite",
             }}
@@ -59,14 +57,14 @@ export function IndeterminateBar({ className, complete }: Props) {
   // Determinate mode with percentage
   return (
     <div className={`w-full flex flex-col gap-2 ${className ?? ""}`}>
-      <div className="w-full h-2 bg-grey-100 rounded-full overflow-hidden">
+      <div className="w-full h-2 bg-surface-hover rounded-full overflow-hidden">
         <div
-          className="h-full bg-blue-500 rounded-full transition-all duration-500 ease-out"
-          style={{ width: `${progress}%` }}
+          className="h-full bg-foreground-accent rounded-full transition-all duration-500 ease-out"
+          style={{ width: `${displayedProgress}%` }}
         />
       </div>
-      <span className="text-body-small text-white text-center">
-        {Math.round(progress)}%
+      <span className="text-body-extra-small text-white text-center">
+        {Math.round(displayedProgress)}%
       </span>
     </div>
   );

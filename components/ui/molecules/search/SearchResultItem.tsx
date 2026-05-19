@@ -16,15 +16,16 @@ export const SearchResultItem = React.forwardRef<
     <div
       ref={ref}
       role="option"
+      aria-selected="false"
       aria-disabled={disabled}
       className={cn(
         // layout
-        "flex h-11 w-full items-center px-4",
+        "flex h-10 w-full items-center px-4",
         // typography
-        "text-[16px] md:text-[14px] leading-[18px] text-grey-700",
+        "text-body-regular text-foreground-title-subtle",
         // interaction
         "select-none",
-        !disabled && "cursor-pointer hover:bg-grey-100/50",
+        !disabled && "cursor-pointer hover:bg-surface-hover/50 hover:text-secondary",
         disabled && "pointer-events-none opacity-60",
         className,
       )}

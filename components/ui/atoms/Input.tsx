@@ -2,7 +2,7 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
 
-export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {}
+export type InputProps = React.InputHTMLAttributes<HTMLInputElement>;
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
   ({ className, type = "text", disabled, ...props }, ref) => {
@@ -13,14 +13,14 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
         disabled={disabled}
         className={cn(
           // layout + shape (locked)
-          "flex w-full h-11 rounded-lg px-4",
-          "text-[16px] md:text-[14px] leading-[18px] font-normal placeholder:text-grey-500",
+          "flex w-full h-[38px] rounded-lg px-3",
+          "text-body-small font-normal placeholder:text-foreground-muted",
           // base visuals
-          "bg-white border border-grey-300 text-grey-500",
+          "bg-surface border border-border-input text-foreground-muted",
           // focus (active)
-          "focus:outline-none focus:border-grey-700 focus:border-[1.5px] focus:text-grey-700",
+          "focus:outline-none focus:border-border-focus focus:border-[1.5px] focus:text-foreground-body",
           // disabled
-          "disabled:bg-grey-100 disabled:text-grey-500 disabled:cursor-not-allowed",
+          "disabled:bg-disabled disabled:text-foreground-disabled disabled:placeholder:text-foreground-disabled disabled:cursor-not-allowed",
           className,
         )}
         {...props}

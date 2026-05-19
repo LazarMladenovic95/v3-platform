@@ -2,14 +2,14 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
 
-export interface HintTextProps extends React.HTMLAttributes<HTMLSpanElement> {}
+export type HintTextProps = React.HTMLAttributes<HTMLSpanElement>;
 
 export const HintText = React.forwardRef<HTMLSpanElement, HintTextProps>(
   ({ className, ...props }, ref) => (
     <span
       ref={ref}
       className={cn(
-        "text-[12px] leading-[14px] font-normal text-grey-700",
+        "text-body-small font-normal text-foreground-muted",
         className,
       )}
       {...props}

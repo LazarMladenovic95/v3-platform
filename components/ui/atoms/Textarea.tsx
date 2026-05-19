@@ -2,7 +2,7 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
 
-export interface TextareaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {}
+export type TextareaProps = React.TextareaHTMLAttributes<HTMLTextAreaElement>;
 
 const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
   ({ className, disabled, ...props }, ref) => {
@@ -12,15 +12,15 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
         disabled={disabled}
         className={cn(
           // layout + shape (locked)
-          "flex w-full rounded-lg px-4 py-3 min-h-[120px] resize-none items-start",
+          "flex w-full rounded-lg px-3 py-3 min-h-[120px] resize-none items-start",
           // typography (explicit, no globals)
-          "text-[16px] md:text-[14px] leading-[18px] font-normal font-[inherit] placeholder:text-grey-500",
+          "text-body-small font-normal font-[inherit] placeholder:text-foreground-muted",
           // base visuals
-          "bg-white border border-grey-300 text-grey-500",
+          "bg-surface border border-border-input text-foreground-muted",
           // focus (active)
-          "focus:outline-none focus:border-grey-700 focus:border-[1.5px] focus:text-grey-700",
+          "focus:outline-none focus:border-border-focus focus:border-[1.5px] focus:text-foreground-body",
           // disabled
-          "disabled:bg-grey-100 disabled:text-grey-500 disabled:cursor-not-allowed",
+          "disabled:bg-disabled disabled:text-foreground-disabled disabled:placeholder:text-foreground-disabled disabled:cursor-not-allowed",
           className,
         )}
         {...props}
