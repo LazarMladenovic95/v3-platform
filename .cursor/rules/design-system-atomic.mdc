@@ -10,4 +10,4 @@ alwaysApply: false
 - Molecules must not import from `composites/`.
 - No hardcoded user-facing English in UI or app code. Use `t("ui.*")`, `t("app.*")`, or `t("designsystem.*")` from `@/lib/i18n`. ESLint enforces this via `i18next/no-literal-string` (JSX text and common copy attributes).
 - Add new copy under `locales/en/` (`ui.ts`, `app.ts`, `designsystem.ts`) first, then wire components.
-- **Tokens:** values in `tokens/*.css`; Tailwind utility wiring in `tailwind.config.mjs` / `tokens/tailwind-theme-extend.mjs`. Do not add hex or legacy `bg-pink-*` in `components/ui`. DS tables live under `designsystem/docs/`. See [contracts/design-tokens.md](../../contracts/design-tokens.md).
+- **Tokens:** values in `tokens/*.css`; Tailwind utility wiring in `tailwind.config.mjs` / `tokens/tailwind-theme-extend.mjs`. Do not add hex or legacy `bg-pink-*` in `components/ui`. DS site: `app/bnd/designsystem/` (routes + `ui/` showcases). See [contracts/design-tokens.md](../../contracts/design-tokens.md).

@@ -52,6 +52,8 @@ export { SearchResultItem } from "./molecules/search/SearchResultItem";
 export { SearchResults } from "./molecules/search/SearchResults";
 export { MapListSearchField } from "./molecules/search/MapListSearchField";
 export { Breadcrumbs } from "./molecules/navigation/Breadcrumbs";
+export { MenuButton } from "./molecules/MenuButton";
+export { RightMenuItem } from "./molecules/RightMenuItem";
 export { TabbedNavigation } from "./molecules/navigation/TabbedNavigation";
 export { VerticalNavigation } from "./molecules/navigation/VerticalNavigation";
 export { IndeterminateBar } from "./molecules/feedback/IndeterminateBar";
@@ -76,6 +78,7 @@ export { ContentListItem } from "./composites/ContentListItem";
 export { DataTable, DataTableCell, DataTableHeaderCell, DataTableRow } from "./composites/DataTable";
 export { EmptyState } from "./composites/EmptyState";
 export { FilterPanel } from "./composites/FilterPanel";
+export { RightMenu } from "./composites/RightMenu";
 export { TabbedNavigationMenuItem } from "./composites/TabbedNavigationMenuItem";
 export { VerticalNavigationMenuItem } from "./composites/VerticalNavigationMenuItem";
 export {

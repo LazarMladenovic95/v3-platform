@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Mulish } from "next/font/google";
+import { AppShell } from "@/components/ui/composites/AppShell";
 import { t } from "@/lib/i18n";
 import "./globals.css";
 
@@ -30,7 +31,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${mulish.variable} antialiased`}>
-        {children}
+        <AppShell>{children}</AppShell>
       </body>
     </html>
   );

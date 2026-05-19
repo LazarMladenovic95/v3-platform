@@ -30,12 +30,15 @@ import { ImagesIcon } from "./ImagesIcon";
 import { InboxIcon } from "./InboxIcon";
 import { InfoIcon } from "./InfoIcon";
 import { InstagramIcon } from "./InstagramIcon";
+import { LayoutDashboardIcon } from "./LayoutDashboardIcon";
 import { LayoutGridIcon } from "./LayoutGridIcon";
 import { LinkedinIcon } from "./LinkedinIcon";
 import { ListIcon } from "./ListIcon";
 import { ListCollapseIcon } from "./ListCollapseIcon";
 import { ListOrderedIcon } from "./ListOrderedIcon";
 import { LoaderCircleIcon } from "./LoaderCircleIcon";
+import { LogOutIcon } from "./LogOutIcon";
+import { MenuIcon } from "./MenuIcon";
 import { MessageSquareIcon } from "./MessageSquareIcon";
 import { MinusIcon } from "./MinusIcon";
 import { MoreHorizontalIcon } from "./MoreHorizontalIcon";
@@ -53,6 +56,7 @@ import { ScanBarcodeIcon } from "./ScanBarcodeIcon";
 import { SearchIcon } from "./SearchIcon";
 import { SearchXIcon } from "./SearchXIcon";
 import { SettingsIcon } from "./SettingsIcon";
+import { SlidersHorizontalIcon } from "./SlidersHorizontalIcon";
 import { ShoppingBagIcon } from "./ShoppingBagIcon";
 import { ShoppingCartIcon } from "./ShoppingCartIcon";
 import { SparklesIcon } from "./SparklesIcon";
@@ -104,12 +108,15 @@ export const iconComponents = {
   "inbox": InboxIcon,
   "info": InfoIcon,
   "instagram": InstagramIcon,
+  "layout-dashboard": LayoutDashboardIcon,
   "layout-grid": LayoutGridIcon,
   "linkedin": LinkedinIcon,
   "list": ListIcon,
   "list-collapse": ListCollapseIcon,
   "list-ordered": ListOrderedIcon,
   "loader-circle": LoaderCircleIcon,
+  "log-out": LogOutIcon,
+  "menu": MenuIcon,
   "message-square": MessageSquareIcon,
   "minus": MinusIcon,
   "more-horizontal": MoreHorizontalIcon,
@@ -127,6 +134,7 @@ export const iconComponents = {
   "search": SearchIcon,
   "search-x": SearchXIcon,
   "settings": SettingsIcon,
+  "sliders-horizontal": SlidersHorizontalIcon,
   "shopping-bag": ShoppingBagIcon,
   "shopping-cart": ShoppingCartIcon,
   "sparkles": SparklesIcon,
@@ -179,12 +187,15 @@ export {
   InboxIcon,
   InfoIcon,
   InstagramIcon,
+  LayoutDashboardIcon,
   LayoutGridIcon,
   LinkedinIcon,
   ListIcon,
   ListCollapseIcon,
   ListOrderedIcon,
   LoaderCircleIcon,
+  LogOutIcon,
+  MenuIcon,
   MessageSquareIcon,
   MinusIcon,
   MoreHorizontalIcon,
@@ -202,6 +213,7 @@ export {
   SearchIcon,
   SearchXIcon,
   SettingsIcon,
+  SlidersHorizontalIcon,
   ShoppingBagIcon,
   ShoppingCartIcon,
   SparklesIcon,

@@ -94,7 +94,8 @@ const eslintConfig = defineConfig([
       "locales/**",
       "tokens/**",
       "components/ui/icons/**",
-      "designsystem/docs/**",
+      "app/bnd/designsystem/ui/**",
+      "app/bnd/designsystem/typography/typography-table.generated.ts",
     ],
     plugins: {
       i18next: i18next,
