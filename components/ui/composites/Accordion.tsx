@@ -1,8 +1,8 @@
 "use client";
 
 import * as React from "react";
-import { ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Icon } from "../atoms/Icon";
 
 export type AccordionSize = "large" | "small" | "extra-small";
 
@@ -84,9 +84,13 @@ export function Accordion({ items, size = "large", defaultOpenId, className }: A
                 onClick={() => setOpenId(isOpen ? undefined : item.id)}
               >
                 <span className={sizeClasses.title}>{item.title}</span>
-                <ChevronDown
-                  className={cn(sizeClasses.icon, "shrink-0 transition-transform", isOpen && "rotate-180")}
-                  aria-hidden
+                <Icon
+                  name="chevron-down"
+                  className={cn(
+                    sizeClasses.icon,
+                    "shrink-0 transition-transform",
+                    isOpen && "rotate-180",
+                  )}
                 />
               </button>
             </h3>

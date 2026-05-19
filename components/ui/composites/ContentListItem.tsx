@@ -1,6 +1,8 @@
 import Image from "next/image";
 import * as React from "react";
 import { cn } from "@/lib/utils";
+import { Heading } from "../atoms/Heading";
+import { Text } from "../atoms/Text";
 
 export interface ContentListItemProps extends React.LiHTMLAttributes<HTMLLIElement> {
   imageSrc: string;
@@ -32,8 +34,12 @@ export function ContentListItem({
           <Image src={imageSrc} alt={imageAlt} width={56} height={56} className="max-h-10 w-auto max-w-full" />
         </div>
         <div className="min-w-0">
-          <h3 className="text-body-regular-bold text-foreground-title">{title}</h3>
-          <p className="mt-1 text-body-small text-foreground-muted">{description}</p>
+          <Heading as="h3" variant="title-bold">
+            {title}
+          </Heading>
+          <Text variant="body-small-muted" className="mt-1">
+            {description}
+          </Text>
         </div>
       </div>
       {action && <div className="self-start sm:self-center">{action}</div>}

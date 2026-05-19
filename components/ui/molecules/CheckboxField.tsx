@@ -4,6 +4,7 @@
 import * as React from "react";
 import { cn } from "../../../lib/utils";
 import { Checkbox } from "../atoms/Checkbox";
+import { HintText } from "../atoms/HintText";
 import { Label } from "../atoms/Label";
 
 export interface CheckboxFieldProps {
@@ -55,9 +56,7 @@ export const CheckboxField = React.forwardRef<HTMLButtonElement, CheckboxFieldPr
           >
             {label}
           </Label>
-          {hint && (
-            <p className="text-body-small text-foreground-muted">{hint}</p>
-          )}
+          {hint && <HintText>{hint}</HintText>}
         </div>
       </div>
     );

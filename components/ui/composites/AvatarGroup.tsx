@@ -1,5 +1,6 @@
 // AvatarGroup composite — overlapping stack of Avatar atoms with optional overflow count.
 import * as React from "react";
+import { t } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 import { Avatar, AvatarFallback, AvatarImage } from "../atoms/Avatar";
 
@@ -20,7 +21,7 @@ export function AvatarGroup({
   max = items.length,
   sizeClassName,
   className,
-  "aria-label": ariaLabel = "Avatar group",
+  "aria-label": ariaLabel,
   ...props
 }: AvatarGroupProps) {
   const visibleItems = items.slice(0, max);
@@ -30,7 +31,7 @@ export function AvatarGroup({
   return (
     <div
       role="list"
-      aria-label={ariaLabel}
+      aria-label={ariaLabel ?? t("ui.avatarGroup.ariaLabel")}
       className={cn("flex items-center -space-x-2", className)}
       {...props}
     >

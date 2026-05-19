@@ -1,0 +1,51 @@
+:root {
+  /* Semantic color tokens (see designsystem color table + tokens/colors.manifest.ts) */
+  /* Single source of truth for white-on-color text. All *-foreground
+     tokens that render as white alias this one. */
+  --color-foreground-on-dark: #ffffff;
+
+  --color-primary: #e10e8c;
+  --color-primary-foreground: var(--color-foreground-on-dark);
+  --color-primary-hover: #fa0f9c;
+  --color-primary-active: #c6186b;
+  --color-secondary: #4b49eb;
+
+  --color-background: #fafaff;
+  --color-surface: #ffffff;
+  --color-surface-hover: #f3f3ff;
+  --color-surface-active: #e8e8ff;
+  --color-surface-muted: #f7f7f7;
+  --color-disabled: #ebebea;
+  --color-tooltip: #2c1277;
+  --color-tooltip-foreground: var(--color-foreground-on-dark);
+
+  --color-foreground-title: #2c1277;
+  --color-foreground-title-subtle: #6b59a0;
+  --color-foreground-body: #080218;
+  --color-foreground-muted: #706f74;
+  --color-foreground-disabled: #d1d1d4;
+  --color-foreground-accent: #4b49eb;
+
+  --color-border: #dfdfff;
+  --color-border-input: #d1d1d4;
+  --color-border-focus: #4b49eb;
+  --color-border-error: #f0294d;
+
+  --color-destructive: #d5223f;
+  --color-destructive-hover: #f0294d;
+  --color-destructive-active: #ba1c36;
+  --color-destructive-subtle: #ffeef1;
+  --color-destructive-foreground: var(--color-foreground-on-dark);
+
+  --color-warning: #ffc122;
+  --color-warning-subtle: #fff8e6;
+  --color-warning-foreground: #2e2e2f;
+
+  --color-success: #2e8b33;
+  --color-success-subtle: #e6f4e7;
+  --color-success-foreground: var(--color-foreground-on-dark);
+
+  --color-info: #127a90;
+  --color-info-subtle: #d6fcff;
+  --color-info-foreground: var(--color-foreground-on-dark);
+}

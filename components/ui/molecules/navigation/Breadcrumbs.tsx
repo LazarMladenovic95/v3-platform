@@ -1,8 +1,8 @@
 "use client";
 
-import Link from "next/link";
-import { ChevronRight } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { t } from "@/lib/i18n";
+import { Icon } from "../../atoms/Icon";
+import { NavLink } from "../../atoms/NavLink";
 
 export type BreadcrumbItem = {
   href?: string;
@@ -17,11 +17,11 @@ export interface BreadcrumbsProps {
 
 export function Breadcrumbs({
   items,
-  "aria-label": ariaLabel = "Breadcrumb",
+  "aria-label": ariaLabel,
   className,
 }: BreadcrumbsProps) {
   return (
-    <nav aria-label={ariaLabel} className={className}>
+    <nav aria-label={ariaLabel ?? t("ui.breadcrumbs.ariaLabel")} className={className}>
       <ol className="flex flex-wrap items-center gap-1 text-body-extra-small">
         {items.map((item, index) => {
           const isLast = index === items.length - 1;
@@ -29,15 +29,9 @@ export function Breadcrumbs({
           return (
             <li key={`${item.label}-${index}`} className="flex items-center gap-1">
               {item.href && !isLast ? (
-                <Link
-                  href={item.href}
-                  className={cn(
-                    "rounded-sm text-foreground-muted transition-colors hover:text-secondary",
-                    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2 focus-visible:ring-offset-surface",
-                  )}
-                >
+                <NavLink href={item.href} variant="breadcrumb">
                   {item.label}
-                </Link>
+                </NavLink>
               ) : (
                 <span
                   aria-current={isLast ? "page" : undefined}
@@ -47,9 +41,10 @@ export function Breadcrumbs({
                 </span>
               )}
               {!isLast && (
-                <ChevronRight
-                  className="h-3.5 w-3.5 text-foreground-muted"
-                  aria-hidden
+                <Icon
+                  name="chevron-right"
+                  size="sm"
+                  className="text-foreground-muted"
                   strokeWidth={2.25}
                 />
               )}

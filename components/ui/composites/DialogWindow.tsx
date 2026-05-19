@@ -3,8 +3,9 @@
 // DialogWindow composite — centered modal surface for confirmations and focused tasks.
 import * as React from "react";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
-import { AlertCircle, CheckCircle, X } from "lucide-react";
+import { t } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
+import { Icon } from "../atoms/Icon";
 import { IconButton } from "../atoms/button/IconButton";
 
 const DialogWindow = DialogPrimitive.Root;
@@ -44,18 +45,14 @@ const DialogWindowContent = React.forwardRef<
       >
         <div className="flex gap-3">
           {isDestructive && (
-            <AlertCircle
-              className="mt-1 h-5 w-5 shrink-0 text-foreground-title"
-              strokeWidth={2}
-              aria-hidden
+            <Icon
+              name="alert-circle"
+              size="lg"
+              className="mt-1 shrink-0 text-foreground-title"
             />
           )}
           {isSuccess && (
-            <CheckCircle
-              className="mt-1 h-5 w-5 shrink-0 text-success"
-              strokeWidth={2}
-              aria-hidden
-            />
+            <Icon name="check-circle" size="lg" className="mt-1 shrink-0 text-success" />
           )}
           <div className="min-w-0 flex-1">
             <DialogPrimitive.Title className="text-title-3 text-foreground-title">
@@ -81,8 +78,8 @@ const DialogWindowContent = React.forwardRef<
             type="button"
             variant="ghost"
             size="small"
-            aria-label="Close dialog"
-            icon={<X className="h-4 w-4" aria-hidden />}
+            aria-label={t("ui.dialog.close")}
+            icon={<Icon name="x" />}
             className="absolute right-3 top-3 text-foreground-muted hover:bg-transparent hover:text-foreground-title active:text-foreground-title"
           />
         </DialogPrimitive.Close>

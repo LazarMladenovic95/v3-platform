@@ -2,9 +2,10 @@
 "use client";
 
 import * as React from "react";
-import { UploadCloud } from "lucide-react";
+import { formatUiBytes, t } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 import { HintText } from "../atoms/HintText";
+import { Icon } from "../atoms/Icon";
 import { Label } from "../atoms/Label";
 import { ProgressBar } from "./ProgressBar";
 import { Tag } from "../atoms/Tag";
@@ -27,12 +28,6 @@ export interface FileUploadFieldProps {
 
 function fileListToArray(fileList: FileList | null) {
   return fileList ? Array.from(fileList) : [];
-}
-
-function formatBytes(bytes: number) {
-  if (bytes < 1024 * 1024) return `${Math.round(bytes / 1024)} KB`;
-
-  return `${Math.round((bytes / 1024 / 1024) * 10) / 10} MB`;
 }
 
 function fileMatchesAccept(file: File, accept?: string) {
@@ -83,12 +78,19 @@ export function FileUploadField({
       : undefined;
 
     if (invalidType) {
-      setInternalError(`${invalidType.name} is not an accepted file type.`);
+      setInternalError(
+        t("ui.fileUpload.errors.invalidType", { name: invalidType.name }),
+      );
       return;
     }
 
     if (oversizedFile && maxSizeBytes) {
-      setInternalError(`${oversizedFile.name} is larger than ${formatBytes(maxSizeBytes)}.`);
+      setInternalError(
+        t("ui.fileUpload.errors.oversized", {
+          name: oversizedFile.name,
+          maxSize: formatUiBytes(maxSizeBytes),
+        }),
+      );
       return;
     }
 
@@ -113,6 +115,14 @@ export function FileUploadField({
 
     updateFiles(fileListToArray(event.dataTransfer.files));
   }
+
+  const hintParts = [
+    multiple ? t("ui.fileUpload.selectMultiple") : t("ui.fileUpload.selectSingle"),
+    accept ? t("ui.fileUpload.accepted", { accept }) : undefined,
+    maxSizeBytes
+      ? t("ui.fileUpload.maxSize", { maxSize: formatUiBytes(maxSizeBytes) })
+      : undefined,
+  ].filter(Boolean);
 
   return (
     <div className={cn("flex flex-col", className)}>
@@ -159,23 +169,19 @@ export function FileUploadField({
             isError ? "bg-destructive-subtle text-destructive" : "bg-surface-active text-secondary",
           )}
         >
-          <UploadCloud className="h-5 w-5" aria-hidden />
+          <Icon name="upload-cloud" size="lg" />
         </span>
         {isLoading ? (
           <div className="mt-3 w-full max-w-sm">
-            <ProgressBar value={progress ?? 0} label="Uploading" />
+            <ProgressBar value={progress ?? 0} label={t("ui.fileUpload.uploading")} />
           </div>
         ) : (
           <>
             <span className="mt-3 text-body-small-bold text-foreground-title">
-              Tap to upload or drag and drop
+              {t("ui.fileUpload.prompt")}
             </span>
             <span className="mt-1 text-body-small text-foreground-muted">
-              {[
-                multiple ? "Select one or more files." : "Select one file.",
-                accept ? `Accepted: ${accept}` : undefined,
-                maxSizeBytes ? `Max size: ${formatBytes(maxSizeBytes)}` : undefined,
-              ].filter(Boolean).join(" ")}
+              {hintParts.join(" ")}
             </span>
           </>
         )}
@@ -193,7 +199,7 @@ export function FileUploadField({
             ))}
           </div>
           <OutlineNeutral type="button" size="small" className="self-start" onClick={clearFiles}>
-            Clear
+            {t("ui.fileUpload.clear")}
           </OutlineNeutral>
         </div>
       )}

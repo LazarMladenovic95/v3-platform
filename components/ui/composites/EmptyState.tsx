@@ -1,5 +1,7 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
+import { Heading } from "../atoms/Heading";
+import { Text } from "../atoms/Text";
 
 export interface EmptyStateProps extends React.HTMLAttributes<HTMLDivElement> {
   icon?: React.ReactNode;
@@ -38,8 +40,12 @@ export function EmptyState({
           {icon}
         </div>
       )}
-      <h3 className={cn("text-body-regular-bold text-foreground-title", icon && "mt-4")}>{title}</h3>
-      <p className="mx-auto mt-2 max-w-sm text-body-small text-foreground-muted">{description}</p>
+      <Heading as="h3" variant="title-bold" className={icon ? "mt-4" : undefined}>
+        {title}
+      </Heading>
+      <Text variant="body-small-muted" className="mx-auto mt-2 max-w-sm">
+        {description}
+      </Text>
       {action && <div className="mt-5 flex justify-center">{action}</div>}
     </div>
   );

@@ -1,0 +1,5 @@
+:root {
+  --shadow-sm: 0 2px 10px rgb(8 2 24 / 0.06);
+  --shadow-md: 0 6px 20px rgb(8 2 24 / 0.08);
+  --shadow-lg: 0 12px 32px rgb(8 2 24 / 0.1);
+}

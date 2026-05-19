@@ -1,5 +1,7 @@
-import { ChevronLeft, ChevronRight, MoreHorizontal } from "lucide-react";
+import { t } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
+import { Icon } from "../atoms/Icon";
+import { IconButton } from "../atoms/button/IconButton";
 
 export type PaginationItem = number | "ellipsis";
 
@@ -35,15 +37,16 @@ export function Pagination({
   className,
 }: PaginationProps) {
   return (
-    <nav className={cn("flex items-center gap-2", className)} aria-label="Pagination">
-      <button
+    <nav className={cn("flex items-center gap-2", className)} aria-label={t("ui.pagination.ariaLabel")}>
+      <IconButton
         type="button"
-        className="inline-flex h-8 w-8 items-center justify-center rounded-md border border-border bg-surface text-foreground-title-subtle transition-colors hover:border-border-focus hover:text-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus disabled:cursor-not-allowed disabled:opacity-50"
-        aria-label="Previous page"
+        variant="outline-neutral"
+        size="small"
+        className="h-8 w-8"
+        aria-label={t("ui.pagination.previousPage")}
         disabled={currentPage === 1}
-      >
-        <ChevronLeft className="h-4 w-4" aria-hidden />
-      </button>
+        icon={<Icon name="chevron-left" />}
+      />
 
       {!compact && (
         <div className="flex items-center gap-1">
@@ -55,7 +58,7 @@ export function Pagination({
                   className="flex h-8 w-8 items-center justify-center text-foreground-muted"
                   aria-hidden
                 >
-                  <MoreHorizontal className="h-4 w-4" />
+                  <Icon name="more-horizontal" />
                 </span>
               );
             }
@@ -73,7 +76,7 @@ export function Pagination({
                     : "text-foreground-title-subtle hover:bg-surface-hover hover:text-secondary",
                 )}
                 aria-current={isActive ? "page" : undefined}
-                aria-label={`Page ${item}`}
+                aria-label={t("ui.pagination.page", { n: item })}
               >
                 {item}
               </button>
@@ -82,14 +85,15 @@ export function Pagination({
         </div>
       )}
 
-      <button
+      <IconButton
         type="button"
-        className="inline-flex h-8 w-8 items-center justify-center rounded-md border border-border bg-surface text-foreground-title-subtle transition-colors hover:border-border-focus hover:text-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus disabled:cursor-not-allowed disabled:opacity-50"
-        aria-label="Next page"
+        variant="outline-neutral"
+        size="small"
+        className="h-8 w-8"
+        aria-label={t("ui.pagination.nextPage")}
         disabled={currentPage === totalPages}
-      >
-        <ChevronRight className="h-4 w-4" aria-hidden />
-      </button>
+        icon={<Icon name="chevron-right" />}
+      />
     </nav>
   );
 }

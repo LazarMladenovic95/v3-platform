@@ -1,9 +1,11 @@
 "use client";
 
 import * as React from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { formatUiDate, getWeekdayLabels, t } from "@/lib/i18n";
+import { Icon } from "../atoms/Icon";
 import { IconButton } from "../atoms/button/IconButton";
+import { Text } from "../atoms/Text";
 
 export type DateRangeValue = {
   start?: string;
@@ -27,14 +29,6 @@ type RangeCalendarPickerProps = {
   max?: string;
   onSelect?: (value: DateRangeValue) => void;
 };
-
-const weekdayLabels = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];
-const monthFormatter = new Intl.DateTimeFormat("en", { month: "long", year: "numeric" });
-const dayFormatter = new Intl.DateTimeFormat("en", {
-  month: "long",
-  day: "numeric",
-  year: "numeric",
-});
 
 function parseDateString(value?: string): Date | undefined {
   if (!value) return undefined;
@@ -66,7 +60,9 @@ export function formatDateString(date: Date): string {
 export function formatDisplayDate(value?: string): string {
   const date = parseDateString(value);
 
-  return date ? dayFormatter.format(date) : "";
+  return date
+    ? formatUiDate(date, { month: "long", day: "numeric", year: "numeric" })
+    : "";
 }
 
 export function isValidDateString(value?: string): boolean {
@@ -145,19 +141,23 @@ function CalendarHeader({
         type="button"
         variant="ghost-neutral"
         size="small"
-        aria-label="Previous month"
-        icon={<ChevronLeft className="h-4 w-4" aria-hidden />}
+        aria-label={t("ui.calendar.previousMonth")}
+        icon={<Icon name="chevron-left" />}
         onClick={onPrevious}
       />
-      <p className="text-body-small-bold text-foreground-title">
-        {monthFormatter.format(visibleMonth)}
-      </p>
+      <Text
+        as="p"
+        variant="body-small"
+        className="font-bold text-foreground-title"
+      >
+        {formatUiDate(visibleMonth, { month: "long", year: "numeric" })}
+      </Text>
       <IconButton
         type="button"
         variant="ghost-neutral"
         size="small"
-        aria-label="Next month"
-        icon={<ChevronRight className="h-4 w-4" aria-hidden />}
+        aria-label={t("ui.calendar.nextMonth")}
+        icon={<Icon name="chevron-right" />}
         onClick={onNext}
       />
     </div>
@@ -167,7 +167,7 @@ function CalendarHeader({
 function WeekdayHeader() {
   return (
     <div className="grid grid-cols-7 gap-0.5">
-      {weekdayLabels.map((weekday) => (
+      {getWeekdayLabels().map((weekday) => (
         <div
           key={weekday}
           className="flex h-8 items-center justify-center text-body-extra-small-bold text-foreground-muted"
@@ -213,7 +213,11 @@ function DayGrid({
             role="gridcell"
             disabled={disabled}
             aria-selected={selected}
-            aria-label={dayFormatter.format(date)}
+            aria-label={formatUiDate(date, {
+              month: "long",
+              day: "numeric",
+              year: "numeric",
+            })}
             onClick={() => onSelect(dateString)}
             className={cn(
               "flex h-9 w-9 items-center justify-center rounded-md text-body-small transition-colors",
