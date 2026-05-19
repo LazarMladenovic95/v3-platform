@@ -35,7 +35,7 @@ export function RightMenu({ className, onItemClick }: RightMenuProps) {
       id="right-menu"
       aria-label={t("app.nav.ariaLabel")}
       className={cn(
-        "flex min-h-[104px] w-[273px] flex-col items-start gap-2 rounded-lg bg-surface p-2 shadow-md",
+        "flex min-h-menu w-menu flex-col items-start gap-2 rounded-lg bg-surface p-2 shadow-md",
         className,
       )}
     >

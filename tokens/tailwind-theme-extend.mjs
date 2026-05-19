@@ -110,6 +110,22 @@ export const themeExtend = {
     md: "calc(var(--radius) - 2px)",
     sm: "calc(var(--radius) - 4px)",
   },
+  maxWidth: {
+    content: "var(--layout-content-max-width)",
+  },
+  minHeight: {
+    "main-below-header": "var(--layout-main-min-height)",
+    menu: "var(--layout-menu-min-height)",
+  },
+  height: {
+    header: "var(--layout-header-height)",
+  },
+  width: {
+    menu: "var(--layout-menu-width)",
+  },
+  spacing: {
+    "menu-dropdown": "var(--layout-menu-dropdown-offset)",
+  },
   screens: {
     mobileS: "320px",
     mobileM: "375px",

@@ -36,8 +36,8 @@ export function AppHeader() {
   }, []);
 
   return (
-    <header className="h-[70px] w-full shrink-0 border-b border-border bg-surface">
-      <div className="relative mx-auto flex h-full w-full max-w-[1440px] items-center justify-between gap-6 px-6 md:px-16 lg:px-20">
+    <header className="h-header w-full shrink-0 border-b border-border bg-surface">
+      <div className="relative mx-auto flex h-full w-full max-w-content items-center justify-between gap-6 px-6 md:px-16 lg:px-20">
         <Link
           href="/"
           className="inline-flex shrink-0 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
@@ -56,7 +56,7 @@ export function AppHeader() {
           <MenuButton isOpen={isMenuOpen} onClick={() => setIsMenuOpen((open) => !open)} />
           {isMenuOpen ? (
             <RightMenu
-              className="absolute top-[84px] right-0 z-20"
+              className="absolute top-menu-dropdown right-0 z-20"
               onItemClick={() => setIsMenuOpen(false)}
             />
           ) : null}

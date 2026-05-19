@@ -13,8 +13,8 @@ export default function DesignSystemLayout({
   children: ReactNode;
 }>) {
   return (
-    <div className="min-h-screen bg-background">
-      <main className="mx-auto w-full max-w-[1440px] px-6 py-8 md:px-16 lg:px-20">{children}</main>
+    <div className="min-h-full bg-background">
+      <div className="mx-auto w-full max-w-content px-6 py-8 md:px-16 lg:px-20">{children}</div>
     </div>
   );
 }

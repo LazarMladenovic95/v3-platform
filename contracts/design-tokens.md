@@ -32,7 +32,7 @@ locales/…/designsystem.ts       USAGE COPY (“used for …”)
 | `colors.css` | Semantic `--color-*` values (product UI) |
 | `typography.css` | Type scale CSS variables |
 | `shadows.css` | Elevation shadows |
-| `layout.css` | `--radius` |
+| `layout.css` | `--radius`, header height, content max width, menu layout |
 | `colors.manifest.ts` | DS color table metadata (hex must match `colors.css`) |
 | `tailwind-theme-extend.mjs` | Tailwind `theme.extend` wiring |
 | `tailwind-legacy-colors.mjs` | Legacy `pink-*`, `grey-*` — design system reference only |

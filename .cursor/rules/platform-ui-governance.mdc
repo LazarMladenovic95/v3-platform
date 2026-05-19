@@ -1,0 +1,42 @@
+---
+description: Platform-wide UI governance — tokens, icons, locales, atomic composition
+alwaysApply: true
+---
+
+# Platform UI governance
+
+Applies to **all product work** (app routes, shells, features). The design system site (`app/bnd/designsystem/`) has **separate layout rules** and must **not** use `PageCanvas`.
+
+## Locales
+
+- No user-facing English inline in `app/`, `components/`, or `lib/`.
+- Add copy under `locales/en/` first (`ui.ts`, `app.ts`, `designsystem.ts`), then `t("…")` from `@/lib/i18n`.
+- Exception: `app/bnd/designsystem/ui/**` showcase demos only (ESLint ignore).
+
+## Icons
+
+- Never import `lucide-react` outside `components/ui/icons/`.
+- **Product pages and shells:** use the `Icon` atom (`name` from registry), not `@/components/ui/icons/*Icon` directly.
+- **Design system routes** (`app/bnd/designsystem/**`): registry imports allowed for docs/showcases; prefer `Icon` atom for new code.
+
+## Tokens
+
+- Color/spacing/type values live in `tokens/*.css`; utilities wired in `tailwind.config.mjs` / `tokens/tailwind-theme-extend.mjs`.
+- No hex/rgb/hsl literals in `className`. No legacy palette classes (`bg-pink-*`, `text-navy-*`, etc.).
+- No arbitrary Tailwind brackets for layout (`max-w-[1440px]`, `min-h-[calc(...)]`) — use layout tokens (`max-w-content`, `min-h-main-below-header`, etc.) or flag a token extension.
+
+## No ad-hoc UI on screens
+
+- Pages and route layouts **compose** existing atoms → molecules → composites from `components/ui/`.
+- Do not ship one-off buttons, fields, nav rows, or styled primitives in `app/**` when the design system already has (or should have) a component.
+- If a piece is missing: **stop**, flag an atomic design extension, do not improvise.
+
+## Layout shells
+
+- **`LayoutShell`** (`components/layout/`) — global structure only (header + main slot). No page meaning.
+- **`PageCanvas`** — future app page layout enforcement; no structure/chrome. **Not used under `app/bnd/designsystem/`.**
+- **Design system** — owns padding/max-width in `app/bnd/designsystem/layout.tsx` and nested layouts.
+
+## When rules conflict with a mockup
+
+Flag the conflict; propose the correct atom/molecule/composite or missing token. Do not implement the anti-pattern to match the ask.

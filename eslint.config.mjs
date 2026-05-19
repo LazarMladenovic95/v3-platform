@@ -63,6 +63,26 @@ const localeLiteralRule = [
   },
 ];
 
+const legacyPaletteClassNameRule = {
+  selector:
+    "JSXAttribute[name.name='className'] Literal[value=/\\b(bg|text|border|ring)-(pink|grey|navy|blue|yellow|red-util|green-util)/]",
+  message:
+    "Use semantic Tailwind tokens (e.g. bg-primary), not legacy palette classes.",
+};
+
+const hexClassNameRule = {
+  selector:
+    "JSXAttribute[name.name='className'] Literal[value=/#[0-9a-fA-F]{3,8}\\b/]",
+  message: "Use semantic tokens from tokens/*.css, not hex literals in className.",
+};
+
+const arbitraryLayoutClassNameRule = {
+  selector:
+    "JSXAttribute[name.name='className'] Literal[value=/\\b(max-w|min-h|h|w)-\\[[^\\]]+\\]/]",
+  message:
+    "Use layout tokens (e.g. max-w-content, min-h-main-below-header) or extend tokens/layout.css.",
+};
+
 const eslintConfig = defineConfig([
   ...nextVitals,
   ...nextTs,
@@ -78,6 +98,34 @@ const eslintConfig = defineConfig([
               name: "lucide-react",
               message:
                 "Import icons from @/components/ui/icons (or the Icon atom) only.",
+            },
+          ],
+        },
+      ],
+    },
+  },
+  {
+    files: ["app/**/*.{ts,tsx}"],
+    ignores: ["app/bnd/designsystem/**"],
+    rules: {
+      "no-restricted-imports": [
+        "error",
+        {
+          paths: [
+            {
+              name: "lucide-react",
+              message:
+                "Import icons from @/components/ui/icons (or the Icon atom) only.",
+            },
+            {
+              name: "@/components/ui/icons",
+              message:
+                "Use the Icon atom from @/components/ui/atoms/Icon on product routes.",
+            },
+            {
+              name: "@/components/ui/icons/index",
+              message:
+                "Use the Icon atom from @/components/ui/atoms/Icon on product routes.",
             },
           ],
         },
@@ -108,14 +156,18 @@ const eslintConfig = defineConfig([
     files: ["components/ui/**/*.{ts,tsx}"],
     ignores: ["components/ui/icons/**"],
     rules: {
+      "no-restricted-syntax": ["error", legacyPaletteClassNameRule, hexClassNameRule],
+    },
+  },
+  {
+    files: ["app/**/*.{ts,tsx}", "components/layout/**/*.{ts,tsx}"],
+    ignores: ["app/bnd/designsystem/**"],
+    rules: {
       "no-restricted-syntax": [
         "error",
-        {
-          selector:
-            "JSXAttribute[name.name='className'] Literal[value=/\\b(bg|text|border|ring)-(pink|grey|navy|blue|yellow|red-util|green-util)/]",
-          message:
-            "Use semantic Tailwind tokens (e.g. bg-primary), not legacy palette classes in components/ui.",
-        },
+        legacyPaletteClassNameRule,
+        hexClassNameRule,
+        arbitraryLayoutClassNameRule,
       ],
     },
   },
