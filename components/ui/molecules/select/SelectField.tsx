@@ -3,8 +3,8 @@
 
 import * as React from "react";
 import * as Select from "@radix-ui/react-select";
-import { ChevronDown } from "lucide-react";
-import { cn } from "../../../../lib/utils";
+import { cn } from "@/lib/utils";
+import { Icon } from "../../atoms/Icon";
 import { Label } from "../../atoms/Label";
 
 export interface SelectFieldProps {
@@ -134,7 +134,7 @@ export function SelectField({
                 "text-foreground-muted",
             )}
           >
-            <ChevronDown size={16} />
+            <Icon name="chevron-down" />
           </Select.Icon>
         </Select.Trigger>
 

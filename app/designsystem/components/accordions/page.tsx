@@ -1,16 +1,18 @@
 import type { Metadata } from "next";
 import { AccordionsShowcase } from "@/components/designsystem/showcase/accordions-showcase";
+import { designSystemPageTitle } from "@/designsystem/content";
+import { t } from "@/lib/i18n";
 
 export const metadata: Metadata = {
-  title: "Accordions — Design system",
+  title: designSystemPageTitle(t("designsystem.hub.sections.accordions.title")),
 };
 
 export default function AccordionsComponentsPage() {
   return (
     <>
-      <h1 className="text-title-2 text-foreground-title">Accordions</h1>
+      <h1 className="text-title-2 text-foreground-title">{t("designsystem.hub.sections.accordions.title")}</h1>
       <p className="mt-2 max-w-2xl text-body-regular text-foreground-title-subtle">
-        Expandable disclosure patterns for progressive detail and compact page sections.
+        {t("designsystem.hub.sections.accordions.pageIntro")}
       </p>
 
       <div className="mt-6">

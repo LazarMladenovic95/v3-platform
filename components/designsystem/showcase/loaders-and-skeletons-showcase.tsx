@@ -1,22 +1,23 @@
 import { Skeleton, Spinner } from "@/components/ui";
+import { t } from "@/lib/i18n";
 
 export function LoadersAndSkeletonsShowcase() {
   return (
     <div className="grid gap-6">
       <section className="rounded-lg border border-border bg-surface p-5">
-        <h2 className="text-title-2 text-foreground-title">Loaders</h2>
+        <h2 className="text-title-2 text-foreground-title">{t("designsystem.showcase.loadersAndSkeletons.loadersTitle")}</h2>
         <p className="mt-1 max-w-2xl text-body-small text-foreground-muted">
-          Use loaders when the system is actively working and content is not ready yet.
+          {t("designsystem.showcase.loadersAndSkeletons.loadersIntro")}
         </p>
 
         <div className="mt-4 grid gap-4 md:grid-cols-3">
           <div className="rounded-lg border border-border bg-surface-muted p-4">
             <div className="flex items-center gap-3">
               <Spinner className="h-5 w-5 text-secondary" />
-              <span className="text-body-small-bold text-foreground-title">Loading data</span>
+              <span className="text-body-small-bold text-foreground-title">{t("designsystem.showcase.loadersAndSkeletons.loadingData")}</span>
             </div>
             <p className="mt-2 text-body-small text-foreground-muted">
-              Inline loading indicator for short waits.
+              {t("designsystem.showcase.loadersAndSkeletons.loadingDataBody")}
             </p>
           </div>
 
@@ -24,14 +25,14 @@ export function LoadersAndSkeletonsShowcase() {
             <div className="flex min-h-24 items-center justify-center">
               <Spinner className="h-8 w-8 text-secondary" />
             </div>
-            <p className="mt-2 text-center text-body-small text-foreground-muted">Centered page loader</p>
+            <p className="mt-2 text-center text-body-small text-foreground-muted">{t("designsystem.showcase.loadersAndSkeletons.centeredPageLoader")}</p>
           </div>
 
           <div className="rounded-lg border border-border bg-surface-muted p-4">
             <div className="flex items-center justify-between gap-3">
               <div>
-                <p className="text-body-small-bold text-foreground-title">Syncing reviews</p>
-                <p className="mt-1 text-body-small text-foreground-muted">This may take a moment.</p>
+                <p className="text-body-small-bold text-foreground-title">{t("designsystem.showcase.loadersAndSkeletons.syncingReviews")}</p>
+                <p className="mt-1 text-body-small text-foreground-muted">{t("designsystem.showcase.loadersAndSkeletons.syncingReviewsHint")}</p>
               </div>
               <Spinner className="h-5 w-5 text-secondary" />
             </div>
@@ -40,9 +41,9 @@ export function LoadersAndSkeletonsShowcase() {
       </section>
 
       <section className="rounded-lg border border-border bg-surface p-5">
-        <h2 className="text-title-2 text-foreground-title">Skeletons</h2>
+        <h2 className="text-title-2 text-foreground-title">{t("designsystem.showcase.loadersAndSkeletons.skeletonsTitle")}</h2>
         <p className="mt-1 max-w-2xl text-body-small text-foreground-muted">
-          Skeletons reserve layout space while content loads and reduce visual jumping.
+          {t("designsystem.showcase.loadersAndSkeletons.skeletonsIntro")}
         </p>
 
         <div className="mt-4 grid gap-4 md:grid-cols-2">

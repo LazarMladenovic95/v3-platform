@@ -1,3 +1,4 @@
+import { t } from "@/lib/i18n";
 import {
   CheckboxField,
   FilterPanel,
@@ -14,48 +15,48 @@ export function FiltersAndSortingShowcase() {
   return (
     <div className="grid gap-6">
       <section className="rounded-lg border border-border bg-surface p-5">
-        <h2 className="text-title-2 text-foreground-title">Filter panel</h2>
+        <h2 className="text-title-2 text-foreground-title">{t("designsystem.showcase.filtersAndSorting.filterPanelTitle")}</h2>
         <p className="mt-1 max-w-2xl text-body-small text-foreground-muted">
-          Use filter panels when people need to narrow a larger collection by status, type, or metadata.
+          {t("designsystem.showcase.filtersAndSorting.filterPanelIntro")}
         </p>
 
         <div className="mt-4 max-w-lg">
           <FilterPanel
-            title="Filters"
-            description="Refine the products shown below."
+            title={t("designsystem.showcase.filtersAndSorting.filtersTitle")}
+            description={t("designsystem.showcase.filtersAndSorting.filtersDescription")}
             headerAction={
               <OutlineNeutral type="button" size="small">
-                Reset
+                {t("designsystem.showcase.common.reset")}
               </OutlineNeutral>
             }
             footer={
               <>
                 <OutlinePrimary type="button" size="small">
-                  Cancel
+                  {t("designsystem.showcase.common.cancel")}
                 </OutlinePrimary>
                 <PrimaryPink type="button" size="small">
-                  Apply filters
+                  {t("designsystem.showcase.filtersAndSorting.applyFilters")}
                 </PrimaryPink>
               </>
             }
           >
-            <SelectField label="Status" defaultValue="verified">
-              <SelectItem value="all">All statuses</SelectItem>
-              <SelectItem value="verified">Verified</SelectItem>
-              <SelectItem value="pending">Pending</SelectItem>
-              <SelectItem value="needs-review">Needs review</SelectItem>
+            <SelectField label={t("designsystem.showcase.filtersAndSorting.statusLabel")} defaultValue="verified">
+              <SelectItem value="all">{t("designsystem.showcase.filtersAndSorting.allStatuses")}</SelectItem>
+              <SelectItem value="verified">{t("designsystem.showcase.filtersAndSorting.verified")}</SelectItem>
+              <SelectItem value="pending">{t("designsystem.showcase.filtersAndSorting.pending")}</SelectItem>
+              <SelectItem value="needs-review">{t("designsystem.showcase.filtersAndSorting.needsReview")}</SelectItem>
             </SelectField>
 
             <div className="grid gap-3">
-              <p className="text-body-small-bold text-foreground-title">Review type</p>
-              <CheckboxField label="Video reviews" defaultChecked />
-              <CheckboxField label="Photo reviews" />
-              <CheckboxField label="Text reviews" />
+              <p className="text-body-small-bold text-foreground-title">{t("designsystem.showcase.filtersAndSorting.reviewTypeLabel")}</p>
+              <CheckboxField label={t("designsystem.showcase.filtersAndSorting.videoReviews")} defaultChecked />
+              <CheckboxField label={t("designsystem.showcase.filtersAndSorting.photoReviews")} />
+              <CheckboxField label={t("designsystem.showcase.filtersAndSorting.textReviews")} />
             </div>
 
             <ToggleField
-              label="Only show active campaigns"
-              hint="Hide archived or paused campaigns from the result set."
+              label={t("designsystem.showcase.filtersAndSorting.activeCampaignsLabel")}
+              hint={t("designsystem.showcase.filtersAndSorting.activeCampaignsHint")}
               defaultChecked
             />
           </FilterPanel>
@@ -63,38 +64,38 @@ export function FiltersAndSortingShowcase() {
       </section>
 
       <section className="rounded-lg border border-border bg-surface p-5">
-        <h2 className="text-title-2 text-foreground-title">Sorting controls</h2>
+        <h2 className="text-title-2 text-foreground-title">{t("designsystem.showcase.filtersAndSorting.sortingTitle")}</h2>
         <p className="mt-1 max-w-2xl text-body-small text-foreground-muted">
-          Sorting controls should make the active order clear and keep the most common options easy to scan.
+          {t("designsystem.showcase.filtersAndSorting.sortingIntro")}
         </p>
 
         <div className="mt-4 max-w-sm">
           <div className="rounded-lg border border-border bg-surface p-4 shadow-sm">
-            <SelectField label="Sort by" defaultValue="newest" hideLabel>
-              <SelectItem value="newest">Newest first</SelectItem>
-              <SelectItem value="oldest">Oldest first</SelectItem>
-              <SelectItem value="rating-high">Highest rating</SelectItem>
-              <SelectItem value="rating-low">Lowest rating</SelectItem>
+            <SelectField label={t("designsystem.showcase.filtersAndSorting.sortByLabel")} defaultValue="newest" hideLabel>
+              <SelectItem value="newest">{t("designsystem.showcase.filtersAndSorting.newestFirst")}</SelectItem>
+              <SelectItem value="oldest">{t("designsystem.showcase.filtersAndSorting.oldestFirst")}</SelectItem>
+              <SelectItem value="rating-high">{t("designsystem.showcase.filtersAndSorting.highestRating")}</SelectItem>
+              <SelectItem value="rating-low">{t("designsystem.showcase.filtersAndSorting.lowestRating")}</SelectItem>
             </SelectField>
           </div>
         </div>
       </section>
 
       <section className="rounded-lg border border-border bg-surface p-5">
-        <h2 className="text-title-2 text-foreground-title">Applied filters</h2>
+        <h2 className="text-title-2 text-foreground-title">{t("designsystem.showcase.filtersAndSorting.appliedFiltersTitle")}</h2>
         <p className="mt-1 max-w-2xl text-body-small text-foreground-muted">
-          Applied filters should be visible, removable, and paired with a clear reset action.
+          {t("designsystem.showcase.filtersAndSorting.appliedFiltersIntro")}
         </p>
 
         <div className="mt-4 rounded-lg border border-border bg-surface-muted p-4">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <div className="flex flex-wrap gap-2">
-              <Tag label="Verified" />
-              <Tag label="Video reviews" />
-              <Tag label="Active campaigns" />
+              <Tag label={t("designsystem.showcase.filtersAndSorting.tagVerified")} />
+              <Tag label={t("designsystem.showcase.filtersAndSorting.videoReviews")} />
+              <Tag label={t("designsystem.showcase.filtersAndSorting.tagActiveCampaigns")} />
             </div>
             <OutlineNeutral type="button" size="small">
-              Clear all
+              {t("designsystem.showcase.common.clearAll")}
             </OutlineNeutral>
           </div>
         </div>

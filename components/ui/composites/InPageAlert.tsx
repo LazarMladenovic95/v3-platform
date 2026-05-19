@@ -2,8 +2,11 @@
 
 // InPageAlert composite — contextual page-level message with optional action and close affordance.
 import * as React from "react";
-import { AlertCircle, Info, X } from "lucide-react";
+import { t } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
+import { Heading } from "../atoms/Heading";
+import { Icon } from "../atoms/Icon";
+import { Text } from "../atoms/Text";
 import { IconButton } from "../atoms/button/IconButton";
 
 export type InPageAlertVariant = "default" | "destructive" | "warning";
@@ -34,7 +37,7 @@ export function InPageAlert({
   description,
   action,
   onClose,
-  closeAriaLabel = "Close alert",
+  closeAriaLabel,
   variant = "default",
   className,
   ...props
@@ -49,23 +52,18 @@ export function InPageAlert({
       )}
       {...props}
     >
-      {variant === "default" ? (
-        <Info
-          className={cn("mt-0.5 h-4 w-4 shrink-0", iconClasses.default)}
-          strokeWidth={2}
-          aria-hidden
-        />
-      ) : (
-        <AlertCircle
-          className={cn("mt-0.5 h-4 w-4 shrink-0", iconClasses[variant])}
-          strokeWidth={2}
-          aria-hidden
-        />
-      )}
+      <Icon
+        name={variant === "default" ? "info" : "alert-circle"}
+        className={cn("mt-0.5 shrink-0", iconClasses[variant])}
+      />
       <div className="min-w-0 flex-1">
-        <h3 className="text-body-small-bold">{header}</h3>
+        <Heading as="h3" variant="body-bold">
+          {header}
+        </Heading>
         {description && (
-          <p className="mt-1 text-body-small">{description}</p>
+          <Text variant="body-small" className="mt-1">
+            {description}
+          </Text>
         )}
       </div>
       {action && (
@@ -76,8 +74,8 @@ export function InPageAlert({
           type="button"
           variant="ghost"
           size="small"
-          aria-label={closeAriaLabel}
-          icon={<X className="h-4 w-4" aria-hidden />}
+          aria-label={closeAriaLabel ?? t("ui.alert.close")}
+          icon={<Icon name="x" />}
           className="-mr-2 -mt-2 text-foreground-muted hover:bg-transparent hover:text-foreground-title active:text-foreground-title"
           onClick={onClose}
         />

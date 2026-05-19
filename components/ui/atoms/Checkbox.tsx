@@ -3,8 +3,8 @@
 
 import * as React from "react";
 import * as CheckboxPrimitive from "@radix-ui/react-checkbox";
-import { Check, Minus } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Icon } from "./Icon";
 
 export const Checkbox = React.forwardRef<
   React.ElementRef<typeof CheckboxPrimitive.Root>,
@@ -26,9 +26,9 @@ export const Checkbox = React.forwardRef<
   >
     <CheckboxPrimitive.Indicator className="inline-flex items-center justify-center animate-in fade-in-0 zoom-in-75 duration-150">
       {props.checked === "indeterminate" ? (
-        <Minus className="h-3 w-3" strokeWidth={2.5} />
+        <Icon name="minus" size="sm" strokeWidth={2.5} />
       ) : (
-        <Check className="h-3 w-3" strokeWidth={2.5} />
+        <Icon name="check" size="sm" strokeWidth={2.5} />
       )}
     </CheckboxPrimitive.Indicator>
   </CheckboxPrimitive.Root>

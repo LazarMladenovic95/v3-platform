@@ -12,6 +12,11 @@ export { Toggle } from "./atoms/Toggle";
 export { Spinner } from "./atoms/Spinner";
 export { Skeleton } from "./atoms/Skeleton";
 export { HintText } from "./atoms/HintText";
+export { Icon, type IconName } from "./atoms/Icon";
+export * from "./icons";
+export { Heading, type HeadingVariant } from "./atoms/Heading";
+export { Text, type TextVariant } from "./atoms/Text";
+export { NavLink, type NavLinkVariant } from "./atoms/NavLink";
 export { Badge } from "./atoms/Badge";
 export { Tag } from "./atoms/Tag";
 // Button atoms
@@ -28,8 +33,9 @@ export { IconButton } from "./atoms/button/IconButton";
 export { CtaLinkPink } from "./atoms/button/CtaLinkPink";
 // Molecules
 export { CheckboxField } from "./molecules/CheckboxField";
-export { DateField } from "./molecules/DateField";
-export { DateRangeField } from "./molecules/DateRangeField";
+export { FieldTrigger, fieldTriggerClasses } from "./molecules/FieldTrigger";
+export { DateField, type DateRangeValue } from "./composites/DateField";
+export { DateRangeField } from "./composites/DateRangeField";
 export { FileUploadField } from "./molecules/FileUploadField";
 export { InputField } from "./molecules/InputField";
 export { Pagination } from "./molecules/Pagination";
@@ -50,6 +56,17 @@ export { TabbedNavigation } from "./molecules/navigation/TabbedNavigation";
 export { VerticalNavigation } from "./molecules/navigation/VerticalNavigation";
 export { IndeterminateBar } from "./molecules/feedback/IndeterminateBar";
 export { Toaster } from "./molecules/feedback/Toaster";
+export {
+  Toast,
+  ToastAction,
+  ToastClose,
+  ToastDescription,
+  ToastProvider,
+  ToastTitle,
+  ToastViewport,
+  type ToastActionElement,
+  type ToastProps,
+} from "./molecules/feedback/toast";
 // Composites
 export { Accordion } from "./composites/Accordion";
 export { AvatarGroup } from "./composites/AvatarGroup";

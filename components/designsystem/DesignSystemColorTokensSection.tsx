@@ -1,25 +1,24 @@
 import { Fragment } from "react";
 import { ColorTokenSwatch } from "@/components/ui";
-import { mainColorTokens, utilityColorTokens } from "@/lib/designsystem-color-data";
-import { SEMANTIC_COLOR_TABLE } from "@/lib/semantic-color-tokens";
+import { mainColorTokens, utilityColorTokens } from "@/designsystem/docs/primitive-palette";
+import { SEMANTIC_COLOR_TABLE } from "@/designsystem/docs/color-table";
+import { t } from "@/lib/i18n";
 
 export function DesignSystemColorTokensSection() {
   return (
     <section className="rounded-lg border border-border bg-surface p-5">
-      <h2 className="text-title-2 text-foreground-title">Color tokens</h2>
+      <h2 className="text-title-2 text-foreground-title">{t("designsystem.showcase.colorTokens.title")}</h2>
       <p className="mt-1 text-body-regular text-foreground-muted">
-        Semantic tokens are defined in <code className="text-body-extra-small">globals.css</code> and wired in{" "}
-        <code className="text-body-extra-small">tailwind.config.mjs</code>. The legacy palette remains below for
-        reference.
+        {t("designsystem.showcase.colorTokens.intro")}
       </p>
       <div className="mt-4 overflow-x-auto rounded-lg border border-border">
         <table className="w-full min-w-[720px] border-collapse text-left text-body-regular text-foreground-body">
           <thead>
             <tr className="border-b border-border bg-surface-muted">
-              <th className="px-3 py-2.5 text-body-extra-small font-bold text-foreground-muted">CSS variable</th>
-              <th className="px-3 py-2.5 text-body-extra-small font-bold text-foreground-muted">Legacy reference</th>
-              <th className="px-3 py-2.5 text-body-extra-small font-bold text-foreground-muted">Value</th>
-              <th className="px-3 py-2.5 text-body-extra-small font-bold text-foreground-muted">Used for</th>
+              <th className="px-3 py-2.5 text-body-extra-small font-bold text-foreground-muted">{t("designsystem.showcase.colorTokens.colCssVariable")}</th>
+              <th className="px-3 py-2.5 text-body-extra-small font-bold text-foreground-muted">{t("designsystem.showcase.colorTokens.colLegacyReference")}</th>
+              <th className="px-3 py-2.5 text-body-extra-small font-bold text-foreground-muted">{t("designsystem.showcase.colorTokens.colValue")}</th>
+              <th className="px-3 py-2.5 text-body-extra-small font-bold text-foreground-muted">{t("designsystem.showcase.colorTokens.colUsedFor")}</th>
             </tr>
           </thead>
           <tbody>
@@ -48,7 +47,9 @@ export function DesignSystemColorTokensSection() {
                         <code className="text-body-extra-small text-foreground-body">{row.hex}</code>
                       </div>
                     </td>
-                    <td className="max-w-md px-3 py-2 align-middle text-foreground-body">{row.usage}</td>
+                    <td className="max-w-md px-3 py-2 align-middle text-foreground-body">
+                      {t(`designsystem.tokens.colors.${row.id}.usage`)}
+                    </td>
                   </tr>
                 ))}
               </Fragment>
@@ -58,7 +59,7 @@ export function DesignSystemColorTokensSection() {
       </div>
       <div className="mt-8 grid gap-6">
         <div>
-          <h3 className="text-body-small-bold text-foreground-title">Legacy — main colors</h3>
+          <h3 className="text-body-small-bold text-foreground-title">{t("designsystem.showcase.colorTokens.legacyMainTitle")}</h3>
           <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {mainColorTokens.map((token) => (
               <ColorTokenSwatch key={token.name} name={token.name} bgClass={token.bgClass} />
@@ -66,7 +67,7 @@ export function DesignSystemColorTokensSection() {
           </div>
         </div>
         <div>
-          <h3 className="text-body-small-bold text-foreground-title">Legacy — utility colors</h3>
+          <h3 className="text-body-small-bold text-foreground-title">{t("designsystem.showcase.colorTokens.legacyUtilityTitle")}</h3>
           <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {utilityColorTokens.map((token) => (
               <ColorTokenSwatch key={token.name} name={token.name} bgClass={token.bgClass} />

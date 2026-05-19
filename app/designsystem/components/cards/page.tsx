@@ -1,18 +1,20 @@
 import type { Metadata } from "next";
 import { CardsShowcase } from "@/components/designsystem/showcase/cards-showcase";
+import { designSystemPageTitle } from "@/designsystem/content";
+import { t } from "@/lib/i18n";
 
 export const metadata: Metadata = {
-  title: "Cards — Design system",
+  title: designSystemPageTitle(t("designsystem.hub.sections.cards.title")),
 };
 
-export default function DesignSystemCardsPage() {
+export default function CardsComponentsPage() {
   return (
     <>
-      <h1 className="text-title-2 text-foreground-title">Cards</h1>
+      <h1 className="text-title-2 text-foreground-title">{t("designsystem.hub.sections.cards.title")}</h1>
       <p className="mt-2 max-w-2xl text-body-regular text-foreground-title-subtle">
-        Layout patterns for grouped content. Prefer tokens over one-off hex values; add a Card composite when
-        repeated structure stabilizes.
+        {t("designsystem.hub.sections.cards.pageIntro")}
       </p>
+
       <div className="mt-6">
         <CardsShowcase />
       </div>

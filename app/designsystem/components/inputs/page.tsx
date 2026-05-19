@@ -1,18 +1,20 @@
 import type { Metadata } from "next";
 import { InputsShowcase } from "@/components/designsystem/showcase/inputs-showcase";
+import { designSystemPageTitle } from "@/designsystem/content";
+import { t } from "@/lib/i18n";
 
 export const metadata: Metadata = {
-  title: "Inputs — Design system",
+  title: designSystemPageTitle(t("designsystem.hub.sections.inputs.title")),
 };
 
-export default function DesignSystemInputsPage() {
+export default function InputsComponentsPage() {
   return (
     <>
-      <h1 className="text-title-2 text-foreground-title">Inputs</h1>
+      <h1 className="text-title-2 text-foreground-title">{t("designsystem.hub.sections.inputs.title")}</h1>
       <p className="mt-2 max-w-2xl text-body-regular text-foreground-title-subtle">
-        Form molecules combine labels, controls, and helper text. States include default, highlighted,
-        prefilled, disabled, and error.
+        {t("designsystem.hub.sections.inputs.pageIntro")}
       </p>
+
       <div className="mt-6">
         <InputsShowcase />
       </div>

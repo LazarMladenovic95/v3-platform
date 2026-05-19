@@ -4,20 +4,22 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { TabbedNavigation } from "@/components/ui";
+import { t } from "@/lib/i18n";
 
 const navItems = [
-  { href: "/designsystem", label: "Overview" },
-  { href: "/designsystem/typography", label: "Typography" },
-  { href: "/designsystem/colors", label: "Color" },
-  { href: "/designsystem/styles", label: "Styles" },
-  { href: "/designsystem/accessibility", label: "Accessibility" },
-  { href: "/designsystem/components", label: "Components" },
+  { href: "/designsystem", labelKey: "overview" },
+  { href: "/designsystem/typography", labelKey: "typography" },
+  { href: "/designsystem/colors", labelKey: "color" },
+  { href: "/designsystem/styles", labelKey: "styles" },
+  { href: "/designsystem/accessibility", labelKey: "accessibility" },
+  { href: "/designsystem/components", labelKey: "components" },
 ] as const;
 
 export function DesignSystemHeader() {
   const pathname = usePathname();
   const items = navItems.map((item) => ({
-    ...item,
+    href: item.href,
+    label: t(`designsystem.header.nav.${item.labelKey}`),
     active: pathname === item.href || (item.href !== "/designsystem" && pathname.startsWith(item.href)),
   }));
 
@@ -30,14 +32,14 @@ export function DesignSystemHeader() {
         >
           <Image
             src="/expeerly-logo.svg"
-            alt="Expeerly logo"
+            alt={t("designsystem.header.logoAlt")}
             width={150}
             height={40}
             priority
             className="h-[40px] w-[150px]"
           />
         </Link>
-        <TabbedNavigation aria-label="Design system" items={items} />
+        <TabbedNavigation aria-label={t("designsystem.header.ariaLabel")} items={items} />
       </div>
     </header>
   );

@@ -9,60 +9,59 @@ import {
   TooltipTrigger,
 } from "@/components/ui";
 import { ToastPlayground } from "./toast-playground";
+import { t } from "@/lib/i18n";
 
 export function FeedbackShowcase() {
   return (
     <div className="grid gap-6 md:grid-cols-2">
       <div className="rounded-lg border border-border bg-surface p-4 md:col-span-2">
-        <h2 className="text-title-2 text-foreground-title">Usage guidance</h2>
+        <h2 className="text-title-2 text-foreground-title">{t("designsystem.showcase.feedback.usageGuidanceTitle")}</h2>
         <div className="mt-4 grid gap-4 md:grid-cols-2">
           <div>
-            <h3 className="text-body-small-bold text-foreground-title">Use alerts for</h3>
+            <h3 className="text-body-small-bold text-foreground-title">{t("designsystem.showcase.feedback.useAlertsForTitle")}</h3>
             <p className="mt-1 text-body-small text-foreground-muted">
-              Persistent page-level messages, validation summaries, blocked states, and context that should
-              remain visible until resolved.
+              {t("designsystem.showcase.feedback.useAlertsForBody")}
             </p>
           </div>
           <div>
-            <h3 className="text-body-small-bold text-foreground-title">Use toasts for</h3>
+            <h3 className="text-body-small-bold text-foreground-title">{t("designsystem.showcase.feedback.useToastsForTitle")}</h3>
             <p className="mt-1 text-body-small text-foreground-muted">
-              Short confirmation messages after an action. Do not use toasts for critical errors or content
-              people must read before continuing.
+              {t("designsystem.showcase.feedback.useToastsForBody")}
             </p>
           </div>
         </div>
       </div>
 
       <div className="rounded-lg border border-border bg-surface p-4 md:col-span-2">
-        <h2 className="text-title-2 text-foreground-title">In-page alerts</h2>
+        <h2 className="text-title-2 text-foreground-title">{t("designsystem.showcase.feedback.inPageAlertsTitle")}</h2>
         <p className="mt-1 text-body-small text-foreground-muted">
-          Page-level messages with default, destructive, and warning styles.
+          {t("designsystem.showcase.feedback.inPageAlertsIntro")}
         </p>
         <div className="mt-3 grid gap-3">
           <InPageAlert
-            header="Default alert"
-            description="Use this for neutral guidance that belongs inline with page content."
+            header={t("designsystem.showcase.feedback.defaultAlertHeader")}
+            description={t("designsystem.showcase.feedback.defaultAlertDescription")}
             onClose={() => {}}
           />
           <InPageAlert
             variant="destructive"
-            header="Destructive alert"
-            description="Use this for errors, blocked states, or destructive consequences."
+            header={t("designsystem.showcase.feedback.destructiveAlertHeader")}
+            description={t("designsystem.showcase.feedback.destructiveAlertDescription")}
             onClose={() => {}}
           />
           <InPageAlert
             variant="warning"
-            header="Warning alert"
-            description="Use this for caution states, pending changes, or important pre-submit checks."
+            header={t("designsystem.showcase.feedback.warningAlertHeader")}
+            description={t("designsystem.showcase.feedback.warningAlertDescription")}
             onClose={() => {}}
           />
         </div>
       </div>
 
       <div className="rounded-lg border border-border bg-surface p-4 md:col-span-2">
-        <h2 className="text-title-2 text-foreground-title">Toasts</h2>
+        <h2 className="text-title-2 text-foreground-title">{t("designsystem.showcase.feedback.toastsTitle")}</h2>
         <p className="mt-1 text-body-small text-foreground-muted">
-          Short-lived notifications with default, success, and destructive styles plus optional inline actions.
+          {t("designsystem.showcase.feedback.toastsIntro")}
         </p>
         <div className="mt-4">
           <ToastPlayground />
@@ -70,26 +69,26 @@ export function FeedbackShowcase() {
       </div>
 
       <div className="rounded-lg border border-border bg-surface p-4 md:col-span-2">
-        <h2 className="text-title-2 text-foreground-title">Tooltips</h2>
+        <h2 className="text-title-2 text-foreground-title">{t("designsystem.showcase.feedback.tooltipsTitle")}</h2>
         <p className="mt-1 text-body-small text-foreground-muted">
-          Brief hover/focus help using the tooltip background and foreground color tokens.
+          {t("designsystem.showcase.feedback.tooltipsIntro")}
         </p>
         <TooltipProvider>
           <div className="mt-3 flex flex-wrap gap-2">
             <Tooltip>
               <TooltipTrigger asChild>
-                <OutlinePrimary size="small">Default tooltip</OutlinePrimary>
+                <OutlinePrimary size="small">{t("designsystem.showcase.feedback.defaultTooltipTrigger")}</OutlinePrimary>
               </TooltipTrigger>
               <TooltipContent>
-                Use tooltips for short, non-essential helper text.
+                {t("designsystem.showcase.feedback.defaultTooltipContent")}
               </TooltipContent>
             </Tooltip>
             <Tooltip>
               <TooltipTrigger asChild>
-                <OutlinePrimary size="small">Placement example</OutlinePrimary>
+                <OutlinePrimary size="small">{t("designsystem.showcase.feedback.placementTooltipTrigger")}</OutlinePrimary>
               </TooltipTrigger>
               <TooltipContent side="right">
-                Tooltip content uses bg-tooltip and text-tooltip-foreground.
+                {t("designsystem.showcase.feedback.placementTooltipContent")}
               </TooltipContent>
             </Tooltip>
           </div>

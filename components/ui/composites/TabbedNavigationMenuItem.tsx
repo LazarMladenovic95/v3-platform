@@ -1,8 +1,8 @@
 "use client";
 
 import type { ReactNode } from "react";
-import { ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Icon } from "../atoms/Icon";
 import { Popover, PopoverContent, PopoverTrigger } from "./Popover";
 
 export interface TabbedNavigationMenuItemProps {
@@ -46,7 +46,7 @@ export function TabbedNavigationMenuItem({
           >
             {label}
           </span>
-          <ChevronDown className="h-4 w-4 shrink-0" aria-hidden />
+          <Icon name="chevron-down" className="shrink-0" />
         </button>
       </PopoverTrigger>
       <PopoverContent align="start" sideOffset={4} className="w-56 p-2">

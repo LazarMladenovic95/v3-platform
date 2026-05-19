@@ -1,5 +1,7 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
+import { Heading } from "../atoms/Heading";
+import { Text } from "../atoms/Text";
 
 export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
   muted?: boolean;
@@ -36,11 +38,11 @@ export function Card({ muted = false, padding = "medium", surface = "default", c
 }
 
 export function CardTitle({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) {
-  return <h3 className={cn("text-body-regular-bold text-foreground-title", className)} {...props} />;
+  return <Heading as="h3" variant="title-bold" className={className} {...props} />;
 }
 
 export function CardDescription({ className, ...props }: React.HTMLAttributes<HTMLParagraphElement>) {
-  return <p className={cn("mt-2 text-body-small text-foreground-muted", className)} {...props} />;
+  return <Text variant="body-small-muted" className={cn("mt-2", className)} {...props} />;
 }
 
 export function CardContent({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {

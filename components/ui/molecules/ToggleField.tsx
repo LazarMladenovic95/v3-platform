@@ -3,6 +3,7 @@
 
 import * as React from "react";
 import { cn } from "@/lib/utils";
+import { HintText } from "../atoms/HintText";
 import { Label } from "../atoms/Label";
 import { Toggle } from "../atoms/Toggle";
 
@@ -44,7 +45,7 @@ export const ToggleField = React.forwardRef<HTMLButtonElement, ToggleFieldProps>
           >
             {label}
           </Label>
-          {hint && <p className="text-body-small text-foreground-muted">{hint}</p>}
+          {hint && <HintText>{hint}</HintText>}
         </div>
         <Toggle
           ref={ref}

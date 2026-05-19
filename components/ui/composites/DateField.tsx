@@ -1,19 +1,21 @@
-// DateField molecule — labeled custom date picker trigger with a token-styled calendar popover.
+// DateField composite — labeled date picker composing Input, IconButton, Popover, and CalendarPicker.
 "use client";
 
 import * as React from "react";
-import { Calendar } from "lucide-react";
-import { cn } from "../../../lib/utils";
+import { t } from "@/lib/i18n";
+import { cn } from "@/lib/utils";
 import { Label } from "../atoms/Label";
 import { HintText } from "../atoms/HintText";
+import { Icon } from "../atoms/Icon";
+import { IconButton } from "../atoms/button/IconButton";
+import { fieldTriggerClasses } from "../molecules/FieldTrigger";
 import {
   CalendarPicker,
   isValidDateString,
   type DateRangeValue,
-} from "../composites/CalendarPicker";
-import { Popover, PopoverContent, PopoverTrigger } from "../composites/Popover";
-import { IconButton } from "../atoms/button/IconButton";
-import type { InputFieldProps } from "./InputField";
+} from "./CalendarPicker";
+import { Popover, PopoverContent, PopoverTrigger } from "./Popover";
+import type { InputFieldProps } from "../molecules/InputField";
 
 export interface DateFieldProps
   extends Omit<
@@ -57,38 +59,7 @@ export const DateField = React.forwardRef<HTMLInputElement, DateFieldProps>(
     const selectedValue = isControlled ? value : internalValue;
     const isFilled = Boolean(selectedValue);
     const calendarValue = isValidDateString(selectedValue) ? selectedValue : undefined;
-
-    const fieldClass = cn(
-      "inline-flex h-[38px] w-fit max-w-full shrink-0 items-center rounded-lg px-3",
-      "gap-2",
-      "text-body-small font-normal",
-      "bg-surface border border-border-input",
-      "transition-colors",
-      "focus-within:outline-none focus-within:ring-2 focus-within:ring-focus focus-within:ring-offset-2 focus-within:ring-offset-surface",
-      !disabled &&
-        state === "default" &&
-        !isFilled &&
-        "text-foreground-muted",
-      !disabled &&
-        state === "default" &&
-        isFilled &&
-        "text-foreground-body",
-      !disabled &&
-        open &&
-        state !== "highlighted" &&
-        state !== "error" &&
-        "border-[1.5px] border-border-focus text-foreground-body",
-      !disabled &&
-        state === "highlighted" &&
-        "border-[1.5px] border-border-focus text-foreground-body",
-      state === "error" &&
-        !disabled &&
-        "border-[1.5px] border-border-error bg-destructive-subtle text-foreground-body",
-      disabled &&
-        "cursor-not-allowed border-border-input bg-disabled text-foreground-disabled",
-      "[-webkit-tap-highlight-color:transparent]",
-      className,
-    );
+    const resolvedPlaceholder = placeholder ?? t("ui.dateField.placeholder");
 
     function handleInputChange(event: React.ChangeEvent<HTMLInputElement>) {
       const nextValue = event.target.value;
@@ -117,15 +88,23 @@ export const DateField = React.forwardRef<HTMLInputElement, DateFieldProps>(
 
         <div className="inline-flex w-fit max-w-full min-w-0">
           <Popover open={open} onOpenChange={setOpen}>
-            <div className={fieldClass}>
+            <div
+              className={fieldTriggerClasses({
+                state,
+                disabled,
+                isFilled,
+                open,
+                className,
+              })}
+            >
               <PopoverTrigger asChild>
                 <IconButton
                   type="button"
                   variant="ghost-neutral"
                   size="small"
-                  aria-label="Open calendar"
+                  aria-label={t("ui.dateField.openCalendar")}
                   disabled={disabled}
-                  icon={<Calendar className="h-4 w-4" aria-hidden />}
+                  icon={<Icon name="calendar" />}
                   className="-ml-2 text-foreground-muted"
                 />
               </PopoverTrigger>
@@ -137,7 +116,7 @@ export const DateField = React.forwardRef<HTMLInputElement, DateFieldProps>(
                 name={name}
                 value={selectedValue ?? ""}
                 disabled={disabled}
-                placeholder={placeholder ?? "YYYY-MM-DD"}
+                placeholder={resolvedPlaceholder}
                 aria-invalid={state === "error"}
                 aria-describedby={hint ? hintId : undefined}
                 onChange={handleInputChange}

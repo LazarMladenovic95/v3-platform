@@ -1,18 +1,20 @@
 import type { Metadata } from "next";
 import { IconographyShowcase } from "@/components/designsystem/showcase/iconography-showcase";
+import { designSystemPageTitle } from "@/designsystem/content";
+import { t } from "@/lib/i18n";
 
 export const metadata: Metadata = {
-  title: "Iconography — Design system",
+  title: designSystemPageTitle(t("designsystem.hub.sections.iconography.title")),
 };
 
-export default function DesignSystemIconographyPage() {
+export default function IconographyComponentsPage() {
   return (
     <>
-      <h1 className="text-title-2 text-foreground-title">Iconography</h1>
+      <h1 className="text-title-2 text-foreground-title">{t("designsystem.hub.sections.iconography.title")}</h1>
       <p className="mt-2 max-w-2xl text-body-regular text-foreground-title-subtle">
-        Lucide outline icons sized to match atoms and molecules. Prefer round stroke caps and joins so icons
-        align with our rounded surfaces and controls.
+        {t("designsystem.hub.sections.iconography.pageIntro")}
       </p>
+
       <div className="mt-6">
         <IconographyShowcase />
       </div>

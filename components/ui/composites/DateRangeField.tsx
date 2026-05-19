@@ -1,18 +1,20 @@
-// DateRangeField molecule — labeled custom range picker using the shared calendar popover.
+// DateRangeField composite — labeled range picker composing FieldTrigger, Popover, and RangeCalendarPicker.
 "use client";
 
 import * as React from "react";
-import { Calendar } from "lucide-react";
-import { cn } from "../../../lib/utils";
+import { t } from "@/lib/i18n";
+import { cn } from "@/lib/utils";
 import { Label } from "../atoms/Label";
 import { HintText } from "../atoms/HintText";
+import { Icon } from "../atoms/Icon";
+import { fieldTriggerClasses } from "../molecules/FieldTrigger";
 import {
   formatDisplayDate,
   RangeCalendarPicker,
   type DateRangeValue,
-} from "../composites/CalendarPicker";
-import { Popover, PopoverContent, PopoverTrigger } from "../composites/Popover";
-import type { InputFieldProps } from "./InputField";
+} from "./CalendarPicker";
+import { Popover, PopoverContent, PopoverTrigger } from "./Popover";
+import type { InputFieldProps } from "../molecules/InputField";
 
 export interface DateRangeFieldProps
   extends Omit<InputFieldProps, "type" | "value" | "defaultValue" | "onChange" | "name"> {
@@ -68,33 +70,6 @@ export const DateRangeField = React.forwardRef<HTMLInputElement, DateRangeFieldP
     const isFilled = Boolean(selectedValue?.start);
     const triggerText = formatRangeValue(selectedValue) || placeholder || label;
 
-    const triggerClass = cn(
-      "inline-flex h-[38px] w-fit max-w-full shrink-0 items-center rounded-lg px-3",
-      "gap-3",
-      "text-body-small font-normal",
-      "bg-surface border border-border-input",
-      "transition-colors",
-      "outline-none focus:outline-none focus-visible:outline-none",
-      "focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2 focus-visible:ring-offset-surface",
-      !disabled && state === "default" && !isFilled && "text-foreground-muted",
-      !disabled && state === "default" && isFilled && "text-foreground-body",
-      !disabled &&
-        open &&
-        state !== "highlighted" &&
-        state !== "error" &&
-        "border-[1.5px] border-border-focus text-foreground-body",
-      !disabled &&
-        state === "highlighted" &&
-        "border-[1.5px] border-border-focus text-foreground-body",
-      state === "error" &&
-        !disabled &&
-        "border-[1.5px] border-border-error bg-destructive-subtle text-foreground-body",
-      disabled &&
-        "cursor-not-allowed border-border-input bg-disabled text-foreground-disabled",
-      "[-webkit-tap-highlight-color:transparent]",
-      className,
-    );
-
     function handleSelect(nextValue: DateRangeValue) {
       if (!isControlled) {
         setInternalValue(nextValue);
@@ -120,18 +95,21 @@ export const DateRangeField = React.forwardRef<HTMLInputElement, DateRangeFieldP
                 type="button"
                 id={triggerId}
                 disabled={disabled}
+                aria-label={t("ui.dateField.openCalendar")}
                 aria-describedby={hint ? hintId : undefined}
-                className={triggerClass}
+                className={fieldTriggerClasses({
+                  state,
+                  disabled,
+                  isFilled,
+                  open,
+                  className: cn("gap-3", className),
+                })}
               >
-                <Calendar
+                <Icon
+                  name="calendar"
                   className={cn(
-                    "h-4 w-4 shrink-0",
                     disabled ? "text-foreground-disabled" : "text-foreground-muted",
                   )}
-                  aria-hidden
-                  strokeWidth={2}
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
                 />
                 <span className="min-w-[16ch] text-left">{triggerText}</span>
               </button>

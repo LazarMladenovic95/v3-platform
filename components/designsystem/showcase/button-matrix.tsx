@@ -1,7 +1,14 @@
-import { ArrowRight, Info, Pencil, Plus, X } from "lucide-react";
+import {
+  ArrowRightIcon,
+  InfoIcon,
+  PencilIcon,
+  PlusIcon,
+  XIcon,
+} from "@/components/ui/icons";
 import type { ComponentType, ReactNode } from "react";
 import { DestructiveRed, Ghost, IconButton, OutlineDestructive, OutlineNeutral, OutlinePrimary, PrimaryPink } from "@/components/ui";
 import type { IconButtonVariant } from "@/components/ui/atoms/button/IconButton";
+import { t } from "@/lib/i18n";
 
 export type SizedButton = ComponentType<{
   size?: "large" | "medium" | "small";
@@ -12,65 +19,69 @@ export type SizedButton = ComponentType<{
   iconRight?: ReactNode;
 }>;
 
-export const SIZED_VARIANTS: { label: string; Component: SizedButton }[] = [
-  { label: "Primary", Component: PrimaryPink as unknown as SizedButton },
-  { label: "Outline", Component: OutlinePrimary as unknown as SizedButton },
-  { label: "Outline neutral", Component: OutlineNeutral as unknown as SizedButton },
-  { label: "Ghost", Component: Ghost as unknown as SizedButton },
-  { label: "Destructive", Component: DestructiveRed as unknown as SizedButton },
-  { label: "Destructive outline", Component: OutlineDestructive as unknown as SizedButton },
+export function getSizedVariants(): { label: string; Component: SizedButton }[] {
+  return [
+  { label: t("designsystem.showcase.buttonMatrix.variantsPrimary"), Component: PrimaryPink as unknown as SizedButton },
+  { label: t("designsystem.showcase.buttonMatrix.variantsOutline"), Component: OutlinePrimary as unknown as SizedButton },
+  { label: t("designsystem.showcase.buttonMatrix.variantsOutlineNeutral"), Component: OutlineNeutral as unknown as SizedButton },
+  { label: t("designsystem.showcase.buttonMatrix.variantsGhost"), Component: Ghost as unknown as SizedButton },
+  { label: t("designsystem.showcase.buttonMatrix.variantsDestructive"), Component: DestructiveRed as unknown as SizedButton },
+  { label: t("designsystem.showcase.buttonMatrix.variantsDestructiveOutline"), Component: OutlineDestructive as unknown as SizedButton },
 ];
+}
 
-export const ICON_VARIANTS: {
+export function getIconVariants(): {
   variant: IconButtonVariant;
   label: string;
   aria: string;
   iconLarge: ReactNode;
   iconSmall: ReactNode;
-}[] = [
+}[] {
+  return [
   {
     variant: "primary",
-    label: "Primary",
-    aria: "Add",
-    iconLarge: <Plus className="h-5 w-5" />,
-    iconSmall: <Plus className="h-4 w-4" />,
+    label: t("designsystem.showcase.buttonMatrix.variantsPrimary"),
+    aria: t("designsystem.showcase.buttonMatrix.ariaAdd"),
+    iconLarge: <PlusIcon className="h-5 w-5" />,
+    iconSmall: <PlusIcon className="h-4 w-4" />,
   },
   {
     variant: "outline",
-    label: "Outline",
-    aria: "Edit",
-    iconLarge: <Pencil className="h-5 w-5" />,
-    iconSmall: <Pencil className="h-4 w-4" />,
+    label: t("designsystem.showcase.buttonMatrix.variantsOutline"),
+    aria: t("designsystem.showcase.buttonMatrix.ariaEdit"),
+    iconLarge: <PencilIcon className="h-5 w-5" />,
+    iconSmall: <PencilIcon className="h-4 w-4" />,
   },
   {
     variant: "ghost",
-    label: "Ghost",
-    aria: "Edit",
-    iconLarge: <Pencil className="h-5 w-5" />,
-    iconSmall: <Pencil className="h-4 w-4" />,
+    label: t("designsystem.showcase.buttonMatrix.variantsGhost"),
+    aria: t("designsystem.showcase.buttonMatrix.ariaEdit"),
+    iconLarge: <PencilIcon className="h-5 w-5" />,
+    iconSmall: <PencilIcon className="h-4 w-4" />,
   },
   {
     variant: "outline-neutral",
-    label: "Outline neutral",
-    aria: "More options",
-    iconLarge: <Info className="h-5 w-5" />,
-    iconSmall: <Info className="h-4 w-4" />,
+    label: t("designsystem.showcase.buttonMatrix.variantsOutlineNeutral"),
+    aria: t("designsystem.showcase.buttonMatrix.ariaMoreOptions"),
+    iconLarge: <InfoIcon className="h-5 w-5" />,
+    iconSmall: <InfoIcon className="h-4 w-4" />,
   },
   {
     variant: "destructive",
-    label: "Destructive",
-    aria: "Delete",
-    iconLarge: <X className="h-5 w-5" />,
-    iconSmall: <X className="h-4 w-4" />,
+    label: t("designsystem.showcase.buttonMatrix.variantsDestructive"),
+    aria: t("designsystem.showcase.common.delete"),
+    iconLarge: <XIcon className="h-5 w-5" />,
+    iconSmall: <XIcon className="h-4 w-4" />,
   },
   {
     variant: "outline-destructive",
-    label: "Destructive outline",
-    aria: "Delete",
-    iconLarge: <X className="h-5 w-5" />,
-    iconSmall: <X className="h-4 w-4" />,
+    label: t("designsystem.showcase.buttonMatrix.variantsDestructiveOutline"),
+    aria: t("designsystem.showcase.common.delete"),
+    iconLarge: <XIcon className="h-5 w-5" />,
+    iconSmall: <XIcon className="h-4 w-4" />,
   },
 ];
+}
 
 export const headerCellClass =
   "px-3 py-2.5 text-body-small font-bold text-foreground-title-subtle";
@@ -133,10 +144,10 @@ function WithIconRow({ label, Component }: { label: string; Component: SizedButt
     <tr className={tableBodyRowClass}>
       <td className={variantCellClass}>{label}</td>
       <td className={bodyCellClass}>
-        <Component iconLeft={<Plus className="h-4 w-4" />}>{label}</Component>
+        <Component iconLeft={<PlusIcon className="h-4 w-4" />}>{label}</Component>
       </td>
       <td className={bodyCellClass}>
-        <Component iconRight={<ArrowRight className="h-4 w-4" />}>{label}</Component>
+        <Component iconRight={<ArrowRightIcon className="h-4 w-4" />}>{label}</Component>
       </td>
     </tr>
   );
@@ -161,22 +172,27 @@ function StatesRow({ label, Component }: { label: string; Component: SizedButton
 
 /** Matrix tables used on the Buttons page and as a row-pattern reference on Tables & rows. */
 export function ButtonSizingMatrix() {
+  const sizedVariants = getSizedVariants();
+  const iconVariants = getIconVariants();
+
   return (
     <div className="grid gap-8">
       <div>
-        <h3 className="text-body-small-bold text-foreground-title">Variants × sizes</h3>
+        <h3 className="text-body-small-bold text-foreground-title">
+          {t("designsystem.showcase.buttonMatrix.variantsSizesTitle")}
+        </h3>
         <div className="mt-3 overflow-x-auto">
           <table className="w-full min-w-[680px] border-collapse text-left">
             <thead>
               <tr className="border-b border-border">
-                <th className={`${headerCellClass} w-44`}>Variant</th>
-                <th className={headerCellClass}>Large</th>
-                <th className={headerCellClass}>Medium</th>
-                <th className={headerCellClass}>Small</th>
+                <th className={`${headerCellClass} w-44`}>{t("designsystem.showcase.buttonMatrix.colVariant")}</th>
+                <th className={headerCellClass}>{t("designsystem.showcase.buttonMatrix.colLarge")}</th>
+                <th className={headerCellClass}>{t("designsystem.showcase.buttonMatrix.colMedium")}</th>
+                <th className={headerCellClass}>{t("designsystem.showcase.buttonMatrix.colSmall")}</th>
               </tr>
             </thead>
             <tbody>
-              {SIZED_VARIANTS.map((v) => (
+              {sizedVariants.map((v) => (
                 <VariantRow key={v.label} label={v.label} Component={v.Component} />
               ))}
             </tbody>
@@ -185,22 +201,21 @@ export function ButtonSizingMatrix() {
       </div>
 
       <div>
-        <h3 className="text-body-small-bold text-foreground-title">With icons</h3>
+        <h3 className="text-body-small-bold text-foreground-title">{t("designsystem.showcase.buttonMatrix.withIconsTitle")}</h3>
         <p className="mt-1 text-body-small text-foreground-muted">
-          Any sized variant accepts an optional <code className="text-body-extra-small">iconLeft</code> or{" "}
-          <code className="text-body-extra-small">iconRight</code>.
+          {t("designsystem.showcase.buttonMatrix.withIconsIntro")}
         </p>
         <div className="mt-3 overflow-x-auto">
           <table className="w-full min-w-[520px] border-collapse text-left">
             <thead>
               <tr className="border-b border-border">
-                <th className={`${headerCellClass} w-44`}>Variant</th>
-                <th className={headerCellClass}>Icon left</th>
-                <th className={headerCellClass}>Icon right</th>
+                <th className={`${headerCellClass} w-44`}>{t("designsystem.showcase.buttonMatrix.colVariant")}</th>
+                <th className={headerCellClass}>{t("designsystem.showcase.buttonMatrix.colIconLeft")}</th>
+                <th className={headerCellClass}>{t("designsystem.showcase.buttonMatrix.colIconRight")}</th>
               </tr>
             </thead>
             <tbody>
-              {SIZED_VARIANTS.map((v) => (
+              {sizedVariants.map((v) => (
                 <WithIconRow key={v.label} label={v.label} Component={v.Component} />
               ))}
             </tbody>
@@ -209,22 +224,22 @@ export function ButtonSizingMatrix() {
       </div>
 
       <div>
-        <h3 className="text-body-small-bold text-foreground-title">Icon only</h3>
+        <h3 className="text-body-small-bold text-foreground-title">{t("designsystem.showcase.buttonMatrix.iconOnlyTitle")}</h3>
         <p className="mt-1 text-body-small text-foreground-muted">
-          Square button, no text label. <code className="text-body-extra-small">aria-label</code> required.
+          {t("designsystem.showcase.buttonMatrix.iconOnlyIntro")}
         </p>
         <div className="mt-3 overflow-x-auto">
           <table className="w-full min-w-[520px] border-collapse text-left">
             <thead>
               <tr className="border-b border-border">
-                <th className={`${headerCellClass} w-44`}>Variant</th>
-                <th className={headerCellClass}>Large</th>
-                <th className={headerCellClass}>Medium</th>
-                <th className={headerCellClass}>Small</th>
+                <th className={`${headerCellClass} w-44`}>{t("designsystem.showcase.buttonMatrix.colVariant")}</th>
+                <th className={headerCellClass}>{t("designsystem.showcase.buttonMatrix.colLarge")}</th>
+                <th className={headerCellClass}>{t("designsystem.showcase.buttonMatrix.colMedium")}</th>
+                <th className={headerCellClass}>{t("designsystem.showcase.buttonMatrix.colSmall")}</th>
               </tr>
             </thead>
             <tbody>
-              {ICON_VARIANTS.map((v) => (
+              {iconVariants.map((v) => (
                 <IconRow key={v.label} {...v} />
               ))}
             </tbody>
@@ -236,24 +251,26 @@ export function ButtonSizingMatrix() {
 }
 
 export function ButtonStatesTable() {
+  const sizedVariants = getSizedVariants();
+
   return (
     <div>
-      <h3 className="text-body-small-bold text-foreground-title">States</h3>
+      <h3 className="text-body-small-bold text-foreground-title">{t("designsystem.showcase.buttonMatrix.statesTitle")}</h3>
       <p className="mt-1 text-body-small text-foreground-muted">
-        Hover state is interactive — mouse over the variants above to see it.
+        {t("designsystem.showcase.buttonMatrix.statesIntro")}
       </p>
       <div className="mt-3 overflow-x-auto">
         <table className="w-full min-w-[560px] border-collapse text-left">
           <thead>
             <tr className="border-b border-border">
-              <th className={`${headerCellClass} w-44`}>Variant</th>
-              <th className={headerCellClass}>Default</th>
-              <th className={headerCellClass}>Disabled</th>
-              <th className={headerCellClass}>Loading</th>
+              <th className={`${headerCellClass} w-44`}>{t("designsystem.showcase.buttonMatrix.colVariant")}</th>
+              <th className={headerCellClass}>{t("designsystem.showcase.buttonMatrix.colDefault")}</th>
+              <th className={headerCellClass}>{t("designsystem.showcase.buttonMatrix.colDisabled")}</th>
+              <th className={headerCellClass}>{t("designsystem.showcase.buttonMatrix.colLoading")}</th>
             </tr>
           </thead>
           <tbody>
-            {SIZED_VARIANTS.map((v) => (
+            {sizedVariants.map((v) => (
               <StatesRow key={v.label} label={v.label} Component={v.Component} />
             ))}
           </tbody>

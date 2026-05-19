@@ -2,49 +2,31 @@
 
 import Image from "next/image";
 import * as React from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeftIcon, ChevronRightIcon } from "@/components/ui/icons";
 import { Badge, Carousel, CarouselItem, CarouselTrack, IconButton } from "@/components/ui";
 import { cn } from "@/lib/utils";
+import { t } from "@/lib/i18n";
 
-const carouselItems = [
-  {
-    title: "Reviewed product",
-    description: "Feature a verified product, review summary, or campaign story.",
-    badge: "Verified",
-    image: "/expeerly_reviewed_MINIMAL.svg",
-    dark: false,
-  },
-  {
-    title: "Brand asset",
-    description: "Use carousel cards for logo assets, launch visuals, and product highlights.",
-    badge: "Brand",
-    image: "/expeerly-logo.svg",
-    dark: false,
-  },
-  {
-    title: "Inverse mark",
-    description: "Show alternate treatments for dark surfaces or high-contrast contexts.",
-    badge: "Inverse",
-    image: "/expeerly-logo-negative.svg",
-    dark: true,
-  },
-  {
-    title: "Symbol",
-    description: "Compact artwork works well when paired with concise supporting copy.",
-    badge: "Symbol",
-    image: "/expeerly_reviewed_MINIMAL.svg",
-    dark: false,
-  },
-  {
-    title: "Star asset",
-    description: "Small icon-led items can represent ratings, favorites, or review quality.",
-    badge: "Rating",
-    image: "/expeerly_star.svg",
-    dark: false,
-  },
+const carouselItemDefs = [
+  { id: "reviewedProduct", image: "/expeerly_reviewed_MINIMAL.svg", dark: false },
+  { id: "brandAsset", image: "/expeerly-logo.svg", dark: false },
+  { id: "inverseMark", image: "/expeerly-logo-negative.svg", dark: true },
+  { id: "symbol", image: "/expeerly_reviewed_MINIMAL.svg", dark: false },
+  { id: "starAsset", image: "/expeerly_star.svg", dark: false },
 ] as const;
 
-function CarouselCard({ item }: { item: (typeof carouselItems)[number] }) {
+function getCarouselItems() {
+  return carouselItemDefs.map((item) => ({
+    ...item,
+    title: t(`designsystem.showcase.carousels.items.${item.id}.title`),
+    description: t(`designsystem.showcase.carousels.items.${item.id}.description`),
+    badge: t(`designsystem.showcase.carousels.items.${item.id}.badge`),
+  }));
+}
+
+type CarouselItemData = ReturnType<typeof getCarouselItems>[number];
+
+function CarouselCard({ item }: { item: CarouselItemData }) {
   return (
     <article className="h-full overflow-hidden rounded-lg border border-border bg-surface shadow-sm">
       <div
@@ -71,9 +53,9 @@ function CarouselCard({ item }: { item: (typeof carouselItems)[number] }) {
   );
 }
 
-const compactCarouselItems = carouselItems.slice(0, 3);
 
 function MultiItemCarouselExample() {
+  const carouselItems = getCarouselItems();
   const [activeIndex, setActiveIndex] = React.useState(0);
   const itemRefs = React.useRef<Array<HTMLDivElement | null>>([]);
   const trackRef = React.useRef<HTMLDivElement | null>(null);
@@ -110,7 +92,7 @@ function MultiItemCarouselExample() {
   }
 
   return (
-    <Carousel className="mt-4" aria-label="Featured product carousel">
+    <Carousel className="mt-4" aria-label={t("designsystem.showcase.carousels.featuredAriaLabel")}>
       <CarouselTrack ref={trackRef} onScroll={updateActiveIndex}>
         {carouselItems.map((item, index) => (
           <CarouselItem
@@ -130,13 +112,13 @@ function MultiItemCarouselExample() {
           type="button"
           variant="outline-neutral"
           size="small"
-          icon={<ChevronLeft className="h-4 w-4" />}
-          aria-label="Show previous carousel item"
+          icon={<ChevronLeftIcon className="h-4 w-4" />}
+          aria-label={t("designsystem.showcase.carousels.previousAriaLabel")}
           disabled={activeIndex === 0}
           onClick={() => goToItem(activeIndex - 1)}
         />
 
-        <div className="flex items-center justify-center gap-2" aria-label="Carousel position">
+        <div className="flex items-center justify-center gap-2" aria-label={t("designsystem.showcase.carousels.positionAriaLabel")}>
           {carouselItems.map((item, index) => {
             const isActive = activeIndex === index;
 
@@ -148,7 +130,7 @@ function MultiItemCarouselExample() {
                   "h-2 rounded-full transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2 focus-visible:ring-offset-surface",
                   isActive ? "w-5 bg-secondary" : "w-2 bg-border hover:bg-secondary",
                 )}
-                aria-label={`Show carousel item ${index + 1}`}
+                aria-label={t("designsystem.showcase.carousels.showItemAriaLabel", { index: index + 1 })}
                 aria-current={isActive ? "true" : undefined}
                 onClick={() => goToItem(index)}
               />
@@ -160,8 +142,8 @@ function MultiItemCarouselExample() {
           type="button"
           variant="outline-neutral"
           size="small"
-          icon={<ChevronRight className="h-4 w-4" />}
-          aria-label="Show next carousel item"
+          icon={<ChevronRightIcon className="h-4 w-4" />}
+          aria-label={t("designsystem.showcase.carousels.nextAriaLabel")}
           disabled={activeIndex === carouselItems.length - 1}
           onClick={() => goToItem(activeIndex + 1)}
         />
@@ -171,6 +153,8 @@ function MultiItemCarouselExample() {
 }
 
 function CompactCarouselExample() {
+  const carouselItems = getCarouselItems();
+  const compactCarouselItems = carouselItems.slice(0, 3);
   const [activeIndex, setActiveIndex] = React.useState(0);
   const itemRefs = React.useRef<Array<HTMLDivElement | null>>([]);
 
@@ -186,7 +170,7 @@ function CompactCarouselExample() {
   }
 
   return (
-    <Carousel className="mt-4 max-w-md" aria-label="Compact promotion carousel">
+    <Carousel className="mt-4 max-w-md" aria-label={t("designsystem.showcase.carousels.compactAriaLabel")}>
       <CarouselTrack className="pb-0">
         {compactCarouselItems.map((item, index) => (
           <CarouselItem
@@ -206,13 +190,13 @@ function CompactCarouselExample() {
           type="button"
           variant="outline-neutral"
           size="small"
-          icon={<ChevronLeft className="h-4 w-4" />}
-          aria-label="Show previous carousel item"
+          icon={<ChevronLeftIcon className="h-4 w-4" />}
+          aria-label={t("designsystem.showcase.carousels.previousAriaLabel")}
           disabled={activeIndex === 0}
           onClick={() => goToItem(activeIndex - 1)}
         />
 
-        <div className="flex items-center justify-center gap-2" aria-label="Carousel position">
+        <div className="flex items-center justify-center gap-2" aria-label={t("designsystem.showcase.carousels.positionAriaLabel")}>
           {compactCarouselItems.map((item, index) => {
             const isActive = activeIndex === index;
 
@@ -224,7 +208,7 @@ function CompactCarouselExample() {
                   "h-2 rounded-full transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2 focus-visible:ring-offset-surface",
                   isActive ? "w-5 bg-secondary" : "w-2 bg-border hover:bg-secondary",
                 )}
-                aria-label={`Show carousel item ${index + 1}`}
+                aria-label={t("designsystem.showcase.carousels.showItemAriaLabel", { index: index + 1 })}
                 aria-current={isActive ? "true" : undefined}
                 onClick={() => goToItem(index)}
               />
@@ -236,8 +220,8 @@ function CompactCarouselExample() {
           type="button"
           variant="outline-neutral"
           size="small"
-          icon={<ChevronRight className="h-4 w-4" />}
-          aria-label="Show next carousel item"
+          icon={<ChevronRightIcon className="h-4 w-4" />}
+          aria-label={t("designsystem.showcase.carousels.nextAriaLabel")}
           disabled={activeIndex === compactCarouselItems.length - 1}
           onClick={() => goToItem(activeIndex + 1)}
         />
@@ -250,17 +234,17 @@ export function CarouselsShowcase() {
   return (
     <div className="grid gap-8">
       <section className="rounded-lg border border-border bg-surface p-5">
-        <h2 className="text-title-2 text-foreground-title">Multi-item carousel</h2>
+        <h2 className="text-title-2 text-foreground-title">{t("designsystem.showcase.carousels.multiItemTitle")}</h2>
         <p className="mt-1 max-w-2xl text-body-small text-foreground-muted">
-          Shows several cards side by side on larger screens. Swipe or horizontally scroll to reveal more.
+          {t("designsystem.showcase.carousels.multiItemIntro")}
         </p>
         <MultiItemCarouselExample />
       </section>
 
       <section className="rounded-lg border border-border bg-surface p-5">
-        <h2 className="text-title-2 text-foreground-title">Compact carousel</h2>
+        <h2 className="text-title-2 text-foreground-title">{t("designsystem.showcase.carousels.compactTitle")}</h2>
         <p className="mt-1 max-w-2xl text-body-small text-foreground-muted">
-          Shows one item at a time for compact placements, mobile previews, or focused promos.
+          {t("designsystem.showcase.carousels.compactIntro")}
         </p>
         <CompactCarouselExample />
       </section>

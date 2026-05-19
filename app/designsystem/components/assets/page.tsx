@@ -1,16 +1,18 @@
 import type { Metadata } from "next";
 import { AssetsShowcase } from "@/components/designsystem/showcase/assets-showcase";
+import { designSystemPageTitle } from "@/designsystem/content";
+import { t } from "@/lib/i18n";
 
 export const metadata: Metadata = {
-  title: "Assets — Design system",
+  title: designSystemPageTitle(t("designsystem.hub.sections.assets.title")),
 };
 
 export default function AssetsComponentsPage() {
   return (
     <>
-      <h1 className="text-title-2 text-foreground-title">Assets</h1>
+      <h1 className="text-title-2 text-foreground-title">{t("designsystem.hub.sections.assets.title")}</h1>
       <p className="mt-2 max-w-2xl text-body-regular text-foreground-title-subtle">
-        Brand assets for logos, inverse marks, symbols, and favicon-style app icons.
+        {t("designsystem.hub.sections.assets.pageIntro")}
       </p>
 
       <div className="mt-6">

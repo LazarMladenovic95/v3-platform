@@ -1,27 +1,32 @@
 import { ContentListItem, OutlinePrimary } from "@/components/ui";
+import { t } from "@/lib/i18n";
 
-const listItems = [
+function getListItems() {
+  return [
   {
-    title: "Expeerly reviewed",
-    description: "A product or brand row with supporting text and a clear action.",
+    title: t("designsystem.showcase.lists.expeerlyReviewedTitle"),
+    description: t("designsystem.showcase.lists.expeerlyReviewedDescription"),
     image: "/expeerly_reviewed_MINIMAL.svg",
-    action: "View details",
+    action: t("designsystem.showcase.common.viewDetails"),
   },
   {
-    title: "Brand asset",
-    description: "Use list items for compact search results, product rows, or asset pickers.",
+    title: t("designsystem.showcase.lists.brandAssetTitle"),
+    description: t("designsystem.showcase.lists.brandAssetDescription"),
     image: "/expeerly-logo.svg",
-    action: "Open",
+    action: t("designsystem.showcase.lists.openAction"),
   },
 ] as const;
+}
+
 
 export function ListsShowcase() {
+  const listItems = getListItems();
   return (
     <div className="grid gap-6">
       <section className="rounded-lg border border-border bg-surface p-5">
-        <h2 className="text-title-2 text-foreground-title">Image list item</h2>
+        <h2 className="text-title-2 text-foreground-title">{t("designsystem.showcase.lists.imageListItemTitle")}</h2>
         <p className="mt-1 max-w-2xl text-body-small text-foreground-muted">
-          List items combine a leading image or logo, title, description, and a trailing action button.
+          {t("designsystem.showcase.lists.imageListItemIntro")}
         </p>
         <div className="mt-4 overflow-hidden rounded-lg border border-border bg-surface">
           <ul className="divide-y divide-border">

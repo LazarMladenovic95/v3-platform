@@ -4,6 +4,7 @@
 import * as React from "react";
 import { cn } from "../../../lib/utils";
 import { RadioGroup, RadioGroupItem } from "../atoms/Radio";
+import { HintText } from "../atoms/HintText";
 import { Label } from "../atoms/Label";
 
 export interface RadioOption {
@@ -60,9 +61,7 @@ export function RadioGroupField({
                 >
                   {option.label}
                 </Label>
-                {option.hint && (
-                  <p className="text-body-small text-foreground-muted">{option.hint}</p>
-                )}
+                {option.hint && <HintText>{option.hint}</HintText>}
               </div>
             </div>
           );

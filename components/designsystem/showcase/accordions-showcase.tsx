@@ -1,61 +1,69 @@
 "use client";
 
 import { Accordion } from "@/components/ui";
+import { t } from "@/lib/i18n";
 
-const largeItems = [
-  {
-    id: "large-overview",
-    title: "What makes this campaign ready to launch?",
-    content:
-      "Large accordions are useful for FAQ sections, onboarding content, or review flows where each item needs room for supporting copy.",
-  },
-  {
-    id: "large-assets",
-    title: "Which assets are required?",
-    content:
-      "Include product imagery, review guidance, audience details, and any brand requirements before inviting reviewers.",
-  },
-  {
-    id: "large-reporting",
-    title: "How will reporting be shared?",
-    content:
-      "Use the expanded panel for explanatory text, links, or next steps that would be too long for a compact row.",
-  },
-] as const;
+function getLargeItems() {
+  return [
+    {
+      id: "large-overview",
+      title: t("designsystem.showcase.accordions.items.largeOverview.title"),
+      content: t("designsystem.showcase.accordions.items.largeOverview.content"),
+    },
+    {
+      id: "large-assets",
+      title: t("designsystem.showcase.accordions.items.largeAssets.title"),
+      content: t("designsystem.showcase.accordions.items.largeAssets.content"),
+    },
+    {
+      id: "large-reporting",
+      title: t("designsystem.showcase.accordions.items.largeReporting.title"),
+      content: t("designsystem.showcase.accordions.items.largeReporting.content"),
+    },
+  ] as const;
+}
 
-const smallItems = [
-  {
-    id: "small-filters",
-    title: "Filters",
-    content: "Compact accordions work well in sidebars and dense settings panels.",
-  },
-  {
-    id: "small-status",
-    title: "Status",
-    content: "Keep small accordion content short so the layout stays easy to scan.",
-  },
-] as const;
+function getSmallItems() {
+  return [
+    {
+      id: "small-filters",
+      title: t("designsystem.showcase.accordions.items.smallFilters.title"),
+      content: t("designsystem.showcase.accordions.items.smallFilters.content"),
+    },
+    {
+      id: "small-status",
+      title: t("designsystem.showcase.accordions.items.smallStatus.title"),
+      content: t("designsystem.showcase.accordions.items.smallStatus.content"),
+    },
+  ] as const;
+}
 
-const extraSmallItems = [
-  {
-    id: "extra-small-details",
-    title: "More details",
-    content: "Extra-small accordions are plain text disclosures with no surrounding lines.",
-  },
-  {
-    id: "extra-small-guidance",
-    title: "View guidance",
-    content: "Use them for compact helper content where a full accordion container would feel too heavy.",
-  },
-] as const;
+function getExtraSmallItems() {
+  return [
+    {
+      id: "extra-small-details",
+      title: t("designsystem.showcase.accordions.items.extraSmallDetails.title"),
+      content: t("designsystem.showcase.accordions.items.extraSmallDetails.content"),
+    },
+    {
+      id: "extra-small-guidance",
+      title: t("designsystem.showcase.accordions.items.extraSmallGuidance.title"),
+      content: t("designsystem.showcase.accordions.items.extraSmallGuidance.content"),
+    },
+  ] as const;
+}
 
 export function AccordionsShowcase() {
+  const largeItems = getLargeItems();
+  const smallItems = getSmallItems();
+  const extraSmallItems = getExtraSmallItems();
+
   return (
     <div className="grid gap-6">
       <section className="rounded-lg border border-border bg-surface p-5">
-        <h2 className="text-title-2 text-foreground-title">Large accordion</h2>
+        <h2 className="text-title-2 text-foreground-title">{t("designsystem.showcase.accordions.largeTitle")}</h2>
         <p className="mt-1 max-w-2xl text-body-small text-foreground-muted">
-          Use the large size for content-heavy sections with longer labels and descriptions.
+          {t("designsystem.showcase.accordions.largeIntro")}
         </p>
         <div className="mt-4">
           <Accordion items={largeItems} defaultOpenId="large-overview" />
@@ -63,9 +71,9 @@ export function AccordionsShowcase() {
       </section>
 
       <section className="rounded-lg border border-border bg-surface p-5">
-        <h2 className="text-title-2 text-foreground-title">Small accordion</h2>
+        <h2 className="text-title-2 text-foreground-title">{t("designsystem.showcase.accordions.smallTitle")}</h2>
         <p className="mt-1 max-w-2xl text-body-small text-foreground-muted">
-          Use the small size for filters, settings, and compact supporting panels.
+          {t("designsystem.showcase.accordions.smallIntro")}
         </p>
         <div className="mt-4 max-w-md">
           <Accordion items={smallItems} size="small" defaultOpenId="small-filters" />
@@ -73,9 +81,9 @@ export function AccordionsShowcase() {
       </section>
 
       <section className="rounded-lg border border-border bg-surface p-5">
-        <h2 className="text-title-2 text-foreground-title">Extra-small accordion</h2>
+        <h2 className="text-title-2 text-foreground-title">{t("designsystem.showcase.accordions.extraSmallTitle")}</h2>
         <p className="mt-1 max-w-2xl text-body-small text-foreground-muted">
-          Use the extra-small size for lightweight disclosures without surrounding lines.
+          {t("designsystem.showcase.accordions.extraSmallIntro")}
         </p>
         <div className="mt-4 max-w-md">
           <Accordion items={extraSmallItems} size="extra-small" defaultOpenId="extra-small-details" />

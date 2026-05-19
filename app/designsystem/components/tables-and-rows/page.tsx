@@ -1,18 +1,20 @@
 import type { Metadata } from "next";
 import { TablesShowcase } from "@/components/designsystem/showcase/tables-showcase";
+import { designSystemPageTitle } from "@/designsystem/content";
+import { t } from "@/lib/i18n";
 
 export const metadata: Metadata = {
-  title: "Tables & rows — Design system",
+  title: designSystemPageTitle(t("designsystem.hub.sections.tablesAndRows.title")),
 };
 
-export default function DesignSystemTablesPage() {
+export default function TablesAndRowsComponentsPage() {
   return (
     <>
-      <h1 className="text-title-2 text-foreground-title">Tables & rows</h1>
+      <h1 className="text-title-2 text-foreground-title">{t("designsystem.hub.sections.tablesAndRows.title")}</h1>
       <p className="mt-2 max-w-2xl text-body-regular text-foreground-title-subtle">
-        Row density, column headers, alignment for data-heavy screens, component matrices, and timestamp
-        patterns (absolute and relative).
+        {t("designsystem.hub.sections.tablesAndRows.pageIntro")}
       </p>
+
       <div className="mt-6">
         <TablesShowcase />
       </div>

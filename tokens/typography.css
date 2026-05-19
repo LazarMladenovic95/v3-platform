@@ -1,0 +1,81 @@
+:root {
+  /* Typography - raw tokens (Desktop / Mobile) */
+  --display-desktop-size: 80px;
+  --display-desktop-line-height: 88px;
+  --display-mobile-size: 40px;
+  --display-mobile-line-height: 48px;
+
+  --heading-1-desktop-size: 54px;
+  --heading-1-desktop-line-height: 64px;
+  --heading-1-mobile-size: 32px;
+  --heading-1-mobile-line-height: 40px;
+
+  --heading-2-desktop-size: 40px;
+  --heading-2-desktop-line-height: 48px;
+  --heading-2-mobile-size: 24px;
+  --heading-2-mobile-line-height: 32px;
+
+  --heading-3-desktop-size: 36px;
+  --heading-3-desktop-line-height: 44px;
+  --heading-3-mobile-size: 20px;
+  --heading-3-mobile-line-height: 28px;
+
+  --title-1-desktop-size: 28px;
+  --title-1-desktop-line-height: 36px;
+  --title-1-mobile-size: 18px;
+  --title-1-mobile-line-height: 24px;
+
+  --title-2-desktop-size: 24px;
+  --title-2-desktop-line-height: 32px;
+  --title-2-mobile-size: 16px;
+  --title-2-mobile-line-height: 22px;
+
+  --title-3-size: 20px;
+  --title-3-line-height: 28px;
+
+  --title-4-size: 16px;
+  --title-4-line-height: 24px;
+
+  --body-large-size: 18px;
+  --body-large-line-height: 26px;
+
+  --body-regular-size: 16px;
+  --body-regular-line-height: 22px;
+
+  --body-small-size: 14px;
+  --body-small-line-height: 18px;
+
+  --body-extra-small-size: 12px;
+  --body-extra-small-line-height: 16px;
+
+  /* Composite: mobile-first; desktop values from 768px */
+  --display-size: var(--display-mobile-size);
+  --display-line-height: var(--display-mobile-line-height);
+  --heading-1-size: var(--heading-1-mobile-size);
+  --heading-1-line-height: var(--heading-1-mobile-line-height);
+  --heading-2-size: var(--heading-2-mobile-size);
+  --heading-2-line-height: var(--heading-2-mobile-line-height);
+  --heading-3-size: var(--heading-3-mobile-size);
+  --heading-3-line-height: var(--heading-3-mobile-line-height);
+  --title-1-size: var(--title-1-mobile-size);
+  --title-1-line-height: var(--title-1-mobile-line-height);
+  --title-2-size: var(--title-2-mobile-size);
+  --title-2-line-height: var(--title-2-mobile-line-height);
+}
+
+@media (min-width: 768px) {
+  :root {
+    --display-size: var(--display-desktop-size);
+    --display-line-height: var(--display-desktop-line-height);
+    --heading-1-size: var(--heading-1-desktop-size);
+    --heading-1-line-height: var(--heading-1-desktop-line-height);
+    --heading-2-size: var(--heading-2-desktop-size);
+    --heading-2-line-height: var(--heading-2-desktop-line-height);
+    --heading-3-size: var(--heading-3-desktop-size);
+    --heading-3-line-height: var(--heading-3-desktop-line-height);
+    --title-1-size: var(--title-1-desktop-size);
+    --title-1-line-height: var(--title-1-desktop-line-height);
+    --title-2-size: var(--title-2-desktop-size);
+    --title-2-line-height: var(--title-2-desktop-line-height);
+  }
+}

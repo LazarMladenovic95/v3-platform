@@ -1,14 +1,16 @@
 import type { Metadata } from "next";
 import { ButtonsShowcase } from "@/components/designsystem/showcase/buttons-showcase";
+import { designSystemPageTitle } from "@/designsystem/content";
+import { t } from "@/lib/i18n";
 
 export const metadata: Metadata = {
-  title: "Buttons — Design system",
+  title: designSystemPageTitle(t("designsystem.hub.sections.buttons.title")),
 };
 
-export default function DesignSystemButtonsPage() {
+export default function ButtonsComponentsPage() {
   return (
     <>
-      <h1 className="text-title-2 text-foreground-title">Buttons</h1>
+      <h1 className="text-title-2 text-foreground-title">{t("designsystem.hub.sections.buttons.title")}</h1>
       <div className="mt-6">
         <ButtonsShowcase />
       </div>

@@ -1,16 +1,18 @@
 import type { Metadata } from "next";
 import { CarouselsShowcase } from "@/components/designsystem/showcase/carousels-showcase";
+import { designSystemPageTitle } from "@/designsystem/content";
+import { t } from "@/lib/i18n";
 
 export const metadata: Metadata = {
-  title: "Carousels — Design system",
+  title: designSystemPageTitle(t("designsystem.hub.sections.carousels.title")),
 };
 
 export default function CarouselsComponentsPage() {
   return (
     <>
-      <h1 className="text-title-2 text-foreground-title">Carousels</h1>
+      <h1 className="text-title-2 text-foreground-title">{t("designsystem.hub.sections.carousels.title")}</h1>
       <p className="mt-2 max-w-2xl text-body-regular text-foreground-title-subtle">
-        Swipeable horizontal content patterns for browsing images, cards, and compact promotional items.
+        {t("designsystem.hub.sections.carousels.pageIntro")}
       </p>
 
       <div className="mt-6">

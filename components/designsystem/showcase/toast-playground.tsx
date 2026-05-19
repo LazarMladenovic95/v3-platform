@@ -3,6 +3,7 @@
 import { OutlinePrimary, Toaster } from "@/components/ui";
 import { toast } from "@/hooks/use-toast";
 import { ToastAction } from "@/components/ui/molecules/feedback/toast";
+import { t } from "@/lib/i18n";
 
 export function ToastPlayground() {
   return (
@@ -14,11 +15,11 @@ export function ToastPlayground() {
           size="small"
           onClick={() =>
             void toast({
-              description: "Your changes were saved successfully.",
+              description: t("designsystem.showcase.toastPlayground.defaultDescription"),
             })
           }
         >
-          Default toast
+          {t("designsystem.showcase.toastPlayground.defaultToast")}
         </OutlinePrimary>
         <OutlinePrimary
           type="button"
@@ -26,11 +27,11 @@ export function ToastPlayground() {
           onClick={() =>
             void toast({
               variant: "success",
-              description: "Your update is now live.",
+              description: t("designsystem.showcase.toastPlayground.successDescription"),
             })
           }
         >
-          Success toast
+          {t("designsystem.showcase.toastPlayground.successToast")}
         </OutlinePrimary>
         <OutlinePrimary
           type="button"
@@ -38,27 +39,27 @@ export function ToastPlayground() {
           onClick={() =>
             void toast({
               variant: "destructive",
-              description: "Try again or contact support if the issue persists.",
+              description: t("designsystem.showcase.toastPlayground.destructiveDescription"),
             })
           }
         >
-          Destructive toast
+          {t("designsystem.showcase.toastPlayground.destructiveToast")}
         </OutlinePrimary>
         <OutlinePrimary
           type="button"
           size="small"
           onClick={() =>
             void toast({
-              description: "Item archived.",
+              description: t("designsystem.showcase.toastPlayground.archivedDescription"),
               action: (
-                <ToastAction altText="Undo archive">
-                  Undo
+                <ToastAction altText={t("designsystem.showcase.toastPlayground.undoAltText")}>
+                  {t("designsystem.showcase.common.undo")}
                 </ToastAction>
               ),
             })
           }
         >
-          Toast with action
+          {t("designsystem.showcase.toastPlayground.toastWithAction")}
         </OutlinePrimary>
       </div>
     </>

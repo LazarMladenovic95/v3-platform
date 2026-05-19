@@ -1,0 +1,13 @@
+---
+description: Enforce atomic design and locale rules for components/ui
+globs: components/ui/**/*
+alwaysApply: false
+---
+
+# Design system — atomic design enforcement
+
+- All Lucide icons live in `components/ui/icons/` (one file per icon). Consume via the `Icon` atom or named exports from `@/components/ui/icons`. Do not import `lucide-react` anywhere else in the repo.
+- Molecules must not import from `composites/`.
+- No hardcoded user-facing English in UI or app code. Use `t("ui.*")`, `t("app.*")`, or `t("designsystem.*")` from `@/lib/i18n`. ESLint enforces this via `i18next/no-literal-string` (JSX text and common copy attributes).
+- Add new copy under `locales/en/` (`ui.ts`, `app.ts`, `designsystem.ts`) first, then wire components.
+- **Tokens:** values in `tokens/*.css`; Tailwind utility wiring in `tailwind.config.mjs` / `tokens/tailwind-theme-extend.mjs`. Do not add hex or legacy `bg-pink-*` in `components/ui`. DS tables live under `designsystem/docs/`. See [contracts/design-tokens.md](../../contracts/design-tokens.md).

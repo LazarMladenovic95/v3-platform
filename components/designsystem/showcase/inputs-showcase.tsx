@@ -13,15 +13,15 @@ import {
 } from "@/components/ui";
 
 import { InputsFormSpacingDemo } from "./inputs-form-spacing-demo";
+import { t } from "@/lib/i18n";
 
 export function InputsShowcase() {
   return (
     <>
       <section className="mb-6 rounded-lg border border-border bg-surface p-5">
-        <h2 className="text-title-2 text-foreground-title">Form field spacing</h2>
+        <h2 className="text-title-2 text-foreground-title">{t("designsystem.showcase.inputs.formSpacingTitle")}</h2>
         <p className="mt-2 max-w-2xl text-body-regular text-foreground-muted">
-          Stack fields in a column with <span className="font-mono text-body-small">gap-8</span> (32px)
-          between each control block.
+          {t("designsystem.showcase.inputs.formSpacingIntro")}
         </p>
         <div className="mt-4">
           <InputsFormSpacingDemo />
@@ -30,40 +30,40 @@ export function InputsShowcase() {
       <section className="rounded-lg border border-border bg-surface p-5">
       <div className="grid gap-6">
         <div>
-          <h2 className="text-title-2 text-foreground-title">Input field</h2>
+          <h2 className="text-title-2 text-foreground-title">{t("designsystem.showcase.inputs.inputFieldTitle")}</h2>
           <div className="mt-3 grid gap-3 md:grid-cols-2 xl:grid-cols-3">
             <div className="rounded-lg border border-border bg-surface p-3">
-              <p className="text-body-extra-small text-foreground-muted">default</p>
+              <p className="text-body-extra-small text-foreground-muted">{t("designsystem.showcase.common.stateDefault")}</p>
               <div className="mt-2">
-                <InputField label="Input" placeholder="Type here" hint="Helper text" />
+                <InputField label={t("designsystem.showcase.common.labelInput")} placeholder={t("designsystem.showcase.common.placeholderTypeHere")} hint={t("designsystem.showcase.common.helperText")} />
               </div>
             </div>
             <div className="rounded-lg border border-border bg-surface p-3">
-              <p className="text-body-extra-small text-foreground-muted">highlighted</p>
+              <p className="text-body-extra-small text-foreground-muted">{t("designsystem.showcase.common.stateHighlighted")}</p>
               <div className="mt-2">
-                <InputField label="Input" placeholder="Type here" state="highlighted" hint="Helper text" />
+                <InputField label={t("designsystem.showcase.common.labelInput")} placeholder={t("designsystem.showcase.common.placeholderTypeHere")} state="highlighted" hint={t("designsystem.showcase.common.helperText")} />
               </div>
             </div>
             <div className="rounded-lg border border-border bg-surface p-3">
-              <p className="text-body-extra-small text-foreground-muted">prefilled</p>
+              <p className="text-body-extra-small text-foreground-muted">{t("designsystem.showcase.common.statePrefilled")}</p>
               <div className="mt-2">
-                <InputField label="Input" defaultValue="Prefilled value" hint="Helper text" />
+                <InputField label={t("designsystem.showcase.common.labelInput")} defaultValue={t("designsystem.showcase.inputs.prefilledValue")} hint={t("designsystem.showcase.common.helperText")} />
               </div>
             </div>
             <div className="rounded-lg border border-border bg-surface p-3">
-              <p className="text-body-extra-small text-foreground-muted">disabled</p>
+              <p className="text-body-extra-small text-foreground-muted">{t("designsystem.showcase.common.stateDisabled")}</p>
               <div className="mt-2">
-                <InputField label="Input" placeholder="Type here" disabled hint="Helper text" />
+                <InputField label={t("designsystem.showcase.common.labelInput")} placeholder={t("designsystem.showcase.common.placeholderTypeHere")} disabled hint={t("designsystem.showcase.common.helperText")} />
               </div>
             </div>
             <div className="rounded-lg border border-border bg-surface p-3">
-              <p className="text-body-extra-small text-foreground-muted">error</p>
+              <p className="text-body-extra-small text-foreground-muted">{t("designsystem.showcase.common.stateError")}</p>
               <div className="mt-2">
                 <InputField
-                  label="Input"
-                  placeholder="Type here"
+                  label={t("designsystem.showcase.common.labelInput")}
+                  placeholder={t("designsystem.showcase.common.placeholderTypeHere")}
                   state="error"
-                  hint="Please correct this field."
+                  hint={t("designsystem.showcase.inputs.correctFieldHint")}
                 />
               </div>
             </div>
@@ -71,98 +71,98 @@ export function InputsShowcase() {
         </div>
 
         <div>
-          <h2 className="text-title-2 text-foreground-title">Date field</h2>
+          <h2 className="text-title-2 text-foreground-title">{t("designsystem.showcase.inputs.dateFieldTitle")}</h2>
           <p className="mt-1 text-body-small text-foreground-muted">
-            Custom token-styled calendar popover for single dates and date ranges.
+            {t("designsystem.showcase.inputs.dateFieldIntro")}
           </p>
           <div className="mt-3 grid gap-3 md:grid-cols-2 xl:grid-cols-3">
             <div className="rounded-lg border border-border bg-surface p-3">
-              <p className="text-body-extra-small text-foreground-muted">default</p>
+              <p className="text-body-extra-small text-foreground-muted">{t("designsystem.showcase.common.stateDefault")}</p>
               <div className="mt-2">
-                <DateField label="Start date" hint="Helper text" />
+                <DateField label={t("designsystem.showcase.common.labelStartDate")} hint={t("designsystem.showcase.common.helperText")} />
               </div>
             </div>
             <div className="rounded-lg border border-border bg-surface p-3">
-              <p className="text-body-extra-small text-foreground-muted">highlighted</p>
+              <p className="text-body-extra-small text-foreground-muted">{t("designsystem.showcase.common.stateHighlighted")}</p>
               <div className="mt-2">
-                <DateField label="Start date" state="highlighted" hint="Helper text" />
+                <DateField label={t("designsystem.showcase.common.labelStartDate")} state="highlighted" hint={t("designsystem.showcase.common.helperText")} />
               </div>
             </div>
             <div className="rounded-lg border border-border bg-surface p-3">
-              <p className="text-body-extra-small text-foreground-muted">prefilled</p>
+              <p className="text-body-extra-small text-foreground-muted">{t("designsystem.showcase.common.statePrefilled")}</p>
               <div className="mt-2">
-                <DateField label="Start date" defaultValue="2026-05-14" hint="Helper text" />
+                <DateField label={t("designsystem.showcase.common.labelStartDate")} defaultValue="2026-05-14" hint={t("designsystem.showcase.common.helperText")} />
               </div>
             </div>
             <div className="rounded-lg border border-border bg-surface p-3">
-              <p className="text-body-extra-small text-foreground-muted">min / max</p>
+              <p className="text-body-extra-small text-foreground-muted">{t("designsystem.showcase.inputs.stateMinMax")}</p>
               <div className="mt-2">
-                <DateField label="Due date" min="2026-01-01" max="2026-12-31" hint="Within 2026" />
+                <DateField label={t("designsystem.showcase.common.labelDueDate")} min="2026-01-01" max="2026-12-31" hint={t("designsystem.showcase.common.hintWithin2026")} />
               </div>
             </div>
             <div className="rounded-lg border border-border bg-surface p-3">
-              <p className="text-body-extra-small text-foreground-muted">disabled</p>
+              <p className="text-body-extra-small text-foreground-muted">{t("designsystem.showcase.common.stateDisabled")}</p>
               <div className="mt-2">
-                <DateField label="Start date" defaultValue="2026-05-14" disabled hint="Helper text" />
+                <DateField label={t("designsystem.showcase.common.labelStartDate")} defaultValue="2026-05-14" disabled hint={t("designsystem.showcase.common.helperText")} />
               </div>
             </div>
             <div className="rounded-lg border border-border bg-surface p-3">
-              <p className="text-body-extra-small text-foreground-muted">error</p>
+              <p className="text-body-extra-small text-foreground-muted">{t("designsystem.showcase.common.stateError")}</p>
               <div className="mt-2">
-                <DateField label="Start date" state="error" hint="Please choose a valid date." />
+                <DateField label={t("designsystem.showcase.common.labelStartDate")} state="error" hint={t("designsystem.showcase.common.hintValidDate")} />
               </div>
             </div>
           </div>
         </div>
 
         <div>
-          <h2 className="text-title-2 text-foreground-title">Date range field</h2>
+          <h2 className="text-title-2 text-foreground-title">{t("designsystem.showcase.inputs.dateRangeFieldTitle")}</h2>
           <div className="mt-3 grid gap-3 md:grid-cols-2 xl:grid-cols-3">
             <div className="rounded-lg border border-border bg-surface p-3">
-              <p className="text-body-extra-small text-foreground-muted">default</p>
+              <p className="text-body-extra-small text-foreground-muted">{t("designsystem.showcase.common.stateDefault")}</p>
               <div className="mt-2">
-                <DateRangeField label="Campaign dates" hint="Choose a start and end date." />
+                <DateRangeField label={t("designsystem.showcase.common.labelCampaignDates")} hint={t("designsystem.showcase.common.hintChooseRange")} />
               </div>
             </div>
             <div className="rounded-lg border border-border bg-surface p-3">
-              <p className="text-body-extra-small text-foreground-muted">prefilled</p>
+              <p className="text-body-extra-small text-foreground-muted">{t("designsystem.showcase.common.statePrefilled")}</p>
               <div className="mt-2">
                 <DateRangeField
-                  label="Campaign dates"
+                  label={t("designsystem.showcase.common.labelCampaignDates")}
                   defaultValue={{ start: "2026-05-14", end: "2026-05-21" }}
-                  hint="One week selected."
+                  hint={t("designsystem.showcase.inputs.oneWeekSelected")}
                 />
               </div>
             </div>
             <div className="rounded-lg border border-border bg-surface p-3">
-              <p className="text-body-extra-small text-foreground-muted">min / max</p>
+              <p className="text-body-extra-small text-foreground-muted">{t("designsystem.showcase.inputs.stateMinMax")}</p>
               <div className="mt-2">
                 <DateRangeField
-                  label="Campaign dates"
+                  label={t("designsystem.showcase.common.labelCampaignDates")}
                   min="2026-01-01"
                   max="2026-12-31"
-                  hint="Within 2026"
+                  hint={t("designsystem.showcase.common.hintWithin2026")}
                 />
               </div>
             </div>
             <div className="rounded-lg border border-border bg-surface p-3">
-              <p className="text-body-extra-small text-foreground-muted">disabled</p>
+              <p className="text-body-extra-small text-foreground-muted">{t("designsystem.showcase.common.stateDisabled")}</p>
               <div className="mt-2">
                 <DateRangeField
-                  label="Campaign dates"
+                  label={t("designsystem.showcase.common.labelCampaignDates")}
                   defaultValue={{ start: "2026-05-14", end: "2026-05-21" }}
                   disabled
-                  hint="Helper text"
+                  hint={t("designsystem.showcase.common.helperText")}
                 />
               </div>
             </div>
             <div className="rounded-lg border border-border bg-surface p-3">
-              <p className="text-body-extra-small text-foreground-muted">error</p>
+              <p className="text-body-extra-small text-foreground-muted">{t("designsystem.showcase.common.stateError")}</p>
               <div className="mt-2">
                 <DateRangeField
-                  label="Campaign dates"
+                  label={t("designsystem.showcase.common.labelCampaignDates")}
                   state="error"
-                  hint="Please choose a valid date range."
+                  hint={t("designsystem.showcase.common.hintValidDateRange")}
                 />
               </div>
             </div>
@@ -170,90 +170,90 @@ export function InputsShowcase() {
         </div>
 
         <div>
-          <h2 className="text-title-2 text-foreground-title">Search field</h2>
+          <h2 className="text-title-2 text-foreground-title">{t("designsystem.showcase.inputs.searchFieldTitle")}</h2>
           <div className="mt-3 grid gap-3 md:grid-cols-2 xl:grid-cols-3">
             <div className="rounded-lg border border-border bg-surface p-3">
-              <p className="text-body-extra-small text-foreground-muted">default</p>
+              <p className="text-body-extra-small text-foreground-muted">{t("designsystem.showcase.common.stateDefault")}</p>
               <div className="mt-2">
-                <SearchField label="Search" placeholder="Search..." />
+                <SearchField label={t("designsystem.showcase.common.labelSearch")} placeholder={t("designsystem.showcase.common.placeholderSearch")} />
               </div>
             </div>
             <div className="rounded-lg border border-border bg-surface p-3">
-              <p className="text-body-extra-small text-foreground-muted">highlighted</p>
+              <p className="text-body-extra-small text-foreground-muted">{t("designsystem.showcase.common.stateHighlighted")}</p>
               <div className="mt-2">
-                <SearchField label="Search" placeholder="Search..." state="highlighted" />
+                <SearchField label={t("designsystem.showcase.common.labelSearch")} placeholder={t("designsystem.showcase.common.placeholderSearch")} state="highlighted" />
               </div>
             </div>
             <div className="rounded-lg border border-border bg-surface p-3">
-              <p className="text-body-extra-small text-foreground-muted">prefilled</p>
+              <p className="text-body-extra-small text-foreground-muted">{t("designsystem.showcase.common.statePrefilled")}</p>
               <div className="mt-2">
-                <SearchField label="Search" defaultValue="Sushi" />
+                <SearchField label={t("designsystem.showcase.common.labelSearch")} defaultValue={t("designsystem.showcase.inputs.prefilledSearchValue")} />
               </div>
             </div>
             <div className="rounded-lg border border-border bg-surface p-3">
-              <p className="text-body-extra-small text-foreground-muted">disabled</p>
+              <p className="text-body-extra-small text-foreground-muted">{t("designsystem.showcase.common.stateDisabled")}</p>
               <div className="mt-2">
-                <SearchField label="Search" placeholder="Search..." disabled />
+                <SearchField label={t("designsystem.showcase.common.labelSearch")} placeholder={t("designsystem.showcase.common.placeholderSearch")} disabled />
               </div>
             </div>
             <div className="rounded-lg border border-border bg-surface p-3">
-              <p className="text-body-extra-small text-foreground-muted">error</p>
+              <p className="text-body-extra-small text-foreground-muted">{t("designsystem.showcase.common.stateError")}</p>
               <div className="mt-2">
-                <SearchField label="Search" placeholder="Search..." state="error" hint="No result found." />
+                <SearchField label={t("designsystem.showcase.common.labelSearch")} placeholder={t("designsystem.showcase.common.placeholderSearch")} state="error" hint={t("designsystem.showcase.common.hintNoResults")} />
               </div>
             </div>
           </div>
         </div>
 
         <div>
-          <h2 className="text-title-2 text-foreground-title">Upload field</h2>
+          <h2 className="text-title-2 text-foreground-title">{t("designsystem.showcase.inputs.uploadFieldTitle")}</h2>
           <p className="mt-1 text-body-small text-foreground-muted">
-            Upload fields support click-to-select, drag and drop, and clearing selected files.
+            {t("designsystem.showcase.inputs.uploadFieldIntro")}
           </p>
           <div className="mt-3 grid gap-3 md:grid-cols-2">
             <div className="rounded-lg border border-border bg-surface p-3">
-              <p className="text-body-extra-small text-foreground-muted">single file</p>
+              <p className="text-body-extra-small text-foreground-muted">{t("designsystem.showcase.inputs.stateSingleFile")}</p>
               <div className="mt-2">
                 <FileUploadField
-                  label="Upload image"
+                  label={t("designsystem.showcase.common.labelUploadImage")}
                   accept="image/*"
                   maxSizeBytes={2_000_000}
-                  hint="Use this for one image, logo, or document."
+                  hint={t("designsystem.showcase.common.hintOneImage")}
                 />
               </div>
             </div>
             <div className="rounded-lg border border-border bg-surface p-3">
-              <p className="text-body-extra-small text-foreground-muted">multiple files</p>
+              <p className="text-body-extra-small text-foreground-muted">{t("designsystem.showcase.inputs.stateMultipleFiles")}</p>
               <div className="mt-2">
                 <FileUploadField
-                  label="Upload documents"
+                  label={t("designsystem.showcase.common.labelUploadDocuments")}
                   accept="image/*,.pdf,.doc,.docx"
                   multiple
                   maxSizeBytes={10_000_000}
-                  hint="Use this when several images or documents can be added."
+                  hint={t("designsystem.showcase.common.hintMultipleFiles")}
                 />
               </div>
             </div>
             <div className="rounded-lg border border-border bg-surface p-3">
-              <p className="text-body-extra-small text-foreground-muted">error</p>
+              <p className="text-body-extra-small text-foreground-muted">{t("designsystem.showcase.common.stateError")}</p>
               <div className="mt-2">
                 <FileUploadField
-                  label="Upload product photo"
+                  label={t("designsystem.showcase.common.labelUploadProductPhoto")}
                   accept="image/*"
                   state="error"
-                  error="Upload a JPG or PNG under 2 MB."
+                  error={t("designsystem.showcase.inputs.uploadError")}
                 />
               </div>
             </div>
             <div className="rounded-lg border border-border bg-surface p-3">
-              <p className="text-body-extra-small text-foreground-muted">uploading</p>
+              <p className="text-body-extra-small text-foreground-muted">{t("designsystem.showcase.inputs.stateUploading")}</p>
               <div className="mt-2">
                 <FileUploadField
-                  label="Upload campaign brief"
+                  label={t("designsystem.showcase.common.labelUploadCampaignBrief")}
                   accept=".pdf,.doc,.docx"
                   state="loading"
                   progress={64}
-                  hint="Shows upload progress while files are processing."
+                  hint={t("designsystem.showcase.common.hintUploadProgress")}
                 />
               </div>
             </div>
@@ -261,44 +261,44 @@ export function InputsShowcase() {
         </div>
 
         <div>
-          <h2 className="text-title-2 text-foreground-title">Textarea field</h2>
+          <h2 className="text-title-2 text-foreground-title">{t("designsystem.showcase.inputs.textareaFieldTitle")}</h2>
           <div className="mt-3 grid gap-3 md:grid-cols-2 xl:grid-cols-3">
             <div className="rounded-lg border border-border bg-surface p-3">
-              <p className="text-body-extra-small text-foreground-muted">default</p>
+              <p className="text-body-extra-small text-foreground-muted">{t("designsystem.showcase.common.stateDefault")}</p>
               <div className="mt-2">
-                <TextareaField label="Description" placeholder="Type here" hint="Helper text" />
+                <TextareaField label={t("designsystem.showcase.common.labelDescription")} placeholder={t("designsystem.showcase.common.placeholderTypeHere")} hint={t("designsystem.showcase.common.helperText")} />
               </div>
             </div>
             <div className="rounded-lg border border-border bg-surface p-3">
-              <p className="text-body-extra-small text-foreground-muted">highlighted</p>
+              <p className="text-body-extra-small text-foreground-muted">{t("designsystem.showcase.common.stateHighlighted")}</p>
               <div className="mt-2">
-                <TextareaField label="Description" placeholder="Type here" state="highlighted" hint="Helper text" />
+                <TextareaField label={t("designsystem.showcase.common.labelDescription")} placeholder={t("designsystem.showcase.common.placeholderTypeHere")} state="highlighted" hint={t("designsystem.showcase.common.helperText")} />
               </div>
             </div>
             <div className="rounded-lg border border-border bg-surface p-3">
-              <p className="text-body-extra-small text-foreground-muted">prefilled</p>
+              <p className="text-body-extra-small text-foreground-muted">{t("designsystem.showcase.common.statePrefilled")}</p>
               <div className="mt-2">
                 <TextareaField
-                  label="Description"
-                  defaultValue="A few sentences of feedback go here."
-                  hint="Helper text"
+                  label={t("designsystem.showcase.common.labelDescription")}
+                  defaultValue={t("designsystem.showcase.inputs.prefilledDescription")}
+                  hint={t("designsystem.showcase.common.helperText")}
                 />
               </div>
             </div>
             <div className="rounded-lg border border-border bg-surface p-3">
-              <p className="text-body-extra-small text-foreground-muted">disabled</p>
+              <p className="text-body-extra-small text-foreground-muted">{t("designsystem.showcase.common.stateDisabled")}</p>
               <div className="mt-2">
-                <TextareaField label="Description" placeholder="Type here" disabled hint="Helper text" />
+                <TextareaField label={t("designsystem.showcase.common.labelDescription")} placeholder={t("designsystem.showcase.common.placeholderTypeHere")} disabled hint={t("designsystem.showcase.common.helperText")} />
               </div>
             </div>
             <div className="rounded-lg border border-border bg-surface p-3">
-              <p className="text-body-extra-small text-foreground-muted">error</p>
+              <p className="text-body-extra-small text-foreground-muted">{t("designsystem.showcase.common.stateError")}</p>
               <div className="mt-2">
                 <TextareaField
-                  label="Description"
-                  placeholder="Type here"
+                  label={t("designsystem.showcase.common.labelDescription")}
+                  placeholder={t("designsystem.showcase.common.placeholderTypeHere")}
                   state="error"
-                  hint="Please correct this field."
+                  hint={t("designsystem.showcase.inputs.correctFieldHint")}
                 />
               </div>
             </div>
@@ -306,127 +306,127 @@ export function InputsShowcase() {
         </div>
 
         <div>
-          <h2 className="text-title-2 text-foreground-title">Checkbox</h2>
+          <h2 className="text-title-2 text-foreground-title">{t("designsystem.showcase.inputs.checkboxTitle")}</h2>
           <div className="mt-3 grid gap-3 md:grid-cols-2 xl:grid-cols-3">
             <div className="rounded-lg border border-border bg-surface p-3">
-              <p className="text-body-extra-small text-foreground-muted">unchecked</p>
+              <p className="text-body-extra-small text-foreground-muted">{t("designsystem.showcase.inputs.stateUnchecked")}</p>
               <div className="mt-2">
-                <CheckboxField label="Remember me" />
+                <CheckboxField label={t("designsystem.showcase.inputs.rememberMe")} />
               </div>
             </div>
             <div className="rounded-lg border border-border bg-surface p-3">
-              <p className="text-body-extra-small text-foreground-muted">checked</p>
+              <p className="text-body-extra-small text-foreground-muted">{t("designsystem.showcase.inputs.stateChecked")}</p>
               <div className="mt-2">
-                <CheckboxField label="Remember me" defaultChecked />
+                <CheckboxField label={t("designsystem.showcase.inputs.rememberMe")} defaultChecked />
               </div>
             </div>
             <div className="rounded-lg border border-border bg-surface p-3">
-              <p className="text-body-extra-small text-foreground-muted">indeterminate</p>
+              <p className="text-body-extra-small text-foreground-muted">{t("designsystem.showcase.inputs.stateIndeterminate")}</p>
               <div className="mt-2">
-                <CheckboxField label="Select all" checked="indeterminate" />
+                <CheckboxField label={t("designsystem.showcase.inputs.selectAll")} checked="indeterminate" />
               </div>
             </div>
             <div className="rounded-lg border border-border bg-surface p-3">
-              <p className="text-body-extra-small text-foreground-muted">with hint</p>
+              <p className="text-body-extra-small text-foreground-muted">{t("designsystem.showcase.inputs.stateWithHint")}</p>
               <div className="mt-2">
-                <CheckboxField label="Subscribe" hint="We send a digest once a week." />
+                <CheckboxField label={t("designsystem.showcase.inputs.subscribe")} hint={t("designsystem.showcase.inputs.subscribeHint")} />
               </div>
             </div>
             <div className="rounded-lg border border-border bg-surface p-3">
-              <p className="text-body-extra-small text-foreground-muted">disabled</p>
+              <p className="text-body-extra-small text-foreground-muted">{t("designsystem.showcase.common.stateDisabled")}</p>
               <div className="mt-2">
-                <CheckboxField label="Remember me" disabled />
+                <CheckboxField label={t("designsystem.showcase.inputs.rememberMe")} disabled />
               </div>
             </div>
             <div className="rounded-lg border border-border bg-surface p-3">
-              <p className="text-body-extra-small text-foreground-muted">disabled · checked</p>
+              <p className="text-body-extra-small text-foreground-muted">{t("designsystem.showcase.inputs.stateDisabledChecked")}</p>
               <div className="mt-2">
-                <CheckboxField label="Remember me" defaultChecked disabled />
+                <CheckboxField label={t("designsystem.showcase.inputs.rememberMe")} defaultChecked disabled />
               </div>
             </div>
           </div>
         </div>
 
         <div>
-          <h2 className="text-title-2 text-foreground-title">Toggle</h2>
+          <h2 className="text-title-2 text-foreground-title">{t("designsystem.showcase.inputs.toggleTitle")}</h2>
           <div className="mt-3 grid gap-3 md:grid-cols-2 xl:grid-cols-3">
             <div className="rounded-lg border border-border bg-surface p-3">
-              <p className="text-body-extra-small text-foreground-muted">off</p>
+              <p className="text-body-extra-small text-foreground-muted">{t("designsystem.showcase.inputs.stateOff")}</p>
               <div className="mt-2">
-                <ToggleField label="Email notifications" />
+                <ToggleField label={t("designsystem.showcase.cards.emailNotificationsLabel")} />
               </div>
             </div>
             <div className="rounded-lg border border-border bg-surface p-3">
-              <p className="text-body-extra-small text-foreground-muted">on</p>
+              <p className="text-body-extra-small text-foreground-muted">{t("designsystem.showcase.inputs.stateOn")}</p>
               <div className="mt-2">
-                <ToggleField label="Email notifications" defaultChecked />
+                <ToggleField label={t("designsystem.showcase.cards.emailNotificationsLabel")} defaultChecked />
               </div>
             </div>
             <div className="rounded-lg border border-border bg-surface p-3">
-              <p className="text-body-extra-small text-foreground-muted">with hint</p>
+              <p className="text-body-extra-small text-foreground-muted">{t("designsystem.showcase.inputs.stateWithHint")}</p>
               <div className="mt-2">
                 <ToggleField
-                  label="Auto-tag verified products"
-                  hint="Apply verified metadata after product matching."
+                  label={t("designsystem.showcase.cards.autoTagLabel")}
+                  hint={t("designsystem.showcase.cards.autoTagHint")}
                   defaultChecked
                 />
               </div>
             </div>
             <div className="rounded-lg border border-border bg-surface p-3">
-              <p className="text-body-extra-small text-foreground-muted">disabled</p>
+              <p className="text-body-extra-small text-foreground-muted">{t("designsystem.showcase.common.stateDisabled")}</p>
               <div className="mt-2">
-                <ToggleField label="Email notifications" disabled />
+                <ToggleField label={t("designsystem.showcase.cards.emailNotificationsLabel")} disabled />
               </div>
             </div>
             <div className="rounded-lg border border-border bg-surface p-3">
-              <p className="text-body-extra-small text-foreground-muted">disabled · on</p>
+              <p className="text-body-extra-small text-foreground-muted">{t("designsystem.showcase.inputs.stateDisabledOn")}</p>
               <div className="mt-2">
-                <ToggleField label="Email notifications" defaultChecked disabled />
+                <ToggleField label={t("designsystem.showcase.cards.emailNotificationsLabel")} defaultChecked disabled />
               </div>
             </div>
           </div>
         </div>
 
         <div>
-          <h2 className="text-title-2 text-foreground-title">Radio group</h2>
+          <h2 className="text-title-2 text-foreground-title">{t("designsystem.showcase.inputs.radioGroupTitle")}</h2>
           <div className="mt-3 grid gap-3 md:grid-cols-2 xl:grid-cols-3">
             <div className="rounded-lg border border-border bg-surface p-3">
-              <p className="text-body-extra-small text-foreground-muted">default</p>
+              <p className="text-body-extra-small text-foreground-muted">{t("designsystem.showcase.common.stateDefault")}</p>
               <div className="mt-2">
                 <RadioGroupField
-                  label="Plan"
+                  label={t("designsystem.showcase.inputs.planLabel")}
                   defaultValue="basic"
                   options={[
-                    { value: "basic", label: "Basic" },
-                    { value: "pro", label: "Pro" },
-                    { value: "enterprise", label: "Enterprise" },
+                    { value: "basic", label: t("designsystem.showcase.inputs.basic") },
+                    { value: "pro", label: t("designsystem.showcase.inputs.pro") },
+                    { value: "enterprise", label: t("designsystem.showcase.inputs.enterprise") },
                   ]}
                 />
               </div>
             </div>
             <div className="rounded-lg border border-border bg-surface p-3">
-              <p className="text-body-extra-small text-foreground-muted">with hints</p>
+              <p className="text-body-extra-small text-foreground-muted">{t("designsystem.showcase.inputs.stateWithHint")}</p>
               <div className="mt-2">
                 <RadioGroupField
-                  label="Visibility"
+                  label={t("designsystem.showcase.inputs.visibilityLabel")}
                   defaultValue="public"
                   options={[
-                    { value: "public", label: "Public", hint: "Anyone with the link can view" },
-                    { value: "restricted", label: "Restricted", hint: "Only invited members" },
+                    { value: "public", label: t("designsystem.showcase.inputs.public"), hint: t("designsystem.showcase.inputs.publicHint") },
+                    { value: "restricted", label: t("designsystem.showcase.inputs.restricted"), hint: t("designsystem.showcase.inputs.restrictedHint") },
                   ]}
                 />
               </div>
             </div>
             <div className="rounded-lg border border-border bg-surface p-3">
-              <p className="text-body-extra-small text-foreground-muted">disabled</p>
+              <p className="text-body-extra-small text-foreground-muted">{t("designsystem.showcase.common.stateDisabled")}</p>
               <div className="mt-2">
                 <RadioGroupField
-                  label="Plan"
+                  label={t("designsystem.showcase.inputs.planLabel")}
                   defaultValue="basic"
                   disabled
                   options={[
-                    { value: "basic", label: "Basic" },
-                    { value: "pro", label: "Pro" },
+                    { value: "basic", label: t("designsystem.showcase.inputs.basic") },
+                    { value: "pro", label: t("designsystem.showcase.inputs.pro") },
                   ]}
                 />
               </div>
@@ -435,45 +435,45 @@ export function InputsShowcase() {
         </div>
 
         <div>
-          <h2 className="text-title-2 text-foreground-title">Select field</h2>
+          <h2 className="text-title-2 text-foreground-title">{t("designsystem.showcase.inputs.selectFieldTitle")}</h2>
           <div className="mt-3 grid gap-3 md:grid-cols-2 xl:grid-cols-3">
             <div className="rounded-lg border border-border bg-surface p-3">
-              <p className="text-body-extra-small text-foreground-muted">default</p>
+              <p className="text-body-extra-small text-foreground-muted">{t("designsystem.showcase.common.stateDefault")}</p>
               <div className="mt-2">
-                <SelectField label="Select" placeholder="Choose an option">
-                  <SelectItem value="one">Option One</SelectItem>
-                  <SelectItem value="two">Option Two</SelectItem>
-                  <SelectItem value="three">Option Three</SelectItem>
+                <SelectField label={t("designsystem.showcase.inputs.selectLabel")} placeholder={t("designsystem.showcase.inputs.chooseOption")}>
+                  <SelectItem value="one">{t("designsystem.showcase.inputs.optionOne")}</SelectItem>
+                  <SelectItem value="two">{t("designsystem.showcase.inputs.optionTwo")}</SelectItem>
+                  <SelectItem value="three">{t("designsystem.showcase.inputs.optionThree")}</SelectItem>
                 </SelectField>
               </div>
             </div>
             <div className="rounded-lg border border-border bg-surface p-3">
-              <p className="text-body-extra-small text-foreground-muted">highlighted</p>
+              <p className="text-body-extra-small text-foreground-muted">{t("designsystem.showcase.common.stateHighlighted")}</p>
               <div className="mt-2">
-                <SelectField label="Select" placeholder="Choose an option" state="highlighted">
-                  <SelectItem value="one">Option One</SelectItem>
-                  <SelectItem value="two">Option Two</SelectItem>
-                  <SelectItem value="three">Option Three</SelectItem>
+                <SelectField label={t("designsystem.showcase.inputs.selectLabel")} placeholder={t("designsystem.showcase.inputs.chooseOption")} state="highlighted">
+                  <SelectItem value="one">{t("designsystem.showcase.inputs.optionOne")}</SelectItem>
+                  <SelectItem value="two">{t("designsystem.showcase.inputs.optionTwo")}</SelectItem>
+                  <SelectItem value="three">{t("designsystem.showcase.inputs.optionThree")}</SelectItem>
                 </SelectField>
               </div>
             </div>
             <div className="rounded-lg border border-border bg-surface p-3">
-              <p className="text-body-extra-small text-foreground-muted">selected</p>
+              <p className="text-body-extra-small text-foreground-muted">{t("designsystem.showcase.inputs.stateSelected")}</p>
               <div className="mt-2">
-                <SelectField label="Select" defaultValue="two">
-                  <SelectItem value="one">Option One</SelectItem>
-                  <SelectItem value="two">Option Two</SelectItem>
-                  <SelectItem value="three">Option Three</SelectItem>
+                <SelectField label={t("designsystem.showcase.inputs.selectLabel")} defaultValue="two">
+                  <SelectItem value="one">{t("designsystem.showcase.inputs.optionOne")}</SelectItem>
+                  <SelectItem value="two">{t("designsystem.showcase.inputs.optionTwo")}</SelectItem>
+                  <SelectItem value="three">{t("designsystem.showcase.inputs.optionThree")}</SelectItem>
                 </SelectField>
               </div>
             </div>
             <div className="rounded-lg border border-border bg-surface p-3">
-              <p className="text-body-extra-small text-foreground-muted">disabled</p>
+              <p className="text-body-extra-small text-foreground-muted">{t("designsystem.showcase.common.stateDisabled")}</p>
               <div className="mt-2">
-                <SelectField label="Select" placeholder="Choose an option" disabled>
-                  <SelectItem value="one">Option One</SelectItem>
-                  <SelectItem value="two">Option Two</SelectItem>
-                  <SelectItem value="three">Option Three</SelectItem>
+                <SelectField label={t("designsystem.showcase.inputs.selectLabel")} placeholder={t("designsystem.showcase.inputs.chooseOption")} disabled>
+                  <SelectItem value="one">{t("designsystem.showcase.inputs.optionOne")}</SelectItem>
+                  <SelectItem value="two">{t("designsystem.showcase.inputs.optionTwo")}</SelectItem>
+                  <SelectItem value="three">{t("designsystem.showcase.inputs.optionThree")}</SelectItem>
                 </SelectField>
               </div>
             </div>

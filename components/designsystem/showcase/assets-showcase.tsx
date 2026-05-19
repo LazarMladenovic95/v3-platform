@@ -1,54 +1,56 @@
 import Image from "next/image";
+import { t } from "@/lib/i18n";
 
 type AssetCard = {
-  title: string;
-  description: string;
+  id: "logo" | "inverseLogo" | "logoSymbol" | "favicon";
   src: string;
-  alt: string;
   backgroundClassName: string;
   imageClassName: string;
 };
 
-const brandAssets: AssetCard[] = [
+const brandAssetDefs: AssetCard[] = [
   {
-    title: "Logo",
-    description: "Primary Expeerly logo for white or transparent backgrounds.",
+    id: "logo",
     src: "/expeerly-logo.svg",
-    alt: "Expeerly logo",
     backgroundClassName: "bg-surface",
     imageClassName: "h-auto w-[180px]",
   },
   {
-    title: "Inverse logo",
-    description: "Negative logo for dark or high-contrast surfaces.",
+    id: "inverseLogo",
     src: "/expeerly-logo-negative.svg",
-    alt: "Expeerly inverse logo",
     backgroundClassName: "bg-tooltip",
     imageClassName: "h-auto w-[180px]",
   },
   {
-    title: "Logo symbol",
-    description: "Standalone brand symbol for compact placements.",
+    id: "logoSymbol",
     src: "/expeerly_reviewed_MINIMAL.svg",
-    alt: "Expeerly logo symbol",
     backgroundClassName: "bg-surface",
     imageClassName: "h-20 w-20",
   },
   {
-    title: "Favicon",
-    description: "Small app icon treatment based on the compact brand symbol.",
+    id: "favicon",
     src: "/expeerly_reviewed_MINIMAL.svg",
-    alt: "Expeerly favicon",
     backgroundClassName: "bg-surface",
     imageClassName: "h-8 w-8",
   },
 ];
 
+function getBrandAssets() {
+  return brandAssetDefs.map((asset) => ({
+    ...asset,
+    title: t(`designsystem.showcase.assets.${asset.id}.title`),
+    description: t(`designsystem.showcase.assets.${asset.id}.description`),
+    alt: t(`designsystem.showcase.assets.${asset.id}.alt`),
+  }));
+}
+
 export function AssetsShowcase() {
+  const brandAssets = getBrandAssets();
+
   return (
     <div className="grid gap-6 md:grid-cols-2">
       {brandAssets.map((asset) => (
-        <section key={asset.title} className="rounded-lg border border-border bg-surface p-5">
+        <section key={asset.id} className="rounded-lg border border-border bg-surface p-5">
           <h2 className="text-title-2 text-foreground-title">{asset.title}</h2>
           <p className="mt-1 text-body-small text-foreground-muted">{asset.description}</p>
           <div

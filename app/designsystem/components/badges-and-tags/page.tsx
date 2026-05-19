@@ -1,17 +1,20 @@
 import type { Metadata } from "next";
 import { BadgesShowcase } from "@/components/designsystem/showcase/badges-showcase";
+import { designSystemPageTitle } from "@/designsystem/content";
+import { t } from "@/lib/i18n";
 
 export const metadata: Metadata = {
-  title: "Badges & tags — Design system",
+  title: designSystemPageTitle(t("designsystem.hub.sections.badgesAndTags.title")),
 };
 
-export default function DesignSystemBadgesPage() {
+export default function BadgesAndTagsComponentsPage() {
   return (
     <>
-      <h1 className="text-title-2 text-foreground-title">Badges & tags</h1>
+      <h1 className="text-title-2 text-foreground-title">{t("designsystem.hub.sections.badgesAndTags.title")}</h1>
       <p className="mt-2 max-w-2xl text-body-regular text-foreground-title-subtle">
-        Compact status and identity treatments. Badges communicate state; tags represent removable labels.
+        {t("designsystem.hub.sections.badgesAndTags.pageIntro")}
       </p>
+
       <div className="mt-6">
         <BadgesShowcase />
       </div>

@@ -1,16 +1,18 @@
 import type { Metadata } from "next";
 import { FiltersAndSortingShowcase } from "@/components/designsystem/showcase/filters-and-sorting-showcase";
+import { designSystemPageTitle } from "@/designsystem/content";
+import { t } from "@/lib/i18n";
 
 export const metadata: Metadata = {
-  title: "Filters & sorting — Design system",
+  title: designSystemPageTitle(t("designsystem.hub.sections.filtersAndSorting.title")),
 };
 
 export default function FiltersAndSortingComponentsPage() {
   return (
     <>
-      <h1 className="text-title-2 text-foreground-title">Filters & sorting</h1>
+      <h1 className="text-title-2 text-foreground-title">{t("designsystem.hub.sections.filtersAndSorting.title")}</h1>
       <p className="mt-2 max-w-2xl text-body-regular text-foreground-title-subtle">
-        Patterns for narrowing, ordering, and summarizing result sets.
+        {t("designsystem.hub.sections.filtersAndSorting.pageIntro")}
       </p>
 
       <div className="mt-6">

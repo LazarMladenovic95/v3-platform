@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { DesignSystemHeader } from "@/components/designsystem/DesignSystemHeader";
+import { t } from "@/lib/i18n";
 
 export const metadata: Metadata = {
-  title: "Design system — Expeerly",
+  title: t("designsystem.meta.layoutTitle"),
   robots: { index: false, follow: false },
 };
 

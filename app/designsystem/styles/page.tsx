@@ -1,16 +1,18 @@
 import type { Metadata } from "next";
 import { StylesShowcase } from "@/components/designsystem/showcase/styles-showcase";
+import { designSystemPageTitle } from "@/designsystem/content";
+import { t } from "@/lib/i18n";
 
 export const metadata: Metadata = {
-  title: "Styles — Design system",
+  title: designSystemPageTitle(t("designsystem.pages.styles.heading")),
 };
 
 export default function DesignSystemStylesPage() {
   return (
     <>
-      <h1 className="text-title-2 text-foreground-title">Styles</h1>
+      <h1 className="text-title-2 text-foreground-title">{t("designsystem.pages.styles.heading")}</h1>
       <p className="mt-2 max-w-2xl text-body-regular text-foreground-title-subtle">
-        Border and elevation building blocks used across surfaces, popovers, and tables.
+        {t("designsystem.pages.styles.intro")}
       </p>
       <div className="mt-6">
         <StylesShowcase />

@@ -11,50 +11,49 @@ import {
   PrimaryPink,
 } from "@/components/ui";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/composites/Popover";
+import { t } from "@/lib/i18n";
 
 export function DialogWindowsShowcase() {
   return (
     <div className="grid gap-6">
       <section className="rounded-lg border border-border bg-surface p-5">
-        <h2 className="text-title-2 text-foreground-title">Usage guidance</h2>
+        <h2 className="text-title-2 text-foreground-title">{t("designsystem.showcase.dialogWindows.usageGuidanceTitle")}</h2>
         <div className="mt-4 grid gap-4 md:grid-cols-2">
           <div>
-            <h3 className="text-body-small-bold text-foreground-title">Use dialogs for</h3>
+            <h3 className="text-body-small-bold text-foreground-title">{t("designsystem.showcase.dialogWindows.useDialogsForTitle")}</h3>
             <p className="mt-1 text-body-small text-foreground-muted">
-              Blocking decisions, confirmations, destructive actions, success confirmations, and focused tasks
-              that need explicit completion or dismissal.
+              {t("designsystem.showcase.dialogWindows.useDialogsForBody")}
             </p>
           </div>
           <div>
-            <h3 className="text-body-small-bold text-foreground-title">Use popovers for</h3>
+            <h3 className="text-body-small-bold text-foreground-title">{t("designsystem.showcase.dialogWindows.usePopoversForTitle")}</h3>
             <p className="mt-1 text-body-small text-foreground-muted">
-              Lightweight contextual controls or supporting information that should not interrupt the page flow.
+              {t("designsystem.showcase.dialogWindows.usePopoversForBody")}
             </p>
           </div>
         </div>
       </section>
 
       <section className="rounded-lg border border-border bg-surface p-5">
-        <h2 className="text-title-2 text-foreground-title">Dialogs</h2>
+        <h2 className="text-title-2 text-foreground-title">{t("designsystem.showcase.dialogWindows.dialogsTitle")}</h2>
         <p className="mt-1 max-w-2xl text-body-small text-foreground-muted">
-          Centered modal windows for neutral confirmations, success states, destructive decisions, and focused
-          workflows.
+          {t("designsystem.showcase.dialogWindows.dialogsIntro")}
         </p>
         <div className="mt-4 flex flex-wrap gap-2">
           <DialogWindow>
             <DialogWindowTrigger asChild>
-              <OutlinePrimary size="small">Neutral dialog</OutlinePrimary>
+              <OutlinePrimary size="small">{t("designsystem.showcase.dialogWindows.neutralDialogTrigger")}</OutlinePrimary>
             </DialogWindowTrigger>
             <DialogWindowContent
-              title="Confirm changes"
-              description="Review the details before applying this update."
+              title={t("designsystem.showcase.dialogWindows.confirmChangesTitle")}
+              description={t("designsystem.showcase.dialogWindows.confirmChangesDescription")}
               footer={
                 <>
                   <DialogWindowClose asChild>
-                    <OutlineNeutral size="medium">Cancel</OutlineNeutral>
+                    <OutlineNeutral size="medium">{t("designsystem.showcase.common.cancel")}</OutlineNeutral>
                   </DialogWindowClose>
                   <DialogWindowClose asChild>
-                    <PrimaryPink size="medium">Confirm</PrimaryPink>
+                    <PrimaryPink size="medium">{t("designsystem.showcase.common.confirm")}</PrimaryPink>
                   </DialogWindowClose>
                 </>
               }
@@ -63,15 +62,15 @@ export function DialogWindowsShowcase() {
 
           <DialogWindow>
             <DialogWindowTrigger asChild>
-              <OutlinePrimary size="small">Success dialog</OutlinePrimary>
+              <OutlinePrimary size="small">{t("designsystem.showcase.dialogWindows.successDialogTrigger")}</OutlinePrimary>
             </DialogWindowTrigger>
             <DialogWindowContent
               variant="success"
-              title="Changes saved"
-              description="Your updates have been saved successfully."
+              title={t("designsystem.showcase.dialogWindows.changesSavedTitle")}
+              description={t("designsystem.showcase.dialogWindows.changesSavedDescription")}
               footer={
                 <DialogWindowClose asChild>
-                  <PrimaryPink size="medium">Done</PrimaryPink>
+                  <PrimaryPink size="medium">{t("designsystem.showcase.common.done")}</PrimaryPink>
                 </DialogWindowClose>
               }
             />
@@ -79,19 +78,19 @@ export function DialogWindowsShowcase() {
 
           <DialogWindow>
             <DialogWindowTrigger asChild>
-              <OutlinePrimary size="small">Destructive dialog</OutlinePrimary>
+              <OutlinePrimary size="small">{t("designsystem.showcase.dialogWindows.destructiveDialogTrigger")}</OutlinePrimary>
             </DialogWindowTrigger>
             <DialogWindowContent
               variant="destructive"
-              title="Delete this item?"
-              description="This action cannot be undone. The item and related history will be permanently removed."
+              title={t("designsystem.showcase.dialogWindows.deleteItemTitle")}
+              description={t("designsystem.showcase.dialogWindows.deleteItemDescription")}
               footer={
                 <>
                   <DialogWindowClose asChild>
-                    <OutlineNeutral size="medium">Cancel</OutlineNeutral>
+                    <OutlineNeutral size="medium">{t("designsystem.showcase.common.cancel")}</OutlineNeutral>
                   </DialogWindowClose>
                   <DialogWindowClose asChild>
-                    <DestructiveRed size="medium">Delete</DestructiveRed>
+                    <DestructiveRed size="medium">{t("designsystem.showcase.common.delete")}</DestructiveRed>
                   </DialogWindowClose>
                 </>
               }
@@ -100,35 +99,34 @@ export function DialogWindowsShowcase() {
 
           <DialogWindow>
             <DialogWindowTrigger asChild>
-              <OutlinePrimary size="small">Large responsive dialog</OutlinePrimary>
+              <OutlinePrimary size="small">{t("designsystem.showcase.dialogWindows.largeDialogTrigger")}</OutlinePrimary>
             </DialogWindowTrigger>
             <DialogWindowContent
-              title="Review campaign details"
-              description="A larger dialog gives longer workflows room to breathe while staying responsive on smaller screens."
+              title={t("designsystem.showcase.dialogWindows.reviewCampaignTitle")}
+              description={t("designsystem.showcase.dialogWindows.reviewCampaignDescription")}
               className="max-w-3xl"
               footer={
                 <>
                   <DialogWindowClose asChild>
-                    <OutlineNeutral size="medium">Cancel</OutlineNeutral>
+                    <OutlineNeutral size="medium">{t("designsystem.showcase.common.cancel")}</OutlineNeutral>
                   </DialogWindowClose>
                   <DialogWindowClose asChild>
-                    <PrimaryPink size="medium">Save changes</PrimaryPink>
+                    <PrimaryPink size="medium">{t("designsystem.showcase.common.saveChanges")}</PrimaryPink>
                   </DialogWindowClose>
                 </>
               }
             >
               <div className="grid gap-4 md:grid-cols-2">
                 <div className="rounded-lg border border-border bg-surface-muted p-4">
-                  <h3 className="text-body-small-bold text-foreground-title">Campaign summary</h3>
+                  <h3 className="text-body-small-bold text-foreground-title">{t("designsystem.showcase.dialogWindows.campaignSummaryTitle")}</h3>
                   <p className="mt-2 text-body-small text-foreground-muted">
-                    Use a large responsive dialog for review steps, content previews, or settings with
-                    supporting context.
+                    {t("designsystem.showcase.dialogWindows.campaignSummaryBody")}
                   </p>
                 </div>
                 <div className="rounded-lg border border-border bg-surface-muted p-4">
-                  <h3 className="text-body-small-bold text-foreground-title">Next action</h3>
+                  <h3 className="text-body-small-bold text-foreground-title">{t("designsystem.showcase.dialogWindows.nextActionTitle")}</h3>
                   <p className="mt-2 text-body-small text-foreground-muted">
-                    The close button remains available in the top-right corner for every dialog size.
+                    {t("designsystem.showcase.dialogWindows.nextActionBody")}
                   </p>
                 </div>
               </div>
@@ -137,15 +135,15 @@ export function DialogWindowsShowcase() {
 
           <DialogWindow>
             <DialogWindowTrigger asChild>
-              <OutlinePrimary size="small">Custom width modal</OutlinePrimary>
+              <OutlinePrimary size="small">{t("designsystem.showcase.dialogWindows.customWidthTrigger")}</OutlinePrimary>
             </DialogWindowTrigger>
             <DialogWindowContent
-              title="Small modal"
-              description="Use the content className to customize width for compact tasks."
+              title={t("designsystem.showcase.dialogWindows.smallModalTitle")}
+              description={t("designsystem.showcase.dialogWindows.smallModalDescription")}
               className="max-w-sm"
               footer={
                 <DialogWindowClose asChild>
-                  <PrimaryPink size="medium">Done</PrimaryPink>
+                  <PrimaryPink size="medium">{t("designsystem.showcase.common.done")}</PrimaryPink>
                 </DialogWindowClose>
               }
             />
@@ -154,19 +152,19 @@ export function DialogWindowsShowcase() {
       </section>
 
       <section className="rounded-lg border border-border bg-surface p-5">
-        <h2 className="text-title-2 text-foreground-title">Popovers</h2>
+        <h2 className="text-title-2 text-foreground-title">{t("designsystem.showcase.dialogWindows.popoversTitle")}</h2>
         <p className="mt-1 max-w-2xl text-body-small text-foreground-muted">
-          Contextual overlays for lightweight supporting content, quick actions, and small controls.
+          {t("designsystem.showcase.dialogWindows.popoversIntro")}
         </p>
         <div className="mt-4 flex flex-wrap gap-2">
           <Popover>
             <PopoverTrigger asChild>
-              <OutlinePrimary size="small">Default popover</OutlinePrimary>
+              <OutlinePrimary size="small">{t("designsystem.showcase.dialogWindows.defaultPopoverTrigger")}</OutlinePrimary>
             </PopoverTrigger>
             <PopoverContent align="start">
-              <p className="text-body-small-bold">Default Popover</p>
+              <p className="text-body-small-bold">{t("designsystem.showcase.dialogWindows.defaultPopoverTitle")}</p>
               <p className="mt-1 text-body-small text-foreground-muted">
-                Example contextual content for the design system.
+                {t("designsystem.showcase.dialogWindows.defaultPopoverBody")}
               </p>
             </PopoverContent>
           </Popover>

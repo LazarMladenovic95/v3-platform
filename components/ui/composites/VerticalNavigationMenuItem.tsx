@@ -1,8 +1,8 @@
 "use client";
 
 import type { ReactNode } from "react";
-import { ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Icon } from "../atoms/Icon";
 import { Popover, PopoverContent, PopoverTrigger } from "./Popover";
 
 export interface VerticalNavigationMenuItemProps {
@@ -42,7 +42,7 @@ export function VerticalNavigationMenuItem({
             </span>
           )}
           <span className="min-w-0 flex-1 truncate">{label}</span>
-          <ChevronRight className="h-4 w-4 shrink-0" aria-hidden />
+          <Icon name="chevron-right" className="shrink-0" />
         </button>
       </PopoverTrigger>
       <PopoverContent align="start" side="right" sideOffset={8} className="w-56 p-2">

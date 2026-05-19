@@ -1,5 +1,6 @@
 "use client";
 
+import { t } from "@/lib/i18n";
 import {
   DateField,
   InputField,
@@ -19,15 +20,15 @@ export function InputsFormSpacingDemo() {
         event.preventDefault();
       }}
     >
-      <InputField label="Full name" placeholder="Jane Doe" hint="Required for this example." />
-      <InputField label="Email" type="email" placeholder="you@example.com" hint="We never share your email." />
-      <DateField label="Start date" hint="Pick a date." />
-      <SelectField label="Region" placeholder="Choose a region">
-        <SelectItem value="na">North America</SelectItem>
-        <SelectItem value="eu">Europe</SelectItem>
-        <SelectItem value="apac">Asia Pacific</SelectItem>
+      <InputField label={t("designsystem.showcase.common.labelFullName")} placeholder={t("designsystem.showcase.common.placeholderJaneDoe")} hint={t("designsystem.showcase.common.hintRequired")} />
+      <InputField label={t("designsystem.showcase.common.labelEmail")} type="email" placeholder={t("designsystem.showcase.common.placeholderEmail")} hint={t("designsystem.showcase.common.hintEmailPrivacy")} />
+      <DateField label={t("designsystem.showcase.common.labelStartDate")} hint={t("designsystem.showcase.common.hintPickDate")} />
+      <SelectField label={t("designsystem.showcase.common.labelRegion")} placeholder={t("designsystem.showcase.common.placeholderRegion")}>
+        <SelectItem value="na">{t("designsystem.showcase.common.northAmerica")}</SelectItem>
+        <SelectItem value="eu">{t("designsystem.showcase.common.europe")}</SelectItem>
+        <SelectItem value="apac">{t("designsystem.showcase.common.asiaPacific")}</SelectItem>
       </SelectField>
-      <TextareaField label="Notes" placeholder="Optional context" hint="Keep it brief." rows={3} />
+      <TextareaField label={t("designsystem.showcase.common.labelNotes")} placeholder={t("designsystem.showcase.common.placeholderNotes")} hint={t("designsystem.showcase.common.hintBrief")} rows={3} />
       <div>
         <OutlinePrimary type="submit" size="medium">
           Submit

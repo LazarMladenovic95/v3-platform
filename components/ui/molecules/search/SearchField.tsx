@@ -2,8 +2,9 @@
 "use client";
 
 import * as React from "react";
-import { Search } from "lucide-react";
-import { cn } from "../../../../lib/utils";
+import { cn } from "@/lib/utils";
+import { Icon } from "../../atoms/Icon";
+import { HintText } from "../../atoms/HintText";
 import { Input } from "../../atoms/Input";
 
 export interface SearchFieldProps extends React.InputHTMLAttributes<HTMLInputElement> {
@@ -62,18 +63,14 @@ export const SearchField = React.forwardRef<HTMLInputElement, SearchFieldProps>(
               disabled && "text-foreground-disabled",
             )}
           >
-            <Search size={16} />
+            <Icon name="search" />
           </span>
         </div>
 
         {state === "error" && hint && (
-          <p
-            id={hintId}
-            role="alert"
-            className="mt-2 text-body-small text-destructive"
-          >
+          <HintText id={hintId} role="alert" className="mt-2 text-destructive">
             {hint}
-          </p>
+          </HintText>
         )}
       </div>
     );
