@@ -1,7 +1,6 @@
 "use client";
 
 import { usePathname, useRouter } from "next/navigation";
-import { useState } from "react";
 import { Icon } from "@/components/ui/atoms/Icon";
 import { RightMenuItem } from "@/components/ui/molecules/RightMenuItem";
 import {
@@ -21,7 +20,6 @@ export interface RightMenuProps {
 export function RightMenu({ className, onItemClick }: RightMenuProps) {
   const router = useRouter();
   const pathname = usePathname();
-  const [isDesignSystemOpen, setIsDesignSystemOpen] = useState(() => pathname.startsWith("/bnd/designsystem"));
 
   const handleNavigate = (href: string) => {
     onItemClick?.();
@@ -35,8 +33,9 @@ export function RightMenu({ className, onItemClick }: RightMenuProps) {
   return (
     <aside
       id="right-menu"
+      aria-label={t("app.nav.ariaLabel")}
       className={cn(
-        "flex min-h-[104px] w-[273px] flex-col items-start gap-2 rounded-[12px] bg-surface p-2 shadow-[0px_4px_8px_rgba(0,0,0,0.08)]",
+        "flex min-h-[104px] w-[273px] flex-col items-start gap-2 rounded-lg bg-surface p-2 shadow-md",
         className,
       )}
     >
@@ -44,31 +43,25 @@ export function RightMenu({ className, onItemClick }: RightMenuProps) {
         {appNavPrimaryItems.map((item) => (
           <RightMenuItem
             key={item.id}
-            icon={<Icon name={item.icon} className="h-6 w-6" aria-hidden />}
+            icon={<Icon name={item.icon} size="xl" />}
             label={t(item.labelKey)}
             onClick={handlePlaceholder}
           />
         ))}
 
         <RightMenuItem
-          icon={<Icon name={appNavDesignSystemGroup.icon} className="h-6 w-6" aria-hidden />}
+          icon={<Icon name={appNavDesignSystemGroup.icon} size="xl" />}
           label={t(appNavDesignSystemGroup.labelKey)}
-          onClick={() => setIsDesignSystemOpen((open) => !open)}
+          defaultSubmenuOpen={pathname.startsWith("/bnd/designsystem")}
+          submenu={appNavDesignSystemChildren.map((item) => ({
+            id: item.id,
+            label: t(item.labelKey),
+            onClick: () => handleNavigate(item.href),
+          }))}
         />
 
-        {isDesignSystemOpen
-          ? appNavDesignSystemChildren.map((item) => (
-              <RightMenuItem
-                key={item.id}
-                label={t(item.labelKey)}
-                nested
-                onClick={() => item.href && handleNavigate(item.href)}
-              />
-            ))
-          : null}
-
         <RightMenuItem
-          icon={<Icon name={appNavLogoutItem.icon} className="h-6 w-6" aria-hidden />}
+          icon={<Icon name={appNavLogoutItem.icon} size="xl" />}
           label={t(appNavLogoutItem.labelKey)}
           onClick={handlePlaceholder}
         />

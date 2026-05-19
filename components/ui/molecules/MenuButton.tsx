@@ -23,7 +23,7 @@ export function MenuButton({ isOpen, onClick, className }: MenuButtonProps) {
         className,
       )}
     >
-      <Icon name="menu" size="lg" className="h-5 w-5" aria-hidden />
+      <Icon name="menu" size="lg" />
     </button>
   );
 }
