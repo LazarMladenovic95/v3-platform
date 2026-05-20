@@ -1,7 +1,10 @@
-# Cursor Shorthand Workflow Commands
+---
+description: Shorthand commands (crs, rt pl, iml)
+alwaysApply: true
+---
 
-When the user writes one of the shorthand commands below, interpret it exactly as follows:
+# Cursor shorthand
 
-- `crs` = check, report, and suggest. Do not rush to implementation.
-- `rt pl` = return an implementation plan, using planning mode.
-- `iml` = implement the last suggested plan.
+- **`crs`** — check, report, suggest; every bullet starts with ✅ 🟢 ⚠️ ❌ or 💡. Modifiers: `crs 🟢−` `crs 📋` `crs 💡` `crs 🔍`. See `crs.mdc`.
+- **`rt pl`** — implementation plan (planning mode); length OK.
+- **`iml`** — implement last plan; code/diffs OK.

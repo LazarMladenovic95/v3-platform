@@ -1,12 +1,18 @@
 ---
-description: Keep assistant replies short and scannable
+description: Default brevity; crs is ultra-minimal
 alwaysApply: true
 ---
 
 # Concise responses
 
-- **Default short:** Lead with the direct answer in a sentence or two; add detail only if the question needs it.
-- **Structure:** Prefer tight bullets over long paragraphs; avoid repeating the same point.
-- **No filler:** Skip long intros, “happy to help,” and recap paragraphs unless the user asks for a summary.
-- **`crs`:** Especially brief—check, report, suggest in minimal bullets; no implementation unless asked.
-- **Code / changes:** One screenful of explanation; use file paths and small snippets, not huge dumps.
+**Default:** Answer in 1–2 sentences, then bullets only if needed. Max ~80 words unless the user asks for depth, code, or a plan.
+
+**Never unless asked:** tables, verdict/summary blocks, "bottom line", recap of what you said, engagement closers, repeating the question.
+
+**`crs`:** See `crs.mdc` — emoji-prefixed bullets, modifiers (`🟢−` `📋` `💡` `🔍`), no implementation.
+
+**`rt pl` / `iml`:** Normal length OK for plans and diffs.
+
+**Code:** Paths + tiny snippets only; no dumps.
+
+**If unsure:** One clarifying question, not an essay.

@@ -1,0 +1,14 @@
+---
+description: Supabase migrations and schema contract — propose in chat only; never write without approval
+globs: supabase/**/*,contracts/schema.dbml
+alwaysApply: false
+---
+
+# Supabase migrations
+
+- Do **not** create, edit, or write migration files (`supabase/migrations/**/*.sql` or equivalent).
+- **Always suggest first:** propose SQL or a plan in chat and wait for **explicit approval** of the exact contents before any migration file is added or changed.
+
+# Schema contract
+
+- If a migration adds, removes, or changes a **table or column**, read `contracts/schema.dbml` first and **suggest** the matching DBML update in chat (same approval gate — do not edit `schema.dbml` until explicitly approved).

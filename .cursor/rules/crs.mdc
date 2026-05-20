@@ -1,0 +1,29 @@
+---
+description: CRS check-report-suggest — emoji status codes and response format
+alwaysApply: true
+---
+
+# CRS (`crs`)
+
+User invokes `crs` or `crs <modifier>`. **Check → report → suggest. No implementation.**
+
+## Modifiers (suffix after `crs`)
+
+- *(none)* — full audit: ✅/🟢/⚠️/❌ bullets, then 💡 when gaps exist (≤5 bullets total)
+- `🟢−` — **gaps only:** omit all ✅ and 🟢 lines; optional one-line `🟢 N skipped`; then ⚠️/❌ and 💡
+- `📋` — report only, no 💡 (≤5)
+- `💡` — suggest only; assumes prior context (≤5); every bullet is 💡
+- `🔍` — deep audit (≤8); still no implementation
+
+## Response format (required)
+
+- No preamble, tables, recap, or engagement closer.
+- **Every bullet begins with exactly one status emoji:** ✅ done · 🟢 OK · ⚠️ partial/drift · ❌ missing/wrong · 💡 suggest
+- Default `crs`: mix ✅/🟢/⚠️/❌ as needed; add ≥1 💡 bullet when anything is ⚠️ or ❌; omit 💡 if all ✅/🟢
+- `🟢−`: only ⚠️, ❌, and 💡 bullets (never ✅ or 🟢 as line items)
+- `💡`: every bullet starts with 💡
+
+## Example (`crs 🟢−`)
+
+- ❌ No scoped `database-ops.mdc` for PK/`bubble_id` rules
+- 💡 Add `database-ops.mdc` globs for `contracts/schema.dbml` and future `supabase/**`
