@@ -1,4 +1,5 @@
 import data from "@/lib/fixtures/video-reviews-data.json";
+import { getLocalizedCategorySlug } from "@/lib/data/interest-category-slugs";
 import type { LocaleId } from "@/lib/i18n";
 import { getLocale } from "@/lib/i18n";
 import type { LocalizedStringMap } from "@/lib/i18n-content";
@@ -85,12 +86,13 @@ export function getReviewByPublicId(publicReviewId: string): ReviewFixture | und
   return reviews.find((review) => review.publicReviewId === publicReviewId);
 }
 
-/** Client-safe path; uses fixture `categorySlug` (English). Canonical locale slugs come from category pages. */
+/** Player URL using locale-specific category slug (matches www sitemap / interest-categories.csv). */
 export function getReviewPlayerPath(
   review: ReviewFixture,
   locale: LocaleId = getLocale(),
 ): string {
-  const path = `/video-reviews/${review.categorySlug}/${review.brandSlug}/${review.productSlug}/${review.publicReviewId}`;
+  const categorySlug = getLocalizedCategorySlug(review.categorySlug, locale);
+  const path = `/video-reviews/${categorySlug}/${review.brandSlug}/${review.productSlug}/${review.publicReviewId}`;
   return pathnameWithLocale(path, locale);
 }
 

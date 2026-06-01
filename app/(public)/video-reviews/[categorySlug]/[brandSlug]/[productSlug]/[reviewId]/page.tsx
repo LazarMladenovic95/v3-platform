@@ -1,7 +1,12 @@
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { PageCanvas } from "@/components/layout/PageCanvas";
 import { ReviewScreen } from "@/components/screens";
+import {
+  getCategoryByEnglishSlug,
+  getCategorySlug,
+} from "@/lib/data/interest-categories-dev";
+import { getReviewPlayerPath } from "@/lib/fixtures/video-reviews";
 import { getReviewByPath } from "@/lib/fixtures/video-reviews-server";
 import { applyRequestLocale } from "@/lib/i18n-request";
 import { t } from "@/lib/i18n";
@@ -32,6 +37,14 @@ export default async function ReviewPlayerPage({ params }: ReviewPageProps) {
   const resolved = await params;
   const review = getReviewByPath(resolved, locale);
   if (!review) notFound();
+
+  const category = getCategoryByEnglishSlug(review.categorySlug);
+  if (category) {
+    const canonicalCategorySlug = getCategorySlug(category, locale);
+    if (resolved.categorySlug !== canonicalCategorySlug) {
+      redirect(getReviewPlayerPath(review, locale));
+    }
+  }
 
   return (
     <PageCanvas>

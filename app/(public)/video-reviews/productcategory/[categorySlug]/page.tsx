@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { PageCanvas } from "@/components/layout/PageCanvas";
 import { CategoryScreen } from "@/components/screens";
 import {
@@ -9,6 +9,7 @@ import {
 import { getReviewsForCategoryEnglishSlug } from "@/lib/fixtures/video-reviews";
 import { applyRequestLocale } from "@/lib/i18n-request";
 import { t } from "@/lib/i18n";
+import { pathnameWithLocale } from "@/lib/i18n-routing";
 import { pickLocalized } from "@/lib/i18n-content";
 
 type CategoryPageProps = {
@@ -32,6 +33,11 @@ export default async function CategoryProductPage({ params }: CategoryPageProps)
   const { categorySlug } = await params;
   const category = getCategoryBySlug(categorySlug, locale);
   if (!category) notFound();
+
+  const canonicalSlug = getCategorySlug(category, locale);
+  if (categorySlug !== canonicalSlug) {
+    redirect(pathnameWithLocale(`/video-reviews/productcategory/${canonicalSlug}`, locale));
+  }
 
   const reviews = getReviewsForCategoryEnglishSlug(category.slugs.en);
 
