@@ -1,7 +1,10 @@
+import { headers } from "next/headers";
 import { AppFooter } from "@/components/layout/AppFooter";
 import { AppHeader } from "@/components/ui/composites/AppHeader";
+import { isPublicSitePath } from "@/lib/app-nav-config";
 import { applyRequestLocale } from "@/lib/i18n-request";
 import { buildPublicMenuCatalog } from "@/lib/public-menu-data.server";
+import { PATHNAME_HEADER } from "@/lib/i18n-routing";
 import type { ReactNode } from "react";
 
 export interface LayoutShellProps {
@@ -14,7 +17,11 @@ export interface LayoutShellProps {
  */
 export async function LayoutShell({ children }: LayoutShellProps) {
   const locale = await applyRequestLocale();
-  const publicMenuCatalog = buildPublicMenuCatalog(locale);
+  const headerStore = await headers();
+  const pathname = headerStore.get(PATHNAME_HEADER) ?? "/";
+  const publicMenuCatalog = isPublicSitePath(pathname)
+    ? buildPublicMenuCatalog(locale)
+    : undefined;
 
   return (
     <div className="flex min-h-screen flex-col bg-background">

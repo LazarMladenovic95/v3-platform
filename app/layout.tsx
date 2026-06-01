@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Mulish } from "next/font/google";
+import { ClientLocaleBoundary } from "@/components/i18n/ClientLocaleBoundary";
 import { LayoutShell } from "@/components/layout";
 import { applyRequestLocale } from "@/lib/i18n-request";
 import { t } from "@/lib/i18n";
@@ -12,17 +13,20 @@ const mulish = Mulish({
   display: "swap",
 });
 
-export const metadata: Metadata = {
-  title: t("app.layout.title"),
-  description: t("app.layout.description"),
-  icons: {
-    icon: [
-      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
-      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
-    ],
-    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  await applyRequestLocale();
+  return {
+    title: t("app.layout.title"),
+    description: t("app.layout.description"),
+    icons: {
+      icon: [
+        { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+        { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      ],
+      apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
+    },
+  };
+}
 
 export default async function RootLayout({
   children,
@@ -34,7 +38,9 @@ export default async function RootLayout({
   return (
     <html lang={locale}>
       <body className={`${mulish.variable} antialiased`}>
-        <LayoutShell>{children}</LayoutShell>
+        <ClientLocaleBoundary locale={locale}>
+          <LayoutShell>{children}</LayoutShell>
+        </ClientLocaleBoundary>
       </body>
     </html>
   );

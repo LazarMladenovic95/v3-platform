@@ -1,4 +1,5 @@
 import type { IconName } from "@/components/ui/icons";
+import { stripLocalePrefix } from "@/lib/i18n-routing";
 import type { LocaleId } from "@/locales/index";
 
 export type PublicNavLabelKey =
@@ -45,9 +46,11 @@ export type AppNavItemConfig = {
 export type RightMenuVariant = "public" | "default" | "company" | "reviewer" | "bnd";
 
 export function isPublicSitePath(pathname: string): boolean {
-  if (pathname === "/") return true;
-  if (pathname.startsWith("/video-reviews")) return true;
-  if (pathname.startsWith("/sign-in")) return true;
+  const { pathnameWithoutLocale } = stripLocalePrefix(pathname);
+
+  if (pathnameWithoutLocale === "/") return true;
+  if (pathnameWithoutLocale.startsWith("/video-reviews")) return true;
+  if (pathnameWithoutLocale.startsWith("/sign-in")) return true;
   return false;
 }
 
@@ -104,7 +107,7 @@ export const publicNavPrimaryLinks: PublicNavLinkConfig[] = [
 ];
 
 export const publicNavCatalogGroups = [
-  { id: "brands", labelKey: "app.nav.public.brands" as const, icon: "shopping-bag" as const satisfies IconName },
+  { id: "brands", labelKey: "app.nav.public.brands" as const, icon: "store" as const satisfies IconName },
   {
     id: "categories",
     labelKey: "app.nav.public.categories" as const,

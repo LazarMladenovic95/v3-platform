@@ -19,11 +19,8 @@ import {
   type RightMenuVariant,
 } from "@/lib/app-nav-config";
 import { getLocale, t } from "@/lib/i18n";
-import {
-  LOCALE_COOKIE_NAME,
-  pathnameWithLocale,
-  stripLocalePrefix,
-} from "@/lib/i18n-routing";
+import { setPreferredLocaleCookie } from "@/lib/i18n-locale-actions";
+import { pathnameWithLocale, stripLocalePrefix } from "@/lib/i18n-routing";
 import type { PublicMenuCatalog } from "@/lib/public-menu-types";
 import type { LocaleId } from "@/locales/index";
 import { cn } from "@/lib/utils";
@@ -72,6 +69,7 @@ export function RightMenu({ className, onItemClick, variant, publicMenuCatalog }
   const router = useRouter();
   const pathname = usePathname();
   const locale = getLocale();
+  const { pathnameWithoutLocale } = stripLocalePrefix(pathname);
   const resolvedVariant = variant ?? resolveRightMenuVariant(pathname);
 
   const handleNavigate = (href: string) => {
@@ -93,10 +91,10 @@ export function RightMenu({ className, onItemClick, variant, publicMenuCatalog }
     router.push(appNavLogoutItem.href ?? "/");
   };
 
-  const handleLocaleChange = (nextLocale: LocaleId) => {
+  const handleLocaleChange = async (nextLocale: LocaleId) => {
     onItemClick?.();
     const { pathnameWithoutLocale } = stripLocalePrefix(pathname);
-    document.cookie = `${LOCALE_COOKIE_NAME}=${nextLocale};path=/;SameSite=Lax`;
+    await setPreferredLocaleCookie(nextLocale);
     const nextPath = pathnameWithLocale(pathnameWithoutLocale, nextLocale);
     router.push(nextPath);
     router.refresh();
@@ -123,6 +121,30 @@ export function RightMenu({ className, onItemClick, variant, publicMenuCatalog }
       <div className="flex w-full flex-col gap-2">
         {resolvedVariant === "public" ? (
           <>
+            {publicNavCatalogGroups.map((group) => {
+              const items = catalogByGroupId[group.id];
+              const isCategories = group.id === "categories";
+
+              return (
+                <RightMenuItem
+                  key={group.id}
+                  icon={<Icon name={group.icon} size="xl" />}
+                  label={t(group.labelKey)}
+                  submenuIndicator={isCategories ? "right" : "down"}
+                  defaultSubmenuOpen={pathnameWithoutLocale.startsWith(
+                    group.id === "brands" ? "/video-reviews/brand" : "/video-reviews/productcategory",
+                  )}
+                  submenu={items.map((entry) => ({
+                    id: entry.id,
+                    label: entry.label,
+                    onClick: () => handleNavigate(entry.href),
+                  }))}
+                />
+              );
+            })}
+
+            <MenuDivider />
+
             {publicNavPrimaryLinks.map((item) => (
               <RightMenuItem
                 key={item.id}
@@ -137,28 +159,6 @@ export function RightMenu({ className, onItemClick, variant, publicMenuCatalog }
                 }}
               />
             ))}
-
-            <MenuDivider />
-
-            {publicNavCatalogGroups.map((group) => {
-              const items = catalogByGroupId[group.id];
-
-              return (
-                <RightMenuItem
-                  key={group.id}
-                  icon={<Icon name={group.icon} size="xl" />}
-                  label={t(group.labelKey)}
-                  defaultSubmenuOpen={pathname.startsWith(
-                    group.id === "brands" ? "/video-reviews/brand" : "/video-reviews/productcategory",
-                  )}
-                  submenu={items.map((entry) => ({
-                    id: entry.id,
-                    label: entry.label,
-                    onClick: () => handleNavigate(entry.href),
-                  }))}
-                />
-              );
-            })}
 
             <MenuDivider />
 
