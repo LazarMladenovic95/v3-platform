@@ -8,6 +8,7 @@ import {
   appNavDesignSystemGroup,
   appNavLogoutItem,
   appNavPrimaryItems,
+  bndNavItems,
   companiesNavItems,
   reviewerNavItems,
   resolveRightMenuVariant,
@@ -95,6 +96,27 @@ export function RightMenu({ className, onItemClick, variant }: RightMenuProps) {
             onNavigate={handleNavigate}
             onPlaceholder={handlePlaceholder}
           />
+        ) : null}
+
+        {resolvedVariant === "bnd" ? (
+          <>
+            <NavItemsList
+              items={bndNavItems}
+              onNavigate={handleNavigate}
+              onPlaceholder={handlePlaceholder}
+            />
+
+            <RightMenuItem
+              icon={<Icon name={appNavDesignSystemGroup.icon} size="xl" />}
+              label={t(appNavDesignSystemGroup.labelKey)}
+              defaultSubmenuOpen={pathname.startsWith("/bnd/designsystem")}
+              submenu={appNavDesignSystemChildren.map((item) => ({
+                id: item.id,
+                label: t(item.labelKey),
+                onClick: () => handleNavigate(item.href),
+              }))}
+            />
+          </>
         ) : null}
 
         {resolvedVariant === "default" ? (

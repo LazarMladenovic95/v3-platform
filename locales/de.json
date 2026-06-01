@@ -166,6 +166,27 @@
     "stub": {
       "description": "Dieser Bereich ist im Prototyp noch nicht verfügbar."
     },
+    "companiesAllReviews": {
+      "metaTitle": "Alle Video-Reviews",
+      "metaDescription": "Community- und Kampagnen-Video-Reviews für deine Marke.",
+      "title": "Alle Video-Reviews",
+      "description": "Community-Reviews von unabhängigen Reviewern und Reviews aus deinen Kampagnen.",
+      "emptySection": "In diesem Bereich gibt es noch keine Reviews.",
+      "community": {
+        "title": "Community-Reviews",
+        "description": "Von Reviewern zu gekauften Produkten eingereicht, ohne Kampagnen-Briefing.",
+        "listAriaLabel": "Community-Reviews"
+      },
+      "campaign": {
+        "title": "Kampagnen-Reviews",
+        "description": "Über deine Review-Kampagnen eingereicht.",
+        "listAriaLabel": "Kampagnen-Reviews"
+      },
+      "campaigns": {
+        "mieleCordlessLaunch": "Miele Cordless Launch",
+        "mieleHomeKitchen": "Miele Home & Kitchen"
+      }
+    },
     "companiesHome": {
       "metaTitle": "Unternehmens-Dashboard",
       "metaDescription": "Video-Reviews, Kampagnen und Marken-Assets verwalten.",

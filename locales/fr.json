@@ -166,6 +166,27 @@
     "stub": {
       "description": "Cette section n'est pas encore disponible dans le prototype."
     },
+    "companiesAllReviews": {
+      "metaTitle": "Tous les avis vidéo",
+      "metaDescription": "Avis vidéo communauté et campagne pour votre marque.",
+      "title": "Tous les avis vidéo",
+      "description": "Avis communauté de reviewers indépendants et avis issus de vos campagnes.",
+      "emptySection": "Aucun avis dans cette section pour le moment.",
+      "community": {
+        "title": "Avis communauté",
+        "description": "Soumis par des reviewers sur des produits achetés, sans brief de campagne.",
+        "listAriaLabel": "Avis communauté"
+      },
+      "campaign": {
+        "title": "Avis de campagne",
+        "description": "Soumis via vos campagnes d'avis.",
+        "listAriaLabel": "Avis de campagne"
+      },
+      "campaigns": {
+        "mieleCordlessLaunch": "Miele Cordless Launch",
+        "mieleHomeKitchen": "Miele Home & Kitchen"
+      }
+    },
     "companiesHome": {
       "metaTitle": "Tableau de bord entreprise",
       "metaDescription": "Gérez les avis vidéo, campagnes et assets de marque.",

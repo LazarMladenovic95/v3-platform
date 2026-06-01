@@ -19,7 +19,7 @@ Single enforcement point for **page layout behavior**.
 
 ### Chrome-aligned routes (prototype)
 
-`/companies/**` and `/reviewer/**` use a segment `layout.tsx`:
+`app/(platform)/companies/**` and `app/(platform)/reviewer/**` use a segment `layout.tsx`:
 
 ```text
 PageCanvas → AppContentContainer (vertical padding) → Screen
@@ -46,7 +46,8 @@ app pages → PageCanvas → Screen (components/screens/) → ui composites/atom
 
 - Root: `LayoutShell` once in `app/layout.tsx`.
 - Product pages: wrap in `PageCanvas`; layout options live there, not scattered in wrappers.
-- `app/bnd/designsystem/`: own segment layout; **no** `PageCanvas`.
+- `app/(platform)/bnd/designsystem/`: own segment layout; **no** `PageCanvas`.
+- `app/(platform)/bnd/(admin)/`: `PageCanvas` → `AppContentContainer` (admin stubs).
 
 ## Related
 

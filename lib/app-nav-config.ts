@@ -27,11 +27,12 @@ export type AppNavItemConfig = {
   href: string | null;
 };
 
-export type RightMenuVariant = "default" | "companies" | "reviewer";
+export type RightMenuVariant = "default" | "companies" | "reviewer" | "bnd";
 
 export function resolveRightMenuVariant(pathname: string): RightMenuVariant {
   if (pathname.startsWith("/companies")) return "companies";
   if (pathname.startsWith("/reviewer")) return "reviewer";
+  if (pathname.startsWith("/bnd")) return "bnd";
   return "default";
 }
 
@@ -58,12 +59,36 @@ export const appNavPrimaryItems: AppNavItemConfig[] = [
   },
 ];
 
+/** Admin / internal app menu when pathname is under `/bnd` (excludes design system docs). */
+export const bndNavItems: AppNavItemConfig[] = [
+  { id: "dashboard", labelKey: "app.nav.dashboard", icon: "layout-dashboard", href: "/bnd/dashboard" },
+  {
+    id: "manage-brand-assets",
+    labelKey: "app.nav.manageBrandAssets",
+    icon: "shopping-bag",
+    href: "/bnd/brand-assets",
+  },
+  {
+    id: "distribution-analytics",
+    labelKey: "app.nav.distributionAnalytics",
+    icon: "bar-chart3",
+    href: "/bnd/analytics",
+  },
+  { id: "admin-portal", labelKey: "app.nav.adminPortal", icon: "user", href: "/bnd/admin-portal" },
+  {
+    id: "account-settings",
+    labelKey: "app.nav.accountSettings",
+    icon: "sliders-horizontal",
+    href: "/bnd/account-settings",
+  },
+];
+
 export const companiesNavItems: AppNavItemConfig[] = [
   {
     id: "see-all-video-reviews",
     labelKey: "app.nav.companies.seeAllVideoReviews",
     icon: "play-square",
-    href: "/video-reviews",
+    href: "/companies/all-reviews",
   },
   {
     id: "manage-review-campaigns",

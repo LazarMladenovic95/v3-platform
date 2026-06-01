@@ -166,6 +166,27 @@
     "stub": {
       "description": "This section is not available in the prototype yet."
     },
+    "companiesAllReviews": {
+      "metaTitle": "All video reviews",
+      "metaDescription": "Community and campaign video reviews for your brand.",
+      "title": "All video reviews",
+      "description": "Community reviews from independent reviewers and reviews produced through your campaigns.",
+      "emptySection": "No reviews in this section yet.",
+      "community": {
+        "title": "Community reviews",
+        "description": "Submitted by reviewers on products they bought, without a campaign brief.",
+        "listAriaLabel": "Community reviews"
+      },
+      "campaign": {
+        "title": "Campaign reviews",
+        "description": "Submitted through your review campaigns.",
+        "listAriaLabel": "Campaign reviews"
+      },
+      "campaigns": {
+        "mieleCordlessLaunch": "Miele Cordless Launch",
+        "mieleHomeKitchen": "Miele Home & Kitchen"
+      }
+    },
     "companiesHome": {
       "metaTitle": "Company dashboard",
       "metaDescription": "Manage video reviews, campaigns, and brand assets.",

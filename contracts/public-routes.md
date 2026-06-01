@@ -1,7 +1,7 @@
 # Public routes (www / player prototype)
 
 **Status:** Active  
-**Related:** [prototyping-approach.md](./prototyping-approach.md), [layout-shell-page-canvas.md](./layout-shell-page-canvas.md), [schema.dbml](./schema.dbml)
+**Related:** [platform-routes.md](./platform-routes.md), [prototyping-approach.md](./prototyping-approach.md), [layout-shell-page-canvas.md](./layout-shell-page-canvas.md), [schema.dbml](./schema.dbml)
 
 ## Canonical paths (sitemap parity)
 
@@ -10,16 +10,6 @@
 | `/` | Marketing landing |
 | `/sign-in` | Login (prototype; mirrors [app.expeerly.com](https://app.expeerly.com/)) |
 | `/sign-in?sign-up` | Sign up (role → reviewer email/password → 6-digit verify) |
-| `/reviewer/onboarding` | Reviewer onboarding (post-verify prototype) |
-| `/reviewer/myreviews` | Reviewer’s self-submitted vs campaign reviews (fixture prototype) |
-| `/reviewer/campaigns` | Running campaigns (stub) |
-| `/reviewer/account-settings` | Account settings (stub) |
-| `/companies` | Company dashboard (customer sign-up landing) |
-| `/companies/campaigns` | Manage review campaigns (stub) |
-| `/companies/brand-assets` | Brand assets & products (stub) |
-| `/companies/analytics` | Distribution & analytics (stub) |
-| `/companies/account-settings` | Account settings (stub) |
-| `/companies/credits` | Credits (stub) |
 | `/video-reviews` | Hub |
 | `/video-reviews/brand/{brandSlug}` | Brand listing |
 | `/video-reviews/{categorySlug}/{brandSlug}/{productSlug}/{reviewId}` | Single review player |
@@ -28,10 +18,14 @@
 
 **Excluded:** `/video-reviews/reviewers/*` (not migrated).
 
-## Locale prefixes (future)
+**Platform (not public):** `/companies/**`, `/reviewer/**` — see [platform-routes.md](./platform-routes.md).
+
+## Locale URL prefixes (future)
 
 - Default `en`: no prefix (`https://www.expeerly.com/...`)
-- `de`, `fr`, `it`: `/{locale}/...` (middleware + `[locale]` segment — stubbed; prototype uses `en` only)
+- `de`, `fr`, `it`: `/{locale}/...` on **public** paths only (middleware + `[locale]` — not implemented yet)
+- **Exempt** (never prefixed): `/companies`, `/reviewer`, `/sign-in`, `/bnd` — see `lib/i18n-routing.ts`
+- UI copy on all surfaces may still use `t()` / `locales/*.json` regardless of URL locale
 
 ## URL segments vs schema
 
@@ -64,9 +58,5 @@ Resolver must match **all** segments; wrong slug combo → 404 even if `reviewId
 
 - `app/(public)/**`: thin route → `PageCanvas` → screen in `components/screens/public/`
 - Screens compose `components/ui`; product video pieces live under `composites/video-reviews/` and `molecules/video-reviews/`
-- `app/bnd/designsystem/**`: no `PageCanvas` (see layout contract)
+- Design system: `app/(platform)/bnd/designsystem/**` — see [platform-routes.md](./platform-routes.md)
 - Shared `LayoutShell` + `AppHeader` at root
-
-## Platform
-
-Authenticated `app.expeerly.com` routes live under `app/(platform)/` later — not this contract.
