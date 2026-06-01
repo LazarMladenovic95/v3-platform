@@ -39,6 +39,7 @@ export { DateRangeField } from "./composites/DateRangeField";
 export { FileUploadField } from "./molecules/FileUploadField";
 export { InputField } from "./molecules/InputField";
 export { Pagination } from "./molecules/Pagination";
+export { StarRating, type StarRatingProps } from "./molecules/video-reviews/StarRating";
 export { ProgressBar } from "./molecules/ProgressBar";
 export { RadioGroupField } from "./molecules/RadioGroupField";
 export { TextareaField } from "./molecules/TextareaField";
@@ -90,6 +91,15 @@ export {
 export { InPageAlert } from "./composites/InPageAlert";
 export { Popover } from "./composites/Popover";
 export { InfoBox } from "./composites/InfoBox";
+export { MainVideoCard, type MainVideoCardProps } from "./composites/video-reviews/MainVideoCard";
+export {
+  VideoRatingThumbnailCard,
+  type VideoRatingThumbnailCardProps,
+} from "./composites/video-reviews/VideoRatingThumbnailCard";
+export {
+  BrandMarketingCard,
+  type BrandMarketingCardProps,
+} from "./composites/video-reviews/BrandMarketingCard";
 export {
   Tooltip,
   TooltipContent,

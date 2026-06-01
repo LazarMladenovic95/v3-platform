@@ -1,24 +1,39 @@
 import type { IconName } from "@/components/ui/icons";
 
+export type AppNavLabelKey =
+  | "app.nav.dashboard"
+  | "app.nav.manageBrandAssets"
+  | "app.nav.distributionAnalytics"
+  | "app.nav.adminPortal"
+  | "app.nav.accountSettings"
+  | "app.nav.designSystem"
+  | "app.nav.designSystemOverview"
+  | "app.nav.designSystemTypography"
+  | "app.nav.designSystemColor"
+  | "app.nav.designSystemStyles"
+  | "app.nav.designSystemAccessibility"
+  | "app.nav.designSystemComponents"
+  | "app.nav.logout"
+  | "app.nav.companies.seeAllVideoReviews"
+  | "app.nav.companies.manageReviewCampaigns"
+  | "app.nav.companies.credits"
+  | "app.nav.reviewer.myReviews"
+  | "app.nav.reviewer.runningCampaigns";
+
 export type AppNavItemConfig = {
   id: string;
-  labelKey:
-    | "app.nav.dashboard"
-    | "app.nav.manageBrandAssets"
-    | "app.nav.distributionAnalytics"
-    | "app.nav.adminPortal"
-    | "app.nav.accountSettings"
-    | "app.nav.designSystem"
-    | "app.nav.designSystemOverview"
-    | "app.nav.designSystemTypography"
-    | "app.nav.designSystemColor"
-    | "app.nav.designSystemStyles"
-    | "app.nav.designSystemAccessibility"
-    | "app.nav.designSystemComponents"
-    | "app.nav.logout";
+  labelKey: AppNavLabelKey;
   icon: IconName;
   href: string | null;
 };
+
+export type RightMenuVariant = "default" | "companies" | "reviewer";
+
+export function resolveRightMenuVariant(pathname: string): RightMenuVariant {
+  if (pathname.startsWith("/companies")) return "companies";
+  if (pathname.startsWith("/reviewer")) return "reviewer";
+  return "default";
+}
 
 export const appNavPrimaryItems: AppNavItemConfig[] = [
   { id: "dashboard", labelKey: "app.nav.dashboard", icon: "layout-dashboard", href: null },
@@ -40,6 +55,66 @@ export const appNavPrimaryItems: AppNavItemConfig[] = [
     labelKey: "app.nav.accountSettings",
     icon: "sliders-horizontal",
     href: null,
+  },
+];
+
+export const companiesNavItems: AppNavItemConfig[] = [
+  {
+    id: "see-all-video-reviews",
+    labelKey: "app.nav.companies.seeAllVideoReviews",
+    icon: "play-square",
+    href: "/video-reviews",
+  },
+  {
+    id: "manage-review-campaigns",
+    labelKey: "app.nav.companies.manageReviewCampaigns",
+    icon: "megaphone",
+    href: "/companies/campaigns",
+  },
+  {
+    id: "manage-brand-assets",
+    labelKey: "app.nav.manageBrandAssets",
+    icon: "tag",
+    href: "/companies/brand-assets",
+  },
+  {
+    id: "distribution-analytics",
+    labelKey: "app.nav.distributionAnalytics",
+    icon: "bar-chart3",
+    href: "/companies/analytics",
+  },
+  {
+    id: "account-settings",
+    labelKey: "app.nav.accountSettings",
+    icon: "sliders-horizontal",
+    href: "/companies/account-settings",
+  },
+  {
+    id: "credits",
+    labelKey: "app.nav.companies.credits",
+    icon: "banknote",
+    href: "/companies/credits",
+  },
+];
+
+export const reviewerNavItems: AppNavItemConfig[] = [
+  {
+    id: "my-reviews",
+    labelKey: "app.nav.reviewer.myReviews",
+    icon: "play-square",
+    href: "/reviewer/myreviews",
+  },
+  {
+    id: "running-campaigns",
+    labelKey: "app.nav.reviewer.runningCampaigns",
+    icon: "megaphone",
+    href: "/reviewer/campaigns",
+  },
+  {
+    id: "account-settings",
+    labelKey: "app.nav.accountSettings",
+    icon: "sliders-horizontal",
+    href: "/reviewer/account-settings",
   },
 ];
 
@@ -69,5 +144,5 @@ export const appNavLogoutItem: AppNavItemConfig = {
   id: "logout",
   labelKey: "app.nav.logout",
   icon: "log-out",
-  href: null,
+  href: "/",
 };

@@ -3,10 +3,10 @@
 ## Order
 
 1. **Design system** — finish tokens / atoms / molecules / composites before feature shells.
-2. **Sitemap** — all routes and roles; no orphan pages.
+2. **Sitemap** — all routes and roles; no orphan pages. See [public-routes.md](./public-routes.md).
 3. **Modes** - setup prod/dev mode env for robots
-3. **i18n** — keys first; no user-facing copy inline in components. Copy in basic principles from other project
-4. **Pages** — compose **blocks** (content/layout pieces) per page; keep shells thin until blocks exist. Use **PageCanvas** and **LayoutShell** on **app routes only** (not design system).
+3. **i18n** — keys first; no user-facing copy inline in components. See [i18n-locales.md](./i18n-locales.md).
+4. **Pages** — thin routes; **screens** in `components/screens/` compose **ui** atoms/molecules/composites. Use **PageCanvas** and **LayoutShell** on **app routes only** (not design system).
 
 ## UI governance
 

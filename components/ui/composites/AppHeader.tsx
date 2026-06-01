@@ -3,9 +3,23 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+import {
+  outlinePrimaryLinkClassName,
+  primaryPinkClassName,
+} from "@/components/ui/atoms/button/buttonClasses";
 import { RightMenu } from "@/components/ui/composites/RightMenu";
 import { MenuButton } from "@/components/ui/molecules/MenuButton";
+import { appContentContainerClassName } from "@/components/layout/contentContainerClasses";
 import { t } from "@/lib/i18n";
+import { cn } from "@/lib/utils";
+
+const AUTH_LINKS = {
+  signUp: "/sign-in?sign-up",
+  login: "/sign-in",
+} as const;
+
+const headerAuthLinkFocus =
+  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2 focus-visible:ring-offset-surface";
 
 export function AppHeader() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -37,7 +51,12 @@ export function AppHeader() {
 
   return (
     <header className="h-header w-full shrink-0 border-b border-border bg-surface">
-      <div className="relative mx-auto flex h-full w-full max-w-content items-center justify-between gap-6 px-6 md:px-16 lg:px-20">
+      <div
+        className={cn(
+          appContentContainerClassName,
+          "relative flex h-full items-center justify-between gap-6",
+        )}
+      >
         <Link
           href="/"
           className="inline-flex shrink-0 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
@@ -52,14 +71,61 @@ export function AppHeader() {
           />
         </Link>
 
-        <div ref={menuAreaRef} className="relative">
-          <MenuButton isOpen={isMenuOpen} onClick={() => setIsMenuOpen((open) => !open)} />
+        <div className="flex items-center gap-2 md:gap-3">
+          <Link
+            href={AUTH_LINKS.signUp}
+            className={cn(
+              primaryPinkClassName("small"),
+              "no-underline md:hidden",
+              headerAuthLinkFocus,
+            )}
+            aria-label={t("app.auth.signUpAriaLabel")}
+          >
+            {t("app.auth.signUpLabel")}
+          </Link>
+          <Link
+            href={AUTH_LINKS.login}
+            className={cn(
+              outlinePrimaryLinkClassName("small"),
+              "no-underline md:hidden",
+              headerAuthLinkFocus,
+            )}
+            aria-label={t("app.auth.loginAriaLabel")}
+          >
+            {t("app.auth.loginLabel")}
+          </Link>
+          <Link
+            href={AUTH_LINKS.signUp}
+            className={cn(
+              primaryPinkClassName("medium"),
+              "hidden min-w-36 no-underline md:inline-flex",
+              headerAuthLinkFocus,
+            )}
+            aria-label={t("app.auth.signUpAriaLabel")}
+          >
+            {t("app.auth.signUpLabel")}
+          </Link>
+          <Link
+            href={AUTH_LINKS.login}
+            className={cn(
+              outlinePrimaryLinkClassName("medium"),
+              "hidden min-w-36 no-underline md:inline-flex",
+              headerAuthLinkFocus,
+            )}
+            aria-label={t("app.auth.loginAriaLabel")}
+          >
+            {t("app.auth.loginLabel")}
+          </Link>
+
+          <div ref={menuAreaRef} className="relative">
+            <MenuButton isOpen={isMenuOpen} onClick={() => setIsMenuOpen((open) => !open)} />
           {isMenuOpen ? (
             <RightMenu
               className="absolute top-menu-dropdown right-0 z-20"
               onItemClick={() => setIsMenuOpen(false)}
             />
           ) : null}
+          </div>
         </div>
       </div>
     </header>

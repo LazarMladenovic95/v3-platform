@@ -8,6 +8,11 @@ import {
   appNavDesignSystemGroup,
   appNavLogoutItem,
   appNavPrimaryItems,
+  companiesNavItems,
+  reviewerNavItems,
+  resolveRightMenuVariant,
+  type AppNavItemConfig,
+  type RightMenuVariant,
 } from "@/lib/app-nav-config";
 import { t } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
@@ -15,11 +20,42 @@ import { cn } from "@/lib/utils";
 export interface RightMenuProps {
   className?: string;
   onItemClick?: () => void;
+  variant?: RightMenuVariant;
 }
 
-export function RightMenu({ className, onItemClick }: RightMenuProps) {
+function NavItemsList({
+  items,
+  onNavigate,
+  onPlaceholder,
+}: {
+  items: readonly AppNavItemConfig[];
+  onNavigate: (href: string) => void;
+  onPlaceholder: () => void;
+}) {
+  return (
+    <>
+      {items.map((item) => (
+        <RightMenuItem
+          key={item.id}
+          icon={<Icon name={item.icon} size="xl" />}
+          label={t(item.labelKey)}
+          onClick={() => {
+            if (item.href) {
+              onNavigate(item.href);
+              return;
+            }
+            onPlaceholder();
+          }}
+        />
+      ))}
+    </>
+  );
+}
+
+export function RightMenu({ className, onItemClick, variant }: RightMenuProps) {
   const router = useRouter();
   const pathname = usePathname();
+  const resolvedVariant = variant ?? resolveRightMenuVariant(pathname);
 
   const handleNavigate = (href: string) => {
     onItemClick?.();
@@ -28,6 +64,11 @@ export function RightMenu({ className, onItemClick }: RightMenuProps) {
 
   const handlePlaceholder = () => {
     onItemClick?.();
+  };
+
+  const handleLogout = () => {
+    onItemClick?.();
+    router.push(appNavLogoutItem.href ?? "/");
   };
 
   return (
@@ -40,30 +81,47 @@ export function RightMenu({ className, onItemClick }: RightMenuProps) {
       )}
     >
       <div className="flex w-full flex-col gap-2">
-        {appNavPrimaryItems.map((item) => (
-          <RightMenuItem
-            key={item.id}
-            icon={<Icon name={item.icon} size="xl" />}
-            label={t(item.labelKey)}
-            onClick={handlePlaceholder}
+        {resolvedVariant === "companies" ? (
+          <NavItemsList
+            items={companiesNavItems}
+            onNavigate={handleNavigate}
+            onPlaceholder={handlePlaceholder}
           />
-        ))}
+        ) : null}
 
-        <RightMenuItem
-          icon={<Icon name={appNavDesignSystemGroup.icon} size="xl" />}
-          label={t(appNavDesignSystemGroup.labelKey)}
-          defaultSubmenuOpen={pathname.startsWith("/bnd/designsystem")}
-          submenu={appNavDesignSystemChildren.map((item) => ({
-            id: item.id,
-            label: t(item.labelKey),
-            onClick: () => handleNavigate(item.href),
-          }))}
-        />
+        {resolvedVariant === "reviewer" ? (
+          <NavItemsList
+            items={reviewerNavItems}
+            onNavigate={handleNavigate}
+            onPlaceholder={handlePlaceholder}
+          />
+        ) : null}
+
+        {resolvedVariant === "default" ? (
+          <>
+            <NavItemsList
+              items={appNavPrimaryItems}
+              onNavigate={handleNavigate}
+              onPlaceholder={handlePlaceholder}
+            />
+
+            <RightMenuItem
+              icon={<Icon name={appNavDesignSystemGroup.icon} size="xl" />}
+              label={t(appNavDesignSystemGroup.labelKey)}
+              defaultSubmenuOpen={pathname.startsWith("/bnd/designsystem")}
+              submenu={appNavDesignSystemChildren.map((item) => ({
+                id: item.id,
+                label: t(item.labelKey),
+                onClick: () => handleNavigate(item.href),
+              }))}
+            />
+          </>
+        ) : null}
 
         <RightMenuItem
           icon={<Icon name={appNavLogoutItem.icon} size="xl" />}
           label={t(appNavLogoutItem.labelKey)}
-          onClick={handlePlaceholder}
+          onClick={handleLogout}
         />
       </div>
     </aside>

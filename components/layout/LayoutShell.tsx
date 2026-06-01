@@ -1,3 +1,4 @@
+import { AppFooter } from "@/components/layout/AppFooter";
 import { AppHeader } from "@/components/ui/composites/AppHeader";
 import type { ReactNode } from "react";
 
@@ -14,6 +15,7 @@ export function LayoutShell({ children }: LayoutShellProps) {
     <div className="flex min-h-screen flex-col bg-background">
       <AppHeader />
       <main className="min-w-0 flex-1">{children}</main>
+      <AppFooter />
     </div>
   );
 }

@@ -6,6 +6,7 @@ import { ArchiveIcon } from "./ArchiveIcon";
 import { ArrowRightIcon } from "./ArrowRightIcon";
 import { AlertCircleIcon } from "./AlertCircleIcon";
 import { BadgeCheckIcon } from "./BadgeCheckIcon";
+import { BanknoteIcon } from "./BanknoteIcon";
 import { BarChart3Icon } from "./BarChart3Icon";
 import { BarcodeIcon } from "./BarcodeIcon";
 import { BlocksIcon } from "./BlocksIcon";
@@ -38,6 +39,7 @@ import { ListCollapseIcon } from "./ListCollapseIcon";
 import { ListOrderedIcon } from "./ListOrderedIcon";
 import { LoaderCircleIcon } from "./LoaderCircleIcon";
 import { LogOutIcon } from "./LogOutIcon";
+import { MegaphoneIcon } from "./MegaphoneIcon";
 import { MenuIcon } from "./MenuIcon";
 import { MessageSquareIcon } from "./MessageSquareIcon";
 import { MinusIcon } from "./MinusIcon";
@@ -50,6 +52,7 @@ import { PackageOpenIcon } from "./PackageOpenIcon";
 import { PanelsTopLeftIcon } from "./PanelsTopLeftIcon";
 import { PaletteIcon } from "./PaletteIcon";
 import { PencilIcon } from "./PencilIcon";
+import { PlaySquareIcon } from "./PlaySquareIcon";
 import { PlusIcon } from "./PlusIcon";
 import { ReceiptIcon } from "./ReceiptIcon";
 import { ScanBarcodeIcon } from "./ScanBarcodeIcon";
@@ -84,6 +87,7 @@ export const iconComponents = {
   "arrow-right": ArrowRightIcon,
   "alert-circle": AlertCircleIcon,
   "badge-check": BadgeCheckIcon,
+  "banknote": BanknoteIcon,
   "bar-chart3": BarChart3Icon,
   "barcode": BarcodeIcon,
   "blocks": BlocksIcon,
@@ -116,6 +120,7 @@ export const iconComponents = {
   "list-ordered": ListOrderedIcon,
   "loader-circle": LoaderCircleIcon,
   "log-out": LogOutIcon,
+  "megaphone": MegaphoneIcon,
   "menu": MenuIcon,
   "message-square": MessageSquareIcon,
   "minus": MinusIcon,
@@ -128,6 +133,7 @@ export const iconComponents = {
   "panels-top-left": PanelsTopLeftIcon,
   "palette": PaletteIcon,
   "pencil": PencilIcon,
+  "play-square": PlaySquareIcon,
   "plus": PlusIcon,
   "receipt": ReceiptIcon,
   "scan-barcode": ScanBarcodeIcon,
@@ -163,6 +169,7 @@ export {
   ArrowRightIcon,
   AlertCircleIcon,
   BadgeCheckIcon,
+  BanknoteIcon,
   BarChart3Icon,
   BarcodeIcon,
   BlocksIcon,
@@ -195,6 +202,7 @@ export {
   ListOrderedIcon,
   LoaderCircleIcon,
   LogOutIcon,
+  MegaphoneIcon,
   MenuIcon,
   MessageSquareIcon,
   MinusIcon,
@@ -207,6 +215,7 @@ export {
   PanelsTopLeftIcon,
   PaletteIcon,
   PencilIcon,
+  PlaySquareIcon,
   PlusIcon,
   ReceiptIcon,
   ScanBarcodeIcon,

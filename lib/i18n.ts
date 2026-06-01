@@ -1,19 +1,32 @@
-import { en, type LocaleMessages } from "@/locales/en/index";
-
-export type LocaleId = "en";
-
-const DEFAULT_LOCALE: LocaleId = "en";
+import {
+  de,
+  en,
+  fr,
+  it,
+  DEFAULT_LOCALE,
+  type LocaleId,
+  type LocaleMessages,
+} from "@/locales/index";
 
 const messagesByLocale: Record<LocaleId, LocaleMessages> = {
   en,
+  de,
+  fr,
+  it,
 };
 
+let activeLocale: LocaleId = DEFAULT_LOCALE;
+
 export function getLocale(): LocaleId {
-  return DEFAULT_LOCALE;
+  return activeLocale;
+}
+
+export function setLocale(locale: LocaleId): void {
+  activeLocale = locale;
 }
 
 export function getUiStrings(): LocaleMessages {
-  return messagesByLocale[getLocale()];
+  return messagesByLocale[getLocale()] ?? messagesByLocale[DEFAULT_LOCALE];
 }
 
 type MessageParams = Record<string, string | number>;
@@ -38,7 +51,10 @@ function interpolate(template: string, params?: MessageParams): string {
 }
 
 export function t(path: string, params?: MessageParams): string {
-  const value = getByPath(getUiStrings(), path);
+  const primary = getByPath(getUiStrings(), path);
+  const fallback =
+    getLocale() !== DEFAULT_LOCALE ? getByPath(messagesByLocale[DEFAULT_LOCALE], path) : undefined;
+  const value = primary ?? fallback;
 
   if (typeof value === "string") {
     return interpolate(value, params);
@@ -71,3 +87,5 @@ export function formatUiBytes(bytes: number): string {
     size: Math.round((bytes / 1024 / 1024) * 10) / 10,
   });
 }
+
+export type { LocaleId, LocaleMessages };

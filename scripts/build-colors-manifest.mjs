@@ -73,20 +73,12 @@ export const SEMANTIC_COLOR_MANIFEST: SemanticColorManifestSection[] = ${JSON.st
 
 fs.writeFileSync("tokens/colors.manifest.ts", manifestTs);
 
-const designsystemPath = "locales/en/designsystem.ts";
-let designsystem = fs.readFileSync(designsystemPath, "utf8");
-const tokensInsert = `  tokens: {
-    colors: ${JSON.stringify(localeColors, null, 4)},
-  },
-`;
-
-if (!designsystem.includes("tokens:")) {
-  designsystem = designsystem.replace(
-    "export const designsystem = {",
-    `export const designsystem = {\n${tokensInsert}`,
-  );
-  fs.writeFileSync(designsystemPath, designsystem);
-}
+const bndLocalePath = "locales/bnd/en.json";
+const bndLocale = JSON.parse(fs.readFileSync(bndLocalePath, "utf8"));
+bndLocale.designsystem.tokens = {
+  colors: localeColors,
+};
+fs.writeFileSync(bndLocalePath, `${JSON.stringify(bndLocale, null, 2)}\n`);
 
 console.log(
   `Wrote tokens/colors.manifest.ts (${manifestRows.length} sections, ${manifestRows.reduce((n, s) => n + s.rows.length, 0)} rows)`,

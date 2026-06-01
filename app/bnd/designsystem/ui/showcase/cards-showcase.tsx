@@ -129,7 +129,7 @@ export function CardsShowcase() {
                 {t("designsystem.showcase.cards.imageTextVerticalBody")}
               </p>
               <div className="mt-4 flex flex-wrap gap-2">
-                <Badge label={t("designsystem.showcase.cards.ratingBadge")} variant="default" iconLeft={<StarIcon className="h-3.5 w-3.5" />} />
+                <Badge label={t("designsystem.showcase.cards.ratingBadge")} variant="default" iconLeft={<StarIcon className="h-3.5 w-3.5 fill-warning text-warning" />} />
                 <Badge
                   label={t("designsystem.showcase.cards.verifiedProductBadge")}
                   variant="success"
@@ -158,7 +158,7 @@ export function CardsShowcase() {
                   {t("designsystem.showcase.cards.imageTextHorizontalBody")}
                 </p>
                 <div className="mt-4 flex flex-wrap gap-2">
-                  <Badge label={t("designsystem.showcase.cards.ratingBadge")} variant="default" iconLeft={<StarIcon className="h-3.5 w-3.5" />} />
+                  <Badge label={t("designsystem.showcase.cards.ratingBadge")} variant="default" iconLeft={<StarIcon className="h-3.5 w-3.5 fill-warning text-warning" />} />
                   <Badge
                     label={t("designsystem.showcase.cards.verifiedProductBadge")}
                     variant="success"
@@ -281,7 +281,7 @@ export function CardsShowcase() {
             </p>
             <div className="mt-3 flex items-end justify-between gap-3">
               <p className="text-title-2 text-foreground-title tabular-nums">4.8</p>
-              <StarIcon className="h-5 w-5 text-secondary" aria-hidden />
+              <StarIcon className="h-5 w-5 fill-warning text-warning" aria-hidden />
             </div>
             <p className="mt-2 text-body-small text-foreground-muted">{t("designsystem.showcase.cards.averageRatingCaption")}</p>
           </Card>

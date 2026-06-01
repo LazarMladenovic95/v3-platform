@@ -24,3 +24,15 @@ export function primaryPinkClassName(size: ButtonSize = "large", className?: str
     className,
   );
 }
+
+/** Link-styled outline primary CTA (matches OutlinePrimary atom). */
+export function outlinePrimaryLinkClassName(size: ButtonSize = "large", className?: string) {
+  return cn(
+    "inline-flex items-center justify-center rounded-lg whitespace-nowrap cursor-pointer",
+    buttonSizeClasses[size],
+    "border border-primary bg-transparent text-primary",
+    "hover:border-primary-hover hover:text-primary-hover",
+    "active:border-primary-active active:text-primary-active",
+    className,
+  );
+}

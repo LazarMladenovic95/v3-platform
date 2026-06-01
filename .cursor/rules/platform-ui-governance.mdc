@@ -10,7 +10,7 @@ Applies to **all product work** (app routes, shells, features). The design syste
 ## Locales
 
 - No user-facing English inline in `app/`, `components/`, or `lib/`.
-- Add copy under `locales/en/` first (`ui.ts`, `app.ts`, `designsystem.ts`), then `t("…")` from `@/lib/i18n`.
+- Add copy under `locales/{locale}.json` (product) or `locales/bnd/{locale}.json` (design system). See [contracts/i18n-locales.md](../../contracts/i18n-locales.md). Wire with `t("…")` from `@/lib/i18n`.
 - Exception: `app/bnd/designsystem/ui/**` showcase demos only (ESLint ignore).
 
 ## Icons

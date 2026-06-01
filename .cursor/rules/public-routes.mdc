@@ -1,0 +1,14 @@
+---
+description: Public www player routes — sitemap URLs, fixtures, PageCanvas, screens
+globs: app/(public)/**/*,components/screens/**/*,lib/fixtures/**/*
+alwaysApply: false
+---
+
+# Public routes (player prototype)
+
+- Canonical paths: [contracts/public-routes.md](../../contracts/public-routes.md)
+- Player URL: `/video-reviews/{categorySlug}/{brandSlug}/{productSlug}/{reviewId}` — no `/reviewers/` routes
+- Routes: `PageCanvas` → `components/screens/public/*Screen` only; no layout or feature UI in `app/(public)/**`
+- Video UI (product, not DS): `components/ui/composites/video-reviews/`, `components/ui/molecules/video-reviews/`
+- Data: `lib/fixtures/`; no Supabase in prototype
+- Also follow [layout-shell-page-canvas.md](../../contracts/layout-shell-page-canvas.md), [prototyping-approach.md](../../contracts/prototyping-approach.md)

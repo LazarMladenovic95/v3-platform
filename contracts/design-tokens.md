@@ -15,7 +15,7 @@ tailwind.config.mjs             WIRING (bg-primary → var(--color-primary))
 components/ui, app              USAGE (class names)
         ↓
 tokens/colors.manifest.ts       COLOR TABLE (metadata; hex synced with colors.css)
-locales/…/designsystem.ts       USAGE COPY (“used for …”)
+locales/bnd/{locale}.json       USAGE COPY (“used for …”)
 ```
 
 | Layer | Owns | Does not own |
@@ -56,7 +56,7 @@ locales/…/designsystem.ts       USAGE COPY (“used for …”)
 ## Product vs design system
 
 - **Product** (`components/ui`, `app`): semantic utilities only (`bg-primary`, `text-foreground-body`, …).
-- **Design system** (`app/bnd/designsystem/` routes, `app/bnd/designsystem/ui/*` showcases): usage copy in `locales/en/designsystem.ts`; color table reads `tokens/colors.manifest.ts`.
+- **Design system** (`app/bnd/designsystem/` routes, `app/bnd/designsystem/ui/*` showcases): usage copy in `locales/bnd/{locale}.json`; color table reads `tokens/colors.manifest.ts`.
 
 ## Scripts
 

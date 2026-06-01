@@ -1,0 +1,279 @@
+{
+  "ui": {
+    "breadcrumbs": {
+      "ariaLabel": "Breadcrumb"
+    },
+    "dateField": {
+      "openCalendar": "Open calendar",
+      "placeholder": "YYYY-MM-DD"
+    },
+    "fileUpload": {
+      "bytes": {
+        "kilobytes": "{size} KB",
+        "megabytes": "{size} MB"
+      },
+      "uploading": "Uploading",
+      "prompt": "Tap to upload or drag and drop",
+      "selectMultiple": "Select one or more files.",
+      "selectSingle": "Select one file.",
+      "accepted": "Accepted: {accept}",
+      "maxSize": "Max size: {maxSize}",
+      "clear": "Clear",
+      "errors": {
+        "invalidType": "{name} is not an accepted file type.",
+        "oversized": "{name} is larger than {maxSize}."
+      }
+    },
+    "progress": {
+      "ariaLabel": "Progress"
+    },
+    "pagination": {
+      "ariaLabel": "Pagination",
+      "previousPage": "Previous page",
+      "nextPage": "Next page",
+      "page": "Page {n}"
+    },
+    "calendar": {
+      "previousMonth": "Previous month",
+      "nextMonth": "Next month",
+      "weekdays": [
+        "Su",
+        "Mo",
+        "Tu",
+        "We",
+        "Th",
+        "Fr",
+        "Sa"
+      ]
+    },
+    "dialog": {
+      "close": "Close dialog"
+    },
+    "alert": {
+      "close": "Close alert"
+    },
+    "avatarGroup": {
+      "ariaLabel": "Avatar group"
+    },
+    "tag": {
+      "removeAriaLabel": "Remove {label}"
+    }
+  },
+  "app": {
+    "layout": {
+      "title": "Expeerly Design System",
+      "description": "Expeerly design system frontend"
+    },
+    "home": {
+      "title": "This is the new expeerly version",
+      "designSystemLink": "Go to Design System",
+      "logoAlt": "Expeerly logo"
+    },
+    "menuButton": {
+      "open": "Open menu",
+      "close": "Close menu"
+    },
+    "auth": {
+      "signUpLabel": "Sign up",
+      "signUpAriaLabel": "Sign up for Expeerly",
+      "loginLabel": "Login",
+      "loginAriaLabel": "Log in to your Expeerly account",
+      "signIn": {
+        "title": "Login",
+        "metaTitle": "Login",
+        "metaDescription": "Log in to your Expeerly account.",
+        "description": "Log in to manage your brand, reviews, and analytics.",
+        "emailLabel": "Email",
+        "emailPlaceholder": "you@company.com",
+        "passwordLabel": "Password",
+        "passwordPlaceholder": "Enter your password",
+        "forgotPassword": "Forgot password?",
+        "submit": "Login",
+        "noAccount": "Don't have an account?",
+        "registerLink": "Register here"
+      },
+      "signUp": {
+        "title": "Sign up",
+        "metaTitle": "Sign up",
+        "metaDescription": "Create your Expeerly account.",
+        "description": "Join Expeerly to share or discover authentic video reviews.",
+        "roleLabel": "Mi registro come",
+        "roleCustomer": "Cliente",
+        "roleReviewer": "Recensore",
+        "submit": "Continua",
+        "haveAccount": "Hai già un account?",
+        "logInLink": "Accedi",
+        "reviewerCredentials": {
+          "title": "Crea il tuo account",
+          "description": "Inserisci la tua email e scegli una password.",
+          "passwordLabel": "Password",
+          "passwordPlaceholder": "Crea una password",
+          "confirmPasswordLabel": "Conferma password",
+          "confirmPasswordPlaceholder": "Reinserisci la password",
+          "passwordMismatch": "Le password non corrispondono.",
+          "submit": "Registrati"
+        },
+        "verify": {
+          "title": "Conferma la tua email",
+          "description": "Inserisci il codice a 6 cifre inviato a {email}.",
+          "codeLabel": "Codice di conferma",
+          "codePlaceholder": "000000",
+          "invalidCode": "Inserisci un codice a 6 cifre.",
+          "submit": "Verifica",
+          "resend": "Invia di nuovo il codice",
+          "sending": "Invio del codice…",
+          "changeEmail": "Usa un'altra email"
+        }
+      }
+    },
+    "reviewerMyReviews": {
+      "metaTitle": "Le mie review",
+      "metaDescription": "Le tue video review inviate in autonomia e da campagna.",
+      "title": "Le mie review",
+      "description": "Review inviate da te e review create per campagne brand.",
+      "emptySection": "Nessuna review in questa sezione.",
+      "selfSubmitted": {
+        "title": "Review inviate in autonomia",
+        "description": "Prodotti che hai acquistato e recensito da solo — 20 $ per approvazione più performance visualizzazioni.",
+        "listAriaLabel": "Review inviate in autonomia"
+      },
+      "campaign": {
+        "title": "Review da campagna",
+        "description": "Review inviate nell'ambito di una campagna brand.",
+        "listAriaLabel": "Review da campagna"
+      },
+      "campaigns": {
+        "mieleCordlessLaunch": "Miele Cordless Launch",
+        "mieleHomeKitchen": "Miele Home & Kitchen"
+      }
+    },
+    "reviewerOnboarding": {
+      "metaTitle": "Onboarding recensore",
+      "metaDescription": "Completa il tuo profilo recensore Expeerly.",
+      "title": "Benvenuto, recensore",
+      "description": "Il tuo account è confermato. Scegli come guadagnare con Expeerly.",
+      "submitReview": {
+        "title": "Invia una recensione prodotto",
+        "description": "Invia una recensione su un prodotto che hai acquistato.",
+        "baseReward": "20 $ per recensione approvata",
+        "viewPerformance": "Performance delle visualizzazioni: 10 $ ogni 1.000 impression"
+      },
+      "campaign": {
+        "title": "Partecipa a una campagna",
+        "description": "Unisciti a campagne brand con brief, tempistiche e reward dedicati."
+      }
+    },
+    "stub": {
+      "description": "Questa sezione non è ancora disponibile nel prototipo."
+    },
+    "companiesHome": {
+      "metaTitle": "Dashboard azienda",
+      "metaDescription": "Gestisci video review, campagne e asset del brand.",
+      "title": "Dashboard azienda",
+      "description": "Usa il menu per gestire campagne, asset, analytics e crediti."
+    },
+    "nav": {
+      "ariaLabel": "Navigazione principale",
+      "dashboard": "Dashboard",
+      "manageBrandAssets": "Gestisci asset del brand e prodotti",
+      "distributionAnalytics": "Distribuzione e analytics",
+      "adminPortal": "Portale admin",
+      "accountSettings": "Impostazioni account",
+      "companies": {
+        "seeAllVideoReviews": "Vedi tutte le video review",
+        "manageReviewCampaigns": "Gestisci campagne di review",
+        "credits": "Crediti"
+      },
+      "reviewer": {
+        "myReviews": "Le mie review",
+        "runningCampaigns": "Campagne in corso"
+      },
+      "designSystem": "Design system",
+      "designSystemOverview": "Overview",
+      "designSystemTypography": "Typography",
+      "designSystemColor": "Color",
+      "designSystemStyles": "Styles",
+      "designSystemAccessibility": "Accessibility",
+      "designSystemComponents": "Components",
+      "logout": "Logout"
+    }
+  },
+  "player": {
+    "hub": {
+      "title": "Video reviews",
+      "description": "Browse authentic product video reviews from real testers.",
+      "brandsHeading": "Brands",
+      "viewBrand": "View brand"
+    },
+    "brand": {
+      "videoReviewsSuffix": "Video Reviews",
+      "reviewsCount": "({count} reviews)",
+      "reviewsHeading": "Reviews",
+      "watchReview": "Watch review",
+      "backToHub": "Back to video reviews",
+      "ctaTitle": "Get your products reviewed",
+      "ctaDescription": "Reach shoppers with authentic video reviews on Expeerly.",
+      "ctaButton": "Learn more"
+    },
+    "review": {
+      "ratingLabel": "Rating",
+      "reviewSummary": "Review summary",
+      "productDetails": "Product details",
+      "brandName": "Brand name",
+      "productName": "Product name",
+      "gtinEan": "GTIN/EAN",
+      "vendorProductNumber": "Vendor product number",
+      "transcriptHeading": "Transcript",
+      "faqHeading": "Frequently asked questions",
+      "moreVideosOn": "More videos on",
+      "backToBrand": "Back to brand",
+      "playAriaLabel": "Play video",
+      "buyNow": "Buy now",
+      "buyNowAriaLabel": "Go to the product shown in the video",
+      "notAvailable": "—"
+    },
+    "notFound": {
+      "title": "Page not found",
+      "description": "This review or brand page does not exist.",
+      "backHome": "Back to home"
+    }
+  },
+  "marketing": {
+    "landing": {
+      "siteTitle": "Is it worth it? The latest expeerly video reviews & testimonials",
+      "metaDescription": "Have you ever wondered, if it's worth it? Watch real videos by real people sharing their experiences on the latest products.",
+      "heroTitle": "Is it worth it?",
+      "heroSubtitle": "Explore the latest video reviews on your favourite products.",
+      "scrollCta": "Explore reviews",
+      "reviewersHeading": "Each reviewer has a personal story to share",
+      "brandsHeading": "Video reviews on brands you love",
+      "brandsBody": "Tap on a brand to see reviews.",
+      "categoriesHeading": "Explore categories",
+      "categoriesBody": "Whether you'd like to buy a new appliance or plan a trip, find video reviews here.",
+      "howItWorksHeading": "How expeerly works",
+      "howItWorksBody": "Expeerly is a place for consumers to get insights about what other shoppers think of products and services. Video reviews are shared by our community of testers from across the globe.",
+      "learnMore": "Learn more",
+      "learnMoreAriaLabel": "Learn more about how Expeerly works",
+      "ctaHub": "Browse video reviews",
+      "ctaSampleReview": "Watch a sample review",
+      "designSystemLink": "Design system",
+      "viewAllBrands": "View all brands",
+      "brandCardAriaLabel": "View {brand} video reviews",
+      "brandCardNoReviews": "Video reviews from real testers"
+    },
+    "footer": {
+      "navAriaLabel": "Footer",
+      "contactLabel": "Contact us",
+      "contactAriaLabel": "This is how you can contact Expeerly",
+      "aboutLabel": "About us",
+      "aboutAriaLabel": "Learn more about the Expeerly team",
+      "termsCompaniesLabel": "Terms Companies",
+      "termsCompaniesAriaLabel": "These are the terms and conditions for companies",
+      "termsReviewersLabel": "Terms Reviewers",
+      "termsReviewersAriaLabel": "These are the terms and conditions for reviewers",
+      "privacyLabel": "Privacy Policy",
+      "privacyAriaLabel": "Find out more about our privacy policy",
+      "copyright": "© Expeerly AG, {year}"
+    }
+  }
+}
