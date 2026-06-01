@@ -78,7 +78,7 @@ export function SignInScreen({ mode }: SignInScreenProps) {
       setSignUpStep("credentials");
       return;
     }
-    router.push("/companies");
+    router.push("/company");
   };
 
   const handleCredentialsSubmit = async (event: React.FormEvent) => {

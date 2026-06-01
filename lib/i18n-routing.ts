@@ -1,5 +1,7 @@
 import { DEFAULT_LOCALE, SUPPORTED_LOCALES, type LocaleId } from "@/locales/index";
 
+export const LOCALE_COOKIE_NAME = "NEXT_LOCALE";
+
 /**
  * Path prefixes that receive a locale segment in the URL (e.g. `/de/video-reviews`).
  * www / player / marketing surfaces only.
@@ -14,7 +16,7 @@ export const LOCALE_PREFIXED_PATH_PREFIXES = [
  * UI copy may still use `t()` / `locales/*.json`.
  */
 export const LOCALE_EXEMPT_PATH_PREFIXES = [
-  "/companies",
+  "/company",
   "/reviewer",
   "/sign-in",
   "/bnd",
@@ -49,13 +51,31 @@ export function stripLocalePrefix(pathname: string): {
   const segments = pathname.split("/").filter(Boolean);
   const first = segments[0];
 
-  if (first && isSupportedLocaleSegment(first) && first !== DEFAULT_LOCALE) {
-    const rest = `/${segments.slice(1).join("/")}`;
+  if (first && isSupportedLocaleSegment(first)) {
+    if (first === DEFAULT_LOCALE) {
+      const rest = segments.slice(1);
+      const pathnameWithoutLocale = rest.length === 0 ? "/" : `/${rest.join("/")}`;
+      return { locale: null, pathnameWithoutLocale };
+    }
+    const rest = segments.slice(1);
+    const pathnameWithoutLocale = rest.length === 0 ? "/" : `/${rest.join("/")}`;
     return {
       locale: first,
-      pathnameWithoutLocale: rest === "/" ? "/" : rest.replace(/\/$/, "") || "/",
+      pathnameWithoutLocale,
     };
   }
 
   return { locale: null, pathnameWithoutLocale: pathname };
+}
+
+export function pathnameWithLocale(pathname: string, locale: LocaleId): string {
+  if (locale === DEFAULT_LOCALE || !shouldPrefixPathWithLocale(pathname)) {
+    return pathname;
+  }
+
+  if (pathname === "/") {
+    return `/${locale}`;
+  }
+
+  return `/${locale}${pathname}`;
 }

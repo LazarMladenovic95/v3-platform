@@ -9,7 +9,7 @@ import {
   appNavLogoutItem,
   appNavPrimaryItems,
   bndNavItems,
-  companiesNavItems,
+  companyNavItems,
   reviewerNavItems,
   resolveRightMenuVariant,
   type AppNavItemConfig,
@@ -82,9 +82,9 @@ export function RightMenu({ className, onItemClick, variant }: RightMenuProps) {
       )}
     >
       <div className="flex w-full flex-col gap-2">
-        {resolvedVariant === "companies" ? (
+        {resolvedVariant === "company" ? (
           <NavItemsList
-            items={companiesNavItems}
+            items={companyNavItems}
             onNavigate={handleNavigate}
             onPlaceholder={handlePlaceholder}
           />

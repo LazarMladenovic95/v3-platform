@@ -11,6 +11,7 @@
 | `/sign-in` | Login (prototype; mirrors [app.expeerly.com](https://app.expeerly.com/)) |
 | `/sign-in?sign-up` | Sign up (role → reviewer email/password → 6-digit verify) |
 | `/video-reviews` | Hub |
+| `/video-reviews/productcategory/{categorySlug}` | Category listing (live catalog; dev reads `data/InterestCategories - ToUpload.csv`) |
 | `/video-reviews/brand/{brandSlug}` | Brand listing |
 | `/video-reviews/{categorySlug}/{brandSlug}/{productSlug}/{reviewId}` | Single review player |
 
@@ -18,13 +19,19 @@
 
 **Excluded:** `/video-reviews/reviewers/*` (not migrated).
 
-**Platform (not public):** `/companies/**`, `/reviewer/**` — see [platform-routes.md](./platform-routes.md).
+**Platform (not public):** `/company/**`, `/reviewer/**`, `/bnd/**` — see [platform-routes.md](./platform-routes.md).
 
-## Locale URL prefixes (future)
+## Interest categories (dev)
+
+- **Prototype:** `lib/data/interest-categories-dev.ts` reads `data/InterestCategories - ToUpload.csv` at runtime (server only, in-memory cache).
+- **Production:** replace with Supabase `interest_categories` loaders; same screen/route contract.
+- Review `categorySlug` in URL must match `slug_{locale}`; fixture reviews use `slug_en` as `review.categorySlug`.
+
+## Locale URL prefixes
 
 - Default `en`: no prefix (`https://www.expeerly.com/...`)
-- `de`, `fr`, `it`: `/{locale}/...` on **public** paths only (middleware + `[locale]` — not implemented yet)
-- **Exempt** (never prefixed): `/companies`, `/reviewer`, `/sign-in`, `/bnd` — see `lib/i18n-routing.ts`
+- `de`, `fr`, `it`: `/{locale}/...` on **public** paths via `proxy.ts`
+- **Exempt** (never prefixed): `/company`, `/reviewer`, `/sign-in`, `/bnd` — see `lib/i18n-routing.ts` and root `proxy.ts`
 - UI copy on all surfaces may still use `t()` / `locales/*.json` regardless of URL locale
 
 ## URL segments vs schema

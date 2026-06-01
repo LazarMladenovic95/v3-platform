@@ -1,5 +1,8 @@
 import data from "@/lib/fixtures/video-reviews-data.json";
+import type { LocaleId } from "@/lib/i18n";
+import { getLocale } from "@/lib/i18n";
 import type { LocalizedStringMap } from "@/lib/i18n-content";
+import { pathnameWithLocale } from "@/lib/i18n-routing";
 
 export type BrandFixture = {
   slug: string;
@@ -65,6 +68,10 @@ export function getReviewsForBrand(brandSlug: string): ReviewFixture[] {
   return reviews.filter((review) => review.brandSlug === brandSlug);
 }
 
+export function getReviewsForCategoryEnglishSlug(categorySlugEn: string): ReviewFixture[] {
+  return reviews.filter((review) => review.categorySlug === categorySlugEn);
+}
+
 export function getRelatedReviews(review: ReviewFixture): ReviewFixture[] {
   return reviews.filter(
     (candidate) =>
@@ -74,27 +81,17 @@ export function getRelatedReviews(review: ReviewFixture): ReviewFixture[] {
   );
 }
 
-export function getReviewByPath(params: {
-  categorySlug: string;
-  brandSlug: string;
-  productSlug: string;
-  reviewId: string;
-}): ReviewFixture | undefined {
-  return reviews.find(
-    (review) =>
-      review.publicReviewId === params.reviewId &&
-      review.categorySlug === params.categorySlug &&
-      review.brandSlug === params.brandSlug &&
-      review.productSlug === params.productSlug,
-  );
-}
-
 export function getReviewByPublicId(publicReviewId: string): ReviewFixture | undefined {
   return reviews.find((review) => review.publicReviewId === publicReviewId);
 }
 
-export function getReviewPlayerPath(review: ReviewFixture): string {
-  return `/video-reviews/${review.categorySlug}/${review.brandSlug}/${review.productSlug}/${review.publicReviewId}`;
+/** Client-safe path; uses fixture `categorySlug` (English). Canonical locale slugs come from category pages. */
+export function getReviewPlayerPath(
+  review: ReviewFixture,
+  locale: LocaleId = getLocale(),
+): string {
+  const path = `/video-reviews/${review.categorySlug}/${review.brandSlug}/${review.productSlug}/${review.publicReviewId}`;
+  return pathnameWithLocale(path, locale);
 }
 
 export const SAMPLE_REVIEW_ID = "100000001";

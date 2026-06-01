@@ -27,10 +27,10 @@ export type AppNavItemConfig = {
   href: string | null;
 };
 
-export type RightMenuVariant = "default" | "companies" | "reviewer" | "bnd";
+export type RightMenuVariant = "default" | "company" | "reviewer" | "bnd";
 
 export function resolveRightMenuVariant(pathname: string): RightMenuVariant {
-  if (pathname.startsWith("/companies")) return "companies";
+  if (pathname.startsWith("/company")) return "company";
   if (pathname.startsWith("/reviewer")) return "reviewer";
   if (pathname.startsWith("/bnd")) return "bnd";
   return "default";
@@ -59,66 +59,43 @@ export const appNavPrimaryItems: AppNavItemConfig[] = [
   },
 ];
 
-/** Admin / internal app menu when pathname is under `/bnd` (excludes design system docs). */
-export const bndNavItems: AppNavItemConfig[] = [
-  { id: "dashboard", labelKey: "app.nav.dashboard", icon: "layout-dashboard", href: "/bnd/dashboard" },
-  {
-    id: "manage-brand-assets",
-    labelKey: "app.nav.manageBrandAssets",
-    icon: "shopping-bag",
-    href: "/bnd/brand-assets",
-  },
-  {
-    id: "distribution-analytics",
-    labelKey: "app.nav.distributionAnalytics",
-    icon: "bar-chart3",
-    href: "/bnd/analytics",
-  },
-  { id: "admin-portal", labelKey: "app.nav.adminPortal", icon: "user", href: "/bnd/admin-portal" },
-  {
-    id: "account-settings",
-    labelKey: "app.nav.accountSettings",
-    icon: "sliders-horizontal",
-    href: "/bnd/account-settings",
-  },
-];
-
-export const companiesNavItems: AppNavItemConfig[] = [
+/** Company app menu when pathname is under `/company`. */
+export const companyNavItems: AppNavItemConfig[] = [
   {
     id: "see-all-video-reviews",
     labelKey: "app.nav.companies.seeAllVideoReviews",
     icon: "play-square",
-    href: "/companies/all-reviews",
+    href: "/company/all-reviews",
   },
   {
     id: "manage-review-campaigns",
     labelKey: "app.nav.companies.manageReviewCampaigns",
     icon: "megaphone",
-    href: "/companies/campaigns",
+    href: "/company/campaigns",
   },
   {
     id: "manage-brand-assets",
     labelKey: "app.nav.manageBrandAssets",
     icon: "tag",
-    href: "/companies/brand-assets",
+    href: "/company/brand-assets",
   },
   {
     id: "distribution-analytics",
     labelKey: "app.nav.distributionAnalytics",
     icon: "bar-chart3",
-    href: "/companies/analytics",
+    href: "/company/analytics",
   },
   {
     id: "account-settings",
     labelKey: "app.nav.accountSettings",
     icon: "sliders-horizontal",
-    href: "/companies/account-settings",
+    href: "/company/account-settings",
   },
   {
     id: "credits",
     labelKey: "app.nav.companies.credits",
     icon: "banknote",
-    href: "/companies/credits",
+    href: "/company/credits",
   },
 ];
 
@@ -140,6 +117,30 @@ export const reviewerNavItems: AppNavItemConfig[] = [
     labelKey: "app.nav.accountSettings",
     icon: "sliders-horizontal",
     href: "/reviewer/account-settings",
+  },
+];
+
+/** Admin / internal app menu when pathname is under `/bnd` (excludes design system docs). */
+export const bndNavItems: AppNavItemConfig[] = [
+  { id: "dashboard", labelKey: "app.nav.dashboard", icon: "layout-dashboard", href: "/bnd/dashboard" },
+  {
+    id: "manage-brand-assets",
+    labelKey: "app.nav.manageBrandAssets",
+    icon: "shopping-bag",
+    href: "/bnd/brand-assets",
+  },
+  {
+    id: "distribution-analytics",
+    labelKey: "app.nav.distributionAnalytics",
+    icon: "bar-chart3",
+    href: "/bnd/analytics",
+  },
+  { id: "admin-portal", labelKey: "app.nav.adminPortal", icon: "user", href: "/bnd/admin-portal" },
+  {
+    id: "account-settings",
+    labelKey: "app.nav.accountSettings",
+    icon: "sliders-horizontal",
+    href: "/bnd/account-settings",
   },
 ];
 

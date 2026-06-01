@@ -3,33 +3,35 @@
 **Status:** Active  
 **Related:** [layout-shell-page-canvas.md](./layout-shell-page-canvas.md), [i18n-locales.md](./i18n-locales.md), [public-routes.md](./public-routes.md)
 
-Authenticated-style app surfaces for **companies**, **reviewers**, and **admin / BND**. Not part of the public www / player sitemap.
+Authenticated-style app surfaces for **company**, **reviewers**, and **admin / BND**. Not part of the public www / player sitemap.
 
 ## App router
 
 ```text
 app/(platform)/
-  companies/**           → PageCanvas → AppContentContainer → screen
-  reviewer/**            → PageCanvas → AppContentContainer → screen
+  company/**           → PageCanvas → AppContentContainer → screen
+  reviewer/**          → PageCanvas → AppContentContainer → screen
   bnd/(admin)/**         → PageCanvas → AppContentContainer → stub (admin menu)
   bnd/designsystem/**    → own layout (no PageCanvas; ESLint-exempt showcases)
 ```
 
-Route group `(platform)` does **not** appear in URLs (`/companies`, not `/platform/companies`).
+Route group `(platform)` does **not** appear in URLs (`/company`, not `/platform/company`).
 
 ## Canonical paths
 
-### Companies
+### Company
 
 | Route | Role |
 |-------|------|
-| `/companies` | Company dashboard |
-| `/companies/all-reviews` | Community vs campaign reviews (fixtures) |
-| `/companies/campaigns` | Manage review campaigns (stub) |
-| `/companies/brand-assets` | Brand assets & products (stub) |
-| `/companies/analytics` | Distribution & analytics (stub) |
-| `/companies/account-settings` | Account settings (stub) |
-| `/companies/credits` | Credits (stub) |
+| `/company` | Company dashboard |
+| `/company/all-reviews` | Community vs campaign reviews (fixtures) |
+| `/company/campaigns` | Manage review campaigns (stub) |
+| `/company/brand-assets` | Brand assets & products (stub) |
+| `/company/analytics` | Distribution & analytics (stub) |
+| `/company/account-settings` | Account settings (stub) |
+| `/company/credits` | Credits (stub) |
+
+Legacy `/companies/**` redirects to `/company/**` in `proxy.ts`.
 
 ### Reviewer
 
@@ -62,8 +64,8 @@ Route group `(platform)` does **not** appear in URLs (`/companies`, not `/platfo
 
 Platform paths are **exempt** from `/{locale}/` URL prefixes. See `LOCALE_EXEMPT_PATH_PREFIXES` in `lib/i18n-routing.ts`.
 
-UI strings still use `t("app.*")` / `t("designsystem.*")` and locale files (runtime locale, not path segment).
+UI strings still use `t("app.*")` / `t("designsystem.*")` and locale files (runtime locale via `NEXT_LOCALE` cookie, not path segment).
 
 ## Data & nav
 
-Prototype: fixtures + stubs; no Supabase. Nav: `lib/app-nav-config.ts` (`companiesNavItems`, `reviewerNavItems`, `bndNavItems` + `appNavDesignSystemChildren` on `/bnd/**`).
+Prototype: fixtures + stubs; no Supabase. Nav: `lib/app-nav-config.ts` (`companyNavItems`, `reviewerNavItems`, `bndNavItems` + `appNavDesignSystemChildren` on `/bnd/**`).

@@ -223,8 +223,13 @@
     "hub": {
       "title": "Video reviews",
       "description": "Browse authentic product video reviews from real testers.",
+      "categoriesHeading": "Categorie",
       "brandsHeading": "Brands",
       "viewBrand": "View brand"
+    },
+    "category": {
+      "backToHub": "Torna alle video review",
+      "reviewsHeading": "Video review in questa categoria"
     },
     "brand": {
       "videoReviewsSuffix": "Video Reviews",

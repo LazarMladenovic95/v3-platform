@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { PageCanvas } from "@/components/layout/PageCanvas";
 import { VideoReviewsHubScreen } from "@/components/screens";
+import { getAllInterestCategories } from "@/lib/data/interest-categories-dev";
+import { applyRequestLocale } from "@/lib/i18n-request";
 import { t } from "@/lib/i18n";
 
 export const metadata: Metadata = {
@@ -8,10 +10,13 @@ export const metadata: Metadata = {
   description: t("player.hub.description"),
 };
 
-export default function VideoReviewsHubPage() {
+export default async function VideoReviewsHubPage() {
+  await applyRequestLocale();
+  const categories = getAllInterestCategories();
+
   return (
     <PageCanvas>
-      <VideoReviewsHubScreen />
+      <VideoReviewsHubScreen categories={categories} />
     </PageCanvas>
   );
 }

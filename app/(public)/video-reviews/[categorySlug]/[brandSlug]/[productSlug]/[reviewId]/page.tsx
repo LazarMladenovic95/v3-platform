@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { PageCanvas } from "@/components/layout/PageCanvas";
 import { ReviewScreen } from "@/components/screens";
-import { getReviewByPath } from "@/lib/fixtures/video-reviews";
-import { getLocale, t } from "@/lib/i18n";
+import { getReviewByPath } from "@/lib/fixtures/video-reviews-server";
+import { applyRequestLocale } from "@/lib/i18n-request";
+import { t } from "@/lib/i18n";
 import { pickLocalized } from "@/lib/i18n-content";
 
 type ReviewPageProps = {
@@ -16,11 +17,10 @@ type ReviewPageProps = {
 };
 
 export async function generateMetadata({ params }: ReviewPageProps): Promise<Metadata> {
+  const locale = await applyRequestLocale();
   const resolved = await params;
-  const review = getReviewByPath(resolved);
+  const review = getReviewByPath(resolved, locale);
   if (!review) return { title: t("player.notFound.title") };
-
-  const locale = getLocale();
   return {
     title: pickLocalized(review.pageTitle, locale, "title") ?? review.productName,
     description: pickLocalized(review.metaDescription, locale, "desc"),
@@ -28,8 +28,9 @@ export async function generateMetadata({ params }: ReviewPageProps): Promise<Met
 }
 
 export default async function ReviewPlayerPage({ params }: ReviewPageProps) {
+  const locale = await applyRequestLocale();
   const resolved = await params;
-  const review = getReviewByPath(resolved);
+  const review = getReviewByPath(resolved, locale);
   if (!review) notFound();
 
   return (

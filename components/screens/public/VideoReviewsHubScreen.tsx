@@ -1,10 +1,21 @@
+import Link from "next/link";
 import { Heading } from "@/components/ui/atoms/Heading";
 import { Text } from "@/components/ui/atoms/Text";
+import { Card, CardTitle } from "@/components/ui/composites/Card";
 import { BrandMarketingCard, VideoRatingThumbnailCard } from "@/components/ui";
+import type { InterestCategoryRecord } from "@/lib/data/interest-categories-dev";
+import { getCategoryProductPagePath } from "@/lib/data/interest-categories-dev";
 import { getAllBrands, getReviewsForBrand } from "@/lib/fixtures/video-reviews";
-import { t } from "@/lib/i18n";
+import { getLocale, t } from "@/lib/i18n";
+import { pathnameWithLocale } from "@/lib/i18n-routing";
+import { pickLocalized } from "@/lib/i18n-content";
 
-export function VideoReviewsHubScreen() {
+export type VideoReviewsHubScreenProps = {
+  categories: InterestCategoryRecord[];
+};
+
+export function VideoReviewsHubScreen({ categories }: VideoReviewsHubScreenProps) {
+  const locale = getLocale();
   const brands = getAllBrands();
   const featured = brands[0];
   const featuredReviews = featured ? getReviewsForBrand(featured.slug) : [];
@@ -17,6 +28,29 @@ export function VideoReviewsHubScreen() {
       <Text variant="body-small-muted" className="mt-2 max-w-2xl">
         {t("player.hub.description")}
       </Text>
+
+      <Heading as="h2" variant="heading-3" className="mt-10">
+        {t("player.hub.categoriesHeading")}
+      </Heading>
+      <ul className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        {categories.map((category) => {
+          const label = pickLocalized(category.displayName, locale, "title") ?? category.slugs.en;
+          const href = pathnameWithLocale(getCategoryProductPagePath(category, locale), locale);
+
+          return (
+            <li key={category.uniqueCategoryId}>
+              <Link
+                href={href}
+                className="block h-full rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+              >
+                <Card className="h-full transition-colors hover:border-border-focus">
+                  <CardTitle className="text-left">{label}</CardTitle>
+                </Card>
+              </Link>
+            </li>
+          );
+        })}
+      </ul>
 
       {featuredReviews.length > 0 && featured ? (
         <section className="mt-10">

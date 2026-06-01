@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Mulish } from "next/font/google";
 import { LayoutShell } from "@/components/layout";
+import { applyRequestLocale } from "@/lib/i18n-request";
 import { t } from "@/lib/i18n";
 import "./globals.css";
 
@@ -23,13 +24,15 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const locale = await applyRequestLocale();
+
   return (
-    <html lang="en">
+    <html lang={locale}>
       <body className={`${mulish.variable} antialiased`}>
         <LayoutShell>{children}</LayoutShell>
       </body>

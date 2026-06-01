@@ -19,7 +19,7 @@ Single enforcement point for **page layout behavior**.
 
 ### Chrome-aligned routes (prototype)
 
-`app/(platform)/companies/**` and `app/(platform)/reviewer/**` use a segment `layout.tsx`:
+`app/(platform)/company/**` and `app/(platform)/reviewer/**` use a segment `layout.tsx`:
 
 ```text
 PageCanvas → AppContentContainer (vertical padding) → Screen
