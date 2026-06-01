@@ -11,5 +11,5 @@ alwaysApply: false
 - Routes: `PageCanvas` → `components/screens/public/*Screen` only; no layout or feature UI in `app/(public)/**`
 - Platform (`/company`, `/reviewer`, `/bnd`): `app/(platform)/` — see `platform-routes.mdc`
 - Video UI (product, not DS): `components/ui/composites/video-reviews/`, `components/ui/molecules/video-reviews/`
-- Data: `lib/fixtures/` for reviews/brands; categories via `lib/data/interest-categories-dev.ts` → `data/InterestCategories - ToUpload.csv` (dev only)
+- Data: `lib/fixtures/` for reviews/brands; categories via `lib/data/interest-categories-dev.ts` → `lib/data/interest-categories.csv` (sync from gitignored `data/` export when updating)
 - Also follow [layout-shell-page-canvas.md](../../contracts/layout-shell-page-canvas.md), [prototyping-approach.md](../../contracts/prototyping-approach.md)

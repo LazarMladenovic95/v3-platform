@@ -27,7 +27,7 @@ One JSON file per language for product; design system copy is isolated under `bn
 
 - No user-facing copy inline in `app/`, `components/`, `lib/` (ESLint `i18next/no-literal-string`).
 - Exception: `app/bnd/designsystem/ui/**` showcase demos.
-- DB/CSV/CMS content: `pickLocalized()` from `lib/i18n-content.ts` — not locale files. Review/brand copy: fixture JSON. **Interest categories (dev):** `data/InterestCategories - ToUpload.csv` via `lib/data/interest-categories-dev.ts` (server only); production → Supabase `interest_categories`.
+- DB/CSV/CMS content: `pickLocalized()` from `lib/i18n-content.ts` — not locale files. Review/brand copy: fixture JSON. **Interest categories (dev):** `lib/data/interest-categories.csv` via `lib/data/interest-categories-dev.ts` (server only); production → Supabase `interest_categories`.
 
 ## Loading
 

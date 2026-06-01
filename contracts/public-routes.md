@@ -23,7 +23,7 @@
 
 ## Interest categories (dev)
 
-- **Prototype:** `lib/data/interest-categories-dev.ts` reads `data/InterestCategories - ToUpload.csv` at runtime (server only, in-memory cache).
+- **Prototype:** `lib/data/interest-categories-dev.ts` reads committed `lib/data/interest-categories.csv` (server only, in-memory cache). Source export may live in gitignored `data/InterestCategories - ToUpload.csv` — copy to `lib/data/interest-categories.csv` before deploy.
 - **Production:** replace with Supabase `interest_categories` loaders; same screen/route contract.
 - Review `categorySlug` in URL must match `slug_{locale}`; fixture reviews use `slug_en` as `review.categorySlug`.
 
