@@ -1,6 +1,21 @@
 import type { IconName } from "@/components/ui/icons";
+import type { LocaleId } from "@/locales/index";
+
+export type PublicNavLabelKey =
+  | "app.nav.public.learnMore"
+  | "app.nav.public.submitVideoReview"
+  | "app.nav.public.forBrands"
+  | "app.nav.public.forRetailers"
+  | "app.nav.public.brands"
+  | "app.nav.public.categories"
+  | "app.nav.public.language"
+  | "app.nav.public.locale.en"
+  | "app.nav.public.locale.de"
+  | "app.nav.public.locale.fr"
+  | "app.nav.public.locale.it";
 
 export type AppNavLabelKey =
+  | PublicNavLabelKey
   | "app.nav.dashboard"
   | "app.nav.manageBrandAssets"
   | "app.nav.distributionAnalytics"
@@ -27,14 +42,82 @@ export type AppNavItemConfig = {
   href: string | null;
 };
 
-export type RightMenuVariant = "default" | "company" | "reviewer" | "bnd";
+export type RightMenuVariant = "public" | "default" | "company" | "reviewer" | "bnd";
+
+export function isPublicSitePath(pathname: string): boolean {
+  if (pathname === "/") return true;
+  if (pathname.startsWith("/video-reviews")) return true;
+  if (pathname.startsWith("/sign-in")) return true;
+  return false;
+}
 
 export function resolveRightMenuVariant(pathname: string): RightMenuVariant {
+  if (isPublicSitePath(pathname)) return "public";
   if (pathname.startsWith("/company")) return "company";
   if (pathname.startsWith("/reviewer")) return "reviewer";
   if (pathname.startsWith("/bnd")) return "bnd";
   return "default";
 }
+
+export type PublicNavLinkConfig = {
+  id: string;
+  labelKey: PublicNavLabelKey;
+  icon: IconName;
+  href: string;
+  external?: boolean;
+};
+
+export const PUBLIC_MENU_EXTERNAL_LINKS = {
+  learnMore: "https://www.get.expeerly.com/",
+  forBrands: "https://www.get.expeerly.com/for-brands",
+  forRetailers: "https://www.get.expeerly.com/for-retailers",
+} as const;
+
+export const publicNavPrimaryLinks: PublicNavLinkConfig[] = [
+  {
+    id: "learn-more",
+    labelKey: "app.nav.public.learnMore",
+    icon: "info",
+    href: PUBLIC_MENU_EXTERNAL_LINKS.learnMore,
+    external: true,
+  },
+  {
+    id: "submit-video-review",
+    labelKey: "app.nav.public.submitVideoReview",
+    icon: "play-square",
+    href: "/reviewer/onboarding",
+  },
+  {
+    id: "for-brands",
+    labelKey: "app.nav.public.forBrands",
+    icon: "tag",
+    href: PUBLIC_MENU_EXTERNAL_LINKS.forBrands,
+    external: true,
+  },
+  {
+    id: "for-retailers",
+    labelKey: "app.nav.public.forRetailers",
+    icon: "shopping-cart",
+    href: PUBLIC_MENU_EXTERNAL_LINKS.forRetailers,
+    external: true,
+  },
+];
+
+export const publicNavCatalogGroups = [
+  { id: "brands", labelKey: "app.nav.public.brands" as const, icon: "shopping-bag" as const satisfies IconName },
+  {
+    id: "categories",
+    labelKey: "app.nav.public.categories" as const,
+    icon: "layout-grid" as const satisfies IconName,
+  },
+] as const;
+
+export const publicNavLocaleOptions: { id: LocaleId; labelKey: PublicNavLabelKey }[] = [
+  { id: "en", labelKey: "app.nav.public.locale.en" },
+  { id: "de", labelKey: "app.nav.public.locale.de" },
+  { id: "fr", labelKey: "app.nav.public.locale.fr" },
+  { id: "it", labelKey: "app.nav.public.locale.it" },
+];
 
 export const appNavPrimaryItems: AppNavItemConfig[] = [
   { id: "dashboard", labelKey: "app.nav.dashboard", icon: "layout-dashboard", href: null },

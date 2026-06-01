@@ -15,6 +15,8 @@
 | `/video-reviews/brand/{brandSlug}` | Brand listing |
 | `/video-reviews/{categorySlug}/{brandSlug}/{productSlug}/{reviewId}` | Single review player |
 
+**Header right menu (public):** `app.nav.public.*` — learn more, submit review, B2B links, **Brands** / **Categories** submenus (from fixtures + `interest-categories.csv`), locale switcher. Config: `lib/app-nav-config.ts`, catalog: `lib/public-menu-data.server.ts`.
+
 **Footer (global chrome):** Labels in `marketing.footer.*`. Contact → `mailto:hello@expeerly.com`. Legal/about → outbound `https://www.get.expeerly.com/...` (same targets as [www.expeerly.com](https://www.expeerly.com/)).
 
 **Excluded:** `/video-reviews/reviewers/*` (not migrated).

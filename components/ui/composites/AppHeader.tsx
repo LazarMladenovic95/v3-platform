@@ -11,6 +11,7 @@ import { RightMenu } from "@/components/ui/composites/RightMenu";
 import { MenuButton } from "@/components/ui/molecules/MenuButton";
 import { appContentContainerClassName } from "@/components/layout/contentContainerClasses";
 import { t } from "@/lib/i18n";
+import type { PublicMenuCatalog } from "@/lib/public-menu-types";
 import { cn } from "@/lib/utils";
 
 const AUTH_LINKS = {
@@ -21,7 +22,11 @@ const AUTH_LINKS = {
 const headerAuthLinkFocus =
   "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2 focus-visible:ring-offset-surface";
 
-export function AppHeader() {
+export type AppHeaderProps = {
+  publicMenuCatalog?: PublicMenuCatalog;
+};
+
+export function AppHeader({ publicMenuCatalog }: AppHeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuAreaRef = useRef<HTMLDivElement>(null);
 
@@ -123,6 +128,7 @@ export function AppHeader() {
             <RightMenu
               className="absolute top-menu-dropdown right-0 z-20"
               onItemClick={() => setIsMenuOpen(false)}
+              publicMenuCatalog={publicMenuCatalog}
             />
           ) : null}
           </div>

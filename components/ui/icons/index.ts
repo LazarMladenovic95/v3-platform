@@ -24,6 +24,7 @@ import { FileTextIcon } from "./FileTextIcon";
 import { FolderOpenIcon } from "./FolderOpenIcon";
 import { FunnelIcon } from "./FunnelIcon";
 import { GiftIcon } from "./GiftIcon";
+import { GlobeIcon } from "./GlobeIcon";
 import { GithubIcon } from "./GithubIcon";
 import { HeartIcon } from "./HeartIcon";
 import { ImageIcon } from "./ImageIcon";
@@ -105,6 +106,7 @@ export const iconComponents = {
   "folder-open": FolderOpenIcon,
   "funnel": FunnelIcon,
   "gift": GiftIcon,
+  "globe": GlobeIcon,
   "github": GithubIcon,
   "heart": HeartIcon,
   "image": ImageIcon,
@@ -187,6 +189,7 @@ export {
   FolderOpenIcon,
   FunnelIcon,
   GiftIcon,
+  GlobeIcon,
   GithubIcon,
   HeartIcon,
   ImageIcon,

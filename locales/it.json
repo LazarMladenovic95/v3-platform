@@ -216,7 +216,22 @@
       "designSystemStyles": "Styles",
       "designSystemAccessibility": "Accessibility",
       "designSystemComponents": "Components",
-      "logout": "Logout"
+      "logout": "Logout",
+      "public": {
+        "learnMore": "Scopri di più",
+        "submitVideoReview": "Invia una video review",
+        "forBrands": "Per brand e aziende",
+        "forRetailers": "Per retailer e marketplace",
+        "brands": "Brand",
+        "categories": "Categorie",
+        "language": "Lingua",
+        "locale": {
+          "en": "English (EN)",
+          "de": "Deutsch (DE)",
+          "fr": "Français (FR)",
+          "it": "Italiano (IT)"
+        }
+      }
     }
   },
   "player": {
