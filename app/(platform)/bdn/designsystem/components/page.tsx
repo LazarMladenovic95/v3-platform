@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { getDesignSystemHubSections } from "@/app/(platform)/bnd/designsystem/content";
+import { getDesignSystemHubSections } from "@/app/(platform)/bdn/designsystem/content";
 import { t } from "@/lib/i18n";
 
 export const metadata: Metadata = {

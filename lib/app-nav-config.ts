@@ -1,5 +1,5 @@
 import type { IconName } from "@/components/ui/icons";
-import { stripLocalePrefix } from "@/lib/i18n-routing";
+import { stripLocalePrefix } from "@/lib/i18n/routing";
 import type { LocaleId } from "@/locales/index";
 
 export type PublicNavLabelKey =
@@ -45,7 +45,7 @@ export type AppNavItemConfig = {
   href: string | null;
 };
 
-export type RightMenuVariant = "public" | "default" | "company" | "reviewer" | "bnd";
+export type RightMenuVariant = "public" | "default" | "company" | "reviewer" | "bdn";
 
 export function isMarketingLandingPath(pathname: string): boolean {
   const { pathnameWithoutLocale } = stripLocalePrefix(pathname);
@@ -73,7 +73,7 @@ export function resolveRightMenuVariant(pathname: string): RightMenuVariant {
   if (isPublicSitePath(pathname)) return "public";
   if (pathname.startsWith("/company")) return "company";
   if (pathname.startsWith("/reviewer")) return "reviewer";
-  if (pathname.startsWith("/bnd")) return "bnd";
+  if (pathname.startsWith("/bdn")) return "bdn";
   return "default";
 }
 
@@ -243,27 +243,27 @@ export const reviewerNavItems: AppNavItemConfig[] = [
   },
 ];
 
-/** Admin / internal app menu when pathname is under `/bnd` (excludes design system docs). */
-export const bndNavItems: AppNavItemConfig[] = [
-  { id: "dashboard", labelKey: "app.nav.dashboard", icon: "layout-dashboard", href: "/bnd/dashboard" },
+/** Admin / internal app menu when pathname is under `/bdn` (excludes design system docs). */
+export const bdnNavItems: AppNavItemConfig[] = [
+  { id: "dashboard", labelKey: "app.nav.dashboard", icon: "layout-dashboard", href: "/bdn/dashboard" },
   {
     id: "manage-brand-assets",
     labelKey: "app.nav.manageBrandAssets",
     icon: "shopping-bag",
-    href: "/bnd/brand-assets",
+    href: "/bdn/brand-assets",
   },
   {
     id: "distribution-analytics",
     labelKey: "app.nav.distributionAnalytics",
     icon: "bar-chart3",
-    href: "/bnd/analytics",
+    href: "/bdn/analytics",
   },
-  { id: "admin-portal", labelKey: "app.nav.adminPortal", icon: "user", href: "/bnd/admin-portal" },
+  { id: "admin-portal", labelKey: "app.nav.adminPortal", icon: "user", href: "/bdn/admin-portal" },
   {
     id: "account-settings",
     labelKey: "app.nav.accountSettings",
     icon: "sliders-horizontal",
-    href: "/bnd/account-settings",
+    href: "/bdn/account-settings",
   },
 ];
 
@@ -274,12 +274,12 @@ export type AppNavLinkConfig = {
 };
 
 export const appNavDesignSystemChildren: AppNavLinkConfig[] = [
-  { id: "ds-overview", labelKey: "app.nav.designSystemOverview", href: "/bnd/designsystem" },
-  { id: "ds-typography", labelKey: "app.nav.designSystemTypography", href: "/bnd/designsystem/typography" },
-  { id: "ds-color", labelKey: "app.nav.designSystemColor", href: "/bnd/designsystem/colors" },
-  { id: "ds-styles", labelKey: "app.nav.designSystemStyles", href: "/bnd/designsystem/styles" },
-  { id: "ds-accessibility", labelKey: "app.nav.designSystemAccessibility", href: "/bnd/designsystem/accessibility" },
-  { id: "ds-components", labelKey: "app.nav.designSystemComponents", href: "/bnd/designsystem/components" },
+  { id: "ds-overview", labelKey: "app.nav.designSystemOverview", href: "/bdn/designsystem" },
+  { id: "ds-typography", labelKey: "app.nav.designSystemTypography", href: "/bdn/designsystem/typography" },
+  { id: "ds-color", labelKey: "app.nav.designSystemColor", href: "/bdn/designsystem/colors" },
+  { id: "ds-styles", labelKey: "app.nav.designSystemStyles", href: "/bdn/designsystem/styles" },
+  { id: "ds-accessibility", labelKey: "app.nav.designSystemAccessibility", href: "/bdn/designsystem/accessibility" },
+  { id: "ds-components", labelKey: "app.nav.designSystemComponents", href: "/bdn/designsystem/components" },
 ];
 
 export const appNavDesignSystemGroup = {

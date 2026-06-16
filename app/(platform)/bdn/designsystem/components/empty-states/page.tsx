@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import { EmptyStatesShowcase } from "@/app/(platform)/bnd/designsystem/ui/showcase/empty-states-showcase";
-import { designSystemPageTitle } from "@/app/(platform)/bnd/designsystem/content";
+import { EmptyStatesShowcase } from "@/app/(platform)/bdn/designsystem/ui/showcase/empty-states-showcase";
+import { designSystemPageTitle } from "@/app/(platform)/bdn/designsystem/content";
 import { t } from "@/lib/i18n";
 
 export const metadata: Metadata = {

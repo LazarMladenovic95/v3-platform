@@ -2,9 +2,9 @@ import data from "@/lib/fixtures/video-reviews-data.json";
 import { getLocalizedCategorySlug } from "@/lib/data/interest-category-slugs";
 import type { LocaleId } from "@/lib/i18n";
 import { getLocale } from "@/lib/i18n";
-import type { LocalizedStringMap } from "@/lib/i18n-content";
-import { pickLocalized } from "@/lib/i18n-content";
-import { pathnameWithLocale } from "@/lib/i18n-routing";
+import type { LocalizedStringMap } from "@/lib/i18n/content";
+import { pickLocalized } from "@/lib/i18n/content";
+import { pathnameWithLocale } from "@/lib/i18n/routing";
 
 export type BrandFixture = {
   slug: string;

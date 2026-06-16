@@ -17,17 +17,17 @@ import {
 
 function getTabs() {
   return [
-    { href: "/bnd/designsystem/components/navigation#overview", label: t("designsystem.showcase.navigation.tabOverview") },
-    { href: "/bnd/designsystem/components/navigation#activity", label: t("designsystem.showcase.navigation.tabActivity"), active: true },
-    { href: "/bnd/designsystem/components/navigation#settings", label: t("designsystem.showcase.navigation.tabSettings") },
-    { href: "/bnd/designsystem/components/navigation#disabled", label: t("designsystem.showcase.navigation.tabDisabled"), disabled: true },
+    { href: "/bdn/designsystem/components/navigation#overview", label: t("designsystem.showcase.navigation.tabOverview") },
+    { href: "/bdn/designsystem/components/navigation#activity", label: t("designsystem.showcase.navigation.tabActivity"), active: true },
+    { href: "/bdn/designsystem/components/navigation#settings", label: t("designsystem.showcase.navigation.tabSettings") },
+    { href: "/bdn/designsystem/components/navigation#disabled", label: t("designsystem.showcase.navigation.tabDisabled"), disabled: true },
   ] as const;
 }
 
 function getBreadcrumbItems() {
   return [
-    { href: "/bnd/designsystem", label: t("designsystem.showcase.navigation.designSystem") },
-    { href: "/bnd/designsystem/components", label: t("designsystem.showcase.navigation.components") },
+    { href: "/bdn/designsystem", label: t("designsystem.showcase.navigation.designSystem") },
+    { href: "/bdn/designsystem/components", label: t("designsystem.showcase.navigation.components") },
     { label: t("designsystem.showcase.navigation.navigation") },
   ] as const;
 }
@@ -35,23 +35,23 @@ function getBreadcrumbItems() {
 function getVerticalItems() {
   return [
     {
-      href: "/bnd/designsystem/components/navigation#summary",
+      href: "/bdn/designsystem/components/navigation#summary",
       label: t("designsystem.showcase.navigation.verticalSummary"),
       icon: <FileTextIcon className="h-4 w-4" />,
     },
     {
-      href: "/bnd/designsystem/components/navigation#reports",
+      href: "/bdn/designsystem/components/navigation#reports",
       label: t("designsystem.showcase.navigation.verticalReports"),
       icon: <BarChart3Icon className="h-4 w-4" />,
       active: true,
     },
     {
-      href: "/bnd/designsystem/components/navigation#exports",
+      href: "/bdn/designsystem/components/navigation#exports",
       label: t("designsystem.showcase.navigation.verticalExports"),
       icon: <DownloadIcon className="h-4 w-4" />,
     },
     {
-      href: "/bnd/designsystem/components/navigation#archived",
+      href: "/bdn/designsystem/components/navigation#archived",
       label: t("designsystem.showcase.navigation.verticalArchived"),
       icon: <ArchiveIcon className="h-4 w-4" />,
       disabled: true,

@@ -2,7 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import type { LocaleId } from "@/lib/i18n";
 import { getLocale } from "@/lib/i18n";
-import type { LocalizedStringMap } from "@/lib/i18n-content";
+import type { LocalizedStringMap } from "@/lib/i18n/content";
 import { DEFAULT_LOCALE, SUPPORTED_LOCALES } from "@/locales/index";
 
 const DEV_CSV_PATH = path.join(process.cwd(), "lib/data/interest-categories.csv");

@@ -8,7 +8,7 @@ import {
   appNavDesignSystemGroup,
   appNavLogoutItem,
   appNavPrimaryItems,
-  bndNavItems,
+  bdnNavItems,
   companyNavItems,
   publicHeaderNavLinks,
   publicNavLocaleOptions,
@@ -18,8 +18,8 @@ import {
   type RightMenuVariant,
 } from "@/lib/app-nav-config";
 import { getLocale, t } from "@/lib/i18n";
-import { setPreferredLocaleCookie } from "@/lib/i18n-locale-actions";
-import { pathnameWithLocale, stripLocalePrefix } from "@/lib/i18n-routing";
+import { setPreferredLocaleCookie } from "@/lib/i18n/locale-actions";
+import { pathnameWithLocale, stripLocalePrefix } from "@/lib/i18n/routing";
 import type { PublicMenuCatalog } from "@/lib/public-menu-types";
 import type { LocaleId } from "@/locales/index";
 import { cn } from "@/lib/utils";
@@ -160,10 +160,10 @@ export function RightMenu({ className, onItemClick, variant, publicMenuCatalog: 
           />
         ) : null}
 
-        {resolvedVariant === "bnd" ? (
+        {resolvedVariant === "bdn" ? (
           <>
             <NavItemsList
-              items={bndNavItems}
+              items={bdnNavItems}
               onNavigate={handleNavigate}
               onPlaceholder={handlePlaceholder}
             />
@@ -171,7 +171,7 @@ export function RightMenu({ className, onItemClick, variant, publicMenuCatalog: 
             <RightMenuItem
               icon={<Icon name={appNavDesignSystemGroup.icon} size="lg" />}
               label={t(appNavDesignSystemGroup.labelKey)}
-              defaultSubmenuOpen={pathname.startsWith("/bnd/designsystem")}
+              defaultSubmenuOpen={pathname.startsWith("/bdn/designsystem")}
               submenu={appNavDesignSystemChildren.map((item) => ({
                 id: item.id,
                 label: t(item.labelKey),
@@ -192,7 +192,7 @@ export function RightMenu({ className, onItemClick, variant, publicMenuCatalog: 
             <RightMenuItem
               icon={<Icon name={appNavDesignSystemGroup.icon} size="lg" />}
               label={t(appNavDesignSystemGroup.labelKey)}
-              defaultSubmenuOpen={pathname.startsWith("/bnd/designsystem")}
+              defaultSubmenuOpen={pathname.startsWith("/bdn/designsystem")}
               submenu={appNavDesignSystemChildren.map((item) => ({
                 id: item.id,
                 label: t(item.labelKey),

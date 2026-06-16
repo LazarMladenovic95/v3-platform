@@ -1,7 +1,7 @@
 import { cookies } from "next/headers";
-import { setLocale, type LocaleId } from "@/lib/i18n";
 import { DEFAULT_LOCALE } from "@/locales/index";
-import { isSupportedLocaleSegment, LOCALE_COOKIE_NAME } from "@/lib/i18n-routing";
+import { setLocale, type LocaleId } from "@/lib/i18n";
+import { isSupportedLocaleSegment, LOCALE_COOKIE_NAME } from "@/lib/i18n/routing";
 
 export async function applyRequestLocale(): Promise<LocaleId> {
   const cookieStore = await cookies();

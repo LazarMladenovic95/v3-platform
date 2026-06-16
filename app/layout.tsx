@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Mulish } from "next/font/google";
 import { ClientLocaleBoundary } from "@/components/i18n/ClientLocaleBoundary";
 import { LayoutShell } from "@/components/layout";
-import { applyRequestLocale } from "@/lib/i18n-request";
+import { applyRequestLocale } from "@/lib/i18n/request";
 import { t } from "@/lib/i18n";
 import "./globals.css";
 

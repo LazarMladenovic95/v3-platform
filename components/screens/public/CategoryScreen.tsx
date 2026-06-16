@@ -6,8 +6,8 @@ import { VideoRatingThumbnailCard } from "@/components/ui";
 import type { InterestCategoryRecord } from "@/lib/data/interest-categories-dev";
 import type { ReviewFixture } from "@/lib/fixtures/video-reviews";
 import { getLocale, t } from "@/lib/i18n";
-import { pathnameWithLocale } from "@/lib/i18n-routing";
-import { pickLocalized } from "@/lib/i18n-content";
+import { pathnameWithLocale } from "@/lib/i18n/routing";
+import { pickLocalized } from "@/lib/i18n/content";
 
 export type CategoryScreenProps = {
   category: InterestCategoryRecord;

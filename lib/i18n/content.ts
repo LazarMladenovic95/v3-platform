@@ -1,4 +1,4 @@
-import type { LocaleId } from "@/lib/i18n";
+import type { LocaleId } from "@/locales/index";
 
 export type LocalizedStringMap = Partial<Record<LocaleId, { title?: string; text?: string; desc?: string }>>;
 

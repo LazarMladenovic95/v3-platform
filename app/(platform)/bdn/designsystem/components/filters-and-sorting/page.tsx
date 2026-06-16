@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import { FiltersAndSortingShowcase } from "@/app/(platform)/bnd/designsystem/ui/showcase/filters-and-sorting-showcase";
-import { designSystemPageTitle } from "@/app/(platform)/bnd/designsystem/content";
+import { FiltersAndSortingShowcase } from "@/app/(platform)/bdn/designsystem/ui/showcase/filters-and-sorting-showcase";
+import { designSystemPageTitle } from "@/app/(platform)/bdn/designsystem/content";
 import { t } from "@/lib/i18n";
 
 export const metadata: Metadata = {

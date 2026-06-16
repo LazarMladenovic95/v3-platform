@@ -14,7 +14,7 @@ import {
   type ReviewFixture,
 } from "@/lib/fixtures/video-reviews";
 import { getLocale } from "@/lib/i18n";
-import { pickLocalized } from "@/lib/i18n-content";
+import { pickLocalized } from "@/lib/i18n/content";
 
 export type BrandScreenProps = {
   brand: BrandFixture;

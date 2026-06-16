@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import { DialogWindowsShowcase } from "@/app/(platform)/bnd/designsystem/ui/showcase/dialog-windows-showcase";
-import { designSystemPageTitle } from "@/app/(platform)/bnd/designsystem/content";
+import { DialogWindowsShowcase } from "@/app/(platform)/bdn/designsystem/ui/showcase/dialog-windows-showcase";
+import { designSystemPageTitle } from "@/app/(platform)/bdn/designsystem/content";
 import { t } from "@/lib/i18n";
 
 export const metadata: Metadata = {

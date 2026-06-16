@@ -12,8 +12,8 @@ import {
   type PublicNavLabelKey,
 } from "@/lib/app-nav-config";
 import { getLocale, t } from "@/lib/i18n";
-import { setPreferredLocaleCookie } from "@/lib/i18n-locale-actions";
-import { pathnameWithLocale, stripLocalePrefix } from "@/lib/i18n-routing";
+import { setPreferredLocaleCookie } from "@/lib/i18n/locale-actions";
+import { pathnameWithLocale, stripLocalePrefix } from "@/lib/i18n/routing";
 import type { LocaleId } from "@/locales/index";
 import { cn } from "@/lib/utils";
 

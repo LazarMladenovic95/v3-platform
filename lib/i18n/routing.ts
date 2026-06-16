@@ -29,7 +29,7 @@ export const LOCALE_EXEMPT_PATH_PREFIXES = [
   "/company",
   "/reviewer",
   "/sign-in",
-  "/bnd",
+  "/bdn",
 ] as const;
 
 export function isLocaleExemptPath(pathname: string): boolean {

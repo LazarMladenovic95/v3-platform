@@ -46,8 +46,8 @@ app pages → PageCanvas → Screen (components/screens/) → ui composites/atom
 
 - Root: `LayoutShell` once in `app/layout.tsx`.
 - Product pages: wrap in `PageCanvas`; layout options live there, not scattered in wrappers.
-- `app/(platform)/bnd/designsystem/`: own segment layout; **no** `PageCanvas`.
-- `app/(platform)/bnd/(admin)/`: `PageCanvas` → `AppContentContainer` (admin stubs).
+- `app/(platform)/bdn/designsystem/`: own segment layout; **no** `PageCanvas`.
+- `app/(platform)/bdn/(admin)/`: `PageCanvas` → `AppContentContainer` (admin stubs).
 
 ## Related
 

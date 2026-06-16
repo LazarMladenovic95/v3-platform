@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import { BadgesShowcase } from "@/app/(platform)/bnd/designsystem/ui/showcase/badges-showcase";
-import { designSystemPageTitle } from "@/app/(platform)/bnd/designsystem/content";
+import { BadgesShowcase } from "@/app/(platform)/bdn/designsystem/ui/showcase/badges-showcase";
+import { designSystemPageTitle } from "@/app/(platform)/bdn/designsystem/content";
 import { t } from "@/lib/i18n";
 
 export const metadata: Metadata = {

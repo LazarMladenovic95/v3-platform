@@ -7,10 +7,10 @@ import {
   getCategorySlug,
 } from "@/lib/data/interest-categories-dev";
 import { getReviewsForCategoryEnglishSlug } from "@/lib/fixtures/video-reviews";
-import { applyRequestLocale } from "@/lib/i18n-request";
+import { applyRequestLocale } from "@/lib/i18n/request";
 import { t } from "@/lib/i18n";
-import { pathnameWithLocale } from "@/lib/i18n-routing";
-import { pickLocalized } from "@/lib/i18n-content";
+import { pathnameWithLocale } from "@/lib/i18n/routing";
+import { pickLocalized } from "@/lib/i18n/content";
 
 type CategoryPageProps = {
   params: Promise<{ categorySlug: string }>;

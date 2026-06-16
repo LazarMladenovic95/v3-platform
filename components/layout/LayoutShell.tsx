@@ -3,9 +3,9 @@ import { AppFooter } from "@/components/layout/AppFooter";
 import { LandingStickyAuthBar } from "@/components/blocks/marketing/LandingStickyAuthBar";
 import { AppHeader } from "@/components/ui/composites/AppHeader";
 import { isMarketingLandingPath, isPublicSitePath, isPublicStickyAuthPath } from "@/lib/app-nav-config";
-import { applyRequestLocale } from "@/lib/i18n-request";
+import { applyRequestLocale } from "@/lib/i18n/request";
 import { buildPublicMenuCatalog } from "@/lib/public-menu-data.server";
-import { PATHNAME_HEADER } from "@/lib/i18n-routing";
+import { PATHNAME_HEADER } from "@/lib/i18n/routing";
 import { cn } from "@/lib/utils";
 import type { ReactNode } from "react";
 

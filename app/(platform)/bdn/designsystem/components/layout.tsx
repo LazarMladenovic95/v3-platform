@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { DesignSystemComponentsNav } from "@/app/(platform)/bnd/designsystem/ui/DesignSystemComponentsNav";
+import { DesignSystemComponentsNav } from "@/app/(platform)/bdn/designsystem/ui/DesignSystemComponentsNav";
 
 export default function DesignSystemComponentsLayout({
   children,

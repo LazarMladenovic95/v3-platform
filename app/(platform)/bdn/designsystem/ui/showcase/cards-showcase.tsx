@@ -179,7 +179,7 @@ export function CardsShowcase() {
 
         <div className="mt-4 grid gap-4 md:grid-cols-2">
           <Link
-            href="/bnd/designsystem/components"
+            href="/bdn/designsystem/components"
             className="block rounded-lg border border-border bg-surface p-5 shadow-sm transition-colors hover:border-border-focus hover:bg-surface-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2 focus-visible:ring-offset-background"
           >
             <h3 className="text-body-regular-bold text-foreground-title">{t("designsystem.showcase.cards.componentOverviewTitle")}</h3>

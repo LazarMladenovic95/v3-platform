@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { designSystemPageTitle } from "@/app/(platform)/bnd/designsystem/content";
+import { designSystemPageTitle } from "@/app/(platform)/bdn/designsystem/content";
 import { t } from "@/lib/i18n";
 
 export const metadata: Metadata = {
