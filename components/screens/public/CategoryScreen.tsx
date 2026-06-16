@@ -24,7 +24,7 @@ export function CategoryScreen({ category, reviews }: CategoryScreenProps) {
   return (
     <div className="mx-auto w-full max-w-lg px-6 py-8 md:max-w-content md:px-16 md:py-10 lg:px-20">
       <Link
-        href={pathnameWithLocale("/video-reviews", locale)}
+        href={pathnameWithLocale("/video-reviews/brand", locale)}
         className="text-body-small text-secondary underline-offset-4 hover:underline"
       >
         {t("player.category.backToHub")}

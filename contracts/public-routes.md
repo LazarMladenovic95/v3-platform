@@ -10,9 +10,10 @@
 | `/` | Marketing landing |
 | `/sign-in` | Login (prototype; mirrors [app.expeerly.com](https://app.expeerly.com/)) |
 | `/sign-in?sign-up` | Sign up (role → reviewer email/password → 6-digit verify) |
-| `/video-reviews` | Hub |
+| `/video-reviews` | URL prefix only (no page; bare path → 404) |
+| `/video-reviews/brand` | Brand overview (all brands) |
 | `/video-reviews/productcategory/{categorySlug}` | Category listing (live catalog; dev reads `data/InterestCategories - ToUpload.csv`) |
-| `/video-reviews/brand/{brandSlug}` | Brand listing |
+| `/video-reviews/brand/{brandSlug}` | Brand detail |
 | `/video-reviews/{categorySlug}/{brandSlug}/{productSlug}/{reviewId}` | Single review player |
 
 **Header right menu (public):** `app.nav.public.*` — learn more, submit review, B2B links, **Brands** / **Categories** submenus (from fixtures + `interest-categories.csv`), locale switcher. Config: `lib/app-nav-config.ts`, catalog: `lib/public-menu-data.server.ts`.

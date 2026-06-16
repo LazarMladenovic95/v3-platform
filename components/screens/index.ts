@@ -2,7 +2,7 @@ export { LandingScreen } from "./public/LandingScreen";
 export { BrandScreen } from "./public/BrandScreen";
 export { CategoryScreen, type CategoryScreenProps } from "./public/CategoryScreen";
 export { ReviewScreen } from "./public/ReviewScreen";
-export { VideoReviewsHubScreen } from "./public/VideoReviewsHubScreen";
+export { BrandOverviewScreen } from "./public/BrandOverviewScreen";
 export { SignInScreen, type SignInScreenMode, type SignInScreenProps } from "./public/SignInScreen";
 export { AppStubScreen, type AppStubScreenProps } from "./platform/AppStubScreen";
 export { ReviewerOnboardingScreen } from "./platform/ReviewerOnboardingScreen";

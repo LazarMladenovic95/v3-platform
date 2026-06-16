@@ -1,10 +1,12 @@
 import { headers } from "next/headers";
 import { AppFooter } from "@/components/layout/AppFooter";
+import { LandingStickyAuthBar } from "@/components/blocks/marketing/LandingStickyAuthBar";
 import { AppHeader } from "@/components/ui/composites/AppHeader";
-import { isPublicSitePath } from "@/lib/app-nav-config";
+import { isMarketingLandingPath, isPublicSitePath, isPublicStickyAuthPath } from "@/lib/app-nav-config";
 import { applyRequestLocale } from "@/lib/i18n-request";
 import { buildPublicMenuCatalog } from "@/lib/public-menu-data.server";
 import { PATHNAME_HEADER } from "@/lib/i18n-routing";
+import { cn } from "@/lib/utils";
 import type { ReactNode } from "react";
 
 export interface LayoutShellProps {
@@ -22,12 +24,17 @@ export async function LayoutShell({ children }: LayoutShellProps) {
   const publicMenuCatalog = isPublicSitePath(pathname)
     ? buildPublicMenuCatalog(locale)
     : undefined;
+  const isLanding = isMarketingLandingPath(pathname);
+  const showStickyAuth = isPublicStickyAuthPath(pathname);
 
   return (
-    <div className="flex min-h-screen flex-col bg-background">
+    <>
       <AppHeader publicMenuCatalog={publicMenuCatalog} />
-      <main className="min-w-0 flex-1">{children}</main>
-      <AppFooter />
-    </div>
+      <div className="flex min-h-screen flex-col bg-background">
+        <main className={cn("min-w-0 flex-1", showStickyAuth && "pb-24 md:pb-0")}>{children}</main>
+        {showStickyAuth ? <LandingStickyAuthBar /> : null}
+        {isLanding ? null : <AppFooter />}
+      </div>
+    </>
   );
 }

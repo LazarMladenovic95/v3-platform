@@ -4,6 +4,7 @@ import type { ComponentType } from "react";
 import { ActivityIcon } from "./ActivityIcon";
 import { ArchiveIcon } from "./ArchiveIcon";
 import { ArrowRightIcon } from "./ArrowRightIcon";
+import { ArrowUpDownIcon } from "./ArrowUpDownIcon";
 import { AlertCircleIcon } from "./AlertCircleIcon";
 import { BadgeCheckIcon } from "./BadgeCheckIcon";
 import { BanknoteIcon } from "./BanknoteIcon";
@@ -16,9 +17,11 @@ import { CheckCircleIcon } from "./CheckCircleIcon";
 import { ChevronDownIcon } from "./ChevronDownIcon";
 import { ChevronLeftIcon } from "./ChevronLeftIcon";
 import { ChevronRightIcon } from "./ChevronRightIcon";
+import { CirclePlayIcon } from "./CirclePlayIcon";
 import { CreditCardIcon } from "./CreditCardIcon";
 import { DownloadIcon } from "./DownloadIcon";
 import { EyeIcon } from "./EyeIcon";
+import { ExternalLinkIcon } from "./ExternalLinkIcon";
 import { FacebookIcon } from "./FacebookIcon";
 import { FileTextIcon } from "./FileTextIcon";
 import { FolderOpenIcon } from "./FolderOpenIcon";
@@ -86,6 +89,7 @@ export const iconComponents = {
   "activity": ActivityIcon,
   "archive": ArchiveIcon,
   "arrow-right": ArrowRightIcon,
+  "arrow-up-down": ArrowUpDownIcon,
   "alert-circle": AlertCircleIcon,
   "badge-check": BadgeCheckIcon,
   "banknote": BanknoteIcon,
@@ -98,9 +102,11 @@ export const iconComponents = {
   "chevron-down": ChevronDownIcon,
   "chevron-left": ChevronLeftIcon,
   "chevron-right": ChevronRightIcon,
+  "circle-play": CirclePlayIcon,
   "credit-card": CreditCardIcon,
   "download": DownloadIcon,
   "eye": EyeIcon,
+  "external-link": ExternalLinkIcon,
   "facebook": FacebookIcon,
   "file-text": FileTextIcon,
   "folder-open": FolderOpenIcon,
@@ -169,6 +175,7 @@ export {
   ActivityIcon,
   ArchiveIcon,
   ArrowRightIcon,
+  ArrowUpDownIcon,
   AlertCircleIcon,
   BadgeCheckIcon,
   BanknoteIcon,
@@ -181,9 +188,11 @@ export {
   ChevronDownIcon,
   ChevronLeftIcon,
   ChevronRightIcon,
+  CirclePlayIcon,
   CreditCardIcon,
   DownloadIcon,
   EyeIcon,
+  ExternalLinkIcon,
   FacebookIcon,
   FileTextIcon,
   FolderOpenIcon,

@@ -3,8 +3,10 @@ import { stripLocalePrefix } from "@/lib/i18n-routing";
 import type { LocaleId } from "@/locales/index";
 
 export type PublicNavLabelKey =
+  | "app.nav.public.exploreReviews"
   | "app.nav.public.learnMore"
   | "app.nav.public.submitVideoReview"
+  | "app.nav.public.forBrandsAndRetailers"
   | "app.nav.public.forBrands"
   | "app.nav.public.forRetailers"
   | "app.nav.public.brands"
@@ -45,6 +47,11 @@ export type AppNavItemConfig = {
 
 export type RightMenuVariant = "public" | "default" | "company" | "reviewer" | "bnd";
 
+export function isMarketingLandingPath(pathname: string): boolean {
+  const { pathnameWithoutLocale } = stripLocalePrefix(pathname);
+  return pathnameWithoutLocale === "/";
+}
+
 export function isPublicSitePath(pathname: string): boolean {
   const { pathnameWithoutLocale } = stripLocalePrefix(pathname);
 
@@ -52,6 +59,14 @@ export function isPublicSitePath(pathname: string): boolean {
   if (pathnameWithoutLocale.startsWith("/video-reviews")) return true;
   if (pathnameWithoutLocale.startsWith("/sign-in")) return true;
   return false;
+}
+
+export function isPublicStickyAuthPath(pathname: string): boolean {
+  const { pathnameWithoutLocale } = stripLocalePrefix(pathname);
+
+  if (!isPublicSitePath(pathname)) return false;
+  if (pathnameWithoutLocale.startsWith("/sign-in")) return false;
+  return true;
 }
 
 export function resolveRightMenuVariant(pathname: string): RightMenuVariant {
@@ -75,6 +90,28 @@ export const PUBLIC_MENU_EXTERNAL_LINKS = {
   forBrands: "https://www.get.expeerly.com/for-brands",
   forRetailers: "https://www.get.expeerly.com/for-retailers",
 } as const;
+
+export const publicHeaderNavLinks: PublicNavLinkConfig[] = [
+  {
+    id: "explore-reviews",
+    labelKey: "app.nav.public.exploreReviews",
+    icon: "layout-grid",
+    href: "/video-reviews/brand",
+  },
+  {
+    id: "submit-review",
+    labelKey: "app.nav.public.submitVideoReview",
+    icon: "play-square",
+    href: "/reviewer/onboarding",
+  },
+  {
+    id: "for-brands-and-retailers",
+    labelKey: "app.nav.public.forBrandsAndRetailers",
+    icon: "external-link",
+    href: PUBLIC_MENU_EXTERNAL_LINKS.learnMore,
+    external: true,
+  },
+];
 
 export const publicNavPrimaryLinks: PublicNavLinkConfig[] = [
   {

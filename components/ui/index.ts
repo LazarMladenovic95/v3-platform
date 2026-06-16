@@ -40,6 +40,7 @@ export { FileUploadField } from "./molecules/FileUploadField";
 export { InputField } from "./molecules/InputField";
 export { Pagination } from "./molecules/Pagination";
 export { StarRating, type StarRatingProps } from "./molecules/video-reviews/StarRating";
+export { VideoThumbnail, type VideoThumbnailProps } from "./molecules/video-reviews/VideoThumbnail";
 export { ProgressBar } from "./molecules/ProgressBar";
 export { RadioGroupField } from "./molecules/RadioGroupField";
 export { TextareaField } from "./molecules/TextareaField";
@@ -75,11 +76,14 @@ export { Accordion } from "./composites/Accordion";
 export { AvatarGroup } from "./composites/AvatarGroup";
 export { Card, CardContent, CardDescription, CardFooter, CardTitle } from "./composites/Card";
 export { Carousel, CarouselItem, CarouselTrack } from "./composites/Carousel";
+export { SectionHeader, type SectionHeaderProps } from "./composites/SectionHeader";
+export { EdgeCarousel, type EdgeCarouselProps } from "./composites/EdgeCarousel";
 export { ContentListItem } from "./composites/ContentListItem";
 export { DataTable, DataTableCell, DataTableHeaderCell, DataTableRow } from "./composites/DataTable";
 export { EmptyState } from "./composites/EmptyState";
 export { FilterPanel } from "./composites/FilterPanel";
 export { RightMenu } from "./composites/RightMenu";
+export { PublicDesktopHeaderNav, type PublicDesktopHeaderNavProps } from "./composites/PublicDesktopHeaderNav";
 export { TabbedNavigationMenuItem } from "./composites/TabbedNavigationMenuItem";
 export { VerticalNavigationMenuItem } from "./composites/VerticalNavigationMenuItem";
 export {
@@ -96,6 +100,23 @@ export {
   VideoRatingThumbnailCard,
   type VideoRatingThumbnailCardProps,
 } from "./composites/video-reviews/VideoRatingThumbnailCard";
+export { ProductGroup, type ProductGroupItem, type ProductGroupProps } from "./composites/ProductGroup";
+export {
+  BrandListCard,
+  type BrandListCardProps,
+} from "./composites/video-reviews/BrandListCard";
+export {
+  BrandLogoTile,
+  type BrandLogoTileProps,
+} from "./composites/video-reviews/BrandLogoTile";
+export {
+  PendingReviewCard,
+  type PendingReviewCardProps,
+} from "./composites/video-reviews/PendingReviewCard";
+export {
+  ReviewFilterToolbar,
+  type ReviewFilterToolbarProps,
+} from "./composites/video-reviews/ReviewFilterToolbar";
 export {
   BrandMarketingCard,
   type BrandMarketingCardProps,
