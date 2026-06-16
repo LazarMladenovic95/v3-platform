@@ -1,7 +1,7 @@
 {
   "ui": {
     "breadcrumbs": {
-      "ariaLabel": "Breadcrumbs"
+      "ariaLabel": "Breadcrumb"
     },
     "dateField": {
       "openCalendar": "Open calendar",
