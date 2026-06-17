@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { B2BPromoRow } from "@/components/blocks/marketing/B2BPromoRow";
 import { BrandLogoLink } from "@/components/blocks/marketing/BrandLogoLink";
 import { JustAddedReviewRow } from "@/components/blocks/marketing/JustAddedReviewRow";
@@ -7,7 +6,6 @@ import { LandingSectionHeader } from "@/components/blocks/marketing/LandingSecti
 import { ReviewerCommunityBanner } from "@/components/blocks/marketing/ReviewerCommunityBanner";
 import { ReviewerProfileRow } from "@/components/blocks/marketing/ReviewerProfileRow";
 import { Heading } from "@/components/ui/atoms/Heading";
-import { Text } from "@/components/ui/atoms/Text";
 import { VideoRatingThumbnailCard, CarouselItem } from "@/components/ui";
 import { SearchField } from "@/components/ui/molecules/search/SearchField";
 import {
@@ -16,12 +14,6 @@ import {
   getLandingFeaturedReviewers,
 } from "@/lib/fixtures/video-reviews";
 import { t } from "@/lib/i18n";
-import { cn } from "@/lib/utils";
-
-const FOOTER_EXTERNAL_LINKS = {
-  privacy: "https://www.get.expeerly.com/privacy-policy",
-  terms: "https://www.get.expeerly.com/terms-and-conditions-companies",
-} as const;
 
 const RECENT_HOURS = [2, 5, 8, 12, 24] as const;
 
@@ -31,7 +23,6 @@ export function LandingScreen() {
   const trendingReviews = allReviews.slice(0, 8);
   const justAddedReviews = [...allReviews].reverse().slice(0, 5);
   const reviewers = getLandingFeaturedReviewers();
-  const year = new Date().getFullYear();
 
   return (
     <div className="bg-background text-foreground-body">
@@ -131,38 +122,6 @@ export function LandingScreen() {
         <section className="mt-8 md:mt-12" aria-label={t("marketing.landing.forBrandsTitle")}>
           <B2BPromoRow />
         </section>
-
-        <footer className="mt-8 border-t border-border pt-6 md:mt-12">
-          <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
-            <Text as="p" variant="body-extra-small-muted">
-              {t("marketing.footer.copyright", { year })}
-            </Text>
-            <Link
-              href={FOOTER_EXTERNAL_LINKS.privacy}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={cn(
-                "text-body-extra-small-bold text-foreground-title-subtle no-underline",
-                "hover:text-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus",
-              )}
-              aria-label={t("marketing.footer.privacyAriaLabel")}
-            >
-              {t("marketing.footer.privacyLabel")}
-            </Link>
-            <Link
-              href={FOOTER_EXTERNAL_LINKS.terms}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={cn(
-                "text-body-extra-small-bold text-foreground-title-subtle no-underline",
-                "hover:text-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus",
-              )}
-              aria-label={t("marketing.footer.termsCompaniesAriaLabel")}
-            >
-              {t("marketing.footer.termsCompaniesLabel")}
-            </Link>
-          </div>
-        </footer>
       </div>
     </div>
   );

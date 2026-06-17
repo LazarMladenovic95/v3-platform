@@ -14,7 +14,7 @@ export function ReviewerCommunityBanner({ className }: ReviewerCommunityBannerPr
   return (
     <div
       className={cn(
-        "flex flex-col gap-4 rounded-lg bg-secondary px-5 py-5 md:flex-row md:items-center md:gap-6 md:px-8 md:py-6",
+        "flex flex-col gap-4 rounded-lg bg-secondary px-5 py-5 md:flex-row md:items-start md:gap-6 md:px-8 md:py-6",
         className,
       )}
     >

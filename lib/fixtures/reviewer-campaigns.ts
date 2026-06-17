@@ -3,6 +3,15 @@ import { formatUiDate, t } from "@/lib/i18n";
 
 export type ReviewerCampaignStatus = "open" | "applied" | "closed";
 
+export type ReviewerCampaignRowData = {
+  id: string;
+  brandLogoSrc: string;
+  title: string;
+  metaParts: string[];
+  endingSoon?: boolean;
+  status: ReviewerCampaignStatus;
+};
+
 export type ReviewerCampaignItemId =
   | "mieleCordlessLaunch"
   | "mieleHomeKitchen"

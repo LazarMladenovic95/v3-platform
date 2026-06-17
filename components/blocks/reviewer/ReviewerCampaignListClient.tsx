@@ -7,6 +7,7 @@ import {
 } from "@/components/blocks/reviewer/ReviewerCampaignListItem";
 import { Card } from "@/components/ui/composites/Card";
 import { Pagination } from "@/components/ui/molecules/Pagination";
+import type { ReviewerCampaignRowData } from "@/lib/fixtures/reviewer-campaigns";
 import { t } from "@/lib/i18n";
 
 const PAGE_SIZE = 6;
@@ -16,7 +17,7 @@ export type ReviewerCampaignRow = ReviewerCampaignListItemProps & {
 };
 
 export type ReviewerCampaignListClientProps = {
-  campaigns: ReviewerCampaignRow[];
+  campaigns: ReviewerCampaignRowData[];
 };
 
 export function ReviewerCampaignListClient({ campaigns }: ReviewerCampaignListClientProps) {
