@@ -69,6 +69,11 @@ export function isPublicStickyAuthPath(pathname: string): boolean {
   return true;
 }
 
+export function isReviewerPath(pathname: string): boolean {
+  const { pathnameWithoutLocale } = stripLocalePrefix(pathname);
+  return pathnameWithoutLocale.startsWith("/reviewer");
+}
+
 export function resolveRightMenuVariant(pathname: string): RightMenuVariant {
   if (isPublicSitePath(pathname)) return "public";
   if (pathname.startsWith("/company")) return "company";

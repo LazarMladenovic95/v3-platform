@@ -1,4 +1,5 @@
 import type { ReviewFixture } from "@/lib/fixtures/video-reviews";
+import { getReviewerPortraitUrl } from "@/lib/fixtures/video-reviews";
 
 export type BrandReviewerAvatar = {
   src?: string;
@@ -25,7 +26,7 @@ export function getBrandReviewerAvatars(reviews: ReviewFixture[]): BrandReviewer
 
     const displayName = review.reviewerDisplayName ?? review.reviewerName;
     byReviewer.set(review.reviewerName, {
-      src: review.reviewerAvatarUrl,
+      src: getReviewerPortraitUrl(review.reviewerName, review.reviewerAvatarUrl),
       alt: displayName,
       fallback: reviewerInitials(displayName),
     });

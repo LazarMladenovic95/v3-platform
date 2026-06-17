@@ -69,6 +69,7 @@ type ToolbarMenuProps = {
   active?: boolean;
   contentClassName?: string;
   popoverAlign?: "start" | "center" | "end";
+  buttonClassName?: string;
   children: ReactNode;
 };
 
@@ -81,6 +82,7 @@ function ToolbarMenu({
   active = false,
   contentClassName,
   popoverAlign = "end",
+  buttonClassName,
   children,
 }: ToolbarMenuProps) {
   return (
@@ -99,7 +101,10 @@ function ToolbarMenu({
               className={cn("transition-transform", open && "rotate-180")}
             />
           }
-          className={cn(active && "border-border-focus text-foreground-body")}
+          className={cn(
+            active && "border-border-focus text-foreground-body",
+            buttonClassName,
+          )}
         >
           {label}
         </OutlineNeutral>
@@ -164,6 +169,7 @@ type ToolbarFilterMenusProps = {
   activeProductLabel?: string;
   activeReviewerLabel?: string;
   popoverAlign?: "start" | "center" | "end";
+  fillWidth?: boolean;
 };
 
 function ToolbarFilterMenus({
@@ -186,8 +192,11 @@ function ToolbarFilterMenus({
   activeProductLabel,
   activeReviewerLabel,
   popoverAlign = "end",
+  fillWidth = false,
 }: ToolbarFilterMenusProps) {
-  return (
+  const menuButtonClassName = fillWidth ? "w-full min-w-0" : undefined;
+
+  const menus = (
     <>
       <ToolbarMenu
         open={productOpen}
@@ -197,6 +206,7 @@ function ToolbarFilterMenus({
         ariaLabel={t("player.brand.filterProductLabel")}
         active={hasProductFilter}
         popoverAlign={popoverAlign}
+        buttonClassName={menuButtonClassName}
       >
         <OptionMenuList
           value={productSlug}
@@ -214,6 +224,7 @@ function ToolbarFilterMenus({
         ariaLabel={t("player.brand.filterReviewerLabel")}
         active={hasReviewerFilter}
         popoverAlign={popoverAlign}
+        buttonClassName={menuButtonClassName}
       >
         <OptionMenuList
           value={reviewerName}
@@ -231,6 +242,7 @@ function ToolbarFilterMenus({
         ariaLabel={t("player.brand.sortLabel")}
         contentClassName="w-56"
         popoverAlign={popoverAlign}
+        buttonClassName={menuButtonClassName}
       >
         <ul className="flex flex-col gap-1">
           {SORT_OPTIONS.map((option) => (
@@ -254,6 +266,12 @@ function ToolbarFilterMenus({
           ))}
         </ul>
       </ToolbarMenu>
+    </>
+  );
+
+  return (
+    <>
+      {fillWidth ? <div className="grid w-full grid-cols-3 gap-2">{menus}</div> : menus}
 
       <ActiveFilterTags
         hasProductFilter={hasProductFilter}
@@ -374,9 +392,9 @@ export function ReviewFilterToolbar({
           {mobileFiltersOpen ? (
             <div
               id="brand-reviews-mobile-filters"
-              className="flex flex-wrap items-center gap-2 border-t border-border px-4 pb-4 pt-3"
+              className="flex flex-col gap-2 border-t border-border px-4 pb-4 pt-3"
             >
-              <ToolbarFilterMenus {...sharedMenuProps} popoverAlign="start" />
+              <ToolbarFilterMenus {...sharedMenuProps} popoverAlign="start" fillWidth />
             </div>
           ) : null}
         </div>

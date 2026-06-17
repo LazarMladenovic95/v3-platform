@@ -4,7 +4,7 @@ import { Heading } from "@/components/ui/atoms/Heading";
 import { Icon } from "@/components/ui/atoms/Icon";
 import { Text } from "@/components/ui/atoms/Text";
 import { ghostLinkClassName } from "@/components/ui/atoms/button/buttonClasses";
-import { EdgeCarousel, VideoRatingThumbnailCard } from "@/components/ui";
+import { CarouselItem, EdgeCarousel, VideoRatingThumbnailCard } from "@/components/ui";
 import { getReviewsForBrand, type BrandFixture, type ReviewFixture } from "@/lib/fixtures/video-reviews";
 import { t } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
@@ -45,8 +45,9 @@ export function BrandReviewsCarouselSection({ brand, reviews }: BrandReviewsCaro
               <Text as="p" variant="body-extra-small-muted">
                 {t("player.hub.brandReviewCount", { count: reviewCount })}
               </Text>
-              <Text as="p" variant="body-extra-small-muted">
-                {t("player.hub.brandAverageRating", { rating: brand.rating.toFixed(1) })}
+              <Text as="p" variant="body-extra-small-muted" className="flex items-center gap-1">
+                <Icon name="star" size="sm" className="fill-warning text-warning" aria-hidden />
+                <span>{brand.rating.toFixed(1)}</span>
               </Text>
             </div>
           </div>
@@ -72,9 +73,9 @@ export function BrandReviewsCarouselSection({ brand, reviews }: BrandReviewsCaro
           className="mt-3"
         >
           {reviews.map((review) => (
-            <li key={review.publicReviewId}>
+            <CarouselItem key={review.publicReviewId} size="shrink" role="listitem">
               <VideoRatingThumbnailCard review={review} hideBrandLogo />
-            </li>
+            </CarouselItem>
           ))}
         </EdgeCarousel>
       ) : null}

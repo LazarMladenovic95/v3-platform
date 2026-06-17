@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import * as React from "react";
+import { LandingEdgeCarousel } from "@/components/blocks/marketing/LandingEdgeCarousel";
 import { ChevronLeftIcon, ChevronRightIcon } from "@/components/ui/icons";
 import { Badge, Carousel, CarouselItem, CarouselTrack, IconButton } from "@/components/ui";
 import { cn } from "@/lib/utils";
@@ -230,6 +231,38 @@ function CompactCarouselExample() {
   );
 }
 
+function LandingEdgeCarouselExample() {
+  const carouselItems = getCarouselItems();
+
+  return (
+    <div className="rounded-lg border border-border bg-background p-4">
+      <LandingEdgeCarousel
+        id="designsystem-landing-edge"
+        ariaLabel={t("designsystem.showcase.carousels.landingEdgeAriaLabel")}
+        showRightButton
+      >
+        {carouselItems.map((item) => (
+          <CarouselItem key={item.title} size="shrink" role="listitem">
+            <article className="w-40 overflow-hidden rounded-lg border border-border bg-surface">
+              <div
+                className={cn(
+                  "flex h-56 items-center justify-center p-4",
+                  item.dark ? "bg-tooltip" : "bg-surface-muted",
+                )}
+              >
+                <Image src={item.image} alt="" width={120} height={64} className="max-h-20 w-auto max-w-full" />
+              </div>
+              <div className="p-3">
+                <p className="line-clamp-2 text-body-small-bold text-foreground-title">{item.title}</p>
+              </div>
+            </article>
+          </CarouselItem>
+        ))}
+      </LandingEdgeCarousel>
+    </div>
+  );
+}
+
 export function CarouselsShowcase() {
   return (
     <div className="grid gap-8">
@@ -247,6 +280,14 @@ export function CarouselsShowcase() {
           {t("designsystem.showcase.carousels.compactIntro")}
         </p>
         <CompactCarouselExample />
+      </section>
+
+      <section className="rounded-lg border border-border bg-surface p-5">
+        <h2 className="text-title-2 text-foreground-title">{t("designsystem.showcase.carousels.landingEdgeTitle")}</h2>
+        <p className="mt-1 max-w-2xl text-body-small text-foreground-muted">
+          {t("designsystem.showcase.carousels.landingEdgeIntro")}
+        </p>
+        <LandingEdgeCarouselExample />
       </section>
     </div>
   );

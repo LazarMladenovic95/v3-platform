@@ -56,16 +56,12 @@ export function JustAddedReviewRow({ review, timeAgoLabel, className }: JustAdde
         </div>
 
         <div className="min-w-0 flex-1">
-          <Heading
-            as="h3"
-            variant="title-3"
-            className="line-clamp-2 text-body-small-bold text-secondary md:text-title-3"
-          >
+          <Heading as="h3" variant="title-3" className="line-clamp-2">
             {review.productName}
           </Heading>
           <div className="mt-1 flex items-center justify-between gap-3">
             <div className="flex min-w-0 items-center gap-2">
-              <Avatar className="h-8 w-8 shrink-0 border border-border">
+              <Avatar className="h-8 w-8 shrink-0" reviewerRing>
                 <AvatarImage src={review.reviewerAvatarUrl} alt="" />
                 <AvatarFallback className="text-body-extra-small-bold">
                   {reviewerInitials(reviewerLabel)}

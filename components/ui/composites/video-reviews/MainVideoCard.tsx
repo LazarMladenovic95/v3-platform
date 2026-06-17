@@ -38,9 +38,9 @@ export function MainVideoCard({
   const displayName = reviewerDisplayName ?? reviewerName;
 
   return (
-    <div className={cn("relative w-full max-w-md", className)}>
+    <div className={cn("relative w-full max-w-md max-md:max-w-none", className)}>
       <video
-        className="w-full rounded-lg border border-border bg-black shadow-sm"
+        className="aspect-[9/16] w-full border border-border bg-black shadow-sm max-md:rounded-none max-md:border-x-0 md:rounded-lg"
         controls
         playsInline
         preload="metadata"
@@ -52,7 +52,7 @@ export function MainVideoCard({
 
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute left-4 top-4 z-10 flex items-center gap-2 text-foreground-on-dark">
-          <Avatar className="h-9 w-9 border border-border">
+          <Avatar className="h-9 w-9 border border-border" reviewerRing>
             <AvatarImage src={reviewerAvatarUrl} alt="" />
             <AvatarFallback>{reviewerName.slice(0, 1)}</AvatarFallback>
           </Avatar>

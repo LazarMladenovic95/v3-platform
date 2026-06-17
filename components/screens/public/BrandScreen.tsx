@@ -1,5 +1,3 @@
-import Link from "next/link";
-import { BrandProductsNeedingReviewsSection } from "@/components/blocks/video-reviews/BrandProductsNeedingReviewsSection";
 import { BrandReviewerCtaSection } from "@/components/blocks/video-reviews/BrandReviewerCtaSection";
 import { BrandReviewsGrid } from "@/components/blocks/video-reviews/BrandReviewsGrid";
 import { BrandScreenHeader } from "@/components/blocks/video-reviews/BrandScreenHeader";
@@ -7,9 +5,9 @@ import { Text } from "@/components/ui/atoms/Text";
 import { getCategoryByEnglishSlug } from "@/lib/data/interest-categories-dev";
 import { buildBrandReviewFilterOptions, getBrandReviewerAvatars } from "@/lib/fixtures/brand-reviews-grid";
 import {
+  getBrandBodyText,
   getBrandProductCount,
   getBrandProductGroupItems,
-  getReviewOpportunitiesForBrand,
   type BrandFixture,
   type ReviewFixture,
 } from "@/lib/fixtures/video-reviews";
@@ -23,7 +21,7 @@ export type BrandScreenProps = {
 
 export function BrandScreen({ brand, reviews }: BrandScreenProps) {
   const locale = getLocale();
-  const bodyText = pickLocalized(brand.bodyText, locale, "text");
+  const bodyText = getBrandBodyText(brand);
   const footerText = pickLocalized(brand.footerText, locale, "text");
   const reviewCount = reviews.length;
   const averageRating =
@@ -31,7 +29,6 @@ export function BrandScreen({ brand, reviews }: BrandScreenProps) {
       ? reviews.reduce((sum, review) => sum + review.starRating, 0) / reviewCount
       : null;
   const productCount = getBrandProductCount(brand.slug, reviews);
-  const productsNeedingReviews = getReviewOpportunitiesForBrand(brand.slug);
   const filterOptions = buildBrandReviewFilterOptions(reviews, (categorySlug) => {
     const category = getCategoryByEnglishSlug(categorySlug);
     return pickLocalized(category?.displayName, locale, "title") ?? categorySlug;
@@ -52,11 +49,6 @@ export function BrandScreen({ brand, reviews }: BrandScreenProps) {
       />
 
       <BrandReviewsGrid reviews={reviews} filterOptions={filterOptions} />
-
-      <BrandProductsNeedingReviewsSection
-        brandName={brand.name}
-        products={productsNeedingReviews}
-      />
 
       <BrandReviewerCtaSection brandName={brand.name} />
 

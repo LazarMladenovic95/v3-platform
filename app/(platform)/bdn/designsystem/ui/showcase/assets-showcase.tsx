@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { StarRatingShowcase } from "@/app/(platform)/bdn/designsystem/ui/showcase/star-rating-showcase";
 import { t } from "@/lib/i18n";
 
 type AssetCard = {
@@ -48,25 +49,37 @@ export function AssetsShowcase() {
   const brandAssets = getBrandAssets();
 
   return (
-    <div className="grid gap-6 md:grid-cols-2">
-      {brandAssets.map((asset) => (
-        <section key={asset.id} className="rounded-lg border border-border bg-surface p-5">
-          <h2 className="text-title-2 text-foreground-title">{asset.title}</h2>
-          <p className="mt-1 text-body-small text-foreground-muted">{asset.description}</p>
-          <div
-            className={`mt-4 flex min-h-40 items-center justify-center rounded-lg border border-border p-6 ${asset.backgroundClassName}`}
-          >
-            <Image
-              src={asset.src}
-              alt={asset.alt}
-              width={220}
-              height={100}
-              className={asset.imageClassName}
-            />
-          </div>
-          <code className="mt-3 block text-body-extra-small text-foreground-muted">{asset.src}</code>
-        </section>
-      ))}
+    <div className="grid gap-8">
+      <div className="grid gap-6 md:grid-cols-2">
+        {brandAssets.map((asset) => (
+          <section key={asset.id} className="rounded-lg border border-border bg-surface p-5">
+            <h2 className="text-title-2 text-foreground-title">{asset.title}</h2>
+            <p className="mt-1 text-body-small text-foreground-muted">{asset.description}</p>
+            <div
+              className={`mt-4 flex min-h-40 items-center justify-center rounded-lg border border-border p-6 ${asset.backgroundClassName}`}
+            >
+              <Image
+                src={asset.src}
+                alt={asset.alt}
+                width={220}
+                height={100}
+                className={asset.imageClassName}
+              />
+            </div>
+            <code className="mt-3 block text-body-extra-small text-foreground-muted">{asset.src}</code>
+          </section>
+        ))}
+      </div>
+
+      <section>
+        <h2 className="text-title-2 text-foreground-title">{t("designsystem.showcase.assets.moleculesTitle")}</h2>
+        <p className="mt-1 max-w-2xl text-body-small text-foreground-muted">
+          {t("designsystem.showcase.assets.moleculesIntro")}
+        </p>
+        <div className="mt-4">
+          <StarRatingShowcase />
+        </div>
+      </section>
     </div>
   );
 }

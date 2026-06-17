@@ -1,7 +1,7 @@
 import data from "@/lib/fixtures/video-reviews-data.json";
 import { getLocalizedCategorySlug } from "@/lib/data/interest-category-slugs";
 import type { LocaleId } from "@/lib/i18n";
-import { getLocale } from "@/lib/i18n";
+import { formatUiDate, getLocale, t } from "@/lib/i18n";
 import type { LocalizedStringMap } from "@/lib/i18n/content";
 import { pickLocalized } from "@/lib/i18n/content";
 import { pathnameWithLocale } from "@/lib/i18n/routing";
@@ -44,6 +44,7 @@ export type ReviewFixture = {
   starRating: number;
   resolution: string;
   published: boolean;
+  publishedAt?: string;
   reviewerName: string;
   reviewerDisplayName?: string;
   videoTitle: LocalizedStringMap;
@@ -72,6 +73,7 @@ export type ReviewerBrandSummary = {
 export type ReviewerProfileFixture = {
   city: string;
   bio?: LocalizedStringMap;
+  portraitUrl?: string;
 };
 
 export type ReviewerSummaryFixture = {
@@ -110,6 +112,39 @@ const brands = data.brands as BrandFixture[];
 const reviews = data.reviews as ReviewFixture[];
 const reviewOpportunities = data.reviewOpportunities as ReviewOpportunityFixture[];
 const reviewerProfiles = (data.reviewerProfiles ?? {}) as Record<string, ReviewerProfileFixture>;
+
+const LANDING_FEATURED_REVIEWER_COUNT = 6;
+
+function buildReviewerPortraitUrl(playbackId: string): string {
+  return `https://image.mux.com/${playbackId}/thumbnail.jpg?width=200&height=200&fit_mode=smartcrop&time=1`;
+}
+
+export function getReviewerPortraitUrl(
+  reviewerName: string,
+  fallbackUrl?: string,
+): string | undefined {
+  const profile = reviewerProfiles[reviewerName];
+  if (profile?.portraitUrl) {
+    return profile.portraitUrl;
+  }
+
+  const portraitReview = reviews.find(
+    (review) =>
+      review.reviewerName === reviewerName && !review.productSlug.startsWith("hub-"),
+  );
+  if (portraitReview) {
+    return buildReviewerPortraitUrl(portraitReview.playbackId);
+  }
+
+  return fallbackUrl;
+}
+
+function reviewerHasPortraitReview(reviewerName: string): boolean {
+  return reviews.some(
+    (review) =>
+      review.reviewerName === reviewerName && !review.productSlug.startsWith("hub-"),
+  );
+}
 
 const MIN_PRODUCT_REVIEWS = 3;
 
@@ -269,7 +304,8 @@ export function getReviewerSummaries(): ReviewerSummaryFixture[] {
     byReviewer.set(key, {
       reviewerName: review.reviewerName,
       reviewerDisplayName: review.reviewerDisplayName ?? review.reviewerName,
-      reviewerAvatarUrl: review.reviewerAvatarUrl,
+      reviewerAvatarUrl:
+        getReviewerPortraitUrl(key, review.reviewerAvatarUrl) ?? review.reviewerAvatarUrl,
       reviewCount: 1,
       city: reviewerProfiles[key]?.city,
       quote: getReviewerBio(key),
@@ -278,6 +314,12 @@ export function getReviewerSummaries(): ReviewerSummaryFixture[] {
   }
 
   return [...byReviewer.values()].sort((left, right) => right.reviewCount - left.reviewCount);
+}
+
+export function getLandingFeaturedReviewers(): ReviewerSummaryFixture[] {
+  return getReviewerSummaries()
+    .filter((reviewer) => reviewerHasPortraitReview(reviewer.reviewerName))
+    .slice(0, LANDING_FEATURED_REVIEWER_COUNT);
 }
 
 export function getBrandBySlug(brandSlug: string): BrandFixture | undefined {
@@ -391,8 +433,94 @@ export function getRelatedReviews(review: ReviewFixture): ReviewFixture[] {
   );
 }
 
+export function getReviewerSummaryForName(reviewerName: string): ReviewerSummaryFixture | undefined {
+  return getReviewerSummaries().find((reviewer) => reviewer.reviewerName === reviewerName);
+}
+
+export function getMoreBrandReviews(review: ReviewFixture, limit = 8): ReviewFixture[] {
+  return reviews
+    .filter(
+      (candidate) =>
+        candidate.publicReviewId !== review.publicReviewId &&
+        candidate.brandSlug === review.brandSlug,
+    )
+    .slice(0, limit);
+}
+
+export function getMoreReviewerReviews(review: ReviewFixture, limit = 8): ReviewFixture[] {
+  return reviews
+    .filter(
+      (candidate) =>
+        candidate.publicReviewId !== review.publicReviewId &&
+        candidate.reviewerName === review.reviewerName,
+    )
+    .slice(0, limit);
+}
+
 export function getReviewByPublicId(publicReviewId: string): ReviewFixture | undefined {
   return reviews.find((review) => review.publicReviewId === publicReviewId);
+}
+
+export function getBrandProductHref(brandSlug: string, productSlug: string): string {
+  return `/video-reviews/brand/${brandSlug}?product=${encodeURIComponent(productSlug)}`;
+}
+
+export function getBrandBodyText(brand: BrandFixture): string | undefined {
+  const locale = getLocale();
+  return pickLocalized(brand.bodyText, locale, "text");
+}
+
+export function getReviewerHref(reviewerName: string): string {
+  const slug = reviewerName.trim().toLowerCase().replace(/\s+/g, "-");
+  return `/video-reviews/reviewers/${slug}`;
+}
+
+export function getReviewTranscriptText(review: ReviewFixture): string | undefined {
+  const locale = getLocale();
+  const localized =
+    pickLocalized(review.transcript, locale, "text") ??
+    pickLocalized(review.transcript, "en", "text");
+
+  if (localized) {
+    return localized;
+  }
+
+  return Object.values(review.transcript).reduce<string | undefined>((longest, entry) => {
+    const text = entry?.text?.trim();
+    if (!text) {
+      return longest;
+    }
+
+    if (!longest || text.length > longest.length) {
+      return text;
+    }
+
+    return longest;
+  }, undefined);
+}
+
+function derivePublishedAtIso(review: ReviewFixture): string | undefined {
+  const serial = Number(review.publicReviewId) - 100_000_000;
+  if (!Number.isFinite(serial) || serial < 0) {
+    return undefined;
+  }
+
+  const date = new Date(Date.UTC(2024, 0, 1));
+  date.setUTCDate(date.getUTCDate() + serial);
+  return date.toISOString().slice(0, 10);
+}
+
+export function getReviewPublishedLabel(review: ReviewFixture): string {
+  const isoDate = review.publishedAt ?? derivePublishedAtIso(review);
+  if (!isoDate) {
+    return t("player.review.notAvailable");
+  }
+
+  return formatUiDate(new Date(`${isoDate}T12:00:00Z`), {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
 }
 
 /** Player URL using locale-specific category slug (matches www sitemap / interest-categories.csv). */

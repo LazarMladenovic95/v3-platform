@@ -8,8 +8,10 @@ import { cn } from "@/lib/utils";
 
 export function HubExpeerlyPromoCard() {
   return (
-    <Card className="border-0 bg-secondary" surface="default" padding="medium">
-      <CardTitle className="text-foreground-on-dark">{t("player.brand.ctaTitle")}</CardTitle>
+    <Card surface="secondary" padding="medium">
+      <CardTitle variant="heading-2" tone="on-dark">
+        {t("player.brand.ctaTitle")}
+      </CardTitle>
       <Text variant="body-small-muted" className="mt-2 text-foreground-on-dark/80">
         {t("player.brand.ctaDescription")}
       </Text>

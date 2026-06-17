@@ -5,29 +5,12 @@ import { Icon } from "@/components/ui/atoms/Icon";
 import { Text } from "@/components/ui/atoms/Text";
 import { Card } from "@/components/ui/composites/Card";
 import { AvatarGroup, type AvatarGroupItem } from "@/components/ui/composites/AvatarGroup";
+import { DataCard } from "@/components/ui/composites/DataCard";
 import { ProductGroup, type ProductGroupItem } from "@/components/ui/composites/ProductGroup";
 import { StarRating } from "@/components/ui";
 import type { BrandFixture } from "@/lib/fixtures/video-reviews";
 import { t } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
-
-type BrandStatMetricProps = {
-  value: string;
-  label: string;
-};
-
-function BrandStatMetric({ value, label }: BrandStatMetricProps) {
-  return (
-    <div>
-      <Heading as="h4" variant="heading-2" className="tabular-nums text-secondary">
-        {value}
-      </Heading>
-      <Text as="p" variant="body-small-muted" className="mt-0.5">
-        {label}
-      </Text>
-    </div>
-  );
-}
 
 export type BrandScreenHeaderProps = {
   brand: BrandFixture;
@@ -62,7 +45,7 @@ export function BrandScreenHeader({
       </Link>
 
       <header className="mt-6 w-full">
-        <div className="flex gap-4">
+        <div className="flex items-center gap-4">
           <Link
             href={brand.websiteUrl ?? "#"}
             target={brand.websiteUrl ? "_blank" : undefined}
@@ -92,55 +75,40 @@ export function BrandScreenHeader({
         ) : null}
 
         <div className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-3">
-          <Card padding="small" className="text-center sm:text-left">
-            <BrandStatMetric
-              value={String(reviewCount)}
-              label={t("player.brand.statReviewsLabel")}
-            />
+          <DataCard value={String(reviewCount)} label={t("player.brand.statReviewsLabel")}>
             {reviewerAvatars.length > 0 ? (
               <AvatarGroup
                 items={reviewerAvatars}
                 max={4}
                 sizeClassName="h-8 w-8"
-                className="mt-3 justify-center sm:justify-start"
+                reviewerRing
                 aria-label={t("player.brand.statReviewersAriaLabel")}
               />
             ) : null}
-          </Card>
-          <Card padding="small" className="text-center sm:text-left">
-            {averageRating !== null ? (
-              <BrandStatMetric
-                value={averageRating.toFixed(1)}
-                label={t("player.brand.statAvgRatingLabel")}
-              />
-            ) : (
+          </DataCard>
+
+          {averageRating !== null ? (
+            <DataCard value={averageRating.toFixed(1)} label={t("player.brand.statAvgRatingLabel")}>
+              <StarRating rating={averageRating} showScore={false} />
+            </DataCard>
+          ) : (
+            <Card padding="small" className="text-center sm:text-left">
               <Text as="p" variant="body-regular" className="text-body-regular-bold text-foreground-title">
                 {t("player.brand.statAverageRatingEmpty")}
               </Text>
-            )}
-            {averageRating !== null ? (
-              <StarRating
-                rating={averageRating}
-                showScore={false}
-                className="mt-3 justify-center sm:justify-start"
-              />
-            ) : null}
-          </Card>
-          <Card padding="small" className="text-center sm:text-left">
-            <BrandStatMetric
-              value={String(productCount)}
-              label={t("player.brand.statProductsLabel")}
-            />
+            </Card>
+          )}
+
+          <DataCard value={String(productCount)} label={t("player.brand.statProductsLabel")}>
             {productThumbnails.length > 0 ? (
               <ProductGroup
                 items={productThumbnails}
                 max={4}
                 sizeClassName="h-8 w-8"
-                className="mt-3 justify-center sm:justify-start"
                 aria-label={t("player.brand.statProductsAriaLabel")}
               />
             ) : null}
-          </Card>
+          </DataCard>
         </div>
       </header>
     </>

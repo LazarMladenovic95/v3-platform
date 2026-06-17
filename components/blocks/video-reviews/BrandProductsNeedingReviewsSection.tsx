@@ -1,4 +1,4 @@
-import { EdgeCarousel, PendingReviewCard, SectionHeader } from "@/components/ui";
+import { EdgeCarousel, PendingReviewCard, CarouselItem, SectionHeader } from "@/components/ui";
 import type { ReviewOpportunityFixture } from "@/lib/fixtures/video-reviews";
 import { t } from "@/lib/i18n";
 
@@ -30,13 +30,13 @@ export function BrandProductsNeedingReviewsSection({
         className="mt-4"
       >
         {products.map((product) => (
-          <li key={product.id}>
+          <CarouselItem key={product.id} size="shrink" role="listitem">
             <PendingReviewCard
               opportunity={product}
               hideBrandName
               reviewHref={`/reviewer/onboarding?brand=${encodeURIComponent(brandName)}&product=${encodeURIComponent(product.productName)}`}
             />
-          </li>
+          </CarouselItem>
         ))}
       </EdgeCarousel>
     </section>

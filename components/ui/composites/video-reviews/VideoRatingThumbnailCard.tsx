@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 export type VideoRatingThumbnailCardProps = {
   review: ReviewFixture;
   hideBrandLogo?: boolean;
+  showGiftedBadge?: boolean;
   className?: string;
   thumbnailClassName?: string;
 };
@@ -13,6 +14,7 @@ export type VideoRatingThumbnailCardProps = {
 export function VideoRatingThumbnailCard({
   review,
   hideBrandLogo = false,
+  showGiftedBadge = false,
   className,
   thumbnailClassName,
 }: VideoRatingThumbnailCardProps) {
@@ -35,6 +37,7 @@ export function VideoRatingThumbnailCard({
         productName={review.productName}
         starRating={review.starRating}
         showBrandLogo={!hideBrandLogo}
+        showGiftedBadge={showGiftedBadge}
         className={thumbnailClassName}
       />
     </Link>

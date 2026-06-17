@@ -6,6 +6,7 @@ export { BrandOverviewScreen } from "./public/BrandOverviewScreen";
 export { SignInScreen, type SignInScreenMode, type SignInScreenProps } from "./public/SignInScreen";
 export { AppStubScreen, type AppStubScreenProps } from "./platform/AppStubScreen";
 export { ReviewerOnboardingScreen } from "./platform/ReviewerOnboardingScreen";
+export { ReviewerCampaignsScreen } from "./platform/ReviewerCampaignsScreen";
 export { ReviewerMyReviewsScreen } from "./platform/ReviewerMyReviewsScreen";
 export { CompaniesHomeScreen } from "./platform/CompaniesHomeScreen";
 export { CompaniesAllReviewsScreen } from "./platform/CompaniesAllReviewsScreen";

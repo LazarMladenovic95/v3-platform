@@ -157,6 +157,119 @@
       "campaign": {
         "title": "Participer à une campagne",
         "description": "Rejoignez des campagnes de marque avec brief, calendrier et récompenses dédiées."
+      },
+      "campaignListTitle": "Participate in a running campaign",
+      "campaignListDescription": "Join brand campaigns with a set brief, timeline, and campaign-specific rewards.",
+      "selfSubmitTitle": "Or submit your own review"
+    },
+    "reviewerCampaigns": {
+      "metaTitle": "Running campaigns",
+      "metaDescription": "Browse and join brand review campaigns.",
+      "title": "Running campaigns",
+      "description": "Apply to open campaigns or track campaigns you've joined. Each campaign includes a brief, timeline, and reward details.",
+      "listAriaLabel": "Available review campaigns",
+      "apply": "Apply",
+      "applyAriaLabel": "Apply to {campaign}",
+      "viewDetails": "View details",
+      "viewCampaignAriaLabel": "View {campaign}",
+      "footerNote": "Campaign detail and application flows are prototype placeholders.",
+      "status": {
+        "open": "Open",
+        "applied": "Applied",
+        "closed": "Closed"
+      },
+      "endingSoon": "Ending soon!",
+      "dueToday": "Due Today, {time}",
+      "dueOnDate": "Due {date}",
+      "statusNote": {
+        "waitingForApproval": "Waiting for approval",
+        "applicationsClosed": "Applications closed"
+      },
+      "items": {
+        "mieleCordlessLaunch": {
+          "title": "Miele Cordless Launch",
+          "reward": "CHF 120",
+          "language": "German"
+        },
+        "mieleHomeKitchen": {
+          "title": "Miele Home & Kitchen",
+          "reward": "CHF 80",
+          "language": "German"
+        },
+        "dysonAirwrap": {
+          "title": "Dyson Airwrap Campaign",
+          "reward": "CHF 100",
+          "language": "English"
+        },
+        "philipsAirfryer": {
+          "title": "Philips Airfryer Series",
+          "reward": "CHF 90",
+          "language": "German"
+        },
+        "samsungBespoke": {
+          "title": "Samsung Bespoke Home",
+          "reward": "CHF 110",
+          "language": "English"
+        },
+        "boschPowerTools": {
+          "title": "Bosch Power Tools",
+          "reward": "CHF 95",
+          "language": "German"
+        },
+        "canonMirrorless": {
+          "title": "Canon Mirrorless Creator",
+          "reward": "CHF 130",
+          "language": "English"
+        },
+        "sonyHeadphones": {
+          "title": "Sony Headphones Studio",
+          "reward": "CHF 105",
+          "language": "English"
+        },
+        "garminFitnessWatch": {
+          "title": "Garmin Fitness Watch",
+          "reward": "CHF 115",
+          "language": "German"
+        }
+      }
+    },
+    "reviewerDashboard": {
+      "metaSeparator": " · ",
+      "seeAll": "See all",
+      "seeAllCampaignsAriaLabel": "See all running campaigns",
+      "seeAllReviewsAriaLabel": "See all your reviews",
+      "profile": {
+        "greeting": "Hi {name}",
+        "roleLocation": "Reviewer · Zürich, CH"
+      },
+      "stats": {
+        "reviewsLabel": "Reviews",
+        "earnedLabel": "Earned",
+        "earnedValue": "${amount}",
+        "impressionsLabel": "Views"
+      },
+      "submitReview": {
+        "body": "Share your honest video take on any product you own. Earn $20 per approved review · $10 per 1,000 views",
+        "cta": "Submit a review"
+      },
+      "reviews": {
+        "title": "Your reviews",
+        "listAriaLabel": "Your recent reviews",
+        "viewsCount": "{count} views",
+        "viewsThousands": "{count}k views",
+        "timeAgoHours": "{count}h ago",
+        "timeAgoDays": "{count}d ago",
+        "timeAgoWeeks": "{count}w ago",
+        "status": {
+          "live": "Live",
+          "inReview": "In review"
+        },
+        "philips": {
+          "productName": "Philips Sonicare 9900"
+        },
+        "braun": {
+          "productName": "Braun Series 9 Shaver"
+        }
       }
     },
     "stub": {
@@ -267,6 +380,7 @@
       "backToHub": "Retour aux avis vidéo",
       "backToAllBrands": "Toutes les marques",
       "reviewsCountInline": "{count} avis",
+      "reviewCountInline": "{count} avis",
       "ratingReviewsSummary": "{rating} · {count} avis",
       "statTotalReviews": "{count} avis",
       "statReviewsLabel": "avis",
@@ -324,9 +438,25 @@
       "faqHeading": "Questions fréquentes",
       "moreVideosOn": "Plus de vidéos sur",
       "backToBrand": "Retour à la marque",
+      "follow": "Follow",
+      "detailsTab": "Details",
+      "transcriptTab": "Transcription complète",
+      "tabsAriaLabel": "Review content",
+      "category": "Category",
+      "reviewed": "Reviewed",
+      "reviewMeta": "by {reviewer}",
+      "moreBrandReviews": "More {brand} reviews",
+      "moreReviewerReviews": "More reviews from {reviewer}",
+      "brandCardReviews": "{count} reviews on expeerly",
+      "allBrandReviews": "All {brand} reviews ({count})",
       "playAriaLabel": "Lire la vidéo",
       "buyNow": "Acheter",
       "buyNowAriaLabel": "Accéder au produit montré dans la vidéo",
+      "shareAriaLabel": "Partager l'avis",
+      "shareTitle": "Partager l'avis sur {product}",
+      "reviewerProfileAriaLabel": "Voir le profil de {reviewer}",
+      "stickyOwnProductQuestion": "Vous possédez ce produit ?",
+      "stickyOwnProductDescription": "Partagez votre propre avis vidéo honnête sur {product}.",
       "notAvailable": "—"
     },
     "notFound": {
@@ -355,8 +485,10 @@
       "meetReviewersHeading": "Rencontrez nos évaluateurs",
       "communityBanner": "Partagez votre avis honnête",
       "communityBannerSub": "Rejoignez notre communauté d'évaluateurs",
+      "communityBannerAvatarsAlt": "Évaluateurs Expeerly",
       "joinCommunity": "Devenir évaluateur",
       "joinCommunityAriaLabel": "Devenir évaluateur",
+      "giftedLabel": "Offert",
       "justAddedHeading": "Ajoutés récemment",
       "forBrandsTitle": "Pour les marques",
       "forBrandsBody": "Amplifiez votre portée et augmentez vos ventes grâce à des avis vidéo distribués sur la recherche, les réseaux sociaux et les canaux de vente.",

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { OutlineNeutral } from "@/components/ui/atoms/button/OutlineNeutral";
 import { EmptyState } from "@/components/ui/composites/EmptyState";
 import { VideoRatingThumbnailCard } from "@/components/ui";
@@ -24,7 +25,12 @@ export type BrandReviewsGridProps = {
 };
 
 export function BrandReviewsGrid({ reviews, filterOptions }: BrandReviewsGridProps) {
-  const [filters, setFilters] = useState<BrandReviewFilters>(DEFAULT_BRAND_REVIEW_FILTERS);
+  const searchParams = useSearchParams();
+  const initialProductSlug = searchParams.get("product") ?? DEFAULT_BRAND_REVIEW_FILTERS.productSlug;
+  const [filters, setFilters] = useState<BrandReviewFilters>({
+    ...DEFAULT_BRAND_REVIEW_FILTERS,
+    productSlug: initialProductSlug,
+  });
   const [sort, setSort] = useState<BrandReviewSortOption>("most-viewed");
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
 

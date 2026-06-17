@@ -6,13 +6,14 @@ import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import {
   outlinePrimaryLinkClassName,
+  outlineNeutralLinkClassName,
   primaryPinkClassName,
 } from "@/components/ui/atoms/button/buttonClasses";
 import { PublicDesktopHeaderNav } from "@/components/ui/composites/PublicDesktopHeaderNav";
 import { RightMenu } from "@/components/ui/composites/RightMenu";
 import { appContentContainerClassName } from "@/components/layout/contentContainerClasses";
 import { MenuButton } from "@/components/ui/molecules/MenuButton";
-import { isPublicSitePath } from "@/lib/app-nav-config";
+import { appNavLogoutItem, isPublicSitePath, isReviewerPath } from "@/lib/app-nav-config";
 import { t } from "@/lib/i18n";
 import type { PublicMenuCatalog } from "@/lib/public-menu-types";
 import { cn } from "@/lib/utils";
@@ -32,6 +33,7 @@ export type AppHeaderProps = {
 export function AppHeader({ publicMenuCatalog }: AppHeaderProps) {
   const pathname = usePathname() ?? "/";
   const isPublic = isPublicSitePath(pathname);
+  const isReviewer = isReviewerPath(pathname);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isHeaderVisible, setIsHeaderVisible] = useState(true);
   const [headerHeight, setHeaderHeight] = useState(0);
@@ -150,7 +152,19 @@ export function AppHeader({ publicMenuCatalog }: AppHeaderProps) {
         {isPublic ? <PublicDesktopHeaderNav className="hidden md:flex" /> : null}
 
         <div className="flex shrink-0 items-center gap-1 md:gap-3">
-          {!isPublic ? (
+          {isReviewer ? (
+            <Link
+              href={appNavLogoutItem.href ?? "/"}
+              className={cn(
+                outlineNeutralLinkClassName("small"),
+                "md:hidden",
+                headerAuthLinkFocus,
+              )}
+              aria-label={t("app.nav.logout")}
+            >
+              {t("app.nav.logout")}
+            </Link>
+          ) : !isPublic ? (
             <>
               <Link
                 href={AUTH_LINKS.signUp}
@@ -176,28 +190,44 @@ export function AppHeader({ publicMenuCatalog }: AppHeaderProps) {
               </Link>
             </>
           ) : null}
-          <Link
-            href={AUTH_LINKS.login}
-            className={cn(
-              outlinePrimaryLinkClassName("medium"),
-              "hidden no-underline md:inline-flex",
-              headerAuthLinkFocus,
-            )}
-            aria-label={t("app.auth.loginAriaLabel")}
-          >
-            {t("app.auth.loginLabel")}
-          </Link>
-          <Link
-            href={AUTH_LINKS.signUp}
-            className={cn(
-              primaryPinkClassName("medium"),
-              "hidden no-underline md:inline-flex",
-              headerAuthLinkFocus,
-            )}
-            aria-label={t("app.auth.signUpAriaLabel")}
-          >
-            {t("app.auth.signUpLabel")}
-          </Link>
+          {isReviewer ? (
+            <Link
+              href={appNavLogoutItem.href ?? "/"}
+              className={cn(
+                outlineNeutralLinkClassName("medium"),
+                "hidden no-underline md:inline-flex",
+                headerAuthLinkFocus,
+              )}
+              aria-label={t("app.nav.logout")}
+            >
+              {t("app.nav.logout")}
+            </Link>
+          ) : (
+            <>
+              <Link
+                href={AUTH_LINKS.login}
+                className={cn(
+                  outlinePrimaryLinkClassName("medium"),
+                  "hidden no-underline md:inline-flex",
+                  headerAuthLinkFocus,
+                )}
+                aria-label={t("app.auth.loginAriaLabel")}
+              >
+                {t("app.auth.loginLabel")}
+              </Link>
+              <Link
+                href={AUTH_LINKS.signUp}
+                className={cn(
+                  primaryPinkClassName("medium"),
+                  "hidden no-underline md:inline-flex",
+                  headerAuthLinkFocus,
+                )}
+                aria-label={t("app.auth.signUpAriaLabel")}
+              >
+                {t("app.auth.signUpLabel")}
+              </Link>
+            </>
+          )}
 
           <div className={cn("relative", isPublic && "md:hidden")}>
             <MenuButton
@@ -217,7 +247,7 @@ export function AppHeader({ publicMenuCatalog }: AppHeaderProps) {
 
       {isMenuOpen && isPublic ? (
         <RightMenu
-          className="absolute inset-x-3 top-full z-20 mt-[10px] w-auto md:hidden"
+          className="absolute inset-x-6 top-full z-20 mt-[10px] !w-auto md:hidden"
           onItemClick={() => setIsMenuOpen(false)}
           publicMenuCatalog={publicMenuCatalog}
         />

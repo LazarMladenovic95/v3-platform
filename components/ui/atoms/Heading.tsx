@@ -9,6 +9,7 @@ export type HeadingVariant =
   | "title-1"
   | "title-2"
   | "title-3"
+  | "title-4"
   | "title-bold"
   | "body-bold";
 
@@ -20,6 +21,7 @@ const variantClasses: Record<HeadingVariant, string> = {
   "title-1": "text-title-1 text-foreground-title",
   "title-2": "text-title-2 text-foreground-title",
   "title-3": "text-title-3 text-foreground-title",
+  "title-4": "text-title-4 text-foreground-title",
   "title-bold": "text-body-regular-bold text-foreground-title",
   "body-bold": "text-body-small-bold text-foreground-title",
 };

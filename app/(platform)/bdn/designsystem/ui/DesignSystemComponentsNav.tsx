@@ -23,6 +23,7 @@ const links: {
     | "inputs"
     | "lists"
     | "loadersAndSkeletons"
+    | "molecules"
     | "navigation"
     | "pagination"
     | "progress"
@@ -44,6 +45,7 @@ const links: {
   { href: "/bdn/designsystem/components/inputs", sectionKey: "inputs", icon: "text-cursor-input" },
   { href: "/bdn/designsystem/components/lists", sectionKey: "lists", icon: "list" },
   { href: "/bdn/designsystem/components/loaders-and-skeletons", sectionKey: "loadersAndSkeletons", icon: "loader-circle" },
+  { href: "/bdn/designsystem/components/molecules", sectionKey: "molecules", icon: "star" },
   { href: "/bdn/designsystem/components/navigation", sectionKey: "navigation", icon: "navigation" },
   { href: "/bdn/designsystem/components/pagination", sectionKey: "pagination", icon: "list-ordered" },
   { href: "/bdn/designsystem/components/progress", sectionKey: "progress", icon: "activity" },

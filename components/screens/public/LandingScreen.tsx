@@ -4,18 +4,16 @@ import { BrandLogoLink } from "@/components/blocks/marketing/BrandLogoLink";
 import { JustAddedReviewRow } from "@/components/blocks/marketing/JustAddedReviewRow";
 import { LandingEdgeCarousel } from "@/components/blocks/marketing/LandingEdgeCarousel";
 import { LandingSectionHeader } from "@/components/blocks/marketing/LandingSectionHeader";
-import { PendingReviewCard } from "@/components/blocks/marketing/PendingReviewCard";
 import { ReviewerCommunityBanner } from "@/components/blocks/marketing/ReviewerCommunityBanner";
 import { ReviewerProfileRow } from "@/components/blocks/marketing/ReviewerProfileRow";
 import { Heading } from "@/components/ui/atoms/Heading";
 import { Text } from "@/components/ui/atoms/Text";
-import { VideoRatingThumbnailCard } from "@/components/ui";
+import { VideoRatingThumbnailCard, CarouselItem } from "@/components/ui";
 import { SearchField } from "@/components/ui/molecules/search/SearchField";
 import {
   getAllReviews,
   getBrandsSortedByReviewCount,
-  getReviewOpportunities,
-  getReviewerSummaries,
+  getLandingFeaturedReviewers,
 } from "@/lib/fixtures/video-reviews";
 import { t } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
@@ -32,8 +30,7 @@ export function LandingScreen() {
   const allReviews = getAllReviews();
   const trendingReviews = allReviews.slice(0, 8);
   const justAddedReviews = [...allReviews].reverse().slice(0, 5);
-  const reviewers = getReviewerSummaries().slice(0, 6);
-  const reviewOpportunities = getReviewOpportunities(12);
+  const reviewers = getLandingFeaturedReviewers();
   const year = new Date().getFullYear();
 
   return (
@@ -62,16 +59,17 @@ export function LandingScreen() {
             id="landing-shop-by-brand"
             ariaLabel={t("marketing.landing.shopByBrandHeading")}
             className="mt-4"
+            showRightButton={false}
           >
             {brands.map((brand) => (
-              <li key={brand.slug}>
+              <CarouselItem key={brand.slug} size="shrink" role="listitem">
                 <BrandLogoLink
                   href={`/video-reviews/brand/${brand.slug}`}
                   logoSrc={brand.logoSrc}
                   brandName={brand.name}
                   ariaLabel={t("marketing.landing.brandCardAriaLabel", { brand: brand.name })}
                 />
-              </li>
+              </CarouselItem>
             ))}
           </LandingEdgeCarousel>
         </section>
@@ -84,27 +82,10 @@ export function LandingScreen() {
               ariaLabel={t("marketing.landing.trendingHeading")}
               className="mt-4"
             >
-              {trendingReviews.map((review) => (
-                <li key={review.publicReviewId}>
-                  <VideoRatingThumbnailCard review={review} />
-                </li>
-              ))}
-            </LandingEdgeCarousel>
-          </section>
-        ) : null}
-
-        {reviewOpportunities.length > 0 ? (
-          <section className="mt-8 md:mt-12" aria-labelledby="landing-be-first">
-            <LandingSectionHeader title={t("marketing.landing.beFirstHeading")} />
-            <LandingEdgeCarousel
-              id="landing-be-first"
-              ariaLabel={t("marketing.landing.beFirstHeading")}
-              className="mt-4"
-            >
-              {reviewOpportunities.map((opportunity) => (
-                <li key={opportunity.id}>
-                  <PendingReviewCard opportunity={opportunity} />
-                </li>
+              {trendingReviews.map((review, index) => (
+                <CarouselItem key={review.publicReviewId} size="shrink" role="listitem">
+                  <VideoRatingThumbnailCard review={review} showGiftedBadge={index % 3 === 0} />
+                </CarouselItem>
               ))}
             </LandingEdgeCarousel>
           </section>
@@ -122,7 +103,7 @@ export function LandingScreen() {
                 <ReviewerProfileRow key={reviewer.reviewerName} reviewer={reviewer} />
               ))}
             </ul>
-            <ReviewerCommunityBanner className="mt-4" />
+            <ReviewerCommunityBanner className="mt-6" />
           </section>
         ) : null}
 

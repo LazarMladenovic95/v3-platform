@@ -1,7 +1,9 @@
 import Image from "next/image";
 import { Icon } from "@/components/ui/atoms/Icon";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/composites/Tooltip";
 import { StarRating } from "@/components/ui/molecules/video-reviews/StarRating";
 import { Text } from "@/components/ui/atoms/Text";
+import { t } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 
 export type VideoThumbnailProps = {
@@ -11,6 +13,7 @@ export type VideoThumbnailProps = {
   productName: string;
   starRating: number;
   showBrandLogo?: boolean;
+  showGiftedBadge?: boolean;
   className?: string;
 };
 
@@ -21,6 +24,7 @@ export function VideoThumbnail({
   productName,
   starRating,
   showBrandLogo = true,
+  showGiftedBadge = false,
   className,
 }: VideoThumbnailProps) {
   return (
@@ -39,14 +43,24 @@ export function VideoThumbnail({
         unoptimized
       />
 
-      <div
-        className="absolute inset-0 bg-gradient-to-b from-foreground-accent/10 via-foreground-accent/35 to-foreground-accent/75"
-        aria-hidden
-      />
-
       <div className="absolute inset-0 flex items-center justify-center" aria-hidden>
         <Icon name="play-square" size="xl" className="text-foreground-on-dark" />
       </div>
+
+      {showGiftedBadge ? (
+        <div className="absolute right-2 top-2 z-10">
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <span className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-border bg-surface/95 text-secondary shadow-sm">
+                  <Icon name="gift" size="sm" aria-hidden />
+                </span>
+              </TooltipTrigger>
+              <TooltipContent>{t("marketing.landing.giftedLabel")}</TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
+        </div>
+      ) : null}
 
       <div className="absolute inset-x-0 bottom-0 p-3">
         <div className="flex items-center gap-2">

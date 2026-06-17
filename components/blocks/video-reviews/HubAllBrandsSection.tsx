@@ -17,7 +17,7 @@ export function HubAllBrandsSection({ brands }: HubAllBrandsSectionProps) {
       </Heading>
 
       <ul
-        className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3"
+        className="mt-4 grid max-w-6xl grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
         aria-label={t("player.hub.allBrandsAriaLabel")}
       >
         {brands.map((brand) => (

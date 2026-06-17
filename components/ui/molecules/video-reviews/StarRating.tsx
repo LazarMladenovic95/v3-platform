@@ -8,13 +8,25 @@ export type StarRatingProps = {
   className?: string;
   onDark?: boolean;
   showScore?: boolean;
+  size?: "default" | "large";
 };
+
+const starIconSize = {
+  default: "md",
+  large: "lg",
+} as const;
+
+const scoreVariant = {
+  default: "body-small-muted",
+  large: "body-regular",
+} as const;
 
 export function StarRating({
   rating,
   className,
   onDark = false,
   showScore = true,
+  size = "default",
 }: StarRatingProps) {
   const max = 5;
   const filled = Math.min(max, Math.max(0, Math.round(rating)));
@@ -24,12 +36,12 @@ export function StarRating({
       className={cn("flex items-center gap-2", className)}
       aria-label={`${t("player.review.ratingLabel")}: ${filled}/${max}`}
     >
-      <div className="flex items-center gap-0.5">
+      <div className={cn("flex items-center", size === "large" ? "gap-1" : "gap-0.5")}>
         {Array.from({ length: max }, (_, index) => (
           <Icon
             key={index}
             name="star"
-            size="md"
+            size={starIconSize[size]}
             className={cn(
               index < filled ? "fill-warning text-warning" : "text-foreground-disabled",
             )}
@@ -39,7 +51,7 @@ export function StarRating({
       {showScore ? (
         <Text
           as="span"
-          variant="body-small-muted"
+          variant={scoreVariant[size]}
           className={onDark ? "text-foreground-on-dark" : undefined}
         >
           {filled}/{max}

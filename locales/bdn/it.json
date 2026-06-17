@@ -14,6 +14,9 @@
         "secondary": {
           "usage": "Secondary brand accent for toast backgrounds, links, hover text, icons, and progress fills."
         },
+        "tertiary": {
+          "usage": "Tertiary brand accent for features, highlights, and branded elements."
+        },
         "background": {
           "usage": "Page canvas behind content and design-system guide screens."
         },
@@ -138,6 +141,7 @@
         "inputs": "Inputs",
         "lists": "Lists",
         "loadersAndSkeletons": "Loaders & skeletons",
+        "molecules": "Molecules",
         "navigation": "Navigation",
         "pagination": "Pagination",
         "progress": "Progress",
@@ -216,6 +220,11 @@
           "title": "Loaders & skeletons",
           "description": "Spinners, loading rows, and placeholder layouts for async states.",
           "pageIntro": "Loading indicators and placeholder states for asynchronous UI."
+        },
+        "molecules": {
+          "title": "Molecules",
+          "description": "Composed UI patterns built from atoms for product surfaces.",
+          "pageIntro": "Molecules combine atoms into reusable patterns. Start here when a product need is more than a single primitive but not yet a full composite."
         },
         "navigation": {
           "title": "Navigation",
@@ -442,7 +451,19 @@
           "title": "Favicon",
           "description": "Small app icon treatment based on the compact brand symbol.",
           "alt": "Expeerly favicon"
-        }
+        },
+        "moleculesTitle": "Molecules",
+        "moleculesIntro": "Reusable composed patterns used across product surfaces, starting with the star rating molecule for review scores."
+      },
+      "starRating": {
+        "defaultTitle": "Default",
+        "defaultIntro": "Standard star row with numeric score for review summaries and product detail.",
+        "largeTitle": "Large",
+        "largeIntro": "Larger stars and score text for prominent rating placement on review pages.",
+        "starsOnlyTitle": "Stars only",
+        "starsOnlyIntro": "Hide the numeric score when space is tight or the rating is decorative.",
+        "onDarkTitle": "On dark",
+        "onDarkIntro": "Use on video overlays and other dark surfaces with on-dark foreground tokens."
       },
       "badgesAndTags": {
         "usageGuidanceTitle": "Usage guidance",
@@ -519,6 +540,10 @@
         "raisedSurfaceDescription": "Default content container: rounded-lg, border-border, bg-surface, comfortable padding, optional shadow-sm.",
         "mutedPanelTitle": "Muted panel",
         "mutedPanelDescription": "Muted band using bg-background with the same radius and border treatment as raised surfaces.",
+        "secondaryPromoTitle": "Secondary promo card",
+        "secondaryPromoIntro": "Brand-blue surface for marketing CTAs: surface=\"secondary\" (bg-secondary, border-0, shadow-sm). Pair CardTitle variant=\"heading-2\" with tone=\"on-dark\" for titles on dark backgrounds.",
+        "secondaryPromoCardTitle": "Authentic video reviews—everywhere shoppers buy",
+        "secondaryPromoCardBody": "Reach shoppers with authentic video reviews on Expeerly. Use for hub promos, brand CTAs, and other high-visibility marketing blocks.",
         "commonTypesTitle": "Common card types",
         "commonTypesIntro": "Frequently reused content structures built from existing atoms and semantic tokens.",
         "iconTextTitle": "Icon + text",
@@ -565,19 +590,29 @@
         "outcomeLabel": "Outcome",
         "outcomeBody": "Close with the value, result, or action supported by the card.",
         "dataCardsTitle": "Data cards",
-        "dataCardsIntro": "Small stat cards show one specific data point with a label, value, and optional trend or icon.",
-        "productViewsLabel": "Product views",
-        "productViewsTrend": "21% more than last month",
-        "averageRatingLabel": "Average rating",
-        "averageRatingCaption": "Across verified reviews",
-        "ordersShippedLabel": "Orders shipped",
-        "ordersShippedTrend": "96% on time"
+        "dataCardsIntro": "Compact stat cards pair a secondary value with a label. Use the optional footer slot for reviewer avatars, star ratings, or product thumbnails.",
+        "dataCardsWithoutMediaTitle": "Without media",
+        "dataCardsWithMediaTitle": "With media",
+        "dataCardReviewsLabel": "Reviews",
+        "dataCardEarnedLabel": "Earned",
+        "dataCardViewsLabel": "Views",
+        "dataCardBrandReviewsLabel": "reviews",
+        "dataCardAverageRatingLabel": "avg. rating",
+        "dataCardProductsLabel": "products",
+        "dataCardReviewersAriaLabel": "Reviewers",
+        "dataCardProductsAriaLabel": "Products",
+        "dataCardProductTwoAlt": "Product two",
+        "dataCardProductThreeAlt": "Product three",
+        "dataCardProductFourAlt": "Product four"
       },
       "carousels": {
         "multiItemTitle": "Multi-item carousel",
         "multiItemIntro": "Shows several cards side by side on larger screens. Swipe or horizontally scroll to reveal more.",
         "compactTitle": "Compact carousel",
         "compactIntro": "Shows one item at a time for compact placements, mobile previews, or focused promos.",
+        "landingEdgeTitle": "Landing edge carousel",
+        "landingEdgeIntro": "Right-edge fade treatment with a single overlay next button for mobile-forward carousels.",
+        "landingEdgeAriaLabel": "Landing edge carousel",
         "featuredAriaLabel": "Featured product carousel",
         "compactAriaLabel": "Compact promotion carousel",
         "positionAriaLabel": "Carousel position",
@@ -729,7 +764,14 @@
         "appliedFiltersIntro": "Applied filters should be visible, removable, and paired with a clear reset action.",
         "tagVerified": "Verified",
         "tagVideoReviews": "Video reviews",
-        "tagActiveCampaigns": "Active campaigns"
+        "tagActiveCampaigns": "Active campaigns",
+        "singleSelectFilterTitle": "Single-select filter button",
+        "singleSelectFilterIntro": "A single-select filter uses a dropdown icon before selection, then switches to an X so people can clear the active filter quickly.",
+        "productFilterLabel": "Product",
+        "clearProductFilterAriaLabel": "Clear product filter",
+        "productOptionMiele": "Miele Triflex",
+        "productOptionDyson": "Dyson Airwrap",
+        "productOptionBamix": "Bamix M200"
       },
       "inputs": {
         "formSpacingTitle": "Form field spacing",

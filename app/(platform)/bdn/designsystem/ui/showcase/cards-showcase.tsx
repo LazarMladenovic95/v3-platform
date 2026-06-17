@@ -1,15 +1,62 @@
 import Image from "next/image";
 import Link from "next/link";
 import {
-  EyeIcon,
   InfoIcon,
   PackageCheckIcon,
   SettingsIcon,
   ShoppingBagIcon,
   StarIcon,
 } from "@/components/ui/icons";
-import { Badge, Card, CardContent, CardDescription, CardTitle, CheckboxField } from "@/components/ui";
+import {
+  AvatarGroup,
+  Badge,
+  Card,
+  CardContent,
+  CardDescription,
+  CardTitle,
+  CheckboxField,
+  DataCard,
+  ProductGroup,
+  StarRating,
+} from "@/components/ui";
 import { t } from "@/lib/i18n";
+
+const dataCardLabelClassName = "text-body-extra-small-bold text-foreground-title-subtle";
+
+function getDataCardAvatarItems() {
+  return [
+    { src: "/avatar4.png", alt: t("designsystem.showcase.badgesAndTags.avatarAlt"), fallback: "EX" },
+    { fallback: "DS", alt: t("designsystem.showcase.badgesAndTags.designSystemAvatarAlt") },
+    { fallback: "AS", alt: t("designsystem.showcase.badgesAndTags.allisonAvatarAlt") },
+    { fallback: "VP", alt: t("designsystem.showcase.badgesAndTags.v3PlatformAvatarAlt") },
+  ];
+}
+
+function getDataCardProductItems() {
+  return [
+    {
+      id: "product-1",
+      src: "/expeerly_reviewed_MINIMAL.svg",
+      alt: t("designsystem.showcase.cards.reviewedSymbolAlt"),
+      fallback: "P1",
+    },
+    {
+      id: "product-2",
+      alt: t("designsystem.showcase.cards.dataCardProductTwoAlt"),
+      fallback: "P2",
+    },
+    {
+      id: "product-3",
+      alt: t("designsystem.showcase.cards.dataCardProductThreeAlt"),
+      fallback: "P3",
+    },
+    {
+      id: "product-4",
+      alt: t("designsystem.showcase.cards.dataCardProductFourAlt"),
+      fallback: "P4",
+    },
+  ];
+}
 
 export function CardsShowcase() {
   return (
@@ -27,6 +74,21 @@ export function CardsShowcase() {
           <CardDescription className="text-foreground-body">
             {t("designsystem.showcase.cards.mutedPanelDescription")}
           </CardDescription>
+        </Card>
+      </section>
+
+      <section>
+        <h2 className="text-title-2 text-foreground-title">{t("designsystem.showcase.cards.secondaryPromoTitle")}</h2>
+        <p className="mt-1 max-w-2xl text-body-small text-foreground-muted">
+          {t("designsystem.showcase.cards.secondaryPromoIntro")}
+        </p>
+        <Card surface="secondary" className="mt-4">
+          <CardTitle variant="heading-2" tone="on-dark">
+            {t("designsystem.showcase.cards.secondaryPromoCardTitle")}
+          </CardTitle>
+          <p className="mt-2 text-body-small text-foreground-on-dark/80">
+            {t("designsystem.showcase.cards.secondaryPromoCardBody")}
+          </p>
         </Card>
       </section>
 
@@ -263,39 +325,52 @@ export function CardsShowcase() {
         <p className="mt-1 max-w-2xl text-body-small text-foreground-muted">
           {t("designsystem.showcase.cards.dataCardsIntro")}
         </p>
-        <div className="mt-4 grid gap-4 md:grid-cols-3">
-          <Card padding="small">
-            <p className="text-body-extra-small-bold text-foreground-title-subtle">
-              {t("designsystem.showcase.cards.productViewsLabel")}
-            </p>
-            <div className="mt-3 flex items-end justify-between gap-3">
-              <p className="text-title-2 text-foreground-title tabular-nums">89,400</p>
-              <EyeIcon className="h-5 w-5 text-secondary" aria-hidden />
-            </div>
-            <p className="mt-2 text-body-small text-success">{t("designsystem.showcase.cards.productViewsTrend")}</p>
-          </Card>
 
-          <Card padding="small">
-            <p className="text-body-extra-small-bold text-foreground-title-subtle">
-              {t("designsystem.showcase.cards.averageRatingLabel")}
-            </p>
-            <div className="mt-3 flex items-end justify-between gap-3">
-              <p className="text-title-2 text-foreground-title tabular-nums">4.8</p>
-              <StarIcon className="h-5 w-5 fill-warning text-warning" aria-hidden />
-            </div>
-            <p className="mt-2 text-body-small text-foreground-muted">{t("designsystem.showcase.cards.averageRatingCaption")}</p>
-          </Card>
+        <h3 className="mt-6 text-body-regular-bold text-foreground-title">
+          {t("designsystem.showcase.cards.dataCardsWithoutMediaTitle")}
+        </h3>
+        <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-3">
+          <DataCard
+            value="14"
+            label={t("designsystem.showcase.cards.dataCardReviewsLabel")}
+            labelClassName={dataCardLabelClassName}
+          />
+          <DataCard
+            value="$280"
+            label={t("designsystem.showcase.cards.dataCardEarnedLabel")}
+            labelClassName={dataCardLabelClassName}
+          />
+          <DataCard
+            value="28k"
+            label={t("designsystem.showcase.cards.dataCardViewsLabel")}
+            labelClassName={dataCardLabelClassName}
+          />
+        </div>
 
-          <Card padding="small">
-            <p className="text-body-extra-small-bold text-foreground-title-subtle">
-              {t("designsystem.showcase.cards.ordersShippedLabel")}
-            </p>
-            <div className="mt-3 flex items-end justify-between gap-3">
-              <p className="text-title-2 text-foreground-title tabular-nums">1,284</p>
-              <PackageCheckIcon className="h-5 w-5 text-secondary" aria-hidden />
-            </div>
-            <p className="mt-2 text-body-small text-success">{t("designsystem.showcase.cards.ordersShippedTrend")}</p>
-          </Card>
+        <h3 className="mt-8 text-body-regular-bold text-foreground-title">
+          {t("designsystem.showcase.cards.dataCardsWithMediaTitle")}
+        </h3>
+        <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-3">
+          <DataCard value="128" label={t("designsystem.showcase.cards.dataCardBrandReviewsLabel")}>
+            <AvatarGroup
+              items={getDataCardAvatarItems()}
+              max={4}
+              sizeClassName="h-8 w-8"
+              reviewerRing
+              aria-label={t("designsystem.showcase.cards.dataCardReviewersAriaLabel")}
+            />
+          </DataCard>
+          <DataCard value="4.8" label={t("designsystem.showcase.cards.dataCardAverageRatingLabel")}>
+            <StarRating rating={4.8} showScore={false} />
+          </DataCard>
+          <DataCard value="24" label={t("designsystem.showcase.cards.dataCardProductsLabel")}>
+            <ProductGroup
+              items={getDataCardProductItems()}
+              max={4}
+              sizeClassName="h-8 w-8"
+              aria-label={t("designsystem.showcase.cards.dataCardProductsAriaLabel")}
+            />
+          </DataCard>
         </div>
       </section>
     </div>

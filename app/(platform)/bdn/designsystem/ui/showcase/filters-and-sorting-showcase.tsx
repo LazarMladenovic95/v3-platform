@@ -1,3 +1,6 @@
+ "use client";
+
+import { useState } from "react";
 import { t } from "@/lib/i18n";
 import {
   CheckboxField,
@@ -7,11 +10,20 @@ import {
   PrimaryPink,
   SelectField,
   SelectItem,
+  SingleSelectFilterButton,
   Tag,
   ToggleField,
 } from "@/components/ui";
 
 export function FiltersAndSortingShowcase() {
+  const [selectedProduct, setSelectedProduct] = useState<string | undefined>(undefined);
+
+  const productOptions = [
+    { value: "miele", label: t("designsystem.showcase.filtersAndSorting.productOptionMiele") },
+    { value: "dyson", label: t("designsystem.showcase.filtersAndSorting.productOptionDyson") },
+    { value: "bamix", label: t("designsystem.showcase.filtersAndSorting.productOptionBamix") },
+  ];
+
   return (
     <div className="grid gap-6">
       <section className="rounded-lg border border-border bg-surface p-5">
@@ -78,6 +90,26 @@ export function FiltersAndSortingShowcase() {
               <SelectItem value="rating-low">{t("designsystem.showcase.filtersAndSorting.lowestRating")}</SelectItem>
             </SelectField>
           </div>
+        </div>
+      </section>
+
+      <section className="rounded-lg border border-border bg-surface p-5">
+        <h2 className="text-title-2 text-foreground-title">
+          {t("designsystem.showcase.filtersAndSorting.singleSelectFilterTitle")}
+        </h2>
+        <p className="mt-1 max-w-2xl text-body-small text-foreground-muted">
+          {t("designsystem.showcase.filtersAndSorting.singleSelectFilterIntro")}
+        </p>
+
+        <div className="mt-4 rounded-lg border border-border bg-surface p-4 shadow-sm">
+          <SingleSelectFilterButton
+            label={t("designsystem.showcase.filtersAndSorting.productFilterLabel")}
+            ariaLabel={t("designsystem.showcase.filtersAndSorting.productFilterLabel")}
+            clearAriaLabel={t("designsystem.showcase.filtersAndSorting.clearProductFilterAriaLabel")}
+            options={productOptions}
+            value={selectedProduct}
+            onValueChange={setSelectedProduct}
+          />
         </div>
       </section>
 

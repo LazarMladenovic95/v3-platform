@@ -1,6 +1,6 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/atoms/Avatar";
-import { Heading } from "@/components/ui/atoms/Heading";
 import { Text } from "@/components/ui/atoms/Text";
+import { AvatarGroup } from "@/components/ui/composites/AvatarGroup";
+import { IconTextCard } from "@/components/ui/composites/IconTextCard";
 import type { ReviewerSummaryFixture } from "@/lib/fixtures/video-reviews";
 import { t } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
@@ -29,18 +29,27 @@ export function ReviewerProfileRow({ reviewer, className }: ReviewerProfileRowPr
 
   return (
     <li className={cn(className)}>
-      <div className="flex h-full flex-col gap-4 rounded-lg border border-border bg-surface p-4">
-        <div className="flex items-start gap-3">
-          <Avatar className="h-12 w-12 shrink-0 border border-border">
-            <AvatarImage src={reviewer.reviewerAvatarUrl} alt="" />
-            <AvatarFallback className="text-body-small-bold">
-              {reviewerInitials(reviewer.reviewerDisplayName)}
-            </AvatarFallback>
-          </Avatar>
-          <div className="min-w-0">
-            <Heading as="h4" variant="title-bold" className="text-secondary">
-              {reviewer.reviewerDisplayName}
-            </Heading>
+      <IconTextCard
+        iconWell={false}
+        media={
+          <AvatarGroup
+            items={[
+              {
+                src: reviewer.reviewerAvatarUrl,
+                alt: reviewer.reviewerDisplayName,
+                fallback: reviewerInitials(reviewer.reviewerDisplayName),
+              },
+            ]}
+            max={1}
+            sizeClassName="h-12 w-12"
+            reviewerRing
+            aria-label={reviewer.reviewerDisplayName}
+          />
+        }
+        title={reviewer.reviewerDisplayName}
+        titleClassName="text-secondary"
+        description={
+          <>
             {reviewer.city ? (
               <Text as="p" variant="body-small-muted" className="mb-2">
                 {reviewer.city}
@@ -50,27 +59,28 @@ export function ReviewerProfileRow({ reviewer, className }: ReviewerProfileRowPr
               <Text
                 as="p"
                 variant="body-small-muted"
-                className={cn("line-clamp-3", !reviewer.city && "mt-1")}
+                className={cn("line-clamp-3", !reviewer.city && "mt-0")}
               >
                 {reviewer.quote}
               </Text>
             ) : null}
-          </div>
-        </div>
-
-        {brandsLabel ? (
-          <Text
-            as="p"
-            variant="body-extra-small-muted"
-            className="line-clamp-2"
-            aria-label={t("marketing.landing.reviewerBrandsListAriaLabel", {
-              name: reviewer.reviewerDisplayName,
-            })}
-          >
-            {brandsLabel}
-          </Text>
-        ) : null}
-      </div>
+          </>
+        }
+        footer={
+          brandsLabel ? (
+            <Text
+              as="p"
+              variant="body-extra-small-muted"
+              className="line-clamp-2"
+              aria-label={t("marketing.landing.reviewerBrandsListAriaLabel", {
+                name: reviewer.reviewerDisplayName,
+              })}
+            >
+              {brandsLabel}
+            </Text>
+          ) : undefined
+        }
+      />
     </li>
   );
 }
