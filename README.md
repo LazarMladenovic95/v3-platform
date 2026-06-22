@@ -19,15 +19,14 @@ This is a **full platform consolidation**: data, product surfaces, APIs, and pub
 
 ## What success looks like
 
-Delivery is phased. Each phase should leave the product in a better, more maintainable state — not just closer to parity on paper.
+Delivery is phased. Each phase depends on each other.
 
 | Foundation | Why it matters |
 |------------|----------------|
 | **Schema contract** (`contracts/schema.dbml`) | One agreed model for entities, IDs, and relationships before implementation diverges |
 | **Clickable prototypes** | Real routes and components, wired to the contract database where possible — not static mockups |
-| **Aligned priorities** | Scope and trade-offs agreed across product and engineering before the foundation is signed off |
 
-These are the inputs to a deliberate **foundation sign-off** — a fixed cutoff after which the program executes against an agreed baseline, not an open-ended discovery phase.
+These are the inputs to a deliberate **foundation sign-off** — a fixed cutoff after which the program executes against an agreed baseline.
 
 ## Foundation sign-off
 
