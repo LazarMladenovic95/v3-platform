@@ -47,6 +47,10 @@
     "avatarGroup": {
       "ariaLabel": "Gruppo avatar"
     },
+    "productGroup": {
+      "ariaLabel": "Gruppo prodotti",
+      "overflowCount": "+{count}"
+    },
     "tag": {
       "removeAriaLabel": "Rimuovi {label}"
     }
@@ -153,6 +157,119 @@
       "campaign": {
         "title": "Partecipa a una campagna",
         "description": "Unisciti a campagne brand con brief, tempistiche e reward dedicati."
+      },
+      "campaignListTitle": "Participate in a running campaign",
+      "campaignListDescription": "Join brand campaigns with a set brief, timeline, and campaign-specific rewards.",
+      "selfSubmitTitle": "Or submit your own review"
+    },
+    "reviewerCampaigns": {
+      "metaTitle": "Running campaigns",
+      "metaDescription": "Browse and join brand review campaigns.",
+      "title": "Running campaigns",
+      "description": "Apply to open campaigns or track campaigns you've joined. Each campaign includes a brief, timeline, and reward details.",
+      "listAriaLabel": "Available review campaigns",
+      "apply": "Apply",
+      "applyAriaLabel": "Apply to {campaign}",
+      "viewDetails": "View details",
+      "viewCampaignAriaLabel": "View {campaign}",
+      "footerNote": "Campaign detail and application flows are prototype placeholders.",
+      "status": {
+        "open": "Open",
+        "applied": "Applied",
+        "closed": "Closed"
+      },
+      "endingSoon": "Ending soon!",
+      "dueToday": "Due Today, {time}",
+      "dueOnDate": "Due {date}",
+      "statusNote": {
+        "waitingForApproval": "Waiting for approval",
+        "applicationsClosed": "Applications closed"
+      },
+      "items": {
+        "mieleCordlessLaunch": {
+          "title": "Miele Cordless Launch",
+          "reward": "CHF 120",
+          "language": "German"
+        },
+        "mieleHomeKitchen": {
+          "title": "Miele Home & Kitchen",
+          "reward": "CHF 80",
+          "language": "German"
+        },
+        "dysonAirwrap": {
+          "title": "Dyson Airwrap Campaign",
+          "reward": "CHF 100",
+          "language": "English"
+        },
+        "philipsAirfryer": {
+          "title": "Philips Airfryer Series",
+          "reward": "CHF 90",
+          "language": "German"
+        },
+        "samsungBespoke": {
+          "title": "Samsung Bespoke Home",
+          "reward": "CHF 110",
+          "language": "English"
+        },
+        "boschPowerTools": {
+          "title": "Bosch Power Tools",
+          "reward": "CHF 95",
+          "language": "German"
+        },
+        "canonMirrorless": {
+          "title": "Canon Mirrorless Creator",
+          "reward": "CHF 130",
+          "language": "English"
+        },
+        "sonyHeadphones": {
+          "title": "Sony Headphones Studio",
+          "reward": "CHF 105",
+          "language": "English"
+        },
+        "garminFitnessWatch": {
+          "title": "Garmin Fitness Watch",
+          "reward": "CHF 115",
+          "language": "German"
+        }
+      }
+    },
+    "reviewerDashboard": {
+      "metaSeparator": " · ",
+      "seeAll": "See all",
+      "seeAllCampaignsAriaLabel": "See all running campaigns",
+      "seeAllReviewsAriaLabel": "See all your reviews",
+      "profile": {
+        "greeting": "Hi {name}",
+        "roleLocation": "Reviewer · Zürich, CH"
+      },
+      "stats": {
+        "reviewsLabel": "Reviews",
+        "earnedLabel": "Earned",
+        "earnedValue": "${amount}",
+        "impressionsLabel": "Views"
+      },
+      "submitReview": {
+        "body": "Share your honest video take on any product you own. Earn $20 per approved review · $10 per 1,000 views",
+        "cta": "Submit a review"
+      },
+      "reviews": {
+        "title": "Your reviews",
+        "listAriaLabel": "Your recent reviews",
+        "viewsCount": "{count} views",
+        "viewsThousands": "{count}k views",
+        "timeAgoHours": "{count}h ago",
+        "timeAgoDays": "{count}d ago",
+        "timeAgoWeeks": "{count}w ago",
+        "status": {
+          "live": "Live",
+          "inReview": "In review"
+        },
+        "philips": {
+          "productName": "Philips Sonicare 9900"
+        },
+        "braun": {
+          "productName": "Braun Series 9 Shaver"
+        }
       }
     },
     "stub": {
@@ -210,8 +327,10 @@
       "designSystemComponents": "Componenti",
       "logout": "Esci",
       "public": {
+        "exploreReviews": "Esplora le recensioni",
         "learnMore": "Scopri di più",
-        "submitVideoReview": "Invia una video review",
+        "submitVideoReview": "Invia una recensione",
+        "forBrandsAndRetailers": "Per brand e retailer",
         "forBrands": "Per brand e aziende",
         "forRetailers": "Per retailer e marketplace",
         "brands": "Brand",
@@ -228,11 +347,26 @@
   },
   "player": {
     "hub": {
-      "title": "Video review",
-      "description": "Sfoglia recensioni video autentiche sui prodotti da veri tester.",
-      "categoriesHeading": "Categorie",
-      "brandsHeading": "Brand",
-      "viewBrand": "Vedi brand"
+      "title": "I brand che ami. Recensioni di cui ti puoi fidare.",
+      "titleLine1": "I brand che ami.",
+      "titleLine2": "Recensioni di cui ti puoi fidare.",
+      "brandSearchLabel": "Brand",
+      "brandSearchPlaceholder": "Cerca un brand",
+      "brandSearchNoReviewsTitle": "Nessuna recensione per questo brand",
+      "brandSearchNoReviewsDescription": "Non abbiamo ancora recensioni per {brand}.",
+      "brandSearchBeFirst": "Sii il primo a recensire",
+      "brandSortLabel": "Ordina per",
+      "brandSortMostReviewed": "Più recensioni",
+      "brandSortTopRated": "Miglior valutazione",
+      "brandSortNewest": "Più recenti",
+      "brandReviewCount": "{count} recensioni",
+      "brandAverageRating": "{rating} media",
+      "seeAllBrand": "Vedi tutto",
+      "seeAllBrandAriaLabel": "Vedi tutte le recensioni {brand}",
+      "brandCarouselAriaLabel": "Video review {brand}",
+      "viewBrand": "Vedi brand",
+      "allBrandsHeading": "Tutti i brand",
+      "allBrandsAriaLabel": "Tutti i brand dalla A alla Z"
     },
     "category": {
       "backToHub": "Torna alle video review",
@@ -244,9 +378,53 @@
       "reviewsHeading": "Recensioni",
       "watchReview": "Guarda la recensione",
       "backToHub": "Torna alle video review",
-      "ctaTitle": "Fai recensire i tuoi prodotti",
+      "backToAllBrands": "Tutti i brand",
+      "reviewsCountInline": "{count} recensioni",
+      "reviewCountInline": "{count} recensione",
+      "ratingReviewsSummary": "{rating} · {count} recensioni",
+      "statTotalReviews": "{count} recensioni",
+      "statReviewsLabel": "recensioni",
+      "statAverageRating": "{rating} valutazione media",
+      "statAvgRatingLabel": "valutazione media",
+      "statAverageRatingEmpty": "Nessuna valutazione",
+      "statProductCount": "{count} prodotti",
+      "statProductsLabel": "prodotti",
+      "statReviewersAriaLabel": "Recensori per questo brand",
+      "statProductsAriaLabel": "Prodotti per questo brand",
+      "allReviewsHeading": "Tutte le recensioni",
+      "loadMoreReviews": "Carica altre",
+      "viewCount": "{count} visualizzazioni",
+      "productsNeedingReviewsHeading": "Prodotti da recensire",
+      "zeroReviewsYet": "{count} recensioni finora",
+      "ownProductTitle": "Hai un prodotto {brand}?",
+      "ownProductDescription": "Condividi una video review onesta di un prodotto che hai acquistato e aiuta gli altri a scegliere.",
+      "becomeReviewer": "Diventa recensore",
+      "becomeReviewerAriaLabel": "Diventa recensore",
+      "reviewerFabAriaLabel": "Recensisci un prodotto {brand}",
+      "ctaTitle": "Video review autentiche—ovunque gli acquirenti acquistano",
       "ctaDescription": "Raggiungi gli acquirenti con video review autentiche su Expeerly.",
-      "ctaButton": "Scopri di più"
+      "ctaButton": "Come aiutiamo i brand",
+      "ctaButtonAriaLabel": "Scopri come aiutiamo i brand",
+      "filtersTitle": "Filtri",
+      "filterButton": "Filtra",
+      "filterReset": "Reimposta",
+      "sortButton": "Ordina",
+      "filterCategoryLabel": "Categoria",
+      "filterProductLabel": "Prodotto",
+      "filterReviewerLabel": "Recensore",
+      "filterAllCategories": "Tutte le categorie",
+      "filterAllProducts": "Tutti i prodotti",
+      "filterAllReviewers": "Tutti i recensori",
+      "sortLabel": "Ordina per",
+      "sortMostReviewed": "Più recensioni",
+      "sortHighestRated": "Valutazione più alta",
+      "sortMostViewed": "Più viste",
+      "sortNewest": "Più recenti",
+      "reviewsGridAriaLabel": "Video review del brand",
+      "reviewsResultsCount": "{count} recensioni",
+      "reviewsLoadingMore": "Caricamento di altre recensioni…",
+      "reviewsEmptyTitle": "Nessuna recensione corrisponde ai filtri",
+      "reviewsEmptyDescription": "Prova a selezionare un altro prodotto o recensore."
     },
     "review": {
       "ratingLabel": "Valutazione",
@@ -260,9 +438,25 @@
       "faqHeading": "Domande frequenti",
       "moreVideosOn": "Altri video su",
       "backToBrand": "Torna al brand",
+      "follow": "Follow",
+      "detailsTab": "Details",
+      "transcriptTab": "Trascrizione completa",
+      "tabsAriaLabel": "Review content",
+      "category": "Category",
+      "reviewed": "Reviewed",
+      "reviewMeta": "by {reviewer}",
+      "moreBrandReviews": "More {brand} reviews",
+      "moreReviewerReviews": "More reviews from {reviewer}",
+      "brandCardReviews": "{count} reviews on expeerly",
+      "allBrandReviews": "All {brand} reviews ({count})",
       "playAriaLabel": "Riproduci video",
       "buyNow": "Acquista ora",
       "buyNowAriaLabel": "Vai al prodotto mostrato nel video",
+      "shareAriaLabel": "Condividi recensione",
+      "shareTitle": "Condividi la recensione di {product}",
+      "reviewerProfileAriaLabel": "Vedi il profilo di {reviewer}",
+      "stickyOwnProductQuestion": "Possiedi questo prodotto?",
+      "stickyOwnProductDescription": "Condividi la tua recensione video onesta di {product}.",
       "notAvailable": "—"
     },
     "notFound": {
@@ -273,10 +467,39 @@
   },
   "marketing": {
     "landing": {
-      "siteTitle": "Ne vale la pena? Le ultime video review e testimonianze Expeerly",
-      "metaDescription": "Ti sei mai chiesto se ne vale la pena? Guarda video reali di persone reali che condividono le esperienze sui prodotti più recenti.",
-      "heroTitle": "Ne vale la pena?",
-      "heroSubtitle": "Scopri le ultime video review sui tuoi prodotti preferiti.",
+      "siteTitle": "Video review affidabili per i prodotti che stai valutando | Expeerly",
+      "metaDescription": "Guarda video review autentiche di persone reali che hanno acquistato, testato e filmato i prodotti da sole.",
+      "heroTitle": "Video review affidabili sui tuoi prodotti preferiti",
+      "heroSubtitle": "Da persone reali che hanno acquistato, testato e filmato da sole",
+      "searchPlaceholder": "Cerca prodotti o brand",
+      "searchAriaLabel": "Cerca prodotti o brand",
+      "shopByBrandHeading": "I brand che ami",
+      "seeAllBrands": "Vedi tutti",
+      "seeAllBrandsAriaLabel": "Vedi tutti i brand",
+      "trendingHeading": "Di tendenza questa settimana",
+      "mostWatched": "Più visti",
+      "mostWatchedAriaLabel": "Vedi le recensioni più viste",
+      "beFirstHeading": "Sii il primo a recensire",
+      "reviewIt": "Recensisci",
+      "reviewItAriaLabel": "Recensisci {product}",
+      "meetReviewersHeading": "Incontra i nostri recensori",
+      "communityBanner": "Condividi la tua opinione onesta",
+      "communityBannerSub": "Unisciti alla nostra community di recensori",
+      "communityBannerAvatarsAlt": "Recensori Expeerly",
+      "joinCommunity": "Diventa recensore",
+      "joinCommunityAriaLabel": "Diventa recensore",
+      "giftedLabel": "Omaggiato",
+      "justAddedHeading": "Aggiunti di recente",
+      "forBrandsTitle": "Per i brand",
+      "forBrandsBody": "Amplifica la tua portata e aumenta le vendite con video review distribuiti su ricerca, social e canali retail.",
+      "forRetailersTitle": "Per i retailer",
+      "forRetailersBody": "Integra le recensioni dove si acquista",
+      "reviewCount": "{count} recensioni",
+      "reviewerBrandsListAriaLabel": "Marchi recensiti da {name}",
+      "reviewerBrandsSeparator": " • ",
+      "recentTimeHours": "{count} h fa",
+      "justAddedMetaSeparator": " • ",
+      "stickyAuthAriaLabel": "Registrati o accedi a Expeerly",
       "scrollCta": "Esplora le recensioni",
       "reviewersHeading": "Ogni recensore ha una storia personale da raccontare",
       "brandsHeading": "Video review sui brand che ami",

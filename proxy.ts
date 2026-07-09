@@ -9,7 +9,7 @@ import {
   resolvePreferredLocale,
   shouldPrefixPathWithLocale,
   stripLocalePrefix,
-} from "@/lib/i18n-routing";
+} from "@/lib/i18n/routing";
 
 function applyLocaleCookie(response: NextResponse, locale: LocaleId): NextResponse {
   response.cookies.set(LOCALE_COOKIE_NAME, locale, {

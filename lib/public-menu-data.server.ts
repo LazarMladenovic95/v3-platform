@@ -6,8 +6,8 @@ import {
 } from "@/lib/data/interest-categories-dev";
 import { getAllBrands } from "@/lib/fixtures/video-reviews";
 import type { LocaleId } from "@/lib/i18n";
-import { pickLocalized } from "@/lib/i18n-content";
-import { pathnameWithLocale } from "@/lib/i18n-routing";
+import { pickLocalized } from "@/lib/i18n/content";
+import { pathnameWithLocale } from "@/lib/i18n/routing";
 import type { PublicMenuCatalog } from "@/lib/public-menu-types";
 
 export function buildPublicMenuCatalog(locale: LocaleId): PublicMenuCatalog {

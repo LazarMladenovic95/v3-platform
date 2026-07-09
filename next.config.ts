@@ -8,6 +8,11 @@ const nextConfig: NextConfig = {
         hostname: "image.mux.com",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "8c5b537fbba62e8aa25fb9516a59d494.cdn.bubble.io",
+        pathname: "/**",
+      },
     ],
   },
   async headers() {

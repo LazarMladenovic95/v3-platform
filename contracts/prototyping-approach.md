@@ -11,7 +11,7 @@
 ## UI governance
 
 - **Locales / icons / tokens:** see `.cursor/rules/platform-ui-governance.mdc` and ESLint (`i18next/no-literal-string`, `no-restricted-imports`, `no-restricted-syntax`).
-- **Design system** (`app/bnd/designsystem/`): own layouts; does **not** use `PageCanvas`. Showcase UI under `ui/` is ESLint-exempt for demo copy only.
+- **Design system** (`app/bdn/designsystem/`): own layouts; does **not** use `PageCanvas`. Showcase UI under `ui/` is ESLint-exempt for demo copy only.
 - **Product pages:** compose `components/ui` atoms → molecules → composites; no ad-hoc primitives on screens.
 
 ## Data

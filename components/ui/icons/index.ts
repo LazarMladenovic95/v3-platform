@@ -4,6 +4,7 @@ import type { ComponentType } from "react";
 import { ActivityIcon } from "./ActivityIcon";
 import { ArchiveIcon } from "./ArchiveIcon";
 import { ArrowRightIcon } from "./ArrowRightIcon";
+import { ArrowUpDownIcon } from "./ArrowUpDownIcon";
 import { AlertCircleIcon } from "./AlertCircleIcon";
 import { BadgeCheckIcon } from "./BadgeCheckIcon";
 import { BanknoteIcon } from "./BanknoteIcon";
@@ -16,11 +17,15 @@ import { CheckCircleIcon } from "./CheckCircleIcon";
 import { ChevronDownIcon } from "./ChevronDownIcon";
 import { ChevronLeftIcon } from "./ChevronLeftIcon";
 import { ChevronRightIcon } from "./ChevronRightIcon";
+import { CircleOffIcon } from "./CircleOffIcon";
+import { CirclePlayIcon } from "./CirclePlayIcon";
 import { CreditCardIcon } from "./CreditCardIcon";
 import { DownloadIcon } from "./DownloadIcon";
 import { EyeIcon } from "./EyeIcon";
+import { ExternalLinkIcon } from "./ExternalLinkIcon";
 import { FacebookIcon } from "./FacebookIcon";
 import { FileTextIcon } from "./FileTextIcon";
+import { FlameIcon } from "./FlameIcon";
 import { FolderOpenIcon } from "./FolderOpenIcon";
 import { FunnelIcon } from "./FunnelIcon";
 import { GiftIcon } from "./GiftIcon";
@@ -60,6 +65,7 @@ import { ScanBarcodeIcon } from "./ScanBarcodeIcon";
 import { SearchIcon } from "./SearchIcon";
 import { SearchXIcon } from "./SearchXIcon";
 import { SettingsIcon } from "./SettingsIcon";
+import { ShareIcon } from "./ShareIcon";
 import { SlidersHorizontalIcon } from "./SlidersHorizontalIcon";
 import { ShoppingBagIcon } from "./ShoppingBagIcon";
 import { ShoppingCartIcon } from "./ShoppingCartIcon";
@@ -86,6 +92,7 @@ export const iconComponents = {
   "activity": ActivityIcon,
   "archive": ArchiveIcon,
   "arrow-right": ArrowRightIcon,
+  "arrow-up-down": ArrowUpDownIcon,
   "alert-circle": AlertCircleIcon,
   "badge-check": BadgeCheckIcon,
   "banknote": BanknoteIcon,
@@ -98,11 +105,15 @@ export const iconComponents = {
   "chevron-down": ChevronDownIcon,
   "chevron-left": ChevronLeftIcon,
   "chevron-right": ChevronRightIcon,
+  "circle-off": CircleOffIcon,
+  "circle-play": CirclePlayIcon,
   "credit-card": CreditCardIcon,
   "download": DownloadIcon,
   "eye": EyeIcon,
+  "external-link": ExternalLinkIcon,
   "facebook": FacebookIcon,
   "file-text": FileTextIcon,
+  "flame": FlameIcon,
   "folder-open": FolderOpenIcon,
   "funnel": FunnelIcon,
   "gift": GiftIcon,
@@ -142,6 +153,7 @@ export const iconComponents = {
   "search": SearchIcon,
   "search-x": SearchXIcon,
   "settings": SettingsIcon,
+  "share": ShareIcon,
   "sliders-horizontal": SlidersHorizontalIcon,
   "shopping-bag": ShoppingBagIcon,
   "shopping-cart": ShoppingCartIcon,
@@ -169,6 +181,7 @@ export {
   ActivityIcon,
   ArchiveIcon,
   ArrowRightIcon,
+  ArrowUpDownIcon,
   AlertCircleIcon,
   BadgeCheckIcon,
   BanknoteIcon,
@@ -181,11 +194,15 @@ export {
   ChevronDownIcon,
   ChevronLeftIcon,
   ChevronRightIcon,
+  CircleOffIcon,
+  CirclePlayIcon,
   CreditCardIcon,
   DownloadIcon,
   EyeIcon,
+  ExternalLinkIcon,
   FacebookIcon,
   FileTextIcon,
+  FlameIcon,
   FolderOpenIcon,
   FunnelIcon,
   GiftIcon,
@@ -225,6 +242,7 @@ export {
   SearchIcon,
   SearchXIcon,
   SettingsIcon,
+  ShareIcon,
   SlidersHorizontalIcon,
   ShoppingBagIcon,
   ShoppingCartIcon,

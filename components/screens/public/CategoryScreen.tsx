@@ -6,8 +6,8 @@ import { VideoRatingThumbnailCard } from "@/components/ui";
 import type { InterestCategoryRecord } from "@/lib/data/interest-categories-dev";
 import type { ReviewFixture } from "@/lib/fixtures/video-reviews";
 import { getLocale, t } from "@/lib/i18n";
-import { pathnameWithLocale } from "@/lib/i18n-routing";
-import { pickLocalized } from "@/lib/i18n-content";
+import { pathnameWithLocale } from "@/lib/i18n/routing";
+import { pickLocalized } from "@/lib/i18n/content";
 
 export type CategoryScreenProps = {
   category: InterestCategoryRecord;
@@ -24,7 +24,7 @@ export function CategoryScreen({ category, reviews }: CategoryScreenProps) {
   return (
     <div className="mx-auto w-full max-w-lg px-6 py-8 md:max-w-content md:px-16 md:py-10 lg:px-20">
       <Link
-        href={pathnameWithLocale("/video-reviews", locale)}
+        href={pathnameWithLocale("/video-reviews/brand", locale)}
         className="text-body-small text-secondary underline-offset-4 hover:underline"
       >
         {t("player.category.backToHub")}

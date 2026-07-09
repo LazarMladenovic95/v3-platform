@@ -8,9 +8,9 @@ import {
 } from "@/lib/data/interest-categories-dev";
 import { getReviewPlayerPath } from "@/lib/fixtures/video-reviews";
 import { getReviewByPath } from "@/lib/fixtures/video-reviews-server";
-import { applyRequestLocale } from "@/lib/i18n-request";
+import { applyRequestLocale } from "@/lib/i18n/request";
 import { t } from "@/lib/i18n";
-import { pickLocalized } from "@/lib/i18n-content";
+import { pickLocalized } from "@/lib/i18n/content";
 
 type ReviewPageProps = {
   params: Promise<{

@@ -12,7 +12,7 @@ import {
 import { StarRating } from "@/components/ui/molecules/video-reviews/StarRating";
 import type { BrandFixture } from "@/lib/fixtures/video-reviews";
 import { getLocale, t } from "@/lib/i18n";
-import { pickLocalized } from "@/lib/i18n-content";
+import { pickLocalized } from "@/lib/i18n/content";
 import { cn } from "@/lib/utils";
 
 export type BrandMarketingCardProps = {

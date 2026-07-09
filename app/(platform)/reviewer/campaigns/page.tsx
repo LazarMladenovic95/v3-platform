@@ -1,14 +1,12 @@
 import type { Metadata } from "next";
-import { AppStubScreen } from "@/components/screens";
+import { ReviewerCampaignsScreen } from "@/components/screens/platform/ReviewerCampaignsScreen";
 import { t } from "@/lib/i18n";
 
-const titleKey = "app.nav.reviewer.runningCampaigns";
-
 export const metadata: Metadata = {
-  title: t(titleKey),
-  description: t("app.stub.description"),
+  title: t("app.reviewerCampaigns.metaTitle"),
+  description: t("app.reviewerCampaigns.metaDescription"),
 };
 
 export default function ReviewerCampaignsPage() {
-  return <AppStubScreen titleKey={titleKey} />;
+  return <ReviewerCampaignsScreen />;
 }

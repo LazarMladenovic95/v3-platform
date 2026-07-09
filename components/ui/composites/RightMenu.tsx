@@ -8,19 +8,18 @@ import {
   appNavDesignSystemGroup,
   appNavLogoutItem,
   appNavPrimaryItems,
-  bndNavItems,
+  bdnNavItems,
   companyNavItems,
-  publicNavCatalogGroups,
+  publicHeaderNavLinks,
   publicNavLocaleOptions,
-  publicNavPrimaryLinks,
   reviewerNavItems,
   resolveRightMenuVariant,
   type AppNavItemConfig,
   type RightMenuVariant,
 } from "@/lib/app-nav-config";
 import { getLocale, t } from "@/lib/i18n";
-import { setPreferredLocaleCookie } from "@/lib/i18n-locale-actions";
-import { pathnameWithLocale, stripLocalePrefix } from "@/lib/i18n-routing";
+import { setPreferredLocaleCookie } from "@/lib/i18n/locale-actions";
+import { pathnameWithLocale, stripLocalePrefix } from "@/lib/i18n/routing";
 import type { PublicMenuCatalog } from "@/lib/public-menu-types";
 import type { LocaleId } from "@/locales/index";
 import { cn } from "@/lib/utils";
@@ -46,7 +45,7 @@ function NavItemsList({
       {items.map((item) => (
         <RightMenuItem
           key={item.id}
-          icon={<Icon name={item.icon} size="xl" />}
+          icon={<Icon name={item.icon} size="lg" />}
           label={t(item.labelKey)}
           onClick={() => {
             if (item.href) {
@@ -65,11 +64,10 @@ function MenuDivider() {
   return <hr className="my-1 w-full border-0 border-t border-border" aria-hidden />;
 }
 
-export function RightMenu({ className, onItemClick, variant, publicMenuCatalog }: RightMenuProps) {
+export function RightMenu({ className, onItemClick, variant, publicMenuCatalog: _publicMenuCatalog }: RightMenuProps) {
   const router = useRouter();
   const pathname = usePathname();
   const locale = getLocale();
-  const { pathnameWithoutLocale } = stripLocalePrefix(pathname);
   const resolvedVariant = variant ?? resolveRightMenuVariant(pathname);
 
   const handleNavigate = (href: string) => {
@@ -104,11 +102,6 @@ export function RightMenu({ className, onItemClick, variant, publicMenuCatalog }
     publicNavLocaleOptions.find((option) => option.id === locale)?.labelKey ??
     "app.nav.public.locale.en";
 
-  const catalogByGroupId = {
-    brands: publicMenuCatalog?.brands ?? [],
-    categories: publicMenuCatalog?.categories ?? [],
-  } as const;
-
   return (
     <aside
       id="right-menu"
@@ -121,34 +114,10 @@ export function RightMenu({ className, onItemClick, variant, publicMenuCatalog }
       <div className="flex w-full flex-col gap-2">
         {resolvedVariant === "public" ? (
           <>
-            {publicNavCatalogGroups.map((group) => {
-              const items = catalogByGroupId[group.id];
-              const isCategories = group.id === "categories";
-
-              return (
-                <RightMenuItem
-                  key={group.id}
-                  icon={<Icon name={group.icon} size="xl" />}
-                  label={t(group.labelKey)}
-                  submenuIndicator={isCategories ? "right" : "down"}
-                  defaultSubmenuOpen={pathnameWithoutLocale.startsWith(
-                    group.id === "brands" ? "/video-reviews/brand" : "/video-reviews/productcategory",
-                  )}
-                  submenu={items.map((entry) => ({
-                    id: entry.id,
-                    label: entry.label,
-                    onClick: () => handleNavigate(entry.href),
-                  }))}
-                />
-              );
-            })}
-
-            <MenuDivider />
-
-            {publicNavPrimaryLinks.map((item) => (
+            {publicHeaderNavLinks.map((item) => (
               <RightMenuItem
                 key={item.id}
-                icon={<Icon name={item.icon} size="xl" />}
+                icon={<Icon name={item.icon} size="lg" />}
                 label={t(item.labelKey)}
                 onClick={() => {
                   if (item.external) {
@@ -163,7 +132,7 @@ export function RightMenu({ className, onItemClick, variant, publicMenuCatalog }
             <MenuDivider />
 
             <RightMenuItem
-              icon={<Icon name="globe" size="xl" />}
+              icon={<Icon name="globe" size="lg" />}
               label={t(currentLocaleLabelKey)}
               submenuIndicator="right"
               submenu={publicNavLocaleOptions.map((option) => ({
@@ -191,18 +160,18 @@ export function RightMenu({ className, onItemClick, variant, publicMenuCatalog }
           />
         ) : null}
 
-        {resolvedVariant === "bnd" ? (
+        {resolvedVariant === "bdn" ? (
           <>
             <NavItemsList
-              items={bndNavItems}
+              items={bdnNavItems}
               onNavigate={handleNavigate}
               onPlaceholder={handlePlaceholder}
             />
 
             <RightMenuItem
-              icon={<Icon name={appNavDesignSystemGroup.icon} size="xl" />}
+              icon={<Icon name={appNavDesignSystemGroup.icon} size="lg" />}
               label={t(appNavDesignSystemGroup.labelKey)}
-              defaultSubmenuOpen={pathname.startsWith("/bnd/designsystem")}
+              defaultSubmenuOpen={pathname.startsWith("/bdn/designsystem")}
               submenu={appNavDesignSystemChildren.map((item) => ({
                 id: item.id,
                 label: t(item.labelKey),
@@ -221,9 +190,9 @@ export function RightMenu({ className, onItemClick, variant, publicMenuCatalog }
             />
 
             <RightMenuItem
-              icon={<Icon name={appNavDesignSystemGroup.icon} size="xl" />}
+              icon={<Icon name={appNavDesignSystemGroup.icon} size="lg" />}
               label={t(appNavDesignSystemGroup.labelKey)}
-              defaultSubmenuOpen={pathname.startsWith("/bnd/designsystem")}
+              defaultSubmenuOpen={pathname.startsWith("/bdn/designsystem")}
               submenu={appNavDesignSystemChildren.map((item) => ({
                 id: item.id,
                 label: t(item.labelKey),
@@ -235,7 +204,7 @@ export function RightMenu({ className, onItemClick, variant, publicMenuCatalog }
 
         {resolvedVariant !== "public" ? (
           <RightMenuItem
-            icon={<Icon name={appNavLogoutItem.icon} size="xl" />}
+            icon={<Icon name={appNavLogoutItem.icon} size="lg" />}
             label={t(appNavLogoutItem.labelKey)}
             onClick={handleLogout}
           />

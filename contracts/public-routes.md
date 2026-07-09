@@ -10,9 +10,10 @@
 | `/` | Marketing landing |
 | `/sign-in` | Login (prototype; mirrors [app.expeerly.com](https://app.expeerly.com/)) |
 | `/sign-in?sign-up` | Sign up (role → reviewer email/password → 6-digit verify) |
-| `/video-reviews` | Hub |
+| `/video-reviews` | URL prefix only (no page; bare path → 404) |
+| `/video-reviews/brand` | Brand overview (all brands) |
 | `/video-reviews/productcategory/{categorySlug}` | Category listing (live catalog; dev reads `data/InterestCategories - ToUpload.csv`) |
-| `/video-reviews/brand/{brandSlug}` | Brand listing |
+| `/video-reviews/brand/{brandSlug}` | Brand detail |
 | `/video-reviews/{categorySlug}/{brandSlug}/{productSlug}/{reviewId}` | Single review player |
 
 **Header right menu (public):** `app.nav.public.*` — learn more, submit review, B2B links, **Brands** / **Categories** submenus (from fixtures + `interest-categories.csv`), locale switcher. Config: `lib/app-nav-config.ts`, catalog: `lib/public-menu-data.server.ts`.
@@ -21,7 +22,7 @@
 
 **Excluded:** `/video-reviews/reviewers/*` (not migrated).
 
-**Platform (not public):** `/company/**`, `/reviewer/**`, `/bnd/**` — see [platform-routes.md](./platform-routes.md).
+**Platform (not public):** `/company/**`, `/reviewer/**`, `/bdn/**` — see [platform-routes.md](./platform-routes.md).
 
 ## Interest categories (dev)
 
@@ -33,7 +34,7 @@
 
 - Default `en`: no prefix (`https://www.expeerly.com/...`)
 - `de`, `fr`, `it`: `/{locale}/...` on **public** paths via `proxy.ts`
-- **Exempt** (never prefixed): `/company`, `/reviewer`, `/sign-in`, `/bnd` — see `lib/i18n-routing.ts` and root `proxy.ts`
+- **Exempt** (never prefixed): `/company`, `/reviewer`, `/sign-in`, `/bdn` — see `lib/i18n/routing.ts` and root `proxy.ts`
 - UI copy on all surfaces may still use `t()` / `locales/*.json` regardless of URL locale
 
 ## URL segments vs schema
@@ -67,5 +68,5 @@ Resolver must match **all** segments; wrong slug combo → 404 even if `reviewId
 
 - `app/(public)/**`: thin route → `PageCanvas` → screen in `components/screens/public/`
 - Screens compose `components/ui`; product video pieces live under `composites/video-reviews/` and `molecules/video-reviews/`
-- Design system: `app/(platform)/bnd/designsystem/**` — see [platform-routes.md](./platform-routes.md)
+- Design system: `app/(platform)/bdn/designsystem/**` — see [platform-routes.md](./platform-routes.md)
 - Shared `LayoutShell` + `AppHeader` at root
