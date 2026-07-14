@@ -67,14 +67,11 @@ export function BrandSearchField({ topBrands, allBrands }: BrandSearchFieldProps
     router.push(`/video-reviews/brand/${brandSlug}`);
   };
 
-  const goToSubmitReview = (brandName: string) => {
+  const goToSubmitReview = () => {
     setIsDialogOpen(false);
     setIsOpen(false);
     setQuery("");
-    const href = brandName
-      ? `/reviewer/onboarding?brand=${encodeURIComponent(brandName)}`
-      : "/reviewer/onboarding";
-    router.push(href);
+    router.push("/sign-in?sign-up");
   };
 
   const handleSearchSubmit = () => {
@@ -154,7 +151,7 @@ export function BrandSearchField({ topBrands, allBrands }: BrandSearchFieldProps
             brand: unknownBrandName,
           })}
           footer={
-            <PrimaryPink size="medium" onClick={() => goToSubmitReview(unknownBrandName)}>
+            <PrimaryPink size="medium" onClick={() => goToSubmitReview()}>
               {t("player.hub.brandSearchBeFirst")}
             </PrimaryPink>
           }

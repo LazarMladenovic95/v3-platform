@@ -12,7 +12,7 @@ export type ReviewStickyBuyBarProps = {
 };
 
 export function ReviewStickyBuyBar({ brandName, productName }: ReviewStickyBuyBarProps) {
-  const onboardingHref = `/reviewer/onboarding?brand=${encodeURIComponent(brandName)}&product=${encodeURIComponent(productName)}`;
+  const onboardingHref = `/sign-in?sign-up`;
 
   return (
     <Card className="mt-10">

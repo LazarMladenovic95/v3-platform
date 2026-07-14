@@ -14,6 +14,7 @@ import {
   RadioGroupField,
   Text,
 } from "@/components/ui";
+import { createClient } from "@/lib/supabase/client";
 import { t } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 
@@ -23,19 +24,28 @@ export interface SignInScreenProps {
   mode: SignInScreenMode;
 }
 
-type SignUpStep = "role" | "credentials" | "verify";
+type SignUpStep = "role" | "credentials" | "checkEmail";
 
 const authLinkClassName = cn(
   "text-body-small-bold text-primary underline-offset-2 hover:text-primary-hover hover:underline",
   "rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2 focus-visible:ring-offset-background",
 );
 
-const CONFIRMATION_CODE_PATTERN = /^\d{6}$/;
-
-function mimicSendVerificationCode() {
-  return new Promise<void>((resolve) => {
-    window.setTimeout(resolve, 900);
-  });
+function mapAuthError(message: string | undefined): string {
+  const lower = (message ?? "").toLowerCase();
+  if (lower.includes("invalid login") || lower.includes("invalid credentials")) {
+    return t("app.auth.errors.invalidCredentials");
+  }
+  if (lower.includes("email not confirmed")) {
+    return t("app.auth.errors.emailNotConfirmed");
+  }
+  if (lower.includes("already registered") || lower.includes("already been registered")) {
+    return t("app.auth.errors.emailTaken");
+  }
+  if (lower.includes("password")) {
+    return t("app.auth.errors.weakPassword");
+  }
+  return t("app.auth.errors.generic");
 }
 
 export function SignInScreen({ mode }: SignInScreenProps) {
@@ -44,28 +54,28 @@ export function SignInScreen({ mode }: SignInScreenProps) {
   const isSignUp = mode === "signup";
 
   const [signUpStep, setSignUpStep] = useState<SignUpStep>("role");
-  const [role, setRole] = useState("customer");
+  const [role, setRole] = useState("reviewer");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [confirmationCode, setConfirmationCode] = useState("");
   const [passwordMismatch, setPasswordMismatch] = useState(false);
-  const [invalidCode, setInvalidCode] = useState(false);
-  const [isSendingCode, setIsSendingCode] = useState(false);
-  const [isVerifying, setIsVerifying] = useState(false);
+  const [formError, setFormError] = useState<string | undefined>();
+  const [infoMessage, setInfoMessage] = useState<string | undefined>();
+  const [isBusy, setIsBusy] = useState(false);
 
   const isReviewerFlow = isSignUp && role === "reviewer" && signUpStep !== "role";
+
   const cardTitle = (() => {
     if (!isSignUp) return t("app.auth.signIn.title");
-    if (signUpStep === "verify") return t("app.auth.signUp.verify.title");
+    if (signUpStep === "checkEmail") return t("app.auth.signUp.checkEmail.title");
     if (signUpStep === "credentials") return t("app.auth.signUp.reviewerCredentials.title");
     return t("app.auth.signUp.title");
   })();
 
   const cardDescription = (() => {
     if (!isSignUp) return t("app.auth.signIn.description");
-    if (signUpStep === "verify") {
-      return t("app.auth.signUp.verify.description", { email });
+    if (signUpStep === "checkEmail") {
+      return t("app.auth.signUp.checkEmail.description", { email });
     }
     if (signUpStep === "credentials") {
       return t("app.auth.signUp.reviewerCredentials.description");
@@ -76,71 +86,126 @@ export function SignInScreen({ mode }: SignInScreenProps) {
   const handleRoleContinue = () => {
     if (role === "reviewer") {
       setSignUpStep("credentials");
+      setFormError(undefined);
       return;
     }
     router.push("/company");
   };
 
-  const handleCredentialsSubmit = async (event: React.FormEvent) => {
-    event.preventDefault();
+  const handleCredentialsSubmit = async () => {
     if (password !== confirmPassword) {
       setPasswordMismatch(true);
       return;
     }
     setPasswordMismatch(false);
-    setIsSendingCode(true);
-    await mimicSendVerificationCode();
-    setIsSendingCode(false);
-    setSignUpStep("verify");
-    setConfirmationCode("");
-    setInvalidCode(false);
-  };
+    setFormError(undefined);
+    setIsBusy(true);
 
-  const handleVerifySubmit = async (event: React.FormEvent) => {
-    event.preventDefault();
-    if (!CONFIRMATION_CODE_PATTERN.test(confirmationCode)) {
-      setInvalidCode(true);
-      return;
+    try {
+      const supabase = createClient();
+      const emailRedirectTo = `${window.location.origin}/auth/callback?next=/reviewer`;
+      const { data, error } = await supabase.auth.signUp({
+        email,
+        password,
+        options: {
+          emailRedirectTo,
+          data: { role: "reviewer" },
+        },
+      });
+
+      if (error) {
+        setFormError(mapAuthError(error.message));
+        return;
+      }
+
+      // If email confirmations are disabled, session is returned immediately.
+      if (data.session) {
+        router.push("/reviewer");
+        router.refresh();
+        return;
+      }
+
+      setSignUpStep("checkEmail");
+      setInfoMessage(undefined);
+    } catch {
+      setFormError(t("app.auth.errors.generic"));
+    } finally {
+      setIsBusy(false);
     }
-    setInvalidCode(false);
-    setIsVerifying(true);
-    await mimicSendVerificationCode();
-    setIsVerifying(false);
-    router.push("/reviewer/onboarding");
   };
 
-  const handleResendCode = async () => {
-    setIsSendingCode(true);
-    await mimicSendVerificationCode();
-    setIsSendingCode(false);
-    setConfirmationCode("");
-    setInvalidCode(false);
+  const handleLoginSubmit = async () => {
+    setFormError(undefined);
+    setIsBusy(true);
+
+    try {
+      const supabase = createClient();
+      const { error } = await supabase.auth.signInWithPassword({ email, password });
+      if (error) {
+        setFormError(mapAuthError(error.message));
+        return;
+      }
+      router.push("/reviewer");
+      router.refresh();
+    } catch {
+      setFormError(t("app.auth.errors.generic"));
+    } finally {
+      setIsBusy(false);
+    }
+  };
+
+  const handleResendConfirmation = async () => {
+    setFormError(undefined);
+    setInfoMessage(undefined);
+    setIsBusy(true);
+    try {
+      const supabase = createClient();
+      const { error } = await supabase.auth.resend({
+        type: "signup",
+        email,
+        options: {
+          emailRedirectTo: `${window.location.origin}/auth/callback?next=/reviewer`,
+        },
+      });
+      if (error) {
+        setFormError(mapAuthError(error.message));
+        return;
+      }
+      setInfoMessage(t("app.auth.signUp.checkEmail.resent"));
+    } catch {
+      setFormError(t("app.auth.errors.generic"));
+    } finally {
+      setIsBusy(false);
+    }
   };
 
   const submitLabel = (() => {
     if (!isSignUp) return t("app.auth.signIn.submit");
-    if (signUpStep === "verify") return t("app.auth.signUp.verify.submit");
+    if (signUpStep === "checkEmail") return t("app.auth.signUp.checkEmail.submit");
     if (signUpStep === "credentials") return t("app.auth.signUp.reviewerCredentials.submit");
     return t("app.auth.signUp.submit");
   })();
 
   const handleFormSubmit = (event: React.FormEvent) => {
     event.preventDefault();
-    if (!isSignUp) return;
+    if (!isSignUp) {
+      void handleLoginSubmit();
+      return;
+    }
     if (signUpStep === "role") {
       handleRoleContinue();
       return;
     }
     if (signUpStep === "credentials") {
-      void handleCredentialsSubmit(event);
+      void handleCredentialsSubmit();
       return;
     }
-    if (signUpStep === "verify") {
-      void handleVerifySubmit(event);
+    if (signUpStep === "checkEmail") {
+      router.push("/sign-in");
     }
   };
 
-  const showFooterToggle = !isReviewerFlow;
+  const showFooterToggle = !isReviewerFlow || signUpStep === "checkEmail";
 
   return (
     <div className="flex w-full min-h-main-below-header items-center justify-center px-6 py-10 md:py-16">
@@ -178,6 +243,8 @@ export function SignInScreen({ mode }: SignInScreenProps) {
                     name="email"
                     autoComplete="email"
                     placeholder={t("app.auth.signIn.emailPlaceholder")}
+                    value={email}
+                    onChange={(event) => setEmail(event.target.value)}
                     required
                   />
                   <InputField
@@ -186,6 +253,8 @@ export function SignInScreen({ mode }: SignInScreenProps) {
                     name="password"
                     autoComplete="current-password"
                     placeholder={t("app.auth.signIn.passwordPlaceholder")}
+                    value={password}
+                    onChange={(event) => setPassword(event.target.value)}
                     required
                   />
                   <div className="flex justify-end">
@@ -227,70 +296,66 @@ export function SignInScreen({ mode }: SignInScreenProps) {
                     placeholder={t("app.auth.signUp.reviewerCredentials.confirmPasswordPlaceholder")}
                     value={confirmPassword}
                     onChange={(event) => setConfirmPassword(event.target.value)}
-                    hint={passwordMismatch ? t("app.auth.signUp.reviewerCredentials.passwordMismatch") : undefined}
+                    hint={
+                      passwordMismatch
+                        ? t("app.auth.signUp.reviewerCredentials.passwordMismatch")
+                        : undefined
+                    }
                     state={passwordMismatch ? "error" : "default"}
                     required
                   />
                 </>
               ) : null}
 
-              {isSignUp && signUpStep === "verify" ? (
-                <>
-                  <InputField
-                    label={t("app.auth.signUp.verify.codeLabel")}
-                    type="text"
-                    name="confirmation-code"
-                    inputMode="numeric"
-                    autoComplete="one-time-code"
-                    placeholder={t("app.auth.signUp.verify.codePlaceholder")}
-                    maxLength={6}
-                    value={confirmationCode}
-                    onChange={(event) => {
-                      const digitsOnly = event.target.value.replace(/\D/g, "").slice(0, 6);
-                      setConfirmationCode(digitsOnly);
-                      if (invalidCode) setInvalidCode(false);
-                    }}
-                    hint={invalidCode ? t("app.auth.signUp.verify.invalidCode") : undefined}
-                    state={invalidCode ? "error" : "default"}
-                    required
-                  />
-                  <div className="flex justify-center">
-                    <Ghost
-                      type="button"
-                      size="small"
-                      disabled={isSendingCode}
-                      loading={isSendingCode}
-                      onClick={() => void handleResendCode()}
-                    >
-                      {isSendingCode
-                        ? t("app.auth.signUp.verify.sending")
-                        : t("app.auth.signUp.verify.resend")}
-                    </Ghost>
-                  </div>
-                </>
+              {isSignUp && signUpStep === "checkEmail" ? (
+                <div className="flex justify-center">
+                  <Ghost
+                    type="button"
+                    size="small"
+                    disabled={isBusy}
+                    loading={isBusy}
+                    onClick={() => void handleResendConfirmation()}
+                  >
+                    {isBusy
+                      ? t("app.auth.signUp.checkEmail.sending")
+                      : t("app.auth.signUp.checkEmail.resend")}
+                  </Ghost>
+                </div>
+              ) : null}
+
+              {formError ? (
+                <Text variant="body-small" className="text-destructive" role="alert">
+                  {formError}
+                </Text>
+              ) : null}
+              {infoMessage ? (
+                <Text variant="body-small-muted" role="status">
+                  {infoMessage}
+                </Text>
               ) : null}
 
               <PrimaryPink
                 type="submit"
                 size="large"
                 className="w-full"
-                loading={isSendingCode || isVerifying}
-                disabled={isSendingCode || isVerifying}
+                loading={isBusy}
+                disabled={isBusy}
               >
                 {submitLabel}
               </PrimaryPink>
 
-              {isSignUp && signUpStep === "verify" ? (
+              {isSignUp && signUpStep === "checkEmail" ? (
                 <div className="text-center">
                   <Ghost
                     type="button"
                     size="small"
                     onClick={() => {
                       setSignUpStep("credentials");
-                      setInvalidCode(false);
+                      setFormError(undefined);
+                      setInfoMessage(undefined);
                     }}
                   >
-                    {t("app.auth.signUp.verify.changeEmail")}
+                    {t("app.auth.signUp.checkEmail.changeEmail")}
                   </Ghost>
                 </div>
               ) : null}

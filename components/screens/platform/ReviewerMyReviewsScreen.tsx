@@ -1,4 +1,5 @@
 import { ReviewsOverviewSection } from "@/components/blocks/video-reviews/ReviewsOverviewSections";
+import { ReviewerCommunitySubmissionsSection } from "@/components/blocks/reviewer/ReviewerCommunitySubmissionsSection";
 import { Heading } from "@/components/ui/atoms/Heading";
 import { Text } from "@/components/ui/atoms/Text";
 import {
@@ -26,6 +27,8 @@ export function ReviewerMyReviewsScreen() {
           {t("app.reviewerMyReviews.description")}
         </Text>
       </div>
+
+      <ReviewerCommunitySubmissionsSection />
 
       <ReviewsOverviewSection
         icon="play-square"

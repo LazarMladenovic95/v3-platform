@@ -10,6 +10,7 @@ import {
   shouldPrefixPathWithLocale,
   stripLocalePrefix,
 } from "@/lib/i18n/routing";
+import { updateSession } from "@/lib/supabase/middleware";
 
 function applyLocaleCookie(response: NextResponse, locale: LocaleId): NextResponse {
   response.cookies.set(LOCALE_COOKIE_NAME, locale, {
@@ -20,7 +21,7 @@ function applyLocaleCookie(response: NextResponse, locale: LocaleId): NextRespon
   return response;
 }
 
-export function proxy(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   if (pathname.startsWith("/companies")) {
@@ -34,38 +35,60 @@ export function proxy(request: NextRequest) {
   const requestHeaders = new Headers(request.headers);
   requestHeaders.set(PATHNAME_HEADER, pathnameWithoutLocale);
 
+  let response: NextResponse;
+
   if (urlLocale) {
     if (isLocaleExemptPath(pathnameWithoutLocale) || !shouldPrefixPathWithLocale(pathnameWithoutLocale)) {
       const url = request.nextUrl.clone();
       url.pathname = pathnameWithoutLocale;
-      return applyLocaleCookie(NextResponse.redirect(url), urlLocale);
+      response = applyLocaleCookie(NextResponse.redirect(url), urlLocale);
+    } else {
+      const url = request.nextUrl.clone();
+      url.pathname = pathnameWithoutLocale;
+      response = applyLocaleCookie(
+        NextResponse.rewrite(url, { request: { headers: requestHeaders } }),
+        urlLocale,
+      );
     }
+  } else {
+    const cookieValue = request.cookies.get(LOCALE_COOKIE_NAME)?.value;
+    const preferredLocale = resolvePreferredLocale(cookieValue, acceptLanguage);
 
-    const url = request.nextUrl.clone();
-    url.pathname = pathnameWithoutLocale;
-    return applyLocaleCookie(
-      NextResponse.rewrite(url, { request: { headers: requestHeaders } }),
-      urlLocale,
-    );
+    if (
+      preferredLocale !== DEFAULT_LOCALE &&
+      shouldPrefixPathWithLocale(pathnameWithoutLocale) &&
+      pathname === request.nextUrl.pathname
+    ) {
+      const url = request.nextUrl.clone();
+      url.pathname = pathnameWithLocale(pathnameWithoutLocale, preferredLocale);
+      response = applyLocaleCookie(NextResponse.redirect(url), preferredLocale);
+    } else {
+      response = applyLocaleCookie(
+        NextResponse.next({ request: { headers: requestHeaders } }),
+        preferredLocale,
+      );
+    }
   }
 
-  const cookieValue = request.cookies.get(LOCALE_COOKIE_NAME)?.value;
-  const preferredLocale = resolvePreferredLocale(cookieValue, acceptLanguage);
-
-  if (
-    preferredLocale !== DEFAULT_LOCALE &&
-    shouldPrefixPathWithLocale(pathnameWithoutLocale) &&
-    pathname === request.nextUrl.pathname
-  ) {
-    const url = request.nextUrl.clone();
-    url.pathname = pathnameWithLocale(pathnameWithoutLocale, preferredLocale);
-    return applyLocaleCookie(NextResponse.redirect(url), preferredLocale);
-  }
-
-  return applyLocaleCookie(
-    NextResponse.next({ request: { headers: requestHeaders } }),
-    preferredLocale,
+  const supabaseConfigured = Boolean(
+    process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
   );
+
+  if (!supabaseConfigured) {
+    return response;
+  }
+
+  const { response: sessionResponse, user } = await updateSession(request, response);
+
+  // Protect reviewer app routes when Auth is configured.
+  if (pathnameWithoutLocale.startsWith("/reviewer") && !user) {
+    const url = request.nextUrl.clone();
+    url.pathname = "/sign-in";
+    url.searchParams.set("next", pathnameWithoutLocale);
+    return NextResponse.redirect(url);
+  }
+
+  return sessionResponse;
 }
 
 export const config = {

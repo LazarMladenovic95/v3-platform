@@ -37,10 +37,12 @@ Legacy `/companies/**` redirects to `/company/**` in `proxy.ts`.
 
 | Route | Role |
 |-------|------|
-| `/reviewer/onboarding` | Reviewer onboarding (post-verify prototype) |
-| `/reviewer/myreviews` | Self-submitted vs campaign reviews (fixtures) |
-| `/reviewer/campaigns` | Running campaigns (stub) |
+| `/reviewer` | Reviewer welcome / home (Allison draft) |
+| `/reviewer/submit-review` | Community review submit wizard (EAN → receipt → video) |
+| `/reviewer/myreviews` | Community, self-submitted, and campaign reviews (fixtures) |
+| `/reviewer/campaigns` | Running campaigns list + apply stub |
 | `/reviewer/account-settings` | Account settings (stub) |
+| `/reviewer/onboarding` | Redirects to `/reviewer` (legacy) |
 
 ### Admin / BND
 
@@ -55,6 +57,13 @@ Legacy `/companies/**` redirects to `/company/**` in `proxy.ts`.
 | `/bdn/designsystem` | Design system hub + component showcases |
 
 **Sign-in** (`/sign-in`) stays under `app/(public)/` — shared auth entry, also locale-exempt in URL routing.
+
+**Auth routes** (App Router, not under `(platform)`):
+
+| Route | Role |
+|-------|------|
+| `/auth/callback` | Supabase email-confirm / OAuth code exchange |
+| `/auth/sign-out` | Sign out + redirect home |
 
 ## Screens
 

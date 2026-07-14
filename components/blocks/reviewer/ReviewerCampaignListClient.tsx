@@ -18,9 +18,13 @@ export type ReviewerCampaignRow = ReviewerCampaignListItemProps & {
 
 export type ReviewerCampaignListClientProps = {
   campaigns: ReviewerCampaignRowData[];
+  needsOnboarding?: boolean;
 };
 
-export function ReviewerCampaignListClient({ campaigns }: ReviewerCampaignListClientProps) {
+export function ReviewerCampaignListClient({
+  campaigns,
+  needsOnboarding = true,
+}: ReviewerCampaignListClientProps) {
   const [currentPage, setCurrentPage] = useState(1);
 
   const totalPages = Math.max(1, Math.ceil(campaigns.length / PAGE_SIZE));
@@ -41,6 +45,7 @@ export function ReviewerCampaignListClient({ campaigns }: ReviewerCampaignListCl
               metaParts={campaign.metaParts}
               endingSoon={campaign.endingSoon}
               status={campaign.status}
+              needsOnboarding={needsOnboarding}
               className={index > 0 ? "border-t border-border" : undefined}
             />
           ))}

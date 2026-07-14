@@ -36,7 +36,15 @@
     "calendar": {
       "previousMonth": "Mese precedente",
       "nextMonth": "Mese successivo",
-      "weekdays": ["Do", "Lu", "Ma", "Me", "Gi", "Ve", "Sa"]
+      "weekdays": [
+        "Do",
+        "Lu",
+        "Ma",
+        "Me",
+        "Gi",
+        "Ve",
+        "Sa"
+      ]
     },
     "dialog": {
       "close": "Chiudi finestra"
@@ -53,6 +61,10 @@
     },
     "tag": {
       "removeAriaLabel": "Rimuovi {label}"
+    },
+    "starRating": {
+      "valueLabel": "{value} of {max} stars",
+      "unset": "—"
     }
   },
   "app": {
@@ -119,14 +131,30 @@
           "resend": "Invia di nuovo il codice",
           "sending": "Invio del codice…",
           "changeEmail": "Usa un'altra email"
+        },
+        "checkEmail": {
+          "title": "Controlla la tua email",
+          "description": "Abbiamo inviato un link di conferma a {email}. Aprilo per attivare l’account, poi accedi.",
+          "submit": "Torna al login",
+          "resend": "Reinvia email di conferma",
+          "sending": "Invio…",
+          "changeEmail": "Usa un’altra email",
+          "resent": "Email di conferma reinviata."
         }
+      },
+      "errors": {
+        "generic": "Qualcosa è andato storto. Riprova.",
+        "invalidCredentials": "Email o password non validi.",
+        "emailNotConfirmed": "Conferma l’email prima di accedere.",
+        "emailTaken": "Esiste già un account con questa email.",
+        "weakPassword": "Password troppo debole. Almeno 6 caratteri."
       }
     },
     "reviewerMyReviews": {
       "metaTitle": "Le mie review",
       "metaDescription": "Le tue video review inviate in autonomia e da campagna.",
       "title": "Le mie review",
-      "description": "Review inviate da te e review create per campagne brand.",
+      "description": "Community submissions you handed in, plus self-submitted and campaign reviews.",
       "emptySection": "Nessuna review in questa sezione.",
       "selfSubmitted": {
         "title": "Review inviate in autonomia",
@@ -141,11 +169,20 @@
       "campaigns": {
         "mieleCordlessLaunch": "Miele Cordless Launch",
         "mieleHomeKitchen": "Miele Home & Kitchen"
+      },
+      "communitySubmitted": {
+        "title": "Community submissions",
+        "description": "Reviews you handed in with EAN, receipt, and video — awaiting moderation in this prototype.",
+        "listAriaLabel": "Community review submissions",
+        "cta": "Submit a community review",
+        "eanMeta": "EAN {ean}",
+        "filesMeta": "Receipt: {receipt} · Video: {video}",
+        "statusInReview": "In review"
       }
     },
     "reviewerOnboarding": {
-      "metaTitle": "Onboarding recensore",
-      "metaDescription": "Completa il tuo profilo recensore Expeerly.",
+      "metaTitle": "Reviewer home",
+      "metaDescription": "Your Expeerly reviewer home — submit community reviews or join brand campaigns.",
       "title": "Benvenuto, recensore",
       "description": "Il tuo account è confermato. Scegli come guadagnare con Expeerly.",
       "submitReview": {
@@ -231,7 +268,8 @@
           "reward": "CHF 115",
           "language": "German"
         }
-      }
+      },
+      "listHeading": "Open and joined campaigns"
     },
     "reviewerDashboard": {
       "metaSeparator": " · ",
@@ -316,7 +354,8 @@
       },
       "reviewer": {
         "myReviews": "Le mie review",
-        "runningCampaigns": "Campagne in corso"
+        "runningCampaigns": "Campagne in corso",
+        "home": "Home"
       },
       "designSystem": "Design system",
       "designSystemOverview": "Panoramica",
@@ -342,6 +381,106 @@
           "fr": "Français (FR)",
           "it": "Italiano (IT)"
         }
+      }
+    },
+    "reviewerWelcome": {
+      "metaTitle": "Reviewer home",
+      "metaDescription": "Your Expeerly reviewer home — submit community reviews or join brand campaigns.",
+      "submitReview": {
+        "title": "Hand in a community review",
+        "body": "Bought a product yourself? Enter the EAN, upload your receipt or order confirmation, and submit your review video. Earn $20 per approved review · $10 per 1,000 views.",
+        "cta": "Submit a community review"
+      },
+      "campaignListTitle": "Or join a sampled campaign",
+      "campaignListDescription": "Apply to brand campaigns with a set brief, timeline, and campaign-specific rewards. Profile onboarding is only required when you apply."
+    },
+    "reviewerCommunitySubmit": {
+      "metaTitle": "Submit a community review",
+      "metaDescription": "Submit a community product review with EAN, receipt, and video.",
+      "title": "Submit a community review",
+      "description": "Conferma il prodotto con l’EAN, carica lo scontrino, aggiungi il video della recensione e valuta il prodotto.",
+      "steps": {
+        "ean": "Step 1 of 5 · Product EAN",
+        "receipt": "Step 2 of 5 · Receipt",
+        "video": "Step 3 of 5 · Video",
+        "rating": "Step 4 of 5 · Rating",
+        "confirm": "Step 5 of 5 · Confirm",
+        "success": "Submitted"
+      },
+      "ean": {
+        "title": "Enter the product EAN",
+        "description": "Find the barcode number on the packaging or receipt.",
+        "label": "EAN / GTIN",
+        "placeholder": "e.g. 4002512345678",
+        "notFound": "We could not match that EAN. Try a demo EAN from the hint below.",
+        "demoHint": "Demo EANs: 4002512345678, 8710103891234, 4210201309876, 8806094876543"
+      },
+      "receipt": {
+        "title": "Upload your receipt",
+        "description": "Add a photo or PDF of your receipt or order confirmation.",
+        "label": "Receipt or order confirmation",
+        "hint": "Images or PDF, up to 10 MB.",
+        "required": "Add a receipt or order confirmation to continue."
+      },
+      "video": {
+        "title": "Upload your review video",
+        "description": "Share an honest take on the product you bought.",
+        "label": "Review video",
+        "hint": "Video files up to 500 MB.",
+        "required": "Add a review video to continue."
+      },
+      "confirm": {
+        "title": "Confirm your submission",
+        "description": "Check the details below, then hand in your community review.",
+        "product": "Product",
+        "ean": "EAN",
+        "receipt": "Receipt",
+        "video": "Video",
+        "moderationNote": "Moderation is out of scope in this prototype — submissions appear as in review on My reviews.",
+        "rating": "Rating"
+      },
+      "success": {
+        "title": "Review submitted",
+        "description": "Your community review is in the queue. You can track it under My reviews.",
+        "viewMyReviews": "View my reviews",
+        "backHome": "Back to home"
+      },
+      "matched": {
+        "label": "Matched product",
+        "ean": "EAN {ean}"
+      },
+      "actions": {
+        "continue": "Continue",
+        "back": "Back",
+        "cancel": "Cancel",
+        "submit": "Submit review",
+        "backHome": "Back to reviewer home"
+      },
+      "rating": {
+        "title": "Rate this product",
+        "description": "How would you rate your experience with this product?",
+        "label": "Your rating",
+        "required": "Select a star rating to continue.",
+        "summary": "{rating}/5"
+      }
+    },
+    "reviewerCampaignApply": {
+      "onboarding": {
+        "title": "Complete your reviewer profile",
+        "description": "Sampled campaigns need a short profile before you can apply to {campaign}.",
+        "displayNameLabel": "Display name",
+        "cityLabel": "City",
+        "required": "Enter your display name and city to continue."
+      },
+      "success": {
+        "title": "Application sent",
+        "description": "You applied to {campaign}. We will follow up when a spot opens."
+      },
+      "actions": {
+        "cancel": "Cancel",
+        "completeAndApply": "Save and apply",
+        "close": "Close",
+        "viewCampaigns": "View campaigns"
       }
     }
   },

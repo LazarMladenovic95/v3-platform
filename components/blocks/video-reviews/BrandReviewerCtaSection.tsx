@@ -11,7 +11,7 @@ export type BrandReviewerCtaSectionProps = {
 };
 
 export function BrandReviewerCtaSection({ brandName }: BrandReviewerCtaSectionProps) {
-  const onboardingHref = `/reviewer/onboarding?brand=${encodeURIComponent(brandName)}`;
+  const onboardingHref = `/sign-in?sign-up`;
 
   return (
     <>

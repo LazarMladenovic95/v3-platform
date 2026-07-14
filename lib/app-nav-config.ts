@@ -35,6 +35,7 @@ export type AppNavLabelKey =
   | "app.nav.companies.seeAllVideoReviews"
   | "app.nav.companies.manageReviewCampaigns"
   | "app.nav.companies.credits"
+  | "app.nav.reviewer.home"
   | "app.nav.reviewer.myReviews"
   | "app.nav.reviewer.runningCampaigns";
 
@@ -107,7 +108,7 @@ export const publicHeaderNavLinks: PublicNavLinkConfig[] = [
     id: "submit-review",
     labelKey: "app.nav.public.submitVideoReview",
     icon: "play-square",
-    href: "/reviewer/onboarding",
+    href: "/sign-in?sign-up",
   },
   {
     id: "for-brands-and-retailers",
@@ -130,7 +131,7 @@ export const publicNavPrimaryLinks: PublicNavLinkConfig[] = [
     id: "submit-video-review",
     labelKey: "app.nav.public.submitVideoReview",
     icon: "play-square",
-    href: "/reviewer/onboarding",
+    href: "/sign-in?sign-up",
   },
   {
     id: "for-brands",
@@ -229,6 +230,12 @@ export const companyNavItems: AppNavItemConfig[] = [
 
 export const reviewerNavItems: AppNavItemConfig[] = [
   {
+    id: "home",
+    labelKey: "app.nav.reviewer.home",
+    icon: "layout-dashboard",
+    href: "/reviewer",
+  },
+  {
     id: "my-reviews",
     labelKey: "app.nav.reviewer.myReviews",
     icon: "play-square",
@@ -298,5 +305,5 @@ export const appNavLogoutItem: AppNavItemConfig = {
   id: "logout",
   labelKey: "app.nav.logout",
   icon: "log-out",
-  href: "/",
+  href: "/auth/sign-out",
 };

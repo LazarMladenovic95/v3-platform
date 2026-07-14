@@ -1,10 +1,23 @@
+"use client";
+
+import Link from "next/link";
 import Image from "next/image";
+import { useState } from "react";
 import { Badge } from "@/components/ui/atoms/Badge";
 import { Heading } from "@/components/ui/atoms/Heading";
 import { Icon } from "@/components/ui/atoms/Icon";
 import { Text } from "@/components/ui/atoms/Text";
 import { PrimaryPink } from "@/components/ui/atoms/button/PrimaryPink";
+import { OutlineNeutral } from "@/components/ui/atoms/button/OutlineNeutral";
+import { Ghost } from "@/components/ui/atoms/button/Ghost";
+import { primaryPinkClassName } from "@/components/ui/atoms/button/buttonClasses";
+import {
+  DialogWindow,
+  DialogWindowContent,
+} from "@/components/ui/composites/DialogWindow";
+import { InputField } from "@/components/ui/molecules/InputField";
 import type { ReviewerCampaignStatus } from "@/lib/fixtures/reviewer-campaigns";
+import { completeCampaignOnboarding } from "@/lib/supabase/actions";
 import { t } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 
@@ -14,18 +27,62 @@ export type ReviewerCampaignListItemProps = {
   metaParts: string[];
   status: ReviewerCampaignStatus;
   endingSoon?: boolean;
+  needsOnboarding?: boolean;
   className?: string;
 };
+
+type ApplyPhase = "idle" | "onboarding" | "applied";
 
 export function ReviewerCampaignListItem({
   brandLogoSrc,
   title,
   metaParts,
-  status,
+  status: initialStatus,
   endingSoon = false,
+  needsOnboarding = true,
   className,
 }: ReviewerCampaignListItemProps) {
+  const [status, setStatus] = useState(initialStatus);
+  const [applyPhase, setApplyPhase] = useState<ApplyPhase>("idle");
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const [displayName, setDisplayName] = useState("");
+  const [city, setCity] = useState("");
+  const [onboardingError, setOnboardingError] = useState<string | undefined>();
+  const [isSaving, setIsSaving] = useState(false);
+  const [requiresOnboarding, setRequiresOnboarding] = useState(needsOnboarding);
+
   const isClosed = status === "closed";
+
+  const handleApplyClick = () => {
+    if (!requiresOnboarding) {
+      setStatus("applied");
+      setApplyPhase("applied");
+      setDialogOpen(true);
+      return;
+    }
+    setApplyPhase("onboarding");
+    setDialogOpen(true);
+  };
+
+  const handleOnboardingContinue = async () => {
+    if (!displayName.trim() || !city.trim()) {
+      setOnboardingError(t("app.reviewerCampaignApply.onboarding.required"));
+      return;
+    }
+    setOnboardingError(undefined);
+    setIsSaving(true);
+    const result = await completeCampaignOnboarding({ displayName, city });
+    setIsSaving(false);
+
+    if (!result.ok) {
+      setOnboardingError(t("app.reviewerCampaignApply.onboarding.required"));
+      return;
+    }
+
+    setRequiresOnboarding(false);
+    setStatus("applied");
+    setApplyPhase("applied");
+  };
 
   return (
     <li
@@ -88,6 +145,7 @@ export function ReviewerCampaignListItem({
             type="button"
             size="small"
             aria-label={t("app.reviewerCampaigns.applyAriaLabel", { campaign: title })}
+            onClick={handleApplyClick}
           >
             {t("app.reviewerCampaigns.apply")}
           </PrimaryPink>
@@ -100,6 +158,77 @@ export function ReviewerCampaignListItem({
           />
         ) : null}
       </div>
+
+      <DialogWindow open={dialogOpen} onOpenChange={setDialogOpen}>
+        <DialogWindowContent
+          title={
+            applyPhase === "onboarding"
+              ? t("app.reviewerCampaignApply.onboarding.title")
+              : t("app.reviewerCampaignApply.success.title")
+          }
+          description={
+            applyPhase === "onboarding"
+              ? t("app.reviewerCampaignApply.onboarding.description", { campaign: title })
+              : t("app.reviewerCampaignApply.success.description", { campaign: title })
+          }
+          variant={applyPhase === "applied" ? "success" : "neutral"}
+          footer={
+            applyPhase === "onboarding" ? (
+              <>
+                <Ghost type="button" size="small" onClick={() => setDialogOpen(false)}>
+                  {t("app.reviewerCampaignApply.actions.cancel")}
+                </Ghost>
+                <PrimaryPink
+                  type="button"
+                  size="small"
+                  loading={isSaving}
+                  disabled={isSaving}
+                  onClick={() => void handleOnboardingContinue()}
+                >
+                  {t("app.reviewerCampaignApply.actions.completeAndApply")}
+                </PrimaryPink>
+              </>
+            ) : (
+              <>
+                <OutlineNeutral type="button" size="small" onClick={() => setDialogOpen(false)}>
+                  {t("app.reviewerCampaignApply.actions.close")}
+                </OutlineNeutral>
+                <Link
+                  href="/reviewer/campaigns"
+                  className={cn(primaryPinkClassName("small"))}
+                  onClick={() => setDialogOpen(false)}
+                >
+                  {t("app.reviewerCampaignApply.actions.viewCampaigns")}
+                </Link>
+              </>
+            )
+          }
+        >
+          {applyPhase === "onboarding" ? (
+            <div className="flex flex-col gap-4">
+              <InputField
+                label={t("app.reviewerCampaignApply.onboarding.displayNameLabel")}
+                value={displayName}
+                onChange={(event) => {
+                  setDisplayName(event.target.value);
+                  if (onboardingError) setOnboardingError(undefined);
+                }}
+                state={onboardingError ? "error" : "default"}
+              />
+              <InputField
+                label={t("app.reviewerCampaignApply.onboarding.cityLabel")}
+                value={city}
+                onChange={(event) => {
+                  setCity(event.target.value);
+                  if (onboardingError) setOnboardingError(undefined);
+                }}
+                hint={onboardingError}
+                state={onboardingError ? "error" : "default"}
+              />
+            </div>
+          ) : null}
+        </DialogWindowContent>
+      </DialogWindow>
     </li>
   );
 }

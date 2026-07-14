@@ -34,7 +34,7 @@ export function BrandProductsNeedingReviewsSection({
             <PendingReviewCard
               opportunity={product}
               hideBrandName
-              reviewHref={`/reviewer/onboarding?brand=${encodeURIComponent(brandName)}&product=${encodeURIComponent(product.productName)}`}
+              reviewHref="/sign-in?sign-up"
             />
           </CarouselItem>
         ))}
