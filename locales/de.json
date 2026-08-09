@@ -171,10 +171,10 @@
       "communitySubmitted": {
         "title": "Community submissions",
         "description": "Reviews you handed in with EAN, receipt, and video — awaiting moderation in this prototype.",
-        "listAriaLabel": "Community review submissions",
+        "listAriaLabel": "Community-Review-Einreichungen",
         "cta": "Submit a community review",
         "eanMeta": "EAN {ean}",
-        "filesMeta": "Receipt: {receipt} · Video: {video}",
+        "filesMeta": "Kaufbeleg: {receipt} · Video: {video}",
         "statusInReview": "In Prüfung"
       }
     },
