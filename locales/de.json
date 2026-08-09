@@ -144,10 +144,15 @@
     },
     "reviewerMyReviews": {
       "metaTitle": "Meine Reviews",
-      "metaDescription": "Deine selbst eingereichten und Kampagnen-Video-Reviews.",
+      "metaDescription": "Deine eingereichten Community- und Kampagnen-Video-Reviews.",
       "title": "Meine Reviews",
-      "description": "Community submissions you handed in, plus self-submitted and campaign reviews.",
+      "description": "Community- und Kampagnen-Reviews, die du eingereicht hast.",
       "emptySection": "In diesem Bereich gibt es noch keine Reviews.",
+      "community": {
+        "title": "Community-Reviews",
+        "description": "Reviews, die du für Produkte eingereicht hast, die du selbst gekauft hast.",
+        "cta": "Review einreichen"
+      },
       "selfSubmitted": {
         "title": "Selbst eingereichte Reviews",
         "description": "Produkte, die du gekauft und selbst bewertet hast — 20 $ pro Freigabe plus View-Performance.",
@@ -155,8 +160,9 @@
       },
       "campaign": {
         "title": "Kampagnen-Reviews",
-        "description": "Reviews, die du im Rahmen einer Markenkampagne eingereicht hast.",
-        "listAriaLabel": "Kampagnen-Reviews"
+        "description": "Reviews, die du im Rahmen von Markenkampagnen eingereicht hast.",
+        "listAriaLabel": "Kampagnen-Reviews",
+        "cta": "Kampagnen ansehen"
       },
       "campaigns": {
         "mieleCordlessLaunch": "Miele Cordless Launch",

@@ -144,10 +144,15 @@
     },
     "reviewerMyReviews": {
       "metaTitle": "Mes avis",
-      "metaDescription": "Vos avis vidéo soumis en autonomie et via campagnes.",
+      "metaDescription": "Vos avis vidéo communauté et campagne soumis.",
       "title": "Mes avis",
-      "description": "Community submissions you handed in, plus self-submitted and campaign reviews.",
+      "description": "Les avis communauté et campagne que vous avez soumis.",
       "emptySection": "Aucun avis dans cette section pour le moment.",
+      "community": {
+        "title": "Avis communauté",
+        "description": "Avis que vous avez soumis pour des produits que vous avez achetés vous-même.",
+        "cta": "Soumettre un avis"
+      },
       "selfSubmitted": {
         "title": "Avis soumis en autonomie",
         "description": "Produits que vous avez achetés et évalués vous-même — 20 $ par validation plus performance des vues.",
@@ -155,8 +160,9 @@
       },
       "campaign": {
         "title": "Avis de campagne",
-        "description": "Avis que vous avez soumis dans le cadre d'une campagne de marque.",
-        "listAriaLabel": "Avis de campagne"
+        "description": "Avis que vous avez soumis dans le cadre de campagnes de marque.",
+        "listAriaLabel": "Avis de campagne",
+        "cta": "Parcourir les campagnes"
       },
       "campaigns": {
         "mieleCordlessLaunch": "Miele Cordless Launch",

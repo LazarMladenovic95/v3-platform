@@ -144,10 +144,15 @@
     },
     "reviewerMyReviews": {
       "metaTitle": "My reviews",
-      "metaDescription": "Your self-submitted and campaign video reviews.",
+      "metaDescription": "Your submitted community and campaign video reviews.",
       "title": "My reviews",
-      "description": "Community submissions you handed in, plus self-submitted and campaign reviews.",
+      "description": "Community and campaign reviews you've submitted.",
       "emptySection": "No reviews in this section yet.",
+      "community": {
+        "title": "Community reviews",
+        "description": "Reviews you submitted for products you bought yourself.",
+        "cta": "Submit a review"
+      },
       "selfSubmitted": {
         "title": "Self-submitted reviews",
         "description": "Products you bought and reviewed on your own — $20 per approval plus view performance.",
@@ -155,8 +160,9 @@
       },
       "campaign": {
         "title": "Campaign reviews",
-        "description": "Reviews you submitted as part of a brand campaign.",
-        "listAriaLabel": "Campaign reviews"
+        "description": "Reviews you submitted as part of brand campaigns.",
+        "listAriaLabel": "Campaign reviews",
+        "cta": "Browse campaigns"
       },
       "campaigns": {
         "mieleCordlessLaunch": "Miele Cordless Launch",
