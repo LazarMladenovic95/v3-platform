@@ -37,6 +37,7 @@ export function ReviewerMyReviewsScreen() {
         className="text-left"
       >
         <SectionHeader
+          headingAs="h2"
           headingId="reviewer-community-reviews-heading"
           title={t("app.reviewerMyReviews.community.title")}
           description={t("app.reviewerMyReviews.community.description")}
@@ -59,6 +60,7 @@ export function ReviewerMyReviewsScreen() {
         className="text-left"
       >
         <SectionHeader
+          headingAs="h2"
           headingId="reviewer-campaign-reviews-heading"
           title={t("app.reviewerMyReviews.campaign.title")}
           description={t("app.reviewerMyReviews.campaign.description")}

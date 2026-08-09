@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Heading } from "@/components/ui/atoms/Heading";
+import { Heading, type HeadingProps } from "@/components/ui/atoms/Heading";
 import { Icon } from "@/components/ui/atoms/Icon";
 import { Text } from "@/components/ui/atoms/Text";
 import { ghostLinkClassName } from "@/components/ui/atoms/button/buttonClasses";
@@ -11,6 +11,7 @@ export type SectionHeaderProps = {
   actionLabel?: string;
   actionHref?: string;
   actionAriaLabel?: string;
+  headingAs?: HeadingProps["as"];
   headingId?: string;
   className?: string;
 };
@@ -21,13 +22,19 @@ export function SectionHeader({
   actionLabel,
   actionHref,
   actionAriaLabel,
+  headingAs = "h3",
   headingId,
   className,
 }: SectionHeaderProps) {
   return (
     <div className={cn("w-full", className)}>
       <div className="flex w-full items-center gap-4">
-        <Heading as="h3" variant="title-1" className="min-w-0" id={headingId}>
+        <Heading
+          as={headingAs}
+          variant="title-1"
+          className="min-w-0"
+          id={headingId}
+        >
           {title}
         </Heading>
         {actionLabel && actionHref ? (
