@@ -36,15 +36,7 @@
     "calendar": {
       "previousMonth": "Previous month",
       "nextMonth": "Next month",
-      "weekdays": [
-        "Su",
-        "Mo",
-        "Tu",
-        "We",
-        "Th",
-        "Fr",
-        "Sa"
-      ]
+      "weekdays": ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"]
     },
     "dialog": {
       "close": "Close dialog"
@@ -221,6 +213,10 @@
       "statusNote": {
         "waitingForApproval": "Waiting for approval",
         "applicationsClosed": "Applications closed"
+      },
+      "meta": {
+        "reward": "Reward: {reward}",
+        "language": "Language: {language}"
       },
       "items": {
         "mieleCordlessLaunch": {

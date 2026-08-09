@@ -18,7 +18,11 @@ export function getReviewerCampaignRows(): ReviewerCampaignRowData[] {
   return getReviewerCampaigns().map((campaign) => {
     const category = getCategoryByEnglishSlug(campaign.categorySlug);
     const categoryLabel =
-      pickLocalized(category?.displayName, locale, "title") ?? campaign.categorySlug;
+      pickLocalized(category?.displayName, locale, "title") ??
+      campaign.categorySlug;
+
+    const reward = t(getReviewerCampaignRewardKey(campaign.itemId));
+    const language = t(getReviewerCampaignLanguageKey(campaign.itemId));
 
     return {
       id: campaign.id,
@@ -26,8 +30,8 @@ export function getReviewerCampaignRows(): ReviewerCampaignRowData[] {
       title: t(getReviewerCampaignTitleKey(campaign.itemId)),
       metaParts: [
         categoryLabel,
-        t(getReviewerCampaignRewardKey(campaign.itemId)),
-        t(getReviewerCampaignLanguageKey(campaign.itemId)),
+        t("app.reviewerCampaigns.meta.reward", { reward }),
+        t("app.reviewerCampaigns.meta.language", { language }),
         formatCampaignDueLabel(campaign.dueAt),
       ],
       endingSoon: campaign.endingSoon,

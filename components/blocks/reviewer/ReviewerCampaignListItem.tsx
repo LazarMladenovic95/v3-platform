@@ -83,7 +83,6 @@ export function ReviewerCampaignListItem({
     setStatus("applied");
     setApplyPhase("applied");
   };
-
   return (
     <li
       className={cn(
@@ -114,9 +113,16 @@ export function ReviewerCampaignListItem({
           >
             {title}
           </Heading>
-          <Text as="p" variant="body-extra-small-muted" className="mt-1 flex flex-wrap items-center gap-x-2">
+          <Text
+            as="p"
+            variant="body-extra-small-muted"
+            className="mt-1 flex flex-wrap items-center gap-x-2"
+          >
             {metaParts.map((part, index) => (
-              <span key={`${part}-${index}`} className="inline-flex items-center gap-2">
+              <span
+                key={`${part}-${index}`}
+                className="inline-flex items-center gap-2"
+              >
                 {index > 0 ? <span aria-hidden>·</span> : null}
                 {part}
               </span>
@@ -144,7 +150,9 @@ export function ReviewerCampaignListItem({
           <PrimaryPink
             type="button"
             size="small"
-            aria-label={t("app.reviewerCampaigns.applyAriaLabel", { campaign: title })}
+            aria-label={t("app.reviewerCampaigns.applyAriaLabel", {
+              campaign: title,
+            })}
             onClick={handleApplyClick}
           >
             {t("app.reviewerCampaigns.apply")}
@@ -168,14 +176,22 @@ export function ReviewerCampaignListItem({
           }
           description={
             applyPhase === "onboarding"
-              ? t("app.reviewerCampaignApply.onboarding.description", { campaign: title })
-              : t("app.reviewerCampaignApply.success.description", { campaign: title })
+              ? t("app.reviewerCampaignApply.onboarding.description", {
+                  campaign: title,
+                })
+              : t("app.reviewerCampaignApply.success.description", {
+                  campaign: title,
+                })
           }
           variant={applyPhase === "applied" ? "success" : "neutral"}
           footer={
             applyPhase === "onboarding" ? (
               <>
-                <Ghost type="button" size="small" onClick={() => setDialogOpen(false)}>
+                <Ghost
+                  type="button"
+                  size="small"
+                  onClick={() => setDialogOpen(false)}
+                >
                   {t("app.reviewerCampaignApply.actions.cancel")}
                 </Ghost>
                 <PrimaryPink
@@ -190,7 +206,11 @@ export function ReviewerCampaignListItem({
               </>
             ) : (
               <>
-                <OutlineNeutral type="button" size="small" onClick={() => setDialogOpen(false)}>
+                <OutlineNeutral
+                  type="button"
+                  size="small"
+                  onClick={() => setDialogOpen(false)}
+                >
                   {t("app.reviewerCampaignApply.actions.close")}
                 </OutlineNeutral>
                 <Link
@@ -207,7 +227,9 @@ export function ReviewerCampaignListItem({
           {applyPhase === "onboarding" ? (
             <div className="flex flex-col gap-4">
               <InputField
-                label={t("app.reviewerCampaignApply.onboarding.displayNameLabel")}
+                label={t(
+                  "app.reviewerCampaignApply.onboarding.displayNameLabel",
+                )}
                 value={displayName}
                 onChange={(event) => {
                   setDisplayName(event.target.value);

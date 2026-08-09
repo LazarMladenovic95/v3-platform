@@ -36,15 +36,7 @@
     "calendar": {
       "previousMonth": "Mois précédent",
       "nextMonth": "Mois suivant",
-      "weekdays": [
-        "Di",
-        "Lu",
-        "Ma",
-        "Me",
-        "Je",
-        "Ve",
-        "Sa"
-      ]
+      "weekdays": ["Di", "Lu", "Ma", "Me", "Je", "Ve", "Sa"]
     },
     "dialog": {
       "close": "Fermer la fenêtre"
@@ -217,56 +209,60 @@
       },
       "endingSoon": "Ending soon!",
       "dueToday": "Due Today, {time}",
-      "dueOnDate": "Due {date}",
+      "dueOnDate": "Échéance {date}",
       "statusNote": {
         "waitingForApproval": "Waiting for approval",
         "applicationsClosed": "Applications closed"
+      },
+      "meta": {
+        "reward": "Récompense: {reward}",
+        "language": "Langue: {language}"
       },
       "items": {
         "mieleCordlessLaunch": {
           "title": "Miele Cordless Launch",
           "reward": "CHF 120",
-          "language": "German"
+          "language": "Allemand"
         },
         "mieleHomeKitchen": {
           "title": "Miele Home & Kitchen",
           "reward": "CHF 80",
-          "language": "German"
+          "language": "Allemand"
         },
         "dysonAirwrap": {
           "title": "Dyson Airwrap Campaign",
           "reward": "CHF 100",
-          "language": "English"
+          "language": "Anglais"
         },
         "philipsAirfryer": {
           "title": "Philips Airfryer Series",
           "reward": "CHF 90",
-          "language": "German"
+          "language": "Allemand"
         },
         "samsungBespoke": {
           "title": "Samsung Bespoke Home",
           "reward": "CHF 110",
-          "language": "English"
+          "language": "Anglais"
         },
         "boschPowerTools": {
           "title": "Bosch Power Tools",
           "reward": "CHF 95",
-          "language": "German"
+          "language": "Allemand"
         },
         "canonMirrorless": {
           "title": "Canon Mirrorless Creator",
           "reward": "CHF 130",
-          "language": "English"
+          "language": "Anglais"
         },
         "sonyHeadphones": {
           "title": "Sony Headphones Studio",
           "reward": "CHF 105",
-          "language": "English"
+          "language": "Anglais"
         },
         "garminFitnessWatch": {
           "title": "Garmin Fitness Watch",
           "reward": "CHF 115",
-          "language": "German"
+          "language": "Allemand"
         }
       },
       "listHeading": "Open and joined campaigns"

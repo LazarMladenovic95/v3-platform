@@ -6,22 +6,29 @@ import { Heading } from "@/components/ui/atoms/Heading";
 import { Text } from "@/components/ui/atoms/Text";
 import { t } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
+import { Card } from "@/components/ui";
 
 export function ReviewerSubmitReviewCard() {
   return (
-    <section className="rounded-lg border border-border bg-surface-muted p-5 text-left">
-      <Heading as="h2" variant="title-1">
-        {t("app.reviewerWelcome.submitReview.title")}
-      </Heading>
-      <Text variant="body-small-muted" className="mt-2">
-        {t("app.reviewerWelcome.submitReview.body")}
-      </Text>
-      <Link
-        href="/reviewer/submit-review"
-        className={cn(primaryPinkClassName("small"), "mt-4 inline-flex w-full justify-center sm:w-auto")}
-      >
-        {t("app.reviewerWelcome.submitReview.cta")}
-      </Link>
+    <section>
+      <Card>
+        <Heading as="h2" variant="title-1">
+          {t("app.reviewerWelcome.submitReview.title")}
+        </Heading>
+
+        <Text variant="body-small-muted" className="mt-2">
+          {t("app.reviewerWelcome.submitReview.body")}
+        </Text>
+        <Link
+          href="/reviewer/submit-review"
+          className={cn(
+            primaryPinkClassName("small"),
+            "mt-4 inline-flex w-full justify-center sm:w-auto",
+          )}
+        >
+          {t("app.reviewerWelcome.submitReview.cta")}
+        </Link>
+      </Card>
     </section>
   );
 }
