@@ -202,7 +202,7 @@ export function ReviewerCommunitySubmitScreen() {
             <MatchedProductSummary product={matchedProduct} />
             <FileUploadField
               label={t("app.reviewerCommunitySubmit.receipt.label")}
-              hint={t("app.reviewerCommunitySubmit.receipt.hint")}
+              selectionText={t("app.reviewerCommunitySubmit.receipt.hint")}
               accept={RECEIPT_ACCEPT}
               maxSizeBytes={RECEIPT_MAX_BYTES}
               state={receiptError ? "error" : "default"}
@@ -237,7 +237,7 @@ export function ReviewerCommunitySubmitScreen() {
             <MatchedProductSummary product={matchedProduct} />
             <FileUploadField
               label={t("app.reviewerCommunitySubmit.video.label")}
-              hint={t("app.reviewerCommunitySubmit.video.hint")}
+              selectionText={t("app.reviewerCommunitySubmit.video.hint")}
               accept={VIDEO_ACCEPT}
               maxSizeBytes={VIDEO_MAX_BYTES}
               state={videoError ? "error" : "default"}

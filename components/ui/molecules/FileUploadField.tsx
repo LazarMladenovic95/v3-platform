@@ -14,6 +14,7 @@ import { OutlineNeutral } from "../atoms/button/OutlineNeutral";
 export interface FileUploadFieldProps {
   label: string;
   hint?: string;
+  selectionText?: string;
   accept?: string;
   multiple?: boolean;
   maxSizeBytes?: number;
@@ -49,6 +50,7 @@ function fileMatchesAccept(file: File, accept?: string) {
 export function FileUploadField({
   label,
   hint,
+  selectionText,
   accept,
   multiple = false,
   maxSizeBytes,
@@ -119,8 +121,8 @@ export function FileUploadField({
   }
 
   const hintParts = [
-    multiple ? t("ui.fileUpload.selectMultiple") : t("ui.fileUpload.selectSingle"),
-    accept ? t("ui.fileUpload.accepted", { accept }) : undefined,
+    selectionText ??
+      (multiple ? t("ui.fileUpload.selectMultiple") : t("ui.fileUpload.selectSingle")),
     maxSizeBytes
       ? t("ui.fileUpload.maxSize", { maxSize: formatUiBytes(maxSizeBytes) })
       : undefined,

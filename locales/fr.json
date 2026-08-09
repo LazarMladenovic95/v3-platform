@@ -16,7 +16,6 @@
       "prompt": "Appuyez pour téléverser ou glissez-déposez",
       "selectMultiple": "Sélectionnez un ou plusieurs fichiers.",
       "selectSingle": "Sélectionnez un fichier.",
-      "accepted": "Acceptés : {accept}",
       "maxSize": "Taille max. : {maxSize}",
       "clear": "Effacer",
       "errors": {
@@ -398,72 +397,72 @@
       "campaignListDescription": "Apply to brand campaigns with a set brief, timeline, and campaign-specific rewards. Profile onboarding is only required when you apply."
     },
     "reviewerCommunitySubmit": {
-      "metaTitle": "Submit a community review",
-      "metaDescription": "Submit a community product review with EAN, receipt, and video.",
-      "title": "Submit a community review",
+      "metaTitle": "Soumettre un avis communautaire",
+      "metaDescription": "Soumettez un avis produit communautaire avec EAN, reçu et vidéo.",
+      "title": "Soumettre un avis communautaire",
       "description": "Confirmez le produit avec l’EAN, téléversez votre reçu, ajoutez votre vidéo d’avis et notez le produit.",
       "steps": {
-        "ean": "Step 1 of 5 · Product EAN",
-        "receipt": "Step 2 of 5 · Receipt",
-        "video": "Step 3 of 5 · Video",
-        "rating": "Step 4 of 5 · Rating",
-        "confirm": "Step 5 of 5 · Confirm",
-        "success": "Submitted"
+        "ean": "Étape 1 sur 5 · EAN du produit",
+        "receipt": "Étape 2 sur 5 · Reçu",
+        "video": "Étape 3 sur 5 · Vidéo",
+        "rating": "Étape 4 sur 5 · Note",
+        "confirm": "Étape 5 sur 5 · Confirmation",
+        "success": "Soumis"
       },
       "ean": {
-        "title": "Enter the product EAN",
-        "description": "Find the barcode number on the packaging or receipt.",
+        "title": "Saisissez l’EAN du produit",
+        "description": "Trouvez le numéro du code-barres sur l’emballage ou le reçu.",
         "label": "EAN / GTIN",
-        "placeholder": "e.g. 4002512345678",
-        "notFound": "We could not match that EAN. Try a demo EAN from the hint below.",
-        "demoHint": "Demo EANs: 4002512345678, 8710103891234, 4210201309876, 8806094876543"
+        "placeholder": "p. ex. 4002512345678",
+        "notFound": "Nous n’avons pas trouvé de produit correspondant à cet EAN. Essayez un EAN de démo indiqué ci-dessous.",
+        "demoHint": "EAN de démo : 4002512345678, 8710103891234, 4210201309876, 8806094876543"
       },
       "receipt": {
-        "title": "Upload your receipt",
-        "description": "Add a photo or PDF of your receipt or order confirmation.",
-        "label": "Receipt or order confirmation",
-        "hint": "Images or PDF, up to 10 MB.",
-        "required": "Add a receipt or order confirmation to continue."
+        "title": "Téléversez votre reçu",
+        "description": "Ajoutez une photo ou un PDF de votre reçu ou confirmation de commande.",
+        "label": "Reçu ou confirmation de commande",
+        "hint": "Sélectionnez une image ou un fichier PDF.",
+        "required": "Ajoutez un reçu ou une confirmation de commande pour continuer."
       },
       "video": {
-        "title": "Upload your review video",
-        "description": "Share an honest take on the product you bought.",
-        "label": "Review video",
-        "hint": "Video files up to 500 MB.",
-        "required": "Add a review video to continue."
+        "title": "Téléversez votre vidéo d’avis",
+        "description": "Partagez un avis honnête sur le produit que vous avez acheté.",
+        "label": "Vidéo d’avis",
+        "hint": "Sélectionnez un fichier vidéo.",
+        "required": "Ajoutez une vidéo d’avis pour continuer."
       },
       "confirm": {
-        "title": "Confirm your submission",
-        "description": "Check the details below, then hand in your community review.",
-        "product": "Product",
+        "title": "Confirmez votre envoi",
+        "description": "Vérifiez les informations ci-dessous, puis envoyez votre avis communautaire.",
+        "product": "Produit",
         "ean": "EAN",
-        "receipt": "Receipt",
-        "video": "Video",
-        "moderationNote": "Moderation is out of scope in this prototype — submissions appear as in review on My reviews.",
-        "rating": "Rating"
+        "receipt": "Reçu",
+        "video": "Vidéo",
+        "moderationNote": "Après l’envoi, votre avis apparaîtra comme En cours de validation dans Mes avis.",
+        "rating": "Note"
       },
       "success": {
-        "title": "Review submitted",
-        "description": "Your community review is in the queue. You can track it under My reviews.",
-        "viewMyReviews": "View my reviews",
-        "backHome": "Back to home"
+        "title": "Avis envoyé",
+        "description": "Votre avis communautaire a été envoyé. Vous pouvez le suivre dans Mes avis.",
+        "viewMyReviews": "Voir mes avis",
+        "backHome": "Retour à l’accueil"
       },
       "matched": {
-        "label": "Matched product",
+        "label": "Produit associé",
         "ean": "EAN {ean}"
       },
       "actions": {
-        "continue": "Continue",
-        "back": "Back",
-        "cancel": "Cancel",
-        "submit": "Submit review",
-        "backHome": "Back to reviewer home"
+        "continue": "Continuer",
+        "back": "Retour",
+        "cancel": "Annuler",
+        "submit": "Envoyer l’avis",
+        "backHome": "Retour à l’espace évaluateur"
       },
       "rating": {
-        "title": "Rate this product",
-        "description": "How would you rate your experience with this product?",
-        "label": "Your rating",
-        "required": "Select a star rating to continue.",
+        "title": "Notez ce produit",
+        "description": "Quelle note donneriez-vous à votre expérience avec ce produit ?",
+        "label": "Votre note",
+        "required": "Sélectionnez une note étoilée pour continuer.",
         "summary": "{rating}/5"
       }
     },

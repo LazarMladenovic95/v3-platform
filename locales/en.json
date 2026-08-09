@@ -16,7 +16,6 @@
       "prompt": "Tap to upload or drag and drop",
       "selectMultiple": "Select one or more files.",
       "selectSingle": "Select one file.",
-      "accepted": "Accepted: {accept}",
       "maxSize": "Max size: {maxSize}",
       "clear": "Clear",
       "errors": {
@@ -422,14 +421,14 @@
         "title": "Upload your receipt",
         "description": "Add a photo or PDF of your receipt or order confirmation.",
         "label": "Receipt or order confirmation",
-        "hint": "Images or PDF, up to 10 MB.",
+        "hint": "Select an image or PDF file.",
         "required": "Add a receipt or order confirmation to continue."
       },
       "video": {
         "title": "Upload your review video",
         "description": "Share an honest take on the product you bought.",
         "label": "Review video",
-        "hint": "Video files up to 500 MB.",
+        "hint": "Select a video file.",
         "required": "Add a review video to continue."
       },
       "confirm": {
@@ -439,7 +438,7 @@
         "ean": "EAN",
         "receipt": "Receipt",
         "video": "Video",
-        "moderationNote": "Moderation is out of scope in this prototype — submissions appear as in review on My reviews.",
+        "moderationNote": "After submitting, your review will appear as In review under My reviews.",
         "rating": "Rating"
       },
       "success": {
