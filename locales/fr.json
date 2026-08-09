@@ -202,19 +202,19 @@
       "metaDescription": "Browse and join brand review campaigns.",
       "title": "Running campaigns",
       "description": "Apply to open campaigns or track campaigns you've joined. Each campaign includes a brief, timeline, and reward details.",
-      "listAriaLabel": "Available review campaigns",
-      "apply": "Apply",
-      "applyAriaLabel": "Apply to {campaign}",
+      "listAriaLabel": "Campagnes d'avis disponibles",
+      "apply": "Postuler",
+      "applyAriaLabel": "Postuler à {campaign}",
       "viewDetails": "View details",
       "viewCampaignAriaLabel": "View {campaign}",
       "footerNote": "Campaign detail and application flows are prototype placeholders.",
       "status": {
         "open": "Open",
-        "applied": "Applied",
-        "closed": "Closed"
+        "applied": "Candidature envoyée",
+        "closed": "Fermée"
       },
-      "endingSoon": "Ending soon!",
-      "dueToday": "Due Today, {time}",
+      "endingSoon": "Se termine bientôt !",
+      "dueToday": "Échéance aujourd’hui, {time}",
       "dueOnDate": "Échéance {date}",
       "statusNote": {
         "waitingForApproval": "Waiting for approval",
@@ -279,30 +279,30 @@
       "seeAllCampaignsAriaLabel": "See all running campaigns",
       "seeAllReviewsAriaLabel": "See all your reviews",
       "profile": {
-        "greeting": "Hi {name}",
-        "roleLocation": "Reviewer · Zürich, CH"
+        "greeting": "Bonjour {name}",
+        "roleLocation": "Évaluateur · Zürich, CH"
       },
       "stats": {
-        "reviewsLabel": "Reviews",
-        "earnedLabel": "Earned",
+        "reviewsLabel": "Avis",
+        "earnedLabel": "Gains",
         "earnedValue": "${amount}",
-        "impressionsLabel": "Views"
+        "impressionsLabel": "Vues"
       },
       "submitReview": {
         "body": "Share your honest video take on any product you own. Earn $20 per approved review · $10 per 1,000 views",
         "cta": "Submit a review"
       },
       "reviews": {
-        "title": "Your reviews",
-        "listAriaLabel": "Your recent reviews",
-        "viewsCount": "{count} views",
-        "viewsThousands": "{count}k views",
-        "timeAgoHours": "{count}h ago",
-        "timeAgoDays": "{count}d ago",
-        "timeAgoWeeks": "{count}w ago",
+        "title": "Vos avis",
+        "listAriaLabel": "Vos avis récents",
+        "viewsCount": "{count} vues",
+        "viewsThousands": "{count}k vues",
+        "timeAgoHours": "il y a {count} h",
+        "timeAgoDays": "il y a {count} j",
+        "timeAgoWeeks": "il y a {count} sem.",
         "status": {
-          "live": "Live",
-          "inReview": "In review"
+          "live": "En ligne",
+          "inReview": "En cours de validation"
         },
         "philips": {
           "productName": "Philips Sonicare 9900"
@@ -389,12 +389,12 @@
       "metaTitle": "Reviewer home",
       "metaDescription": "Your Expeerly reviewer home — submit community reviews or join brand campaigns.",
       "submitReview": {
-        "title": "Hand in a community review",
-        "body": "Bought a product yourself? Enter the EAN, upload your receipt or order confirmation, and submit your review video. Earn $20 per approved review · $10 per 1,000 views.",
-        "cta": "Submit a community review"
+        "title": "Soumettre un avis communautaire",
+        "body": "Vous avez acheté un produit vous-même ? Saisissez l’EAN, téléversez votre reçu ou confirmation de commande, puis soumettez votre vidéo d’avis. Gagnez 20 $ par avis approuvé · 10 $ pour 1 000 vues.",
+        "cta": "Soumettre un avis communautaire"
       },
-      "campaignListTitle": "Or join a sampled campaign",
-      "campaignListDescription": "Apply to brand campaigns with a set brief, timeline, and campaign-specific rewards. Profile onboarding is only required when you apply."
+      "campaignListTitle": "Ou rejoindre une campagne avec échantillon",
+      "campaignListDescription": "Postulez à des campagnes de marque avec brief, calendrier et récompenses spécifiques. L’onboarding du profil n’est requis qu’au moment de postuler."
     },
     "reviewerCommunitySubmit": {
       "metaTitle": "Soumettre un avis communautaire",
@@ -468,21 +468,21 @@
     },
     "reviewerCampaignApply": {
       "onboarding": {
-        "title": "Complete your reviewer profile",
-        "description": "Sampled campaigns need a short profile before you can apply to {campaign}.",
-        "displayNameLabel": "Display name",
-        "cityLabel": "City",
-        "required": "Enter your display name and city to continue."
+        "title": "Complétez votre profil d’évaluateur",
+        "description": "Les campagnes avec échantillon nécessitent un court profil avant de pouvoir postuler à {campaign}.",
+        "displayNameLabel": "Nom d’affichage",
+        "cityLabel": "Ville",
+        "required": "Saisissez votre nom d’affichage et votre ville pour continuer."
       },
       "success": {
-        "title": "Application sent",
-        "description": "You applied to {campaign}. We will follow up when a spot opens."
+        "title": "Candidature envoyée",
+        "description": "Vous avez postulé à {campaign}. Nous vous recontacterons lorsqu’une place se libère."
       },
       "actions": {
-        "cancel": "Cancel",
-        "completeAndApply": "Save and apply",
-        "close": "Close",
-        "viewCampaigns": "View campaigns"
+        "cancel": "Annuler",
+        "completeAndApply": "Enregistrer et postuler",
+        "close": "Fermer",
+        "viewCampaigns": "Voir les campagnes"
       }
     }
   },
