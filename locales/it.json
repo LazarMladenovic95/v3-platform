@@ -155,6 +155,7 @@
       },
       "selfSubmitted": {
         "title": "Review inviate in autonomia",
+        "publishedTitle": "Review pubblicate",
         "description": "Prodotti che hai acquistato e recensito da solo — 20 $ per approvazione più performance visualizzazioni.",
         "listAriaLabel": "Review inviate in autonomia"
       },
@@ -175,7 +176,7 @@
         "cta": "Submit a community review",
         "eanMeta": "EAN {ean}",
         "filesMeta": "Receipt: {receipt} · Video: {video}",
-        "statusInReview": "In review"
+        "statusInReview": "In revisione"
       }
     },
     "reviewerOnboarding": {

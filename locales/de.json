@@ -155,6 +155,7 @@
       },
       "selfSubmitted": {
         "title": "Selbst eingereichte Reviews",
+        "publishedTitle": "Veröffentlichte Reviews",
         "description": "Produkte, die du gekauft und selbst bewertet hast — 20 $ pro Freigabe plus View-Performance.",
         "listAriaLabel": "Selbst eingereichte Reviews"
       },
@@ -175,7 +176,7 @@
         "cta": "Submit a community review",
         "eanMeta": "EAN {ean}",
         "filesMeta": "Receipt: {receipt} · Video: {video}",
-        "statusInReview": "In review"
+        "statusInReview": "In Prüfung"
       }
     },
     "reviewerOnboarding": {

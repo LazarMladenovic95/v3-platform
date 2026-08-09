@@ -44,6 +44,9 @@ export function ReviewerMyReviewsScreen() {
           actionHref="/reviewer/submit-review"
         />
         <ReviewerCommunitySubmissionsSection />
+        <Heading as="h3" variant="title-bold" className="mt-5">
+          {t("app.reviewerMyReviews.selfSubmitted.publishedTitle")}
+        </Heading>
         <ReviewsOverviewStrip
           listLabel={t("app.reviewerMyReviews.selfSubmitted.listAriaLabel")}
           reviews={selfSubmitted}

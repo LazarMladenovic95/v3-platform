@@ -155,6 +155,7 @@
       },
       "selfSubmitted": {
         "title": "Self-submitted reviews",
+        "publishedTitle": "Published reviews",
         "description": "Products you bought and reviewed on your own — $20 per approval plus view performance.",
         "listAriaLabel": "Self-submitted reviews"
       },
