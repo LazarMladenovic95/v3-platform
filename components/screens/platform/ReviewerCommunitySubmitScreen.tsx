@@ -207,6 +207,7 @@ export function ReviewerCommunitySubmitScreen() {
               maxSizeBytes={RECEIPT_MAX_BYTES}
               state={receiptError ? "error" : "default"}
               error={receiptError}
+              defaultFiles={receiptFile ? [receiptFile] : undefined}
               onFilesChange={(files) => {
                 setReceiptFile(files[0] ?? null);
                 if (files[0]) setReceiptError(undefined);
@@ -241,6 +242,7 @@ export function ReviewerCommunitySubmitScreen() {
               maxSizeBytes={VIDEO_MAX_BYTES}
               state={videoError ? "error" : "default"}
               error={videoError}
+              defaultFiles={videoFile ? [videoFile] : undefined}
               onFilesChange={(files) => {
                 setVideoFile(files[0] ?? null);
                 if (files[0]) setVideoError(undefined);

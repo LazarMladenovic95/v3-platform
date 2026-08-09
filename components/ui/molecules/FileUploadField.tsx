@@ -23,6 +23,7 @@ export interface FileUploadFieldProps {
   disabled?: boolean;
   id?: string;
   className?: string;
+  defaultFiles?: File[];
   onFilesChange?: (files: File[]) => void;
 }
 
@@ -57,13 +58,14 @@ export function FileUploadField({
   disabled = false,
   id,
   className,
+  defaultFiles = [],
   onFilesChange,
 }: FileUploadFieldProps) {
   const generatedId = React.useId();
   const inputId = id ?? generatedId;
   const hintId = hint ? `${inputId}-hint` : undefined;
   const [isDragging, setIsDragging] = React.useState(false);
-  const [files, setFiles] = React.useState<File[]>([]);
+  const [files, setFiles] = React.useState<File[]>(() => defaultFiles);
   const [internalError, setInternalError] = React.useState<string | undefined>();
   const errorMessage = error ?? internalError;
   const messageId = errorMessage ? `${inputId}-error` : hintId;
